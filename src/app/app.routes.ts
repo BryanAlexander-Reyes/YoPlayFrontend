@@ -11,20 +11,21 @@ export const routes: Routes = [
         path: '',
         component: Layout,
         canActivate: [authGuard],
-        children: [{
-            path: '',
-            redirectTo: '/main',
-            pathMatch: 'full',
-        },
-        {
-            path: 'main',
-            component: Presentation
-        },
-        {
-            path: 'home',
-            component: Home
-        }
-    ]
+        children: [
+            {
+                path: '',
+                redirectTo: '/main',
+                pathMatch: 'full',
+            },
+            {
+                path: 'main',
+                component: Presentation
+            },
+            {
+                path: 'home',
+                component: Home
+            }
+        ]
     },
     {
         path: 'main',
