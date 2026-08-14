@@ -6,7 +6,7 @@ import { Reglamento } from './pages/organizacion/reglamento/reglamento';
 export const routes: Routes = [
 {
   path: '',
-  redirectTo: 'torneo',
+  redirectTo: 'reglamento',
   pathMatch: 'full'
 },
 {
