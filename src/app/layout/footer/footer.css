@@ -1,0 +1,51 @@
+.footer {
+    width: 100%;
+    min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    background-color: black;
+    color: white;
+
+    box-sizing: border-box;
+
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+    margin: 25px 0 15px;
+}
+
+.footer-links a {
+    color: #00d9e8;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer p {
+    margin: 0;
+
+    color: #888;
+    font-size: 13px;
+    font-weight: 400;
+}
