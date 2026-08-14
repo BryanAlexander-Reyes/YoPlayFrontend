@@ -16,12 +16,11 @@
                 <div class="regla-item">
                     <input type="text" [(ngModel)]="regla.regla" placeholder="Escriba una regla">
                     <button type="button" class="btn-eliminar" (click)="eliminaregla($index)">
-                        −
+                        ➖
                     </button>
                 </div>
                 }
-                <button type="button" class="btn-agregar" (click)="agregaregla()">
-                </button>
+                <button type="button" class="btn-agregar" (click)="agregaregla()">➕</button>
             </div>
         </div>
         <div class="fila">
@@ -29,7 +28,7 @@
                 <span>🌐</span>
                 <p>Idioma del reglamento</p>
             </div>
-            <select>
+            <select aria-placeholder="">
                 <option>Español</option>
                 <option>Inglés</option>
                 <option>Portugués</option>

@@ -197,9 +197,9 @@
 
     border-radius: 6px;
 
-    background: #119bf0;
+    background: #ffffff;
 
-    color: white;
+    color: blue;
 
     font-size: 23px;
 
@@ -214,7 +214,7 @@
     justify-content: center;
 }
 .btn-agregar:hover {
-    background: #38b0ff;
+    background: blue;
 
     transform: scale(1.05);
 }
