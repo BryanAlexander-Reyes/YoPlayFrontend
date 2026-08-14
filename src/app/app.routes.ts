@@ -2,11 +2,12 @@ import { Routes } from '@angular/router';
 import { CreacionTorneo } from './pages/organizacion/creacion-torneo/creacion-torneo';
 import { RegistroEquipos } from './pages/organizacion/registro-equipos/registro-equipos';
 import { Reglamento } from './pages/organizacion/reglamento/reglamento';
+import { Perfil } from './pages/perfil/perfil';
 
 export const routes: Routes = [
 {
   path: '',
-  redirectTo: 'reglamento',
+  redirectTo: 'perfil',
   pathMatch: 'full'
 },
 {
@@ -20,5 +21,9 @@ export const routes: Routes = [
 {
     path:'reglamento',
     component:Reglamento
+},
+{
+    path:'perfil',
+    component:Perfil
 }
 ];
