@@ -138,7 +138,7 @@ span {
     border: 1px solid rgba(255, 193, 7, 0.5);
 }
 
-.tournament-status."En curso" {
+.tournament-status.Activo {
     background-color: rgba(0, 217, 232, 0.2);
     color: #00d9e8;
     border: 1px solid rgba(0, 217, 232, 0.5);

@@ -9,7 +9,7 @@ interface Tournament {
   maxParticipants: number;
   entryFee: number;
   prize: number;
-  status: 'Abierto' | 'Próximo' | 'En curso';
+  status: 'Abierto' | 'Próximo' | 'Activo';
 }
 
 interface Activity {
@@ -62,7 +62,7 @@ export class Home implements OnInit {
       maxParticipants: 8,
       entryFee: 150,
       prize: 750,
-      status: 'En curso',
+      status: 'Activo',
     },
     {
       id: 3,
