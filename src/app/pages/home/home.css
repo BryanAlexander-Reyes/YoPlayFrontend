@@ -1,0 +1,330 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+span {
+    background: transparent;
+}
+
+.home-container {
+    width: 100%;
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+/* Welcome Section */
+.welcome-section {
+    margin-bottom: 50px;
+}
+
+.welcome-section h1 {
+    color: white;
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 30px;
+    line-height: 1.2;
+}
+
+.user-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background-color: transparent;
+    border: 1px solid rgba(0, 217, 232, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: rgba(0, 217, 232, 0.08);
+    border-color: rgba(0, 217, 232, 0.6);
+    transform: translateY(-2px);
+}
+
+.stat-label {
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    color: #00d9e8;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Tournaments Section */
+.tournaments-section {
+    margin-bottom: 50px;
+}
+
+.tournaments-section h2 {
+    color: white;
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 25px;
+}
+
+.tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.tournament-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 217, 232, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.tournament-card:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 217, 232, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 217, 232, 0.1);
+}
+
+.tournament-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.tournament-header h3 {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+}
+
+.tournament-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tournament-status.Abierto {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.5);
+}
+
+.tournament-status.Próximo {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.tournament-status."En curso" {
+    background-color: rgba(0, 217, 232, 0.2);
+    color: #00d9e8;
+    border: 1px solid rgba(0, 217, 232, 0.5);
+}
+
+.tournament-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tournament-info p {
+    color: #bbb;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.tournament-info strong {
+    color: #00d9e8;
+}
+
+.btn-participate {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: rgba(0, 217, 232, 0.15);
+    border: 1px solid rgba(0, 217, 232, 0.5);
+    border-radius: 8px;
+    color: #00d9e8;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-participate:hover {
+    background-color: rgba(0, 217, 232, 0.25);
+    border-color: #00d9e8;
+    color: white;
+}
+
+.btn-participate:active {
+    transform: scale(0.98);
+}
+
+/* Activity Section */
+.activity-section {
+    margin-bottom: 30px;
+}
+
+.activity-section h2 {
+    color: white;
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 25px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 217, 232, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 217, 232, 0.5);
+    transform: translateX(5px);
+}
+
+.activity-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.activity-icon.victory {
+    background-color: rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+}
+
+.activity-icon.defeat {
+    background-color: rgba(244, 67, 54, 0.2);
+    border: 1px solid rgba(244, 67, 54, 0.5);
+}
+
+.activity-icon.achievement {
+    background-color: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.activity-icon.tournament {
+    background-color: rgba(0, 217, 232, 0.2);
+    border: 1px solid rgba(0, 217, 232, 0.5);
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-details h4 {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 5px;
+}
+
+.activity-details p {
+    color: #999;
+    font-size: 13px;
+    margin: 0 0 8px;
+}
+
+.activity-time {
+    color: #666;
+    font-size: 11px;
+}
+
+.activity-result {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.activity-result.win {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.activity-result.loss {
+    background-color: rgba(244, 67, 54, 0.15);
+    color: #f44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.activity-result.neutral {
+    background-color: rgba(150, 150, 150, 0.15);
+    color: #bbb;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 20px 15px;
+    }
+
+    .welcome-section h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .user-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tournaments-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-item {
+        flex-wrap: wrap;
+    }
+
+    .activity-result {
+        width: 100%;
+        text-align: right;
+    }
+}

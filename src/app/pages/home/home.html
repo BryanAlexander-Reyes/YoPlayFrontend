@@ -1,1 +1,60 @@
-<p>home works!</p>
+<div class="home-container">
+    <!-- Header Welcome -->
+    <div class="welcome-section">
+        <h1>Bienvenido, {{ userName }}</h1>
+        <div class="user-stats">
+            <div class="stat-card">
+                <span class="stat-label">Puntos</span>
+                <span class="stat-value">{{ userStats.points }}</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Ranking</span>
+                <span class="stat-value">#{{ userStats.ranking }}</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Victorias</span>
+                <span class="stat-value">{{ userStats.wins }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Torneos Disponibles -->
+    <section class="tournaments-section">
+        <h2>Torneos Disponibles</h2>
+        <div class="tournaments-grid">
+            <div *ngFor="let tournament of tournaments" class="tournament-card">
+                <div class="tournament-header">
+                    <h3>{{ tournament.name }}</h3>
+                    <span class="tournament-status" [ngClass]="tournament.status">{{ tournament.status }}</span>
+                </div>
+                <div class="tournament-info">
+                    <p><strong>Deporte:</strong> {{ tournament.sport }}</p>
+                    <p><strong>Participantes:</strong> {{ tournament.participants }} / {{ tournament.maxParticipants }}</p>
+                    <p><strong>Entrada:</strong> {{ tournament.entryFee }} puntos</p>
+                    <p><strong>Premio:</strong> {{ tournament.prize }} puntos</p>
+                </div>
+                <button class="btn-participate">Participar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividad Reciente -->
+    <section class="activity-section">
+        <h2>Actividad Reciente</h2>
+        <div class="activity-list">
+            <div *ngFor="let activity of recentActivity" class="activity-item">
+                <div class="activity-icon" [ngClass]="activity.type">
+                    <span>{{ activity.icon }}</span>
+                </div>
+                <div class="activity-details">
+                    <h4>{{ activity.title }}</h4>
+                    <p>{{ activity.description }}</p>
+                    <span class="activity-time">{{ activity.time }}</span>
+                </div>
+                <div class="activity-result" [ngClass]="activity.resultType">
+                    {{ activity.result }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
