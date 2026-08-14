@@ -1,0 +1,25 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    margin-left: 200px;
+}
+
+.layout-header {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.layout-main {
+    flex: 1;
+    background-color: #f5f5f5;
+}
+
+.layout-footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 18px;
+}

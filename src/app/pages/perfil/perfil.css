@@ -1,0 +1,379 @@
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+.card-general {
+    width: 100%;
+    height: 1000px;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.62),
+            rgba(255, 255, 255, 0.62)
+        ),
+        url('/assets/futbol.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #111;
+}
+
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.header {
+    width:auto;
+    height: 100px;
+
+    padding: 0 18px;
+
+    display: flex;
+    align-items: center;
+
+    background: #000;
+
+    border-bottom: 2px solid #686767;
+}
+
+.header h1 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   SUBENCABEZADO - PERFIL
+===================================================== */
+
+.sub-header {
+    width: 100%;
+    height: 80px;
+
+    padding: 0 27px;
+
+    display: flex;
+    align-items: center;
+
+    background:#686767;
+}
+
+.sub-header h2 {
+    margin: 0;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+
+.contenido {
+    width: 100%;
+    height:1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    display: grid;
+    padding: 22px 0 40px;
+    background:#969696;
+}
+
+
+
+
+.descripcion {
+    margin: 0 0 15px;
+
+    font-size: 25px;
+
+    color: #222;
+
+
+}
+
+
+.informacion-card {
+    width: center;
+
+    height: 500px;
+
+    padding: 10px 50px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: white;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   DATOS DEL PERFIL
+===================================================== */
+
+.datos-perfil {
+    flex: 1;
+
+    padding-right: 30px;
+}
+
+.datos-perfil h2 {
+    margin: 0 0 15px;
+
+    font-size: 30px;
+
+    color: #111;
+}
+
+.datos-perfil p {
+    margin: 3px 0;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+
+    color: #222;
+}
+
+
+/* =====================================================
+   FOTO DE PERFIL
+===================================================== */
+
+.foto-perfil {
+    width: 200px;
+    height: 200px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+    border-radius: 10px;
+}
+
+
+/* Imagen */
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   CARD PERFIL PÚBLICO
+===================================================== */
+
+.perfil-publico {
+    width: auto;
+
+    min-height: 50px;
+
+    margin-top: 17px;
+
+    padding: 10px 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: white;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   TEXTO PERFIL PÚBLICO
+===================================================== */
+
+.texto-publico {
+    flex: 1;
+
+    padding-right: 30px;
+}
+
+.texto-publico h2 {
+    margin: 0 0 6px;
+
+    font-size: 30px;
+
+    color: #111;
+}
+
+.texto-publico p {
+    margin: 0;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    color: #111;
+}
+
+
+/* =====================================================
+   SWITCH
+===================================================== */
+
+.switch {
+    position: relative;
+
+    width: 31px;
+    height: 17px;
+
+    flex-shrink:0;
+
+    cursor: pointer;
+}
+
+
+/* Ocultar checkbox */
+
+.switch input {
+    opacity: 0;
+
+    width: 0;
+    height: 0;
+}
+
+
+/* Fondo */
+
+.slider {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 31px;
+    height: 17px;
+
+    background: #ccc;
+
+    border-radius: 20px;
+
+    transition: 0.2s;
+}
+
+
+/* Círculo */
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    left: 2px;
+    top: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Activado */
+
+.switch input:checked + .slider {
+    background: #2ac866;
+}
+
+
+/* Mover círculo */
+
+.switch input:checked + .slider::before {
+    transform: translateX(14px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .contenido {
+        width: 94%;
+    }
+
+
+    .informacion-card {
+        padding: 22px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+
+    .datos-perfil {
+        width: 100%;
+
+        padding-right: 0;
+    }
+
+
+    .foto-perfil {
+        align-self: center;
+    }
+
+
+    .perfil-publico {
+        padding: 18px 20px;
+    }
+
+
+    .texto-publico {
+        padding-right: 15px;
+    }
+
+}

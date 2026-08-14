@@ -1,0 +1,53 @@
+<section class="card-general">
+    <header class="header">
+        <h1>Configuración</h1>
+    </header>
+    <div class="sub-header">
+        <h2>Perfil</h2>
+    </div>
+    <main class="contenido">
+        <p class="descripcion">
+            Aquí puedes encontrar la información de tu perfil y las configuraciones del perfil.
+        </p>
+        <section class="informacion-card">
+            <div class="datos-perfil">
+                <h2>Información de tu perfil</h2>
+                <p>
+                    Nombre: {{ perfiles.nombre }}
+                </p>
+                <p>
+                    Tipo de documento: {{ perfiles.tipo_documneto }}
+                </p>
+                <p>
+                    Número de documento: {{ perfiles.numero_documneto }}
+                </p>
+                <p>
+                    Equipo: {{ perfiles.equipo }}
+                </p>
+                <p>
+                    Rol: {{ perfiles.Rol }}
+                </p>
+                <p>
+                    Estado: {{ perfiles.Estado }}
+                </p>
+            </div>
+            <div class="foto-perfil">
+                <img src="" alt="Foto de perfil">
+            </div>
+        </section>
+        <section class="perfil-publico">
+            <div class="texto-publico">
+                <h2>Perfil: Público</h2>
+                <p>
+                    Permite que los datos más privados, o tu información de
+                    torneos, entre otros, puedan ser visualizados o no,
+                    por otros usuarios.
+                </p>
+            </div>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </section>
+    </main>
+</section>

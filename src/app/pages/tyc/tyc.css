@@ -1,0 +1,225 @@
+@font-face {
+    font-family: "SF Pro";
+    src: url("/assets/fonts/SF-Pro-Text-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("/assets/fonts/SF-Pro-Text-Bold.woff2") format("woff2");
+    font-weight: 700;
+}
+
+app-root {
+    display: block;
+
+    width: 100%;
+    min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+.layout-container {
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-main {
+    width: 100%;
+    flex: 1;
+    margin: 0;
+    padding: 40px;
+    background-color: black;
+    box-sizing: border-box;
+}
+
+.layout-header {
+    width: 100%;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    box-sizing: border-box;
+}
+
+.layout-header app-header {
+    width: 100%;
+    height: 100%;
+}
+
+.card-tyc {
+    width: 75%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #b3b3b3;
+    color: #111;
+    border-radius: 34px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.card-tyc .content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #111;
+    text-align: left;
+}
+
+.card-tyc h1 {
+    margin: 0 0 6px;
+    background: transparent;
+    color: #111;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.card-tyc h2 {
+    margin: 30px 0 8px;
+    background: transparent;
+    color: #111;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.card-tyc h3 {
+    margin: 22px 0 7px;
+    background: transparent;
+    color: #222;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.card-tyc p {
+    margin: 10px 0;
+    background: transparent;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.card-tyc ul {
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    background: transparent;
+}
+
+.card-tyc li {
+    margin-bottom: 3px;
+    background: transparent;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.card-tyc strong {
+    background: transparent;
+    color: inherit;
+    font-weight: 700;
+}
+
+.card-tyc u {
+    background: transparent;
+    color: inherit;
+}
+
+.card-tyc a {
+    background: transparent;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.card-tyc a:hover {
+    text-decoration: underline;
+}
+
+.card-tyc .strong-dlt {
+    color: #222;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.card-tyc .strong-dlt:hover {
+    color: #B22222;
+}
+
+.btn-aceptar {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.btn-aceptar button {
+    width: 102px;
+    height: 60px;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(220, 220, 220, 0.8);
+    color: #1A1A1A;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-aceptar button:hover {
+    background-color: rgb(252, 253, 255);
+    transform: scale(1.03);
+}
+
+.btn-aceptar button:active {
+    transform: scale(0.98);
+}
+
+.btn-behind {
+    width: 102px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 60px;
+}
+
+.layout-footer {
+    width: 100%;
+    color: white;
+    padding: 30px 20px;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+}

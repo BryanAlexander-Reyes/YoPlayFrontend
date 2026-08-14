@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* =====================================================
+   CONTENEDOR DEL COMPONENTE
+   ===================================================== */
+
+:host {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+   ===================================================== */
+
+.span-content {
+  width: 400px;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #08111a;
+  border: 2px solid #00d9ff;
+  border-radius: 20px;
+  box-shadow:
+    0 0 10px rgba(0, 217, 255, 0.6),
+    0 0 25px rgba(0, 217, 255, 0.25);
+  padding: 40px;
+  text-align: center;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.span-content .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+
+/* =====================================================
+   ICONO
+   ===================================================== */
+
+.span-content .header i {
+  font-size: 55px;
+  color: #d4d9da;
+  margin-bottom: 10px;
+  /* filter:
+    drop-shadow(0 0 5px #00d9ff)
+    drop-shadow(0 0 15px rgba(0, 217, 255, 0.6)); */
+
+  animation: pelota 2s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   TÍTULO
+   ===================================================== */
+
+.span-content .header h1 {
+  margin: 0;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow:
+    0 0 8px #1f97a7,
+    0 0 15px rgba(25, 100, 185, 0.863);
+}
+
+
+/* =====================================================
+   DESCRIPCIÓN
+   ===================================================== */
+
+.span-content .header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   ANIMACIÓN DEL ICONO
+   ===================================================== */
+
+@keyframes pelota {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =====================================================
+   EFECTO DE PARPADEO SUTIL DE LA CARD
+   ===================================================== */
+
+.span-content {
+  animation: glowCard 3s ease-in-out infinite;
+}
+
+@keyframes glowCard {
+
+  0% {
+    box-shadow:
+      0 0 8px rgba(0, 217, 255, 0.4),
+      0 0 18px rgba(0, 217, 255, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 0 14px rgba(0, 217, 255, 0.7),
+      0 0 30px rgba(0, 217, 255, 0.3);
+  }
+
+  100% {
+    box-shadow:
+      0 0 8px rgba(0, 217, 255, 0.4),
+      0 0 18px rgba(0, 217, 255, 0.15);
+  }
+
+}

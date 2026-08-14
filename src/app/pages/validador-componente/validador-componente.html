@@ -1,0 +1,38 @@
+<div class="validator-content">
+  <div class="header">
+    <h2>Codigo de Verificación</h2>
+    <p>Ingresa el codigo enviado a tu correo</p>
+  </div>
+  <div class="codigo-verificacion">
+    <input inputmode="numeric"
+    [(ngModel)]="codigo1"
+    type="text" maxlength="1"  />
+    <br />
+    <input inputmode="numeric"
+    [(ngModel)]="codigo2" maxlength="1"
+     />
+    <br>
+    <input inputmode="numeric"
+    [(ngModel)]="codigo3"
+    type="text" maxlength="1"  />
+    <br>
+    <input inputmode="numeric"
+    [(ngModel)]="codigo4" type="text" maxlength="1"  />
+    <br>
+    <input inputmode="numeric"
+    type="text" maxlength="1" 
+    [(ngModel)]="codigo5" 
+    />
+    <br>
+    <input inputmode="numeric"
+    type="text" maxlength="1" 
+    [(ngModel)]="codigo6" />
+    
+    
+  </div>
+  <button
+  [disabled]="!codigoValido()"
+  [class.boton-activo]="codigoValido()">
+  Confirmar
+</button>
+</div>

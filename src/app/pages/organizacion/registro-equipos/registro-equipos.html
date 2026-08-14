@@ -1,0 +1,83 @@
+<section class="card-general">
+    <div class="header">
+        <span></span>
+        <h1>Registro de equipos</h1>
+        <span></span>
+        <p>Completa los datos para registrar a tu equipo</p>
+    </div>
+    <section class="formulario-datosequipo">
+        <p>Datos del Equipo</p>
+        <span></span>
+        <div class="equipo">
+            <p>Nombre del equipo</p>
+            <span></span>
+            <input type="text">
+        </div>
+        <div class="juego-categoria">
+            <p>Juego/Categoria</p>
+            <span></span>
+            <input type="text" placeholder="ingrese del juego categoria">
+        </div>
+        <div class="region">
+            <p>Region</p>
+            <span></span>
+            <input type="text" placeholder="lugar de donde viene">
+        </div>
+        <div class="capitan">
+            <p>Datos del Capitan</p>
+            <span></span>
+            <p>Nombre Completo</p>
+            <span></span>
+            <input type="text" placeholder="ingrese su nombre">
+            <p>Telefono/WhatsApp</p>
+            <span></span>
+            <input type="text" placeholder="ingrese numero de celular">
+            <p>Email</p>
+            <span></span>
+            <input type="email" placeholder="ingrese su correo electronico">
+        </div>
+    </section>
+    <section class="integrantes">
+        <p>integrantes del equipo</p>
+        <span></span>
+        <div class="miembros">
+
+            @for (miembro of miembros; track $index) {
+
+            <div class="miembro">
+
+                <div class="titulos">
+                    <span>Nombre</span>
+                    <span>posición</span>
+                    <span>número</span>
+                </div>
+
+                <div class="campos">
+                    <input type="text" [(ngModel)]="miembro.nombre">
+
+                    <input type="text" [(ngModel)]="miembro.posicion">
+
+                    <input type="text" [(ngModel)]="miembro.numero">
+                </div>
+
+            </div>
+            <button type="button" (click)="quitarMiembros($index)">
+                quitar miembro
+            </button>
+
+            }
+
+        </div>
+
+        <button type="button" (click)="agregarMiembro()">
+            AÑADIR MÁS
+        </button>
+
+        <input type="checkbox" id="terminos">
+
+        <label for="terminos">
+            Acepto los terminos y condiciones del torneo
+        </label>
+        <button>Registrar Equipo</button>
+    </section>
+</section>
