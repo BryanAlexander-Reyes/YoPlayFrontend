@@ -4,26 +4,35 @@
     <p>Ingresa el codigo enviado a tu correo</p>
   </div>
   <div class="codigo-verificacion">
-    <input 
-    #input1
-    type="number" maxlength="1" (input)="siguienteInput($event, input2)" />
+    <input inputmode="numeric"
+    [(ngModel)]="codigo1"
+    type="text" maxlength="1"  />
     <br />
-    <input #input2
-    type="number" maxlength="1" (input)="siguienteInput($event, input3)" />
+    <input inputmode="numeric"
+    [(ngModel)]="codigo2" maxlength="1"
+     />
     <br>
-    <input #input3
-    type="number" maxlength="1" (input)="siguienteInput($event, input4)" />
+    <input inputmode="numeric"
+    [(ngModel)]="codigo3"
+    type="text" maxlength="1"  />
     <br>
-    <input #input4 type="number" maxlength="1" (input)="siguienteInput($event, input5)" />
+    <input inputmode="numeric"
+    [(ngModel)]="codigo4" type="text" maxlength="1"  />
     <br>
-    <input type="number" maxlength="1" 
-    #input5 
-    (input)="siguienteInput($event, input6)"/>
+    <input inputmode="numeric"
+    type="text" maxlength="1" 
+    [(ngModel)]="codigo5" 
+    />
     <br>
-    <input type="number" maxlength="1" 
-    #input6 />
+    <input inputmode="numeric"
+    type="text" maxlength="1" 
+    [(ngModel)]="codigo6" />
     
     
   </div>
-  <button type="button">validacion</button>
+  <button
+  [disabled]="!codigoValido()"
+  [class.boton-activo]="codigoValido()">
+  Confirmar
+</button>
 </div>

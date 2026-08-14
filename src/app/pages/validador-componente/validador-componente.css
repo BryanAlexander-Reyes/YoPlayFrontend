@@ -138,9 +138,18 @@
 
 
 .validator-content button:hover {
-  background: #00aaff;
+  background: #005eff;
   box-shadow:
-    0 0 15px rgba(0, 170, 255, 0.6);
+    0 0 15px rgba(0, 94, 255, 1);
   transform: translateY(-2px);
 }
+.validator-content button:disabled {
+  background-color: #ebebec; /* gris */
+  color: #9ca3af;
+  cursor: not-allowed; /* icono de "prohibido" al pasar el mouse */
+  opacity: 0.7;
+}
 
+.validator-content button:hover:not(:disabled) {
+  background-color: #1d4ed8; /* un poco mas oscuro al pasar el mouse, solo si esta habilitado */
+}

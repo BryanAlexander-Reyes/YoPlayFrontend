@@ -43,7 +43,7 @@
     <div class="form-group">
       <label for="usuario"> Correo Electrónico </label>
 
-      <input type="email" id="usuario" placeholder="Ingrese su correo" />
+      <input type="email" id="usuario" placeholder="Ingrese su correo" [(ngModel)]="email" />
     </div>
 
     <!-- =====================================
@@ -52,7 +52,7 @@
     <div class="form-group">
       <label for="contraseña"> Contraseña </label>
 
-      <input type="password" id="contraseña" placeholder="Ingrese su contraseña" />
+      <input type="password" [(ngModel)]="password" id="contraseña" placeholder="Ingrese su contraseña" />
     </div>
 
     <!-- =====================================
@@ -65,7 +65,7 @@
     <!-- =====================================
              BOTÓN INGRESAR
              ===================================== -->
-    <button type="button" class="login-button">Ingresar</button>
+    <button type="button" (click)="login()" class="login-button">Ingresar</button>
 
     <!-- =====================================
              REGISTRO
@@ -73,7 +73,7 @@
     <div class="registro">
       <span> ¿No tienes una cuenta? </span>
 
-      <a href="#"> Regístrate </a>
+      <a (click)="goToRegister()"> Regístrate </a>
     </div>
 
     <!-- =====================================
