@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+:host {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+  
+
+.validator-content {
+  width: 450px;
+  min-height: 350px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #043980 0%,
+    #010407 50%,
+    #043980 100%
+  );
+  /* border: 2px solid #00d9ff; */
+  border-radius: 20px;
+  box-shadow:
+    0 0 10px #373c3d,
+    0 0 25px rgba(25, 25, 26, 0.5);
+}
+
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.header h2 {
+  margin: 0 0 10px;
+  color: #f8f7f7;
+  font-size: 28px;
+  text-shadow:
+    0 0 8px #00d9ff,
+    0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+.header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+
+/* CONTENEDOR DE LOS INPUTS */
+   
+.codigo-verificacion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+
+/* CÓDIGO */
+
+
+.codigo-verificacion input {
+  width: 55px;
+  height: 60px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #222222;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+
+
+/* INPUT CUANDO ESTÁ SELECCIONADO */
+
+
+.codigo-verificacion input:focus {
+  border-color: #00d9ff;
+  box-shadow:
+    0 0 8px rgba(0, 217, 255, 0.5),
+    0 0 15px rgba(0, 217, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+
+
+/* QUITAR FLECHAS DEL INPUT NUMBER */
+
+
+.codigo-verificacion input::-webkit-inner-spin-button,
+.codigo-verificacion input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+/* BOTÓN */
+
+.validator-content button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #005eff;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+
+/* HOVER DEL BOTÓN */
+
+
+.validator-content button:hover {
+  background: #00aaff;
+  box-shadow:
+    0 0 15px rgba(0, 170, 255, 0.6);
+  transform: translateY(-2px);
+}
+

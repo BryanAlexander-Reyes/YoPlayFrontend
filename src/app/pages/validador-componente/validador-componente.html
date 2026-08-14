@@ -1,0 +1,29 @@
+<div class="validator-content">
+  <div class="header">
+    <h2>Codigo de Verificación</h2>
+    <p>Ingresa el codigo enviado a tu correo</p>
+  </div>
+  <div class="codigo-verificacion">
+    <input 
+    #input1
+    type="number" maxlength="1" (input)="siguienteInput($event, input2)" />
+    <br />
+    <input #input2
+    type="number" maxlength="1" (input)="siguienteInput($event, input3)" />
+    <br>
+    <input #input3
+    type="number" maxlength="1" (input)="siguienteInput($event, input4)" />
+    <br>
+    <input #input4 type="number" maxlength="1" (input)="siguienteInput($event, input5)" />
+    <br>
+    <input type="number" maxlength="1" 
+    #input5 
+    (input)="siguienteInput($event, input6)"/>
+    <br>
+    <input type="number" maxlength="1" 
+    #input6 />
+    
+    
+  </div>
+  <button type="button">validacion</button>
+</div>
