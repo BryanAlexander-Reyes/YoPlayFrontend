@@ -1,13 +1,14 @@
 <div class="header-tyc">
+
     <div class="logo">
         <img src="/images/logo.png" alt="YoPlay">
     </div>
 
-    <nav class="content-nav" aria-label="Navegación principal">
-        <a *ngFor="let item of menu" [routerLink]="item.ruta" [attr.aria-label]="item.label">
-            <span [innerHTML]="getIcon(item.icono)"></span>
-        </a>
-    </nav>
+    <div class="content-nav">
+        <a>Home</a>
+        <a>Torneos</a>
+        <a>Deportes</a>
+    </div>
 
     <div class="user">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -19,4 +20,5 @@
             </path>
         </svg>
     </div>
+
 </div>

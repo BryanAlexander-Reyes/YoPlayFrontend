@@ -40,15 +40,6 @@
     text-decoration: none;
     transition: color 0.2s ease;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.content-nav a svg {
-    width: 28px;
-    height: 28px;
-    display: block;
 }
 
 .content-nav a:hover {
