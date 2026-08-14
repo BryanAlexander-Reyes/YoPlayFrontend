@@ -1,0 +1,74 @@
+<section class="card-general">
+
+    <header class="header">
+        <span></span>
+        <h1>Reglamento</h1>
+        <span></span>
+    </header>
+    <div class="formulario">
+        <div class="fila reglas-fila">
+            <div class="etiqueta">
+                <span>▣</span>
+                <p>Nuevas reglas</p>
+            </div>
+            <div class="reglas-contenedor">
+                @for (regla of reglamentos; track $index) {
+                <div class="regla-item">
+                    <input type="text" [(ngModel)]="regla.regla" placeholder="Escriba una regla">
+                    <button type="button" class="btn-eliminar" (click)="eliminaregla($index)">
+                        ➖
+                    </button>
+                </div>
+                }
+                <button type="button" class="btn-agregar" (click)="agregaregla()">➕</button>
+            </div>
+        </div>
+        <div class="fila">
+            <div class="etiqueta">
+                <span>🌐</span>
+                <p>Idioma del reglamento</p>
+            </div>
+            <select aria-placeholder="">
+                <option>Español</option>
+                <option>Inglés</option>
+                <option>Portugués</option>
+            </select>
+        </div>
+        <div class="fila">
+            <div class="etiqueta">
+                <span>▣</span>
+                <p>Reglamento estándar</p>
+            </div>
+            <select>
+                <option>FIFA</option>
+                <option>FIVB</option>
+                <option>ITTF</option>
+                <option>NBA</option>
+                <option>Otro</option>
+            </select>
+        </div>
+    </div>
+    <div class="parte-inferior">
+        <div class="pdf">
+            <input type="checkbox" id="generarPdf">
+
+            <label for="generarPdf">
+                GENERAR PDF
+            </label>
+        </div>
+        <div class="terminos">
+            <div>
+                <input type="checkbox" id="terminos">
+
+                <label for="terminos">
+                    Acepto los términos y condiciones del Reglamento
+                </label>
+            </div>
+        </div>
+        <div class="final-form">
+            <button type="button">
+                🏆 Crear Reglamento
+            </button>
+        </div>
+    </div>
+</section>

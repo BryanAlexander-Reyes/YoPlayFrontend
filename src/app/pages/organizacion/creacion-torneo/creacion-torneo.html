@@ -1,0 +1,86 @@
+<section class="card">
+  <div class="header">
+    <span></span>
+    <h1>Crear torneo</h1>
+    <span></span>
+    <p>Completa los datos para crear un torneo</p>
+  </div>
+  <div class="formulario">
+
+    <div class="form-group lugar">
+      <label>Lugar de Encuentro</label>
+      <span></span>
+      <input type="text" placeholder="Ingrese el lugar de Encuentro">
+    </div>
+
+    <div class="form-group premiacion">
+      <label>Premiación</label>
+      <span></span>
+
+      <button type="button">➕</button>
+      <input type="text">
+    </div>
+
+    <div class="form-group deporte">
+      <label>Tipo de Deporte</label>
+      <span></span>
+
+      <select>
+        <option>Fútbol</option>
+        <option>Basquetbol</option>
+        <option>Voley</option>
+      </select>
+    </div>
+
+<div class="form-group divisiones">
+    <label>Divisiones</label>
+    <span></span>
+
+    <select>
+        <option>Todos contra todos</option>
+        <option>Grupos</option>
+        <option>Directa</option>
+    </select>
+</div>
+
+<div class="form-group-flayer">
+    <label>Imagen del torneo</label>
+    <input type="file" accept="image/*">
+</div>
+
+
+<div class="form-group cantidad">
+    <label>Cantidad de Equipos</label>
+    <span></span>
+
+    <div class="contador">
+        <button type="button" (click)="restarcontador()">−</button>
+       <input type="number" value="{{ contador }}">
+        <button type="button" (click)="sumarcontador()">+</button>
+    </div>
+</div>
+
+    <div class="form-group objetivo">
+      <label>Objetivo</label>
+      <span></span>
+
+      <input type="text">
+    </div>
+
+    <div class="form-group fechas">
+
+      <label>Fecha de Inicio y Fin</label>
+
+      <div class="input-fechas">
+        <input type="date">
+        <input type="date">
+      </div>
+
+    </div>
+  </div>
+  <div class="campo-fecha">
+  </div>
+  <div class="fin-formun">
+    <button> 🏆 Crear Torneo</button>
+  </div>
+</section>

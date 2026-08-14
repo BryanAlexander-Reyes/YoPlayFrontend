@@ -1,3 +1,8 @@
+// Barrerra importaciones
+import { CreacionTorneo } from './pages/organizacion/creacion-torneo/creacion-torneo';
+import { RegistroEquipos } from './pages/organizacion/registro-equipos/registro-equipos';
+import { Reglamento } from './pages/organizacion/reglamento/reglamento';
+import { Perfil } from './pages/perfil/perfil';
 // brayan importaciones
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/usuario/login/login';
@@ -57,4 +62,20 @@ export const routes: Routes = [
         path:'validador',
         component:ValidadorComponente
     },
+{
+    path:'torneo',
+    component:CreacionTorneo
+},
+  {
+    path:'registro',
+    component:RegistroEquipos
+},
+{
+    path:'reglamento',
+    component:Reglamento
+},
+{
+    path:'perfil',
+    component:Perfil
+}
 ];
