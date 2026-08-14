@@ -1,0 +1,383 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* =====================================================
+   CONTENEDOR DEL COMPONENTE
+   ===================================================== */
+
+:host {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   TARJETA PRINCIPAL
+   ===================================================== */
+
+.login-card {
+  width: 850px;
+  min-height: 500px;
+  display: flex;
+  background: #08111a;
+  border: 2px solid #00d9ff;
+  border-radius: 25px;
+  overflow: hidden;
+
+  /* Luz inicial */
+  box-shadow:
+    0 0 10px rgba(0, 217, 255, 0.6),
+    0 0 25px rgba(0, 217, 255, 0.3);
+
+  /* ÚNICA ANIMACIÓN */
+  animation: luzCard 3s ease-in-out infinite;
+  
+}
+
+
+/* =====================================================
+   ANIMACIÓN DE LA LUZ
+   ===================================================== */
+
+@keyframes luzCard {
+
+  /* Luz suave */
+  0% {
+    box-shadow:
+      0 0 8px rgba(0, 217, 255, 0.4),
+      0 0 20px rgba(0, 217, 255, 0.2);
+  }
+
+  /* Luz más intensa */
+  50% {
+    box-shadow:
+      0 0 15px rgba(0, 217, 255, 0.8),
+      0 0 35px rgba(0, 217, 255, 0.5);
+  }
+
+  /* Vuelve a ser suave */
+  100% {
+    box-shadow:
+      0 0 8px rgba(0, 217, 255, 0.4),
+      0 0 20px rgba(0, 217, 255, 0.2);
+  }
+}
+
+/* =====================================================
+   SECCIÓN DE BIENVENIDA
+   ===================================================== */
+
+.welcome {
+  width: 50%;
+  background: #005eff98;
+  border-radius: 0 15% 15% 0  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  box-sizing: border-box;
+  
+}
+
+
+/* =====================================================
+   CONTENIDO DE BIENVENIDA
+   ===================================================== */
+
+.card-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* =====================================================
+   BIENVENIDO A
+   ===================================================== */
+
+.bienvenido {
+  margin: 0;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-shadow:
+    0 0 8px #00d9ff,
+    0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+/* =====================================================
+   LOGO YPLAY
+   ===================================================== */
+
+.logo-yplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-shadow:
+    0 0 8px #00d9ff,
+    0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+/* =====================================================
+   DESCRIPCIÓN
+   ===================================================== */
+
+.card-section p {
+  margin-top: 30px;
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   SECCIÓN LOGIN
+   ===================================================== */
+
+.login {
+  width: 50%;
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+/* =====================================================
+   TÍTULO LOGIN
+   ===================================================== */
+
+.login-section h1 {
+  margin-bottom: 30px;
+  justify-content: center;
+  display:flex;
+  color: #00d9ff;
+  font-size: 30px;
+  text-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+}
+
+/* =====================================================
+   CAMPOS DEL FORMULARIO
+   ===================================================== */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+/* =====================================================
+   LABEL
+   ===================================================== */
+
+.form-group label {
+  margin-bottom: 7px;
+
+  color: white;
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   INPUT
+   ===================================================== */
+
+.form-group input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 15px;
+
+  border: 1px solid #334155;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #111827;
+
+  color: white;
+
+  transition: 0.3s;
+}
+
+/* =====================================================
+   INPUT CUANDO TIENE EL FOCO
+   ===================================================== */
+
+.form-group input:focus {
+  border-color: #00d9ff;
+
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+}
+
+/* =====================================================
+   RECUPERAR CONTRASEÑA
+   ===================================================== */
+
+.recover-password {
+  text-align: right;
+
+  margin-bottom: 20px;
+}
+
+.recover-password a {
+  color: #00d9ff;
+
+  font-size: 13px;
+
+  text-decoration: none;
+}
+
+.recover-password a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   BOTÓN INGRESAR
+   ===================================================== */
+
+.login-button {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #005eff;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.login-button:hover {
+  background: #00aaff;
+
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+}
+
+/* =====================================================
+   REGISTRO
+   ===================================================== */
+
+.registro {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 20px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+.registro a {
+  color: #00d9ff;
+
+  text-decoration: none;
+}
+
+/* =====================================================
+   BOTÓN GOOGLE
+   ===================================================== */
+
+.boton {
+  margin-top: 20px;
+}
+
+.boton-rapido {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 1px solid #475569;
+
+  border-radius: 8px;
+
+  background: #111827;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.boton-rapido i {
+  color: #4285f4;
+
+  font-size: 18px;
+}
+
+.boton-rapido:hover {
+  background: #1e293b;
+
+  border-color: #00d9ff;
+}
+/* =====================================================
+   BALÓN
+   ===================================================== */
+
+.pelota {
+  font-size: 40px;
+
+  color: white;
+
+  animation: girar 2s linear infinite;
+
+  filter: drop-shadow(0 0 5px #00d9ff) drop-shadow(0 0 10px #00d9ff);
+}
+
+/* =====================================================
+   ANIMACIÓN DEL BALÓN
+   ===================================================== */
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
