@@ -29,7 +29,7 @@ interface Torneo{
 export class TorneosComponent {
   cards: Card[] = [
   {
-    imagen: 'assets/img/futbol.jpg',
+    imagen: 'assets/falyer1.jpg',
     titulo: 'Torneo de Fútbol',
     descripcion: 'Participa en nuestro gran torneo deportivo.',
     lugar: 'Cancha El Campín',
@@ -37,7 +37,7 @@ export class TorneosComponent {
     hora: '3:00 PM'
   },
   {
-    imagen: 'assets/img/baloncesto.jpg',
+    imagen: 'assets/falyer3.jpg',
     titulo: 'Torneo de Baloncesto',
     descripcion: 'Demuestra tus habilidades en la cancha.',
     lugar: 'Coliseo Deportivo',
@@ -45,7 +45,7 @@ export class TorneosComponent {
     hora: '5:00 PM'
   },
   {
-    imagen: 'assets/img/tenis.jpg',
+    imagen: 'assets/falyer2.jpg',
     titulo: 'Competencia de Tenis',
     descripcion: 'Una jornada llena de deporte y competencia.',
     lugar: 'Club Deportivo Norte',
@@ -53,7 +53,7 @@ export class TorneosComponent {
     hora: '9:00 AM'
   },
   {
-    imagen: 'assets/img/voleibol.jpg',
+    imagen: 'assets/falyer4.jpg',
     titulo: 'Torneo de Voleibol',
     descripcion: 'Forma tu equipo y participa en el torneo.',
     lugar: 'Complejo Deportivo Central',
@@ -61,7 +61,7 @@ export class TorneosComponent {
     hora: '2:00 PM'
   },
   {
-    imagen: 'assets/img/natacion.jpg',
+    imagen: 'assets/falyer5.jpg',
     titulo: 'Competencia de Natación',
     descripcion: 'Compite junto a otros deportistas.',
     lugar: 'Piscina Olímpica',
@@ -69,7 +69,7 @@ export class TorneosComponent {
     hora: '8:00 AM'
   },
   {
-    imagen: 'assets/img/atletismo.jpg',
+    imagen: 'assets/falyer6.jpg',
     titulo: 'Carrera Deportiva',
     descripcion: 'Prepárate para una nueva experiencia deportiva.',
     lugar: 'Parque Metropolitano',
@@ -79,7 +79,7 @@ export class TorneosComponent {
 ];
 torneos: Torneo[] = [
   {
-    imagen: 'assets/img/futbol.jpg',
+    imagen: 'assets/falyer1.jpg',
     titulo: 'Copa Match Point',
     descripcion: 'Torneo de fútbol para equipos aficionados.',
     lugar: 'Complejo Deportivo El Campín',
@@ -88,7 +88,7 @@ torneos: Torneo[] = [
     premios: '$1.000.000 en premios'
   },
   {
-    imagen: 'assets/img/baloncesto.jpg',
+    imagen: 'assets/falyer2.jpg',
     titulo: 'Basket Challenge',
     descripcion: 'Competencia de baloncesto 3x3.',
     lugar: 'Coliseo Deportivo Norte',
@@ -97,7 +97,7 @@ torneos: Torneo[] = [
     premios: '$800.000 en premios'
   },
   {
-    imagen: 'assets/img/tenis.jpg',
+    imagen: 'assets/falyer3.jpg',
     titulo: 'Open Match Point',
     descripcion: 'Torneo de tenis para jugadores aficionados.',
     lugar: 'Club Deportivo Central',
@@ -106,7 +106,7 @@ torneos: Torneo[] = [
     premios: '$700.000 en premios'
   },
   {
-    imagen: 'assets/img/voleibol.jpg',
+    imagen: 'assets/falyer6.jpg',
     titulo: 'Copa Voleibol',
     descripcion: 'Torneo de voleibol con equipos de diferentes categorías.',
     lugar: 'Complejo Deportivo Simón Bolívar',
@@ -115,7 +115,7 @@ torneos: Torneo[] = [
     premios: '$900.000 en premios'
   },
   {
-    imagen: 'assets/img/futbol5.jpg',
+    imagen: 'assets/falyer1.jpg',
     titulo: 'Fútbol 5 Night',
     descripcion: 'Torneo nocturno de fútbol 5.',
     lugar: 'Cancha Sintética La 80',
@@ -124,7 +124,7 @@ torneos: Torneo[] = [
     premios: '$1.200.000 en premios'
   },
   {
-    imagen: 'assets/img/atletismo.jpg',
+    imagen: 'assets/falyer5.jpg',
     titulo: 'Run Challenge',
     descripcion: 'Competencia deportiva de atletismo para todos los niveles.',
     lugar: 'Parque Metropolitano',
