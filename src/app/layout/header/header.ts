@@ -11,12 +11,28 @@ import { Sideuser } from '../../pages/sideuser/sideuser';
 })
 export class Header {
   isUserMenuOpen = false;
+  isClosingUserMenu = false;
 
   toggleUserMenu(): void {
-    this.isUserMenuOpen = !this.isUserMenuOpen;
+    if (this.isUserMenuOpen) {
+      this.closeUserMenu();
+      return;
+    }
+
+    this.isClosingUserMenu = false;
+    this.isUserMenuOpen = true;
   }
 
   closeUserMenu(): void {
-    this.isUserMenuOpen = false;
+    if (!this.isUserMenuOpen) {
+      return;
+    }
+
+    this.isClosingUserMenu = true;
+
+    setTimeout(() => {
+      this.isUserMenuOpen = false;
+      this.isClosingUserMenu = false;
+    }, 220);
   }
 }

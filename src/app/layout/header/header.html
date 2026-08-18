@@ -21,8 +21,8 @@
         </svg>
     </div>
 
-    <div *ngIf="isUserMenuOpen" class="user-menu-backdrop" (click)="closeUserMenu()"></div>
-    <div *ngIf="isUserMenuOpen" class="sideuser-panel">
+    <div *ngIf="isUserMenuOpen" class="user-menu-backdrop" [class.is-closing]="isClosingUserMenu" (click)="closeUserMenu()"></div>
+    <div *ngIf="isUserMenuOpen" class="sideuser-panel" [class.is-closing]="isClosingUserMenu">
         <app-sideuser></app-sideuser>
     </div>
 

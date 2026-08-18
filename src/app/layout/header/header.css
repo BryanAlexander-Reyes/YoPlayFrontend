@@ -7,6 +7,8 @@
     padding: 0 24px;
     background-color: black;
     box-sizing: border-box;
+    position: relative;
+    z-index: 10;
     font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -55,6 +57,7 @@
     flex-shrink: 0;
     padding-right: 80px;
     position: relative;
+    z-index: 20;
 }
 
 .user svg {
@@ -76,18 +79,72 @@
 
 .user-menu-backdrop {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    top: 120px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 1000;
+    animation: backdropIn 0.24s ease-out forwards;
+}
+
+.user-menu-backdrop.is-closing {
+    animation: backdropOut 0.2s ease-in forwards;
 }
 
 .sideuser-panel {
-    position: fixed;
-    left: 200px;
-    bottom: 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
     z-index: 1001;
     display: flex;
     align-items: center;
+    transform-origin: top right;
+    animation: sideuserIn 0.28s ease-out forwards;
+}
+
+.sideuser-panel.is-closing {
+    animation: sideuserOut 0.22s ease-in forwards;
+}
+
+@keyframes sideuserIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes sideuserOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+}
+
+@keyframes backdropIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backdropOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
