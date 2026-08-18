@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-register',
@@ -9,10 +10,15 @@ import { NgIf } from '@angular/common';
 })
 export class RegisterComponent {
 
-mostrarSegundoFormulario = false;
+  @Output() irALogin = new EventEmitter<void>();
 
-siguiente(): void {
-  this.mostrarSegundoFormulario = true;
-}
+  mostrarSegundoFormulario = false;
+
+  siguiente(): void {
+    this.mostrarSegundoFormulario = true;
+  }
+  volverALogin(){
+    this.irALogin.emit();
+  }
 
 }
