@@ -1,359 +1,282 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* =====================================================
-   CONTENEDOR PRINCIPAL
-   ===================================================== */
-
 :host {
-  width: 100%;
-  min-height: 100vh;
+  display: block;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 
-/* =====================================================
-   TARJETA PRINCIPAL
-   ===================================================== */
+.register-form-container {
+  width: 100%;
+  height: 100%;
 
-.register-card {
-  width: 350px;
-  min-height: 560px;
+  box-sizing: border-box;
 
-  padding: 35px 30px;
-
-  background: #08111a;
-
-  border: 2px solid #00d9ff;
-  border-radius: 25px;
+  padding: 45px 60px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  box-sizing: border-box;
+  background: #000;
 
-  box-shadow:
-    0 0 10px rgba(0, 217, 255, 0.6),
-    0 0 25px rgba(0, 217, 255, 0.3);
+  color: white;
 
-  animation: luzRegister 3s ease-in-out infinite;
+  overflow-y: auto;
 }
 
 
-/* =====================================================
-   ANIMACIÓN DE LA TARJETA
-   ===================================================== */
-
-@keyframes luzRegister {
-
-  0% {
-    box-shadow:
-      0 0 8px rgba(0, 217, 255, 0.4),
-      0 0 20px rgba(0, 217, 255, 0.2);
-  }
-
-  50% {
-    box-shadow:
-      0 0 15px rgba(0, 217, 255, 0.8),
-      0 0 35px rgba(0, 217, 255, 0.5);
-  }
-
-  100% {
-    box-shadow:
-      0 0 8px rgba(0, 217, 255, 0.4),
-      0 0 20px rgba(0, 217, 255, 0.2);
-  }
-}
-
-
-/* =====================================================
+/* =========================================================
    FORMULARIO
-   ===================================================== */
+   ========================================================= */
 
 .formulario {
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
+  max-width: 430px;
+  margin: auto;
 }
 
-
-/* =====================================================
-   TITULO
-   ===================================================== */
 
 .register-card1 {
-  width: 100%;
-
   text-align: center;
 
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 }
 
+
 .register-card1 h1 {
-  margin: 0;
+  margin: 0 0 8px;
+
+  font-size: 38px;
+
+  font-weight: 800;
 
   color: #00d9ff;
 
-  font-size: 27px;
-
-  font-weight: bold;
-
   text-shadow:
-    0 0 8px rgba(0, 217, 255, 0.6),
+    0 0 7px rgba(0, 217, 255, 0.75),
     0 0 15px rgba(0, 217, 255, 0.3);
 }
 
 
-/* =====================================================
-   DESCRIPCIÓN
-   ===================================================== */
-
 .register-card1 p {
-  margin-top: 5px;
+  margin: 0;
 
-  color: #94a3b8;
+  color: #b8c7db;
 
-  font-size: 13px;
-
-  text-align: center;
+  font-size: 15px;
 }
 
 
-/* =====================================================
-   CONTENEDOR DE CADA CAMPO
-   ===================================================== */
+/* =========================================================
+   CAMPOS
+   ========================================================= */
 
 .register-form {
-  width: 100%;
-
   display: flex;
+
   flex-direction: column;
 
-  margin-bottom: 15px;
+  gap: 8px;
+
+  margin-bottom: 18px;
 }
 
-
-/* =====================================================
-   LABEL
-   ===================================================== */
 
 .register-form label {
-  margin-bottom: 6px;
+  font-size: 16px;
 
   color: white;
-
-  font-size: 13px;
 }
 
-
-/* =====================================================
-   INPUT
-   ===================================================== */
 
 .register-form input,
 .register-form select {
-
   width: 100%;
 
-  height: 38px;
+  height: 52px;
 
-  padding: 0 15px;
+  box-sizing: border-box;
 
-  border: none;
+  padding: 0 16px;
 
-  border-radius: 20px;
+  border: 1px solid #8293ae;
+
+  border-radius: 10px;
 
   outline: none;
 
-  background: #73777d;
+  background: #dce7f8;
 
-  color: white;
+  color: #111;
 
-  font-size: 12px;
+  font-size: 16px;
 
-  transition: 0.3s;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-
-/* =====================================================
-   PLACEHOLDER
-   ===================================================== */
-
-.register-form input::placeholder {
-  color: #c3c6ca;
-}
-
-
-/* =====================================================
-   SELECT
-   ===================================================== */
-
-.register-form select {
-  color: #c3c6ca;
-
-  cursor: pointer;
-}
-
-.register-form select option {
-  background: #08111a;
-
-  color: white;
-}
-
-
-/* =====================================================
-   INPUT FOCUS
-   ===================================================== */
 
 .register-form input:focus,
 .register-form select:focus {
-
-  background: #858a90;
+  border-color: #00d9ff;
 
   box-shadow:
-    0 0 8px rgba(0, 217, 255, 0.5);
+    0 0 0 2px rgba(0, 217, 255, 0.12);
 }
 
 
-/* =====================================================
-   FECHA
-   ===================================================== */
-
-.register-form input[type="date"] {
-  color: #c3c6ca;
+.register-form input::placeholder {
+  color: #516070;
 }
 
 
-/* =====================================================
-   TÉRMINOS
-   ===================================================== */
+/* =========================================================
+   VOLVER A LOGIN
+   ========================================================= */
 
-.terminos {
-
+.volver-login {
   display: flex;
 
+  justify-content: center;
   align-items: center;
 
   gap: 5px;
 
-  margin: 5px 2px 18px;
+  margin: 12px 0 22px;
 
-  color: #94a3b8;
-
-  font-size: 11px;
+  font-size: 15px;
 }
 
 
-/* CHECKBOX */
+.volver-login a {
+  color: #00d9ff;
 
-.terminos input[type="checkbox"] {
+  text-decoration: none;
 
-  width: auto;
-  height: auto;
+  cursor: pointer;
 
-  margin: 0;
+  font-weight: 500;
+}
+
+
+.volver-login a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   BOTÓN SIGUIENTE / REGISTRARSE
+   ========================================================= */
+
+.siguiente-button {
+  width: 100%;
+
+  height: 56px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #0865ff;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.siguiente-button:hover {
+  background: #0b72ff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 102, 255, 0.35);
+}
+
+
+/* =========================================================
+   TÉRMINOS
+   ========================================================= */
+
+.terminos {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 18px 0;
+
+  font-size: 14px;
+
+  color: #d2dbea;
+}
+
+
+.terminos input {
+  width: 16px;
+  height: 16px;
+
+  accent-color: #0865ff;
 
   cursor: pointer;
 }
 
-
-/* TEXTO */
 
 .terminos label {
   cursor: pointer;
 }
 
 
-/* LINK */
-
 .terminos a {
-
   color: #00d9ff;
 
-  text-decoration: underline;
+  text-decoration: none;
+}
 
+
+.terminos a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.register-form select {
   cursor: pointer;
 }
 
 
-/* =====================================================
-   BOTÓN SIGUIENTE / REGISTRARSE
-   ===================================================== */
+/* =========================================================
+   SCROLL
+   ========================================================= */
 
-.siguiente-button {
+.register-form-container::-webkit-scrollbar {
+  width: 6px;
+}
 
-  width: 100%;
 
-  height: 38px;
-
-  border: none;
+.register-form-container::-webkit-scrollbar-thumb {
+  background: #00d9ff;
 
   border-radius: 20px;
-
-  background: #005eff;
-
-  color: #00d9ff;
-
-  font-size: 12px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: 0.3s;
 }
 
 
-/* =====================================================
-   HOVER
-   ===================================================== */
-
-.siguiente-button:hover {
-
-  background: #00aaff;
-
-  color: white;
-
-  box-shadow:
-    0 0 10px rgba(0, 170, 255, 0.6),
-    0 0 20px rgba(0, 170, 255, 0.3);
-}
-
-
-/* =====================================================
-   FORMULARIO
-   ===================================================== */
-
-.formulario form {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media (max-width: 500px) {
-
-  .register-card {
-
-    width: 90%;
-
-    min-height: 550px;
-
-    padding: 30px 22px;
-  }
-
+.register-form-container::-webkit-scrollbar-track {
+  background: transparent;
 }

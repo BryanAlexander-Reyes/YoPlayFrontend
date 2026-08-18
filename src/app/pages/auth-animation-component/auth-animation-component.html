@@ -1,0 +1,93 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
+<div
+  class="auth-container"
+  [class.registro-activo]="registroActivo"
+>
+    <!-- =========================================
+       BALÓN DECORATIVO
+       ========================================= -->
+
+  <div class="floating-ball">
+    <i class="fa-solid fa-volleyball"></i>
+  </div>
+
+  <!-- =========================================
+       PANEL WELCOME
+       ========================================= -->
+
+  <section class="auth-welcome">
+
+    <!-- Decoración -->
+    <div class="sport-lines"></div>
+
+    <!-- Balón -->
+    <div class="sport-ball">
+      <i class="fa-solid fa-volleyball"></i>
+    </div>
+
+    <!-- Contenido -->
+    <div class="auth-welcome-content">
+
+      <span class="welcome-small">
+        {{ registroActivo ? 'FORMA PARTE DEL EQUIPO' : 'BIENVENIDO A' }}
+      </span>
+
+      <h1>
+        {{ registroActivo ? 'Únete a' : 'Bienvenido a' }}
+      </h1>
+
+      <div class="auth-logo">
+
+        <span class="logo-letter">Y</span>
+
+        <span class="play-ball">
+          <i class="fa-solid fa-volleyball"></i>
+        </span>
+
+        <span class="logo-letter">Play</span>
+
+      </div>
+
+      <p>
+        {{
+          registroActivo
+            ? 'Haz parte de nuestra comunidad deportiva'
+            : 'Ven, ingresa y diviértete'
+        }}
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       LOGIN
+       ========================================= -->
+
+  <section class="auth-form auth-login">
+
+    <app-login
+      (irARegistro)="mostrarRegistro()">
+    </app-login>
+
+  </section>
+
+
+  <!-- =========================================
+       REGISTER
+       ========================================= -->
+
+  <section class="auth-form auth-register">
+
+    <app-register
+      (irALogin)="mostrarLogin()">
+    </app-register>
+
+  </section>
+
+</div>
