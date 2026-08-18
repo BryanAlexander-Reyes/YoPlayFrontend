@@ -1,6 +1,6 @@
 <div class="layout-container">
     <aside class="layout-header">
-        <app-sidebar></app-sidebar>
+        <app-sidebar (userMenuToggle)="toggleUserMenu()"></app-sidebar>
     </aside>
 
     <main class="layout-main">
@@ -10,4 +10,10 @@
     <footer class="layout-footer">
         <app-footer></app-footer>
     </footer>
+
+    <div *ngIf="isUserMenuOpen" class="user-menu-backdrop" [class.is-closing]="isClosingUserMenu" (click)="closeUserMenu()"></div>
+
+    <div *ngIf="isUserMenuOpen" class="sideuser-panel" [class.is-closing]="isClosingUserMenu">
+        <app-sideuser></app-sideuser>
+    </div>
 </div>

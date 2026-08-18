@@ -16,6 +16,7 @@ import { Home } from './pages/home/home';
 import { Tyc } from './pages/tyc/tyc';
 import { Layout } from './layout/layout/layout';
 import { authGuard } from './guards/auth-guard';
+import { Sideuser } from './pages/sideuser/sideuser';
 
 export const routes: Routes = [
     {
@@ -77,5 +78,9 @@ export const routes: Routes = [
 {
     path:'perfil',
     component:Perfil
+},
+{
+    path: 'user',
+    component: Sideuser
 }
 ];
