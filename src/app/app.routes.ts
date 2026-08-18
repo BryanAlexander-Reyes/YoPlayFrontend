@@ -9,7 +9,6 @@ import { LoginComponent } from './pages/usuario/login/login';
 import { SpanComponent } from './pages/spancomponent/spancomponent';
 import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
-   
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
 import { Home } from './pages/home/home';
@@ -35,6 +34,22 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: Home
+            },
+            {
+                path:'torneo',
+                component:CreacionTorneo
+            },
+            {
+                path:'registro',
+                component:RegistroEquipos
+            },
+            {
+                path:'reglamento',
+                component:Reglamento
+            },
+            {
+                path:'perfil',
+                component:Perfil
             }
         ]
     },
@@ -62,20 +77,4 @@ export const routes: Routes = [
         path:'validador',
         component:ValidadorComponente
     },
-{
-    path:'torneo',
-    component:CreacionTorneo
-},
-  {
-    path:'registro',
-    component:RegistroEquipos
-},
-{
-    path:'reglamento',
-    component:Reglamento
-},
-{
-    path:'perfil',
-    component:Perfil
-}
 ];
