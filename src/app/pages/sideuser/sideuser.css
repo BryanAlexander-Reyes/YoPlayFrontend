@@ -1,0 +1,143 @@
+.user-menu {
+    width: 308px;
+    min-height: 421px;
+    background: rgba(0, 0, 0, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: white;
+    font-family: "SF Pro", Arial, sans-serif;
+    overflow: hidden;
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+.menu-content {
+    width: 100%;
+    min-height: 421px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px;
+    box-sizing: border-box;
+}
+
+
+.menu-title {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+
+.menu-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    text-align: left;
+    padding: 11px 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+
+.back-button {
+    width: fit-content;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+
+.back-button:hover {
+    color: #b22222;
+}
+
+.logout-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+
+.logout-modal {
+    width: 420px;
+    padding: 30px 35px;
+    background: rgba(30, 30, 30, 0.96);
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    font-family: "SF Pro", Arial, sans-serif;
+}
+
+
+.logout-modal p {
+    margin: 0 0 30px;
+    background: transparent;
+    font-size: 18px;
+}
+
+
+.logout-buttons {
+    display: flex;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+
+.logout-buttons button {
+    width: 95px;
+    height: 52px;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.logout-yes {
+    background-color: #b22222;
+    border: 1px solid #ff0000;
+    color: white;
+}
+
+
+.logout-yes:hover {
+    background-color: #ff0000;
+    transform: scale(1.03);
+}
+
+
+.logout-no {
+    background-color: #777777;
+    border: 1px solid #999999;
+    color: #111111;
+}
+
+
+.logout-no:hover {
+    background-color: #888888;
+}

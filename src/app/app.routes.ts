@@ -17,6 +17,7 @@ import { Home } from './pages/home/home';
 import { Tyc } from './pages/tyc/tyc';
 import { Layout } from './layout/layout/layout';
 import { authGuard } from './guards/auth-guard';
+import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
 
 export const routes: Routes = [
@@ -81,6 +82,9 @@ export const routes: Routes = [
     component:Perfil
 },
 {
+    path: 'user',
+    component: Sideuser
+}
     path:'animation',
     component:AuthAnimationComponent
 },
