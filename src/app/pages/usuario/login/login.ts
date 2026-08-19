@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import  {Router} from '@angular/router'
 import { AuthService } from '../../../services/auth';
+import { EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { AuthService } from '../../../services/auth';
 })
 export class LoginComponent {
     constructor(private router:Router, private authService:AuthService){}
+    @Output() irARegistro = new EventEmitter<void>();
 
   email:string='';
   password:string='';
@@ -32,7 +34,7 @@ export class LoginComponent {
   }
 
   goToRegister():void{
-  this.router.navigate(['/register'])
+  this.irARegistro.emit();
   }
 
 }

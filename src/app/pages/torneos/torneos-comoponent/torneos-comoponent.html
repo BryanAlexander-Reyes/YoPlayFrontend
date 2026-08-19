@@ -1,0 +1,147 @@
+<div class="torneo-container">
+  <!-- =========================
+       CARRUSEL PRINCIPAL
+       ========================= -->
+  <section class="carrusel-container">
+    <button class="carrusel-btn izquierda" (click)="anterior()">◀</button>
+
+    <div class="carrusel">
+      <!-- IMAGEN -->
+      <div class="carrusel-imagen">
+        <img [src]="torneos[torneoActual].imagen" [alt]="torneos[torneoActual].titulo" />
+      </div>
+
+      <!-- INFORMACIÓN -->
+      <div class="carrusel-info">
+        <span class="categoria">TORNEO</span>
+
+        <h1>
+          {{ torneos[torneoActual].titulo }}
+        </h1>
+
+        <p class="descripcion">
+          {{ torneos[torneoActual].descripcion }}
+        </p>
+
+        <div class="datos-torneo">
+          <div class="dato">
+            <span>📍</span>
+            <div>
+              <small>Lugar</small>
+              <strong>
+                {{ torneos[torneoActual].lugar }}
+              </strong>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span>📅</span>
+            <div>
+              <small>Fecha</small>
+              <strong>
+                {{ torneos[torneoActual].fecha }}
+              </strong>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span>⏰</span>
+            <div>
+              <small>Hora</small>
+              <strong>
+                {{ torneos[torneoActual].hora }}
+              </strong>
+            </div>
+          </div>
+
+          <div class="dato premio">
+            <span>🏆</span>
+            <div>
+              <small>Premios</small>
+              <strong>
+                {{ torneos[torneoActual].premios }}
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-participar">Ver torneo</button>
+      </div>
+    </div>
+
+    <button class="carrusel-btn derecha" (click)="siguiente()">▶</button>
+  </section>
+
+  <!-- =========================
+       INDICADORES DEL CARRUSEL
+       ========================= -->
+  <div class="indicadores">
+    <span
+      *ngFor="let torneo of torneos; let i = index"
+      class="indicador"
+      [class.activo]="i === torneoActual"
+      (click)="irATorneo(i)"
+    ></span>
+  </div>
+
+  <!-- =========================
+       CARDS DE TORNEOS
+       ========================= -->
+  <section class="torneos-section">
+    <div class="header">
+      <span>COMPETICIÓN</span>
+
+      <h2>Torneos</h2>
+
+      <p>Participa, compite y demuestra tu talento.</p>
+    </div>
+
+    <div class="torneos-grid">
+      <article class="torneo-card" *ngFor="let torneo of torneos">
+        <!-- FLYER -->
+        <div class="torneo-flyer">
+          <img [src]="torneo.imagen" [alt]="torneo.titulo" />
+
+          <div class="flyer-overlay">
+            <span> VER INFORMACIÓN </span>
+          </div>
+        </div>
+
+        <!-- INFORMACIÓN -->
+        <div class="torneo-card-info">
+          <span class="card-tag"> TORNEO </span>
+
+          <h3>
+            {{ torneo.titulo }}
+          </h3>
+
+          <p>
+            {{ torneo.descripcion }}
+          </p>
+
+          <div class="card-datos">
+            <div>
+              <span>📍</span>
+              {{ torneo.lugar }}
+            </div>
+
+            <div>
+              <span>📅</span>
+              {{ torneo.fecha }}
+            </div>
+
+            <div>
+              <span>⏰</span>
+              {{ torneo.hora }}
+            </div>
+
+            <div>
+              <span>🏆</span>
+              {{ torneo.premios }}
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
