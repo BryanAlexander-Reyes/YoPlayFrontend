@@ -1,0 +1,131 @@
+<div class="user-menu">
+
+  <!-- MENÚ PRINCIPAL -->
+  <div *ngIf="currentMenu === 'main'" class="menu-content">
+
+    <div class="menu-title">Usuario</div>
+
+    <button class="menu-item" (click)="openMenu('general')">
+      Información General
+    </button>
+
+    <button class="menu-item" (click)="openMenu('config')">
+      Configuración
+    </button>
+
+    <button class="menu-item" (click)="openMenu('help')">
+      Ayuda
+    </button>
+
+    <button class="menu-item" (click)="openLogoutModal()">
+      Cerrar Sesión
+    </button>
+
+  </div>
+
+
+  <!-- INFORMACIÓN GENERAL -->
+  <div *ngIf="currentMenu === 'general'" class="menu-content">
+
+    <button class="back-button" (click)="openMenu('main')">
+      ← Usuario
+    </button>
+
+    <div class="menu-title">Información General</div>
+
+    <button class="menu-item">
+      Torneos Inscritos
+    </button>
+
+    <button class="menu-item">
+      Torneos Participantes
+    </button>
+
+    <button class="menu-item">
+      Estadísticas
+    </button>
+
+    <button class="menu-item">
+      Equipo(s)
+    </button>
+
+  </div>
+
+
+  <!-- CONFIGURACIÓN -->
+  <div *ngIf="currentMenu === 'config'" class="menu-content">
+
+    <button class="back-button" (click)="openMenu('main')">
+      ← Usuario
+    </button>
+
+    <div class="menu-title">Configuración</div>
+
+    <button class="menu-item">
+      Configuración de fondo
+    </button>
+
+    <button class="menu-item">
+      Notificaciones
+    </button>
+
+    <button class="menu-item">
+      Privacidad
+    </button>
+
+    <button class="menu-item">
+      Perfil
+    </button>
+
+  </div>
+
+
+  <!-- AYUDA -->
+  <div *ngIf="currentMenu === 'help'" class="menu-content">
+
+    <button class="back-button" (click)="openMenu('main')">
+      ← Usuario
+    </button>
+
+    <div class="menu-title">Ayuda</div>
+
+    <button class="menu-item">
+      Términos y Condiciones
+    </button>
+
+    <button class="menu-item">
+      Privacidad
+    </button>
+
+    <button class="menu-item">
+      Preguntas Frecuentes
+    </button>
+
+    <button class="menu-item">
+      Tutoriales - Modo de uso
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MODAL CERRAR SESIÓN -->
+
+<div *ngIf="showLogoutModal" class="logout-overlay">
+  <div class="logout-modal">
+    <p>¿Está seguro de Cerrar Sesión?</p>
+    <div class="logout-buttons">
+      <button
+        class="logout-yes"
+        (click)="confirmLogout()">
+        Sí
+      </button>
+      <button
+        class="logout-no"
+        (click)="closeLogoutModal()">
+        No
+      </button>
+    </div>
+  </div>
+</div>

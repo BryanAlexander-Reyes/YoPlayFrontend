@@ -1,4 +1,5 @@
 .layout-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -22,4 +23,80 @@
     margin-top: auto;
     font-weight: bold;
     font-size: 18px;
+}
+
+.user-menu-backdrop {
+    position: fixed;
+    inset: 0 0 0 200px;
+    background: rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    animation: backdropIn 0.28s ease forwards;
+}
+
+.user-menu-backdrop.is-closing {
+    animation: backdropOut 0.24s ease forwards;
+}
+
+.sideuser-panel {
+    position: fixed;
+    left: 200px;
+    bottom: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: sideuserIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.sideuser-panel.is-closing {
+    animation: sideuserOut 0.26s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes sideuserIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sideuserOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+}
+
+@keyframes backdropIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backdropOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.sideuser-panel app-sideuser {
+    display: block;
+    max-width: 100%;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
 }
