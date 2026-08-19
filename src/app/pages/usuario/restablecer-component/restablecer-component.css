@@ -1,13 +1,35 @@
 /* =========================================================
-   CONTENEDOR GENERAL
+   CONTENEDOR PRINCIPAL
    ========================================================= */
 
 :host {
-  display: block;
+  display: flex;
+
   width: 100%;
-  min-height: 0;
-  padding: 0;
+  min-height: 100vh;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
   box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 229, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(8, 101, 255, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #05070c,
+      #07111f
+    );
 }
 
 
@@ -15,19 +37,21 @@
    TARJETA
    ========================================================= */
 
-.validator-content {
+.password-contenedor {
   position: relative;
 
-  width: min(100%, 500px);
+  width: 100%;
+  max-width: 480px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: 420px;
 
-  padding: 45px 40px;
+  padding: 45px;
 
   box-sizing: border-box;
+
+  border: 1px solid rgba(0, 229, 255, 0.55);
+
+  border-radius: 28px;
 
   background:
     linear-gradient(
@@ -36,10 +60,6 @@
       rgba(5, 7, 12, 0.98)
     );
 
-  border: 1px solid rgba(0, 229, 255, 0.55);
-
-  border-radius: 28px;
-
   box-shadow:
     0 0 15px rgba(0, 229, 255, 0.20),
     0 0 45px rgba(0, 229, 255, 0.08);
@@ -47,27 +67,36 @@
   overflow: hidden;
 
   isolation: isolate;
+
+  animation: cardAppear 0.6s ease;
+}
+
+app-validador-componente {
+  display: block;
+  width: min(100%, 500px);
+  margin: 0 auto;
+  animation: cardAppear 0.6s ease;
 }
 
 
 /* =========================================================
-   DECORACIONES
+   DECORACIÓN
    ========================================================= */
 
-.validator-content::before {
+.password-contenedor::before {
   content: "";
 
   position: absolute;
 
-  width: 250px;
-  height: 250px;
+  width: 260px;
+  height: 260px;
 
   top: -160px;
-  right: -130px;
-
-  border: 40px solid rgba(0, 229, 255, 0.05);
+  right: -120px;
 
   border-radius: 50%;
+
+  border: 45px solid rgba(0, 229, 255, 0.05);
 
   pointer-events: none;
 
@@ -75,7 +104,7 @@
 }
 
 
-.validator-content::after {
+.password-contenedor::after {
   content: "";
 
   position: absolute;
@@ -86,9 +115,9 @@
   bottom: -150px;
   left: -130px;
 
-  border: 30px solid rgba(8, 101, 255, 0.07);
-
   border-radius: 50%;
+
+  border: 30px solid rgba(8, 101, 255, 0.07);
 
   pointer-events: none;
 
@@ -101,39 +130,27 @@
    ========================================================= */
 
 .header {
-  width: 100%;
-
   text-align: center;
 
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 
-.header h2 {
+.header h1 {
   margin: 0;
 
   color: #ffffff;
 
-  font-size: 30px;
+  font-size: 32px;
+
   font-weight: 800;
 
-  line-height: 1.2;
+  line-height: 1.15;
+
+  letter-spacing: 0.3px;
 
   text-shadow:
     0 0 8px rgba(0, 229, 255, 0.25);
-}
-
-
-.header p {
-  margin: 12px auto 0;
-
-  max-width: 350px;
-
-  color: rgba(219, 238, 255, 0.65);
-
-  font-size: 15px;
-
-  line-height: 1.5;
 }
 
 
@@ -147,7 +164,7 @@
 
   margin: 15px auto 0;
 
-  border-radius: 20px;
+  border-radius: 10px;
 
   background:
     linear-gradient(
@@ -162,29 +179,17 @@
 
 
 /* =========================================================
-   CÓDIGOS
+   CONTENIDO
    ========================================================= */
 
-.codigo-verificacion {
-  width: 100%;
-
+.content {
   display: flex;
 
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 
-  flex-wrap: nowrap;
+  gap: 18px;
 
-  gap: 10px;
-
-  margin: 10px 0 30px;
-}
-
-
-/* Ocultar los <br> */
-
-.codigo-verificacion br {
-  display: none;
+  width: 100%;
 }
 
 
@@ -192,35 +197,27 @@
    INPUTS
    ========================================================= */
 
-.codigo-verificacion input {
-  flex: 1 1 0;
-
+.content input {
   width: 100%;
-  max-width: 58px;
 
-  aspect-ratio: 1 / 1;
+  height: 54px;
 
-  min-width: 0;
+  padding: 0 17px;
 
-  padding: 0;
+  box-sizing: border-box;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 
   border-radius: 12px;
 
   outline: none;
 
-  background: rgba(255, 255, 255, 0.05);
+  background:
+    rgba(255, 255, 255, 0.05);
 
   color: #ffffff;
 
-  font-size: clamp(20px, 4vw, 26px);
-
-  font-weight: 800;
-
-  text-align: center;
-
-  caret-color: #00e5ff;
+  font-size: 15px;
 
   transition:
     border-color 0.25s ease,
@@ -230,16 +227,22 @@
 }
 
 
-.codigo-verificacion input:focus {
+.content input::placeholder {
+  color: rgba(219, 238, 255, 0.55);
+}
+
+
+.content input:focus {
   border-color: #00e5ff;
 
-  background: rgba(0, 229, 255, 0.05);
+  background:
+    rgba(0, 229, 255, 0.04);
 
   box-shadow:
     0 0 0 3px rgba(0, 229, 255, 0.08),
-    0 0 15px rgba(0, 229, 255, 0.12);
+    0 0 15px rgba(0, 229, 255, 0.10);
 
-  transform: translateY(-3px);
+  transform: translateY(-1px);
 }
 
 
@@ -247,15 +250,18 @@
    BOTÓN
    ========================================================= */
 
-.validator-content > button {
+.content button {
   width: 100%;
-  max-width: 360px;
 
   height: 54px;
+
+  margin-top: 5px;
 
   border: none;
 
   border-radius: 12px;
+
+  cursor: pointer;
 
   background:
     linear-gradient(
@@ -272,66 +278,65 @@
 
   letter-spacing: 0.5px;
 
-  cursor: pointer;
+  box-shadow:
+    0 0 12px rgba(0, 183, 255, 0.20);
 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    filter 0.2s ease,
-    opacity 0.2s ease;
+    filter 0.2s ease;
 }
 
 
-/* Botón deshabilitado */
-
-.validator-content > button:disabled {
-  opacity: 0.4;
-
-  cursor: not-allowed;
-
-  background:
-    linear-gradient(
-      135deg,
-      #26344a,
-      #34445d
-    );
-
-  box-shadow: none;
-}
-
-
-/* Botón activo */
-
-.validator-content > button.boton-activo {
-  opacity: 1;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0865ff,
-      #00b7ff
-    );
+.content button:hover {
+  transform: translateY(-2px);
 
   box-shadow:
     0 8px 22px rgba(0, 183, 255, 0.22),
     0 0 15px rgba(0, 229, 255, 0.18);
-}
-
-
-.validator-content > button.boton-activo:hover {
-  transform: translateY(-2px);
 
   filter: brightness(1.08);
 }
 
 
-.validator-content > button.boton-activo:active {
+.content button:active {
   transform: translateY(0);
 }
 
 
 /* =========================================================
-   TABLET
+   ANIMACIÓN DE ENTRADA
+   ========================================================= */
+
+@keyframes cardAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .password-contenedor,
+  app-validador-componente {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -340,81 +345,58 @@
     padding: 15px;
   }
 
-  .validator-content {
-    width: min(100%, 440px);
 
-    padding: 35px 24px;
+  .password-contenedor {
+    max-width: 100%;
+
+    min-height: auto;
+
+    padding: 32px 24px;
 
     border-radius: 22px;
   }
 
+
   .header {
-    margin-bottom: 25px;
+    margin-bottom: 28px;
   }
 
-  .header h2 {
+
+  .header h1 {
     font-size: 26px;
   }
 
-  .header p {
-    font-size: 14px;
+
+  .content {
+    gap: 15px;
   }
 
-  .codigo-verificacion {
-    gap: 8px;
 
-    margin-bottom: 25px;
-  }
-
-  .codigo-verificacion input {
-    max-width: 52px;
-
-    border-radius: 10px;
-  }
-
-  .validator-content > button {
-    max-width: 100%;
+  .content input,
+  .content button {
+    height: 52px;
   }
 }
 
 
 /* =========================================================
-   CELULARES PEQUEÑOS
+   RESPONSIVE PEQUEÑO
    ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
 
-  :host {
-    padding: 12px;
+  .password-contenedor {
+    padding: 28px 18px;
   }
 
-  .validator-content {
-    padding: 30px 16px;
-  }
 
-  .header h2 {
+  .header h1 {
     font-size: 23px;
   }
 
-  .header p {
-    font-size: 13px;
-  }
 
-  .codigo-verificacion {
-    gap: 5px;
-  }
-
-  .codigo-verificacion input {
-    max-width: none;
-
-    width: 100%;
-
-    font-size: 20px;
-
-    border-radius: 9px;
-  }
-
-  .validator-content > button {
+  .content input,
+  .content button {
     height: 50px;
 
     font-size: 14px;
