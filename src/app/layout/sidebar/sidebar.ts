@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 interface Menu {
@@ -15,6 +15,8 @@ interface Menu {
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  @Output() userMenuToggle = new EventEmitter<void>();
+
   menu: Menu[] = [
     {
       icono: 'home',
@@ -32,4 +34,8 @@ export class Sidebar {
       label: 'Deportes',
     },
   ];
+
+  toggleUserMenu(): void {
+    this.userMenuToggle.emit();
+  }
 }
