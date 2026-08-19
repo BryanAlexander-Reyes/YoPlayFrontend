@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './validador-componente.css',
 })
 export class ValidadorComponente {
+  @Output() codigoConfirmado = new EventEmitter<void>();
+
   codigo1 = '';
   codigo2 = '';
   codigo3 = '';
@@ -29,5 +31,11 @@ export class ValidadorComponente {
       this.codigo1 + this.codigo2 + this.codigo3 + this.codigo4 + this.codigo5 + this.codigo6;
 
     return codigoIngresado === this.codigoCorrecto;
+  }
+
+  confirmarCodigo(): void {
+    if (this.codigoValido()) {
+      this.codigoConfirmado.emit();
+    }
   }
 }

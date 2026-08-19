@@ -10,6 +10,7 @@ import { SpanComponent } from './pages/spancomponent/spancomponent';
 import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
 import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent'; 
+import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
    
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -91,5 +92,8 @@ export const routes: Routes = [
 {
     path:'torneos',
     component:TorneosComponent
+},{
+    path:'restablecer',
+    component:RestablecerComponent
 },
 ];
