@@ -84,7 +84,7 @@ export const routes: Routes = [
 {
     path: 'user',
     component: Sideuser
-}
+},{
     path:'animation',
     component:AuthAnimationComponent
 },
