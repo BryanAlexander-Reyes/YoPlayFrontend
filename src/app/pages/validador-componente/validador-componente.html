@@ -31,6 +31,8 @@
     
   </div>
   <button
+  type="button"
+  (click)="confirmarCodigo()"
   [disabled]="!codigoValido()"
   [class.boton-activo]="codigoValido()">
   Confirmar
