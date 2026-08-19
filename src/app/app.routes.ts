@@ -38,6 +38,22 @@ export const routes: Routes = [
             {
                 path: 'home',
                 component: Home
+            },
+            {
+                path:'torneo',
+                component:CreacionTorneo
+            },
+            {
+                path:'registro',
+                component:RegistroEquipos
+            },
+            {
+                path:'reglamento',
+                component:Reglamento
+            },
+            {
+                path:'perfil',
+                component:Perfil
             }
         ]
     },
