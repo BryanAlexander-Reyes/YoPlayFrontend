@@ -20,6 +20,10 @@ import { Layout } from './layout/layout/layout';
 import { authGuard } from './guards/auth-guard';
 import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
+import { TI } from './pages/t-i/t-i';
+import { TP } from './pages/t-p/t-p';
+import { Stats } from './pages/stats/stats';
+import { Teams } from './pages/teams/teams';
 
 export const routes: Routes = [
   {
@@ -56,6 +60,22 @@ export const routes: Routes = [
         path: 'perfil',
         component: Perfil,
       },
+      {
+        path: 'torneos_inscritos',
+        component: TI
+      },
+      {
+        path: 'historial',
+        component: TP
+      },
+      {
+        path: 'stats',
+        component: Stats
+      },
+      {
+        path: 'teams',
+        component: Teams
+      }
     ],
   },
   {

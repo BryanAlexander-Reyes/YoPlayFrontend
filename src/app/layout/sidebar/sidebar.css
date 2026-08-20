@@ -51,28 +51,18 @@
     cursor: pointer;
 }
 
-.nav-content a > svg {
+.nav-content a > img {
     width: 32px;
     height: 32px;
     display: block;
-    color: white;
     transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-content a > svg:nth-child(2) {
-    display: none;
-}
-
-.nav-content a > svg:nth-child(3) {
-    display: none;
 }
 
 .nav-content a:hover {
     color: #00d9e8;
 }
 
-.nav-content a:hover > svg {
-    color: #00d9e8;
+.nav-content a:hover > img {
     transform: scale(1.1);
 }
 

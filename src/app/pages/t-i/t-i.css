@@ -1,0 +1,150 @@
+.TorneosInscritos {
+	min-height: 100%;
+	color: #111;
+	background: #000;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	height: 145px;
+	box-sizing: border-box;
+	padding: 0 60px;
+	color: #fff;
+	background: #000;
+}
+
+.info h1 {
+	margin: 0;
+	font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: calc(100vh - 145px);
+	box-sizing: border-box;
+	margin: 0 auto;
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.content h2 {
+	display: flex;
+	align-items: center;
+	height: 120px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 20px 60px 20px;
+	font-size: 1.25rem;
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.cards-content {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 40px 60px;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.description {
+	margin: 0 0 24px;
+	font-size: 0.95rem;
+}
+
+.tournament-grid {
+	display: grid;
+	flex: 1;
+	align-content: start;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 38px;
+}
+
+.tournament-card {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	padding: 9px 18px 23px;
+	border-radius: 16px;
+	background: rgba(225, 225, 225, 0.88);
+}
+
+.tournament-card img {
+	width: 60%;
+	aspect-ratio: 1 / 1;
+	align-self: center;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.tournament-card h3 {
+	margin: 25px 0 14px;
+	font-size: 1.05rem;
+	font-weight: 500;
+}
+
+.tournament-card p {
+	margin: 0;
+	font-size: 0.82rem;
+	line-height: 1.25;
+}
+
+.tournament-card button {
+	align-self: center;
+	margin-top: 12px;
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 4px;
+	color: #fff;
+	background: #333;
+	font-size: 0.72rem;
+	cursor: pointer;
+}
+
+.tournament-card button:hover {
+	background: #111;
+}
+
+.info-card {
+	grid-column: 1 / -1;
+	justify-self: center;
+	width: min(100%, 320px);
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	padding: 28px;
+	text-align: center;
+}
+
+.info-card h3 {
+	margin: 0;
+	line-height: 1.35;
+}
+
+@media (max-width: 850px) {
+	.content {
+		padding: 24px 18px 40px;
+	}
+
+	.tournament-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.info {
+		padding: 0 18px;
+	}
+
+	.content h2,
+	.cards-content {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+
+	.tournament-grid {
+		grid-template-columns: 1fr;
+	}
+}
