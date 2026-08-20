@@ -1,0 +1,320 @@
+:host {
+    display: block;
+    min-height: 100%;
+}
+
+.stats-page {
+    width: 100%;
+    min-height: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    color: #111;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.68)),
+        url('/assets/falyer%204.jpg') center / cover fixed;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    height: 145px;
+    box-sizing: border-box;
+    padding: 0 60px;
+    color: #fff;
+    background: #000;
+}
+
+.info h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.3vw, 2rem);
+}
+
+.contents {
+    width: 100%;
+    min-height: calc(100vh - 145px);
+    box-sizing: border-box;
+    padding: 30px 60px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.contents > h2 {
+    width: 100%;
+    margin: 0 0 42px;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+.contents > .intro {
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.contents > .notice {
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 0.68rem;
+}
+
+.link {
+    color: #1267a5;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.estadistica-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-height: 342px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 58px 32px 46px;
+    border-radius: 15px;
+    background: rgba(220, 220, 220, 0.94);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    animation: statsCardIn 0.55s ease both;
+}
+
+.estadistica-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.estadistica-header h3,
+.estadistica-header p,
+.estadistica-contenido h4,
+.estadistica-contenido p {
+    margin: 0;
+}
+
+.estadistica-header h3 {
+    font-size: 0.9rem;
+}
+
+.estadistica-header p {
+    font-size: 0.72rem;
+}
+
+.selector-container {
+    position: absolute;
+    top: 23px;
+    right: 20px;
+    width: 150px;
+}
+
+.selector-general {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 8px 6px 50px;
+    border: 0;
+    border-radius: 16px;
+    color: #111;
+    background: #b7b7b7;
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
+.flecha {
+    display: grid;
+    width: 19px;
+    height: 19px;
+    place-items: center;
+    border-radius: 50%;
+    background: #8f8995;
+}
+
+.opcion-no-disponible {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 0.7rem;
+    text-align: center;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.selector-container:hover .opcion-no-disponible,
+.selector-container:focus-within .opcion-no-disponible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.estadistica-contenido {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.9fr);
+    gap: 44px;
+    margin-top: 28px;
+}
+
+.resumen h4,
+.desempeno h4 {
+    margin-bottom: 5px;
+    font-size: 0.72rem;
+}
+
+.resumen p,
+.desempeno p {
+    max-width: 500px;
+    margin-bottom: 21px;
+    font-size: 0.72rem;
+    line-height: 1.3;
+}
+
+.deportes {
+    display: flex;
+    gap: 18px;
+    margin-top: -11px;
+    font-size: 0.65rem;
+}
+
+.deporte {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.metricas {
+    align-self: center;
+    width: 100%;
+    max-width: 320px;
+    font-size: 0.56rem;
+}
+
+.selector-metrica,
+.leyenda-deportes {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.barra {
+    height: 4px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #42b866;
+}
+
+.barra span {
+    display: block;
+    height: 100%;
+    background: #1599f4;
+}
+
+.barra-participacion span {
+    width: 35%;
+}
+
+.barra-deportes {
+    margin: 22px 0 5px;
+    background: linear-gradient(to right, #fb4b4b 0 42%, #43bd67 42% 100%);
+}
+
+.barra-deportes span {
+    display: none;
+}
+
+.indicador {
+    display: grid;
+    grid-template-columns: 50px 1fr 24px;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.barra-torneos {
+    width: 42%;
+}
+
+.barra-partidos {
+    width: 65%;
+}
+
+.btn-conoce {
+    display: block;
+    margin: 27px auto -28px;
+    padding: 7px 14px;
+    border: 0;
+    border-radius: 16px;
+    color: #111;
+    background: #16d9e8;
+    font-size: 0.62rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-conoce:hover {
+    transform: translateY(-2px);
+    background: #09bfd0;
+}
+
+.btn-conoce:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+@keyframes statsCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .estadistica-card,
+    .btn-conoce {
+        animation: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .estadistica-contenido {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .metricas {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 560px) {
+    .info {
+        padding: 0 18px;
+    }
+
+    .contents {
+        padding: 24px 16px 34px;
+    }
+
+    .contents > h2 {
+        margin-bottom: 28px;
+    }
+
+    .estadistica-card {
+        padding: 58px 20px 42px;
+    }
+
+    .estadistica-header {
+        padding-right: 0;
+    }
+
+    .selector-container {
+        right: 12px;
+        width: 130px;
+    }
+}

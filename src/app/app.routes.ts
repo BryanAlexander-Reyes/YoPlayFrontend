@@ -9,9 +9,9 @@ import { LoginComponent } from './pages/usuario/login/login';
 import { SpanComponent } from './pages/spancomponent/spancomponent';
 import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
-import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent'; 
+import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent';
 import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
-   
+
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
 import { Home } from './pages/home/home';
@@ -20,96 +20,114 @@ import { Layout } from './layout/layout/layout';
 import { authGuard } from './guards/auth-guard';
 import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
+import { TI } from './pages/t-i/t-i';
+import { TP } from './pages/t-p/t-p';
+import { Stats } from './pages/stats/stats';
+import { Teams } from './pages/teams/teams';
 
 export const routes: Routes = [
-    {
-        path: '',
-        component: Layout,
-        canActivate: [authGuard],
-        children: [
-            {
-                path: '',
-                redirectTo: '/main',
-                pathMatch: 'full',
-            },
-            {
-                path: 'main',
-                component: Presentation
-            },
-            {
-                path: 'home',
-                component: Home
-            },
-            {
-                path:'torneo',
-                component:CreacionTorneo
-            },
-            {
-                path:'registro',
-                component:RegistroEquipos
-            },
-            {
-                path:'reglamento',
-                component:Reglamento
-            },
-            {
-                path:'perfil',
-                component:Perfil
-            }
-        ]
-    },
-    {
-        path: 'main',
-        component: Presentation
-    },
-    {
-        path: 'tyc',
-        component: Tyc
-    },
-   {
-        path:'login',
-        component:LoginComponent
-    },
-    {
-        path:'register',
-        component:RegisterComponent
-    },
-    {
-        path:'span',
-        component:SpanComponent
-    },
-    {
-        path:'validador',
-        component:ValidadorComponente
-    },
-{
-    path:'torneo',
-    component:CreacionTorneo
-},
   {
-    path:'registro',
-    component:RegistroEquipos
-},
-{
-    path:'reglamento',
-    component:Reglamento
-},
-{
-    path:'perfil',
-    component:Perfil
-},
-{
+    path: '',
+    component: Layout,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full',
+      },
+      {
+        path: 'main',
+        component: Presentation,
+      },
+      {
+        path: 'home',
+        component: Home,
+      },
+      {
+        path: 'torneo',
+        component: CreacionTorneo,
+      },
+      {
+        path: 'registro',
+        component: RegistroEquipos,
+      },
+      {
+        path: 'reglamento',
+        component: Reglamento,
+      },
+      {
+        path: 'perfil',
+        component: Perfil,
+      },
+      {
+        path: 'torneos_inscritos',
+        component: TI
+      },
+      {
+        path: 'historial',
+        component: TP
+      },
+      {
+        path: 'stats',
+        component: Stats
+      },
+      {
+        path: 'teams',
+        component: Teams
+      }
+    ],
+  },
+  {
+    path: 'tyc',
+    component: Tyc,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'span',
+    component: SpanComponent,
+  },
+  {
+    path: 'validador',
+    component: ValidadorComponente,
+  },
+  {
+    path: 'torneo',
+    component: CreacionTorneo,
+  },
+  {
+    path: 'registro',
+    component: RegistroEquipos,
+  },
+  {
+    path: 'reglamento',
+    component: Reglamento,
+  },
+  {
+    path: 'perfil',
+    component: Perfil,
+  },
+  {
     path: 'user',
-    component: Sideuser
-},{
-    path:'animation',
-    component:AuthAnimationComponent
-},
-{
-    path:'torneos',
-    component:TorneosComponent
-},{
-    path:'restablecer',
-    component:RestablecerComponent
-},
+    component: Sideuser,
+  },
+  {
+    path: 'animation',
+    component: AuthAnimationComponent,
+  },
+  {
+    path: 'torneos',
+    component: TorneosComponent,
+  },
+  {
+    path: 'restablecer',
+    component: RestablecerComponent,
+  },
 ];
