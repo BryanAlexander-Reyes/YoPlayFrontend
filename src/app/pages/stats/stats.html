@@ -1,1 +1,135 @@
-<p>stats works!</p>
+<div class="stats-page">
+    <div class="info">
+        <h1>Información General</h1>
+    </div>
+    <div class="contents">
+        <h2>Estadísticas (Beta)</h2>
+        <p class="intro">Aquí encontrarás información de las estadísticas en los torneos que participes. Esta se
+            encuentra en una etapa de desarrollo, cuyas estadísticas están realizadas acorde a los datos obtenidos de
+            los torneos, y son realizados por un sistema de análisis privado.</p>
+        <p class="notice">Los datos pueden contener márgenes de error. Para obtener más información acerca de la
+            privacidad de los datos, y sobre el uso de los mismos con nuestro programa, dale click a <a class="link"
+                href="#">este link</a>.</p>
+        <div class="estadistica-card">
+
+            <div class="estadistica-header">
+
+                <div>
+                    <h3>{{ promedioJugador.titulo }}</h3>
+                    <p>{{ promedioJugador.descripcion }}</p>
+                </div>
+
+                <!-- Selector -->
+                <div class="selector-container">
+
+                    <button type="button" class="selector-general" (click)="toggleOpciones()">
+                        <span>General</span>
+                        <span class="flecha">
+                            {{ mostrarOpciones ? '⌃' : '⌄' }}
+                        </span>
+                    </button>
+
+                    <!-- Mensaje que aparece al hacer click -->
+                    @if (mostrarOpciones) {
+                    <div class="opcion-no-disponible">
+                        No disponible
+                    </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENIDO DE LA CARD -->
+
+            <div class="estadistica-contenido">
+
+                <div class="resumen">
+
+                    <h4>Resumen General</h4>
+
+                    <p>
+                        En general, has participado en
+                        <strong>{{ promedioJugador.resumen.torneos }}</strong>
+                        torneos, durante toda tu historia con nosotros.
+                    </p>
+
+                    <div class="deportes">
+
+                        @for (
+                        deporte of promedioJugador.resumen.deportes;
+                        track deporte.nombre
+                        ) {
+                        <div class="deporte">
+                            <span>{{ deporte.nombre }}</span>
+                            <span>{{ deporte.cantidad }}</span>
+                        </div>
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="desempeno">
+
+                    <h4>Desempeño</h4>
+
+                    <p>
+                        Tu promedio de victorias por torneos es del
+                        <strong>
+                            {{ promedioJugador.rendimiento.torneos.porcentaje }}%
+                        </strong>.
+                    </p>
+
+                    <p>
+                        Has participado en
+                        <strong>
+                            {{ promedioJugador.rendimiento.partidos.jugados }}
+                        </strong>
+                        partidos y has ganado
+                        <strong>
+                            {{ promedioJugador.rendimiento.partidos.ganados }}
+                        </strong>.
+                    </p>
+
+                </div>
+
+                <div class="metricas" aria-label="Resumen visual de estadísticas">
+                    <div class="selector-metrica">
+                        <span>Participación (General)</span>
+                        <span>Tu participación</span>
+                    </div>
+                    <div class="barra barra-participacion"><span></span></div>
+
+                    <div class="leyenda-deportes">
+                        @for (deporte of promedioJugador.resumen.deportes; track deporte.nombre) {
+                        <span>{{ deporte.nombre }} <strong>{{ deporte.cantidad }}</strong></span>
+                        }
+                    </div>
+                    <div class="barra barra-deportes"><span></span></div>
+
+                    <div class="indicador">
+                        <span>Iconos</span>
+                        <div class="barra"><span class="barra-torneos"></span></div>
+                        <strong>{{ promedioJugador.rendimiento.torneos.porcentaje }}%</strong>
+                    </div>
+
+                    <div class="indicador">
+                        <span>Partidos</span>
+                        <div class="barra"><span class="barra-partidos"></span></div>
+                        <strong>{{ promedioJugador.rendimiento.partidos.porcentaje }}%</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button class="btn-conoce" type="button" disabled>
+                → Conoce más
+            </button>
+
+        </div>
+    </div>
+</div>
