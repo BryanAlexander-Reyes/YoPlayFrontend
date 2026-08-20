@@ -340,6 +340,56 @@
 .final-form button:active {
     transform: translateY(0);
 }
+
+
+.pdf {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(17, 155, 240, 0.15);
+    border: 1px solid rgba(17, 155, 240, 0.7);
+    border-radius: 8px;
+    transition:0.7s;
+}
+
+.pdf:hover {
+    background: rgba(17, 155, 240, 0.3);
+    box-shadow:0 0 8px rgba(246, 247, 248, 0.5);
+    transform: translateY(-5px);
+}
+
+.pdf label {
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pdf input[type="checkbox"] {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    border: 2px solid #119bf0;
+    border-radius: 4px;
+    cursor: pointer;
+
+    position: relative;
+}
+.pdf input[type="checkbox"]:checked {
+    background: #119bf0;
+    box-shadow:0 0 7px rgba(17, 155, 240, 0.7);
+}
+.pdf input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    left: 2px;
+    top: -1px;
+}
 @media (max-width: 700px) {
 
     .card-general {

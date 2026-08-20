@@ -21,8 +21,8 @@ export class Perfil {
 
   perfiles:perfil=
     {
-      nombre:'Kevin Alexander Hernandez Sierra',
-      tipo_documneto:'Cedula de ciudadania',
+      nombre:'Kevin Alexander Hernández Sierra',
+      tipo_documneto:'Cédula de ciudadanía',
       numero_documneto:1123038372,
       equipo:'No definido',
       Rol:'usuario',
