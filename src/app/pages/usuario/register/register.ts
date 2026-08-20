@@ -10,6 +10,12 @@ import { NgIf } from '@angular/common';
 })
 export class RegisterComponent {
 
+  tipoDocumento=[
+    {valor: 'CC', nombre:'cedula de ciudadania'},
+    {valor: 'TI', nombre:'tarjeta de identidad'},
+    {valor: 'CE', nombre:'cedula de extranjeria'},
+  ];
+
   @Output() irALogin = new EventEmitter<void>();
 
   mostrarSegundoFormulario = false;

@@ -158,19 +158,13 @@
           >
             Tipo de documento
           </option>
-
-          <option value="cc">
-            Cédula de ciudadanía
-          </option>
-
-          <option value="ce">
-            Cédula de extranjería
-          </option>
-
-          <option value="ti">
-            Tarjeta de identidad
-          </option>
-
+          @for (tipo of tipoDocumento; track tipo.valor){
+            <option
+              value="{{ tipo.valor }}"
+            >
+              {{ tipo.nombre }}
+            </option>
+          }
         </select>
 
       </div>
