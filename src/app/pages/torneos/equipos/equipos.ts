@@ -1,0 +1,132 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
+@Component({
+  selector: 'app-equipos',
+  imports: [CommonModule],
+  templateUrl: './equipos.html',
+  styleUrl: './equipos.css',
+})
+export class EquiposComponent {
+  tablaEquipos=[
+    {
+      equipo:'Tame',
+    },{
+      equipo:'Arauca',
+    },{
+      equipo:'Atlanta',
+    },{
+      equipo:'Casanare',
+    },{
+      equipo:'Salpicon',
+    },{
+      equipo:'Malaga',
+    },{
+      equipo:'R.A',
+    },{
+      equipo:'ComboAlphinito',
+    },{
+      equipo:'Sancocho',
+    },{
+      equipo:'Almendra',
+    },{
+      equipo:'Almendra',
+    },{
+      equipo:'Almendra',
+    },
+  ];
+  cardEncuentro=[{
+    nombre:'GrupoA',
+    GRUPO:[
+      {
+        equipo_1:'Atlanta',
+        equipo_2:'Saravena',
+        fecha:'14/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'Atlanta',
+        equipo_2:'Saravena',
+        fecha:'15/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'Atlanta',
+        equipo_2:'Saravena',
+        fecha:'16/08/26',
+        hora:'3:45pm'
+      },
+    ]
+    },
+    {
+    nombre:'GrupoB',
+    GRUPO:[
+      {
+        equipo_1:'Malaga',
+        equipo_2:'Salpicon',
+        fecha:'14/08/26',
+        hora:'3:45pm'
+        
+      },
+      {
+        equipo_1:'Malaga',
+        equipo_2:'R.A',
+        fecha:'16/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'R.A',
+        equipo_2:'Salpicon',
+        fecha:'15/08/26',
+        hora:'3:45pm'
+      },
+    ]
+    },{
+    nombre:'GrupoC',
+    GRUPO:[
+      {
+        equipo_1:'Casanare',
+        equipo_2:'ComboAlphinito',
+        fecha:'14/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'ComboAlphinito',
+        equipo_2:'Arauca',
+        fecha:'16/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'Casanare',
+        equipo_2:'Arauca',
+        fecha:'15/08/26',
+        hora:'3:45pm'
+      },
+    ]
+    },{
+    nombre:'GrupoD',
+    GRUPO:[
+      {
+        equipo_1:'Casanare',
+        equipo_2:'ComboAlphinito',
+        fecha:'14/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'ComboAlphinito',
+        equipo_2:'Arauca',
+        fecha:'16/08/26',
+        hora:'3:45pm'
+      },
+      {
+        equipo_1:'Casanare',
+        equipo_2:'Arauca',
+        fecha:'15/08/26',
+        hora:'3:45pm'
+      },
+    ]
+    },
+    
+  ];
+}

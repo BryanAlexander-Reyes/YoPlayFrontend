@@ -1,0 +1,801 @@
+/* =========================================
+   CONTENEDOR GENERAL
+   ========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+.equipos {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: clamp(28px, 4vw, 50px)
+           clamp(16px, 7vw, 112px);
+
+  background: #080b12;
+  color: white;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 260px)
+    minmax(0, 1fr);
+
+  gap: clamp(25px, 4vw, 45px);
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   EQUIPOS REGISTRADOS
+   ========================================= */
+
+.tablaEquipos {
+  width: 100%;
+  min-width: 0;
+
+  align-self: start;
+
+  padding: 25px;
+
+  background: #111722;
+
+  border: 1px solid #202a3b;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   TITULO EQUIPOS
+   ========================================= */
+
+.tablaEquipos h1 {
+  margin: 0 0 25px;
+
+  text-align: center;
+
+  font-size: clamp(20px, 2vw, 25px);
+
+  font-weight: 800;
+
+  color: white;
+}
+
+
+/* =========================================
+   TABLA EQUIPOS
+   ========================================= */
+
+.tabla {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+}
+
+.tabla table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+
+/* CABECERA */
+
+.tabla thead {
+  background: #1683ff;
+}
+
+.tabla th {
+  padding: 13px 10px;
+
+  text-align: center;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+
+/* FILAS */
+
+.tabla td {
+  padding: 13px 10px;
+
+  text-align: center;
+
+  color: #d5dbe4;
+
+  font-size: 14px;
+
+  border-bottom: 1px solid #202a3b;
+
+  overflow-wrap: anywhere;
+}
+
+.tabla tbody tr {
+  transition: 0.3s ease;
+}
+
+.tabla tbody tr:hover {
+  background: #192335;
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   SECCIÓN ENCUENTROS
+   ========================================= */
+
+.encuentros {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(280px, 1fr));
+
+  gap: 25px;
+
+  align-content: start;
+}
+
+
+/* =========================================
+   HEADER ENCUENTROS
+   ========================================= */
+
+.encuentros .header {
+  grid-column: 1 / -1;
+
+  width: 100%;
+
+  text-align: center;
+
+  margin-bottom: 5px;
+}
+
+.encuentros .header h1 {
+  margin: 0 0 8px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  font-size: clamp(28px, 3.5vw, 38px);
+
+  font-weight: 800;
+
+  color: white;
+}
+
+
+/* =========================================
+   LINEAS LED
+   ========================================= */
+
+.encuentros .header h1::before,
+.encuentros .header h1::after {
+  content: "";
+
+  height: 2px;
+
+  flex: 1;
+
+  min-width: 30px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 14px rgba(22, 131, 255, 0.9);
+
+  animation: ledBlink 1.8s ease-in-out infinite;
+}
+
+
+.encuentros .header p {
+  margin: 0;
+
+  color: #8e99aa;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   CARD GRUPO
+   ========================================= */
+
+.cards-encuentros {
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #111722;
+
+  border: 1px solid #202a3b;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   HOVER CARD
+   ========================================= */
+
+.cards-encuentros:hover {
+  transform: translateY(-5px);
+
+  border-color: #1683ff;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 15px rgba(22, 131, 255, 0.15);
+}
+
+
+/* =========================================
+   TITULO DEL GRUPO
+   ========================================= */
+
+.tabala-encuentro {
+  width: 100%;
+
+  padding: 16px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #151d2c,
+      #111722
+    );
+
+  border-bottom: 1px solid #202a3b;
+
+  text-align: center;
+}
+
+.tabala-encuentro h3 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   CONTENEDOR TABLA ENCUENTROS
+   ========================================= */
+
+.tabla-contenedor {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   TABLA ENCUENTROS
+   ========================================= */
+
+.tabla-contenedor table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+/* =========================================
+   CABECERA TABLA
+   ========================================= */
+
+.tabla-contenedor thead {
+  background: #0d131e;
+}
+
+.tabla-contenedor th {
+  padding: 12px 7px;
+
+  text-align: center;
+
+  color: #8e99aa;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================================
+   CELDAS
+   ========================================= */
+
+.tabla-contenedor td {
+  padding: 13px 7px;
+
+  text-align: center;
+
+  color: #d5dbe4;
+
+  font-size: 12px;
+
+  border-top: 1px solid #202a3b;
+
+  overflow-wrap: anywhere;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   NUMERO
+   ========================================= */
+
+.tabla-contenedor th:first-child,
+.tabla-contenedor td:first-child {
+  width: 8%;
+}
+
+.tabla-contenedor td:first-child {
+  color: #1683ff;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   EQUIPO 1
+   ========================================= */
+
+.tabla-contenedor th:nth-child(2),
+.tabla-contenedor td:nth-child(2) {
+  width: 24%;
+}
+
+
+/* =========================================
+   EQUIPO 2
+   ========================================= */
+
+.tabla-contenedor th:nth-child(3),
+.tabla-contenedor td:nth-child(3) {
+  width: 24%;
+}
+
+
+/* =========================================
+   FECHA
+   ========================================= */
+
+.tabla-contenedor th:nth-child(4),
+.tabla-contenedor td:nth-child(4) {
+  width: 22%;
+}
+
+
+/* =========================================
+   HORA
+   ========================================= */
+
+.tabla-contenedor th:nth-child(5),
+.tabla-contenedor td:nth-child(5) {
+  width: 22%;
+}
+
+
+/* =========================================
+   EQUIPOS DESTACADOS
+   ========================================= */
+
+.tabla-contenedor td:nth-child(2),
+.tabla-contenedor td:nth-child(3) {
+  color: white;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   FECHA Y HORA
+   ========================================= */
+
+.tabla-contenedor td:nth-child(4),
+.tabla-contenedor td:nth-child(5) {
+  color: #8e99aa;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   HOVER FILAS
+   ========================================= */
+
+.tabla-contenedor tbody tr {
+  transition: background 0.25s ease;
+}
+
+.tabla-contenedor tbody tr:hover {
+  background: #192335;
+}
+
+
+/* =========================================
+   ANIMACIÓN LED
+   ========================================= */
+
+@keyframes ledBlink {
+
+  0%,
+  100% {
+    opacity: 0.35;
+
+    box-shadow:
+      0 0 3px #1683ff;
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 6px #1683ff,
+      0 0 18px rgba(22, 131, 255, 0.95);
+  }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  .equipos {
+    grid-template-columns:
+      220px
+      minmax(0, 1fr);
+
+    gap: 25px;
+
+    padding-inline: 5%;
+  }
+
+
+  .encuentros {
+    grid-template-columns: 1fr;
+  }
+
+
+  .encuentros .header {
+    grid-column: 1;
+  }
+
+}
+
+
+/* =========================================
+   TABLET PEQUEÑA
+   ========================================= */
+
+@media (max-width: 800px) {
+
+  .equipos {
+    grid-template-columns: 1fr;
+
+    padding-inline: 5%;
+  }
+
+
+  .tablaEquipos {
+    width: 100%;
+
+    max-width: 450px;
+
+    justify-self: center;
+
+    margin: 0 auto;
+  }
+
+
+  .encuentros {
+    width: 100%;
+
+    max-width: 700px;
+
+    justify-self: center;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .encuentros .header {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .equipos {
+    width: 100%;
+
+    padding: 30px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+  }
+
+
+  /* -----------------------------------------
+     EQUIPOS
+     ----------------------------------------- */
+
+  .tablaEquipos {
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 20px;
+
+    margin: 0 auto;
+
+    border-radius: 16px;
+  }
+
+
+  .tablaEquipos h1 {
+    font-size: 21px;
+  }
+
+
+  /* -----------------------------------------
+     ENCUENTROS
+     ----------------------------------------- */
+
+  .encuentros {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+
+  .encuentros .header {
+    width: 100%;
+
+    margin-bottom: 5px;
+  }
+
+
+  .encuentros .header h1 {
+    font-size: 26px;
+
+    gap: 10px;
+  }
+
+
+  .encuentros .header h1::before,
+  .encuentros .header h1::after {
+    min-width: 10px;
+  }
+
+
+  /* -----------------------------------------
+     CARDS
+     ----------------------------------------- */
+
+  .cards-encuentros {
+    width: 100%;
+
+    margin: 0;
+
+    border-radius: 14px;
+  }
+
+
+  /* -----------------------------------------
+     TITULO GRUPO
+     ----------------------------------------- */
+
+  .tabala-encuentro {
+    padding: 14px;
+  }
+
+
+  .tabala-encuentro h3 {
+    font-size: 17px;
+  }
+
+
+  /* -----------------------------------------
+     TABLA
+     ----------------------------------------- */
+
+  .tabla-contenedor {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  .tabla-contenedor table {
+    width: 100%;
+
+    min-width: 0;
+
+    table-layout: fixed;
+  }
+
+
+  .tabla-contenedor th,
+  .tabla-contenedor td {
+    padding: 10px 3px;
+
+    font-size: 9px;
+
+    word-break: break-word;
+  }
+
+
+  /* -----------------------------------------
+     ANCHOS EN CELULAR
+     ----------------------------------------- */
+
+  .tabla-contenedor th:first-child,
+  .tabla-contenedor td:first-child {
+    width: 8%;
+  }
+
+
+  .tabla-contenedor th:nth-child(2),
+  .tabla-contenedor td:nth-child(2) {
+    width: 25%;
+  }
+
+
+  .tabla-contenedor th:nth-child(3),
+  .tabla-contenedor td:nth-child(3) {
+    width: 25%;
+  }
+
+
+  .tabla-contenedor th:nth-child(4),
+  .tabla-contenedor td:nth-child(4) {
+    width: 22%;
+  }
+
+
+  .tabla-contenedor th:nth-child(5),
+  .tabla-contenedor td:nth-child(5) {
+    width: 20%;
+  }
+
+
+  .tabla-contenedor td:nth-child(4),
+  .tabla-contenedor td:nth-child(5) {
+    font-size: 9px;
+  }
+
+}
+
+
+/* =========================================
+   CELULAR PEQUEÑO
+   ========================================= */
+
+@media (max-width: 420px) {
+
+  .equipos {
+    padding: 25px 10px;
+  }
+
+
+  .tablaEquipos {
+    max-width: 100%;
+
+    padding: 16px;
+  }
+
+
+  .encuentros .header h1 {
+    font-size: 23px;
+  }
+
+
+  .cards-encuentros {
+    width: 100%;
+
+    border-radius: 13px;
+  }
+
+
+  .tabla-contenedor {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  .tabla-contenedor table {
+    width: 100%;
+
+    min-width: 0;
+
+    table-layout: fixed;
+  }
+
+
+  .tabla-contenedor th,
+  .tabla-contenedor td {
+    padding: 8px 2px;
+
+    font-size: 8px;
+  }
+
+
+  .tabala-encuentro h3 {
+    font-size: 16px;
+  }
+
+}

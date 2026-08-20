@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
 import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent';
 import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
+import { EquiposComponent } from './pages/torneos/equipos/equipos';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -110,4 +111,9 @@ export const routes: Routes = [
     path: 'restablecer',
     component: RestablecerComponent,
   },
+  {
+    path:'equipos',
+    component: EquiposComponent
+
+  }
 ];
