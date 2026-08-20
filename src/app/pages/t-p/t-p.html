@@ -1,1 +1,30 @@
-<p>t-p works!</p>
+<div class="TorneosParticipantes">
+	<div class="info">
+		<h1>Información General</h1>
+	</div>
+	<div class="content">
+		<h2>Historial de torneos</h2>
+		<div class="cards-content">
+			<p class="description">Aquí encontrarás información de torneos en los cuales participes.</p>
+
+			<div class="tournament-grid">
+				@for (torneo of torneos; track torneo.nombre) {
+					<article class="tournament-card">
+						<img [src]="torneo.imagen" alt="Afiche de {{ torneo.nombre }}" title="Afiche de {{ torneo.nombre }}" />
+						<h3>{{ torneo.nombre }}</h3>
+						<p>Lugar: {{ torneo.ubicacion }}</p>
+						<p>Inscripción: {{ torneo.inscripcion }}</p>
+						<p>Premiación: {{ torneo.premiacion }}</p>
+						<p>Estado: {{ torneo.estado }}</p>
+						@if (mostrarFixture(torneo)) {
+							<button type="button">Fixture</button>
+						}
+					</article>
+				}
+                <article class="tournament-card info-card">
+                    <h3> Aquí encontrarás todos los torneos en los que estés participando, o en los que hayas participado. </h3>
+                </article>
+			</div>
+		</div>
+	</div>
+</div>
