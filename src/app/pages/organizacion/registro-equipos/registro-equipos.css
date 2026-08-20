@@ -1,45 +1,21 @@
-/* =========================================
-   TARJETA GENERAL
-   ========================================= */
-
 .card-general {
     width: 70%;
     min-height: 100%;
-
     margin: 30px auto;
     padding: 60px 35px;
-
     box-sizing: border-box;
-
     border-radius: 15px;
     overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.72),
-            rgba(0, 0, 0, 0.72)
-        ),
-        url('/assets/futbol.jpg');
-
-    background-size: cover;
-    background-position: center;
-
+    background:rgba(0, 0, 0, 0.78);
     color: white;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.6);
-
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     column-gap: 40px;
 }
 
 
-/* =========================================
-   HEADER
-   ========================================= */
+
 
 .card-general > .header {
     grid-column: 1 / 3;
@@ -56,12 +32,10 @@
 }
 
 
-/* Líneas a los lados del título */
-
 .header > span {
     height: 1px;
 
-    background: white;
+    background: rgb(238, 224, 224);
 
     opacity: 0.8;
 }
@@ -79,83 +53,40 @@
     text-align: center;
 
     text-shadow:
-        0 0 5px white,
-        0 0 10px rgba(255, 255, 255, 0.4);
+        0 0 5px rgb(7, 31, 252),
+        0 0 7px rgb(253, 253, 255);
 }
-
-
-/* =========================================
-   SUBTÍTULO DEL HEADER
-   ========================================= */
 
 .header > p {
     grid-column: 1 / 4;
-
     position: relative;
-
     margin: 20px 0 0;
-
     color: rgb(255, 250, 250);
-
     font-size: 19px;
-
     text-align: center;
 }
-
-
-/* Líneas laterales del subtítulo */
-
-
-
-
-
-
-
-/* =========================================
-   SECCIÓN IZQUIERDA
-   ========================================= */
-
 .formulario-datosequipo {
     grid-column: 1;
-
     width: 100%;
-
     box-sizing: border-box;
 }
 
 
-/* Título Datos del Equipo */
+
 
 .formulario-datosequipo > p:first-child {
     display: inline-block;
-
     margin: 0 7px 8px 0;
-
     color: white;
-
     font-size: 13px;
 }
-
-
-/* Línea después de Datos del Equipo */
-
 .formulario-datosequipo > span:first-of-type {
     display: inline-block;
-
     width: 100px;
-
     height: 1px;
-
     margin-bottom: 3px;
-
     background: rgba(255, 255, 255, 0.6);
 }
-
-
-/* =========================================
-   CAMPOS DE LA IZQUIERDA
-   ========================================= */
-
 .equipo,
 .juego-categoria,
 .region {
@@ -171,17 +102,10 @@
 .juego-categoria > p,
 .region > p {
     display: inline-block;
-
     margin: 0 6px 3px 0;
-
     color: white;
-
     font-size: 11px;
 }
-
-
-/* Líneas al lado de los nombres */
-
 .equipo > span,
 .juego-categoria > span,
 .region > span {
@@ -197,35 +121,22 @@
 }
 
 
-/* =========================================
-   INPUTS DE LA IZQUIERDA
-   ========================================= */
+
 
 .equipo > input,
 .juego-categoria > input,
 .region > input {
     display: block;
-
     width: 100%;
-
     height: 27px;
-
     box-sizing: border-box;
-
     padding: 4px 9px;
-
-    border: none;
-
+    border:none;
     border-radius: 6px;
-
     outline: none;
-
     background: #119bf0;
-
     color: white;
-
     font-size: 11px;
-
     box-shadow:
         inset 0 1px 2px rgba(0, 0, 0, 0.25),
         0 1px 3px rgba(0, 0, 0, 0.3);
@@ -250,218 +161,111 @@
 
     opacity: 0.8;
 }
-
-
-/* =========================================
-   DATOS DEL CAPITÁN
-   ========================================= */
-
 .capitan {
     width: 100%;
-
     margin-top: 12px;
-
     display: grid;
-
     grid-template-columns: auto 1fr;
-
     column-gap: 6px;
-
     row-gap: 3px;
-
     align-items: center;
 }
-
-
-/* =========================================
-   DATOS DEL CAPITÁN - TÍTULO
-   ========================================= */
-
 .capitan > p:first-child {
     grid-column: 1;
-
     margin: 0;
-
     color: white;
-
     font-size: 13px;
-
     white-space: nowrap;
 }
-
-
-/* Línea del título */
-
 .capitan > span:first-of-type {
     grid-column: 2;
-
     width: 100%;
-
     height: 1px;
-
     background: rgba(255, 255, 255, 0.6);
 }
-
-
-/* =========================================
-   NOMBRE COMPLETO
-   ========================================= */
-
-/* Nombre Completo */
-
 .capitan > p:nth-of-type(2) {
     grid-column: 1;
-
     margin: 0;
-
     color: white;
-
     font-size: 11px;
-
     white-space: nowrap;
 }
-
-
-/* Línea de Nombre */
-
 .capitan > span:nth-of-type(2) {
     grid-column: 2;
-
     width: 100%;
-
     height: 1px;
-
     background: rgba(255, 255, 255, 0.6);
 }
-
-
-/* Input nombre */
-
 .capitan > input:nth-of-type(1) {
     grid-column: 1 / 3;
-
     width: 100%;
-
     height: 27px;
-
     box-sizing: border-box;
-
     margin-bottom: 5px;
-
     padding: 4px 9px;
-
     border: none;
-
     border-radius: 6px;
-
     outline: none;
-
     background: #119bf0;
-
     color: white;
-
     font-size: 11px;
 }
 
 
-/* =========================================
-   TELÉFONO
-   ========================================= */
 
-/* Teléfono */
 
 .capitan > p:nth-of-type(3) {
     grid-column: 1;
-
     margin: 0;
-
     color: white;
-
     font-size: 11px;
-
     white-space: nowrap;
 }
-
-
-/* Línea teléfono */
-
 .capitan > span:nth-of-type(3) {
     grid-column: 2;
-
     width: 100%;
-
     height: 1px;
-
     background: rgba(255, 255, 255, 0.6);
 }
-
-
-/* Input teléfono */
-
 .capitan > input:nth-of-type(2) {
     grid-column: 1 / 3;
-
     width: 100%;
-
     height: 27px;
-
     box-sizing: border-box;
-
     margin-bottom: 5px;
-
     padding: 4px 9px;
-
     border: none;
-
     border-radius: 6px;
-
     outline: none;
-
     background: #119bf0;
-
     color: white;
-
     font-size: 11px;
 }
 
 
-/* =========================================
-   EMAIL
-   ========================================= */
 
-/* Email */
 
 .capitan > p:nth-of-type(4) {
     grid-column: 1;
-
     margin: 0;
-
     color: white;
-
     font-size: 11px;
-
     white-space: nowrap;
 }
 
 
-/* Línea email */
 
 .capitan > span:nth-of-type(4) {
     grid-column: 2;
-
     width: 100%;
-
     height: 1px;
-
     background: rgba(255, 255, 255, 0.6);
 }
 
 
-/* Input email */
 
 .capitan > input:nth-of-type(3) {
     grid-column: 1 / 3;
-
     width: 100%;
 
     height: 27px;
@@ -483,10 +287,6 @@
     font-size: 11px;
 }
 
-
-/* =========================================
-   PLACEHOLDER
-   ========================================= */
 
 .capitan input::placeholder {
     color: white;
@@ -495,18 +295,12 @@
 }
 
 
-/* =========================================
-   FOCUS
-   ========================================= */
-
 .capitan input:focus {
     box-shadow:
         0 0 0 1px white,
         0 0 7px #119bf0;
 }
-/* =========================================
-   SECCIÓN DERECHA
-   ========================================= */
+
 
 .integrantes {
     grid-column: 2;
@@ -517,7 +311,7 @@
 }
 
 
-/* Título Integrantes */
+
 
 .integrantes > p:first-child {
     display: inline-block;
@@ -530,7 +324,6 @@
 }
 
 
-/* Línea al lado del título */
 
 .integrantes > span:first-of-type {
     display: inline-block;
@@ -545,13 +338,7 @@
 }
 
 
-/* =========================================
-   CONTENEDOR DE MIEMBROS
-   ========================================= */
 
-/* =========================================
-   CONTENEDOR DE MIEMBROS
-   ========================================= */
 
 .miembros {
     display: flex;
@@ -560,21 +347,15 @@
     gap: 5px;
 
     width: 100%;
-    height: 400px;
+    max-height: 290px;
 
     box-sizing: border-box;
 
-    /* SOLO SCROLL VERTICAL */
     overflow-y: auto;
     overflow-x: hidden;
 
     padding-right: 5px;
 }
-
-
-/* =========================================
-   CADA MIEMBRO
-   ========================================= */
 
 .miembro {
     width: 100%;
@@ -596,9 +377,7 @@
 }
 
 
-/* =========================================
-   TÍTULOS DE LOS CAMPOS
-   ========================================= */
+
 
 .titulos {
     display: grid;
@@ -622,9 +401,6 @@
 }
 
 
-/* =========================================
-   CAMPOS DE LOS MIEMBROS
-   ========================================= */
 
 .campos {
     display: grid;
@@ -643,10 +419,6 @@
     min-width: 0;
 }
 
-
-/* =========================================
-   INPUTS
-   ========================================= */
 
 .campos input {
     width: 100%;
@@ -680,9 +452,7 @@
 }
 
 
-/* =========================================
-   BOTÓN QUITAR MIEMBRO
-   ========================================= */
+
 
 .miembros > button {
     display: block;
@@ -724,10 +494,6 @@
     transform: scale(0.97);
 }
 
-/* =========================================
-   BOTÓN AÑADIR MÁS
-   ========================================= */
-
 .integrantes > button:first-of-type {
     display: block;
 
@@ -756,12 +522,6 @@
 
     transform: scale(1.04);
 }
-
-
-/* =========================================
-   CHECKBOX
-   ========================================= */
-
 .integrantes > input[type="checkbox"] {
     width: auto;
 
@@ -782,11 +542,6 @@
 
     vertical-align: middle;
 }
-
-
-/* =========================================
-   BOTÓN REGISTRAR EQUIPO
-   ========================================= */
 
 .integrantes > button:last-child {
     display: block;

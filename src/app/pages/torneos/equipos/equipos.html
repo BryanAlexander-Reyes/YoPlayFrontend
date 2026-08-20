@@ -1,0 +1,55 @@
+<div class="equipos">
+    <section class="tablaEquipos">
+        <h1>Equipos registrados</h1>
+        <div class="tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Equipos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (tablaEquipos of tablaEquipos; track tablaEquipos.equipo){
+                        <tr>
+                            <td>{{tablaEquipos.equipo}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="encuentros">
+        <div class="header">
+            <h1>Encuentros</h1>
+            <p>aqui encontraras tus encuentros</p>
+        </div>
+        <article class="cards-encuentros" *ngFor=" let cardEncuentro of cardEncuentro">
+            <div class="tabala-encuentro">
+                <h3>{{ cardEncuentro.nombre }}</h3>
+            </div>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Equipo 1</th>
+                            <th>Equipo 2</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let grupo of cardEncuentro.GRUPO; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td> {{grupo.equipo_1}} </td>
+                            <td> {{grupo.equipo_2}} </td>
+                            <td>{{grupo.fecha}}</td>
+                            <td>{{grupo.hora}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        
+    </section>
+</div>
