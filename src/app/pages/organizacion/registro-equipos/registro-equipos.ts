@@ -19,7 +19,17 @@ export class RegistroEquipos {
       nombre: '',
       posicion: '',
       numero: ''
-    }
+    },  
+    {
+      nombre: '',
+      posicion: '',
+      numero: ''
+    },
+    {
+      nombre: '',
+      posicion: '',
+      numero: ''
+    }    
   ];
 
   agregarMiembro(): void {

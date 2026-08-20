@@ -34,6 +34,9 @@ export class CreacionTorneo {
     premiaciones:premiacion[]=[
       {
         premiacion:'',
+      },
+      {
+        premiacion:'',
       }
     ];
     agregarpremio():void{
@@ -41,9 +44,9 @@ export class CreacionTorneo {
         premiacion:''
       });
     }
-quitarpremiacion(index: number): void {
+    quitarpremiacion(index: number): void {
     if (this.premiaciones.length > 1) {
         this.premiaciones.splice(index, 1);
     }
-}
+    }
 }

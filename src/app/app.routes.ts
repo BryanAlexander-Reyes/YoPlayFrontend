@@ -20,6 +20,8 @@ import { Layout } from './layout/layout/layout';
 import { authGuard } from './guards/auth-guard';
 import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
+import { Notificacion } from './pages/notificacion/notificacion';
+import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
 
 export const routes: Routes = [
   {
@@ -56,6 +58,14 @@ export const routes: Routes = [
         path: 'perfil',
         component: Perfil,
       },
+      {
+        path: 'notic',
+        component:Notificacion
+      },
+      {
+        path: 'fondo',
+        component:ConfiguracionFondo
+      }
     ],
   },
   {
