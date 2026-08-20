@@ -4,7 +4,9 @@
     </div>
 
     <nav class="nav-content" aria-label="Navegación lateral">
-        <a *ngFor="let item of menu" [routerLink]="item.ruta" [attr.aria-label]="item.label">{{ item.label }}</a>
+        <a *ngFor="let item of menu" [routerLink]="item.ruta" [attr.aria-label]="item.label">
+            <img [src]="item.imagen" alt="{{ item.label }}" title="{{ item.label }}">
+        </a>
     </nav>
 
     <div class="user" (click)="toggleUserMenu()" role="button" tabindex="0" aria-label="Abrir menú de usuario" (keydown.enter)="toggleUserMenu()" (keydown.space)="toggleUserMenu()">

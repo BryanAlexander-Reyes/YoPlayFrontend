@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
 import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent';
 import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
+import { EquiposComponent } from './pages/torneos/equipos/equipos';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -22,6 +23,10 @@ import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
 import { Notificacion } from './pages/notificacion/notificacion';
 import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
+import { TI } from './pages/t-i/t-i';
+import { TP } from './pages/t-p/t-p';
+import { Stats } from './pages/stats/stats';
+import { Teams } from './pages/teams/teams';
 
 export const routes: Routes = [
   {
@@ -65,6 +70,20 @@ export const routes: Routes = [
       {
         path: 'fondo',
         component:ConfiguracionFondo
+        path: 'torneos_inscritos',
+        component: TI
+      },
+      {
+        path: 'historial',
+        component: TP
+      },
+      {
+        path: 'stats',
+        component: Stats
+      },
+      {
+        path: 'teams',
+        component: Teams
       }
     ],
   },
@@ -120,4 +139,9 @@ export const routes: Routes = [
     path: 'restablecer',
     component: RestablecerComponent,
   },
+  {
+    path:'equipos',
+    component: EquiposComponent
+
+  }
 ];
