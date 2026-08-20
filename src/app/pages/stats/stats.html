@@ -22,19 +22,16 @@
                 <!-- Selector -->
                 <div class="selector-container">
 
-                    <button type="button" class="selector-general" (click)="toggleOpciones()">
+                    <button type="button" class="selector-general">
                         <span>General</span>
                         <span class="flecha">
-                            {{ mostrarOpciones ? '⌃' : '⌄' }}
+                            ⌄
                         </span>
                     </button>
 
-                    <!-- Mensaje que aparece al hacer click -->
-                    @if (mostrarOpciones) {
-                    <div class="opcion-no-disponible">
+                    <span class="opcion-no-disponible" role="status">
                         No disponible
-                    </div>
-                    }
+                    </span>
 
                 </div>
 

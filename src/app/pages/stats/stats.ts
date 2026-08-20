@@ -44,10 +44,4 @@ export class Stats {
     }
   };
 
-  // Control del selector "General"
-  mostrarOpciones = false;
-
-  toggleOpciones(): void {
-    this.mostrarOpciones = !this.mostrarOpciones;
-  }
 };
