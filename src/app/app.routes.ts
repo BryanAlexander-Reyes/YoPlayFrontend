@@ -29,6 +29,8 @@ import { TI } from './pages/t-i/t-i';
 import { TP } from './pages/t-p/t-p';
 import { Stats } from './pages/stats/stats';
 import { Teams } from './pages/teams/teams';
+import { Privacy } from './pages/privacy/privacy';
+
 
 export const routes: Routes = [
   {
@@ -88,6 +90,10 @@ export const routes: Routes = [
       {
         path: 'teams',
         component: Teams
+      },
+      {
+        path: 'privacidad',
+        component: Privacy
       }
     ],
   },
