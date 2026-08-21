@@ -22,6 +22,7 @@ import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
 import { Notificacion } from './pages/notificacion/notificacion';
 import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
+import { Tutorial } from './pages/tutorial/tutorial';
 
 export const routes: Routes = [
   {
@@ -59,12 +60,16 @@ export const routes: Routes = [
         component: Perfil,
       },
       {
-        path: 'notic',
+        path: 'notificacion',
         component:Notificacion
       },
       {
         path: 'fondo',
         component:ConfiguracionFondo
+      },
+      {
+        path:'tutorial',
+        component:Tutorial
       }
     ],
   },
