@@ -9,9 +9,7 @@
     min-height: 100vh;
     box-sizing: border-box;
     color: #111;
-    background:
-        linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.68)),
-        url('/assets/falyer%204.jpg') center / cover fixed;
+    background: linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.68)), center / cover fixed;
 }
 
 .info {
