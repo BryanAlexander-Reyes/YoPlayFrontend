@@ -1,0 +1,259 @@
+.teams-page {
+	min-height: 100%;
+	color: #111;
+	background: #000;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	height: 145px;
+	box-sizing: border-box;
+	padding: 0 60px;
+	color: #fff;
+	background: #000;
+}
+
+.info h1 {
+	margin: 0;
+	font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: calc(100vh - 145px);
+	box-sizing: border-box;
+	margin: 0 auto;
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.content h2 {
+	display: flex;
+	align-items: center;
+	height: 120px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 20px 60px;
+	font-size: 1.25rem;
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.cards-content {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 40px 60px;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.description {
+	margin: 0 0 24px;
+	font-size: 0.95rem;
+}
+
+.team-grid {
+	display: grid;
+	flex: 1;
+	align-content: start;
+	grid-template-columns: 1fr;
+	gap: 24px;
+	padding: 25px 0;
+}
+
+.team-card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 0;
+	min-height: 114px;
+	padding: 18px 30px;
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.94);
+	opacity: 0;
+	transform: translateY(22px);
+	animation: cardEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	transition: min-height 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-card.expanded {
+	min-height: 142px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.team-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.team-details h3 {
+	margin: 0 0 6px;
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.team-details p {
+	margin: 0;
+	font-size: 0.72rem;
+	line-height: 1.35;
+}
+
+.team-details .team-extra {
+	max-height: 0;
+	margin-top: 0;
+	overflow: hidden;
+	color: #555;
+	opacity: 0;
+	transform: translateY(-8px);
+	font-style: italic;
+	transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
+}
+
+.team-details .team-extra.is-visible {
+	max-height: 32px;
+	margin-top: 12px;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.team-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	min-width: 130px;
+}
+
+.team-actions img,
+.no-logo {
+	display: grid;
+	width: 58px;
+	height: 58px;
+	place-items: center;
+	border-radius: 16px;
+	object-fit: cover;
+}
+
+.no-logo {
+	padding: 8px;
+	box-sizing: border-box;
+	color: #111;
+	background: #ddd;
+	font-size: 0.65rem;
+	text-align: center;
+}
+
+.team-actions button {
+	padding: 7px 14px;
+	border: 0;
+	border-radius: 16px;
+	color: #111;
+	background: #18e4f5;
+	font-size: 0.68rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.team-actions button:hover {
+	background: #0ac8da;
+}
+
+.info-card {
+	grid-column: 1 / -1;
+	justify-self: center;
+	width: min(100%, 360px);
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.team-icon {
+	display: grid;
+	width: 48px;
+	height: 48px;
+	place-items: center;
+	margin: 0 auto 20px;
+	border-radius: 50%;
+	color: #fff;
+	background: #333;
+	font-size: 1.7rem;
+	font-weight: 300;
+}
+
+.team-card h3 {
+	margin: 0 0 12px;
+	font-size: 1.05rem;
+	font-weight: 500;
+}
+
+.team-card p {
+	margin: 0;
+	font-size: 0.82rem;
+	line-height: 1.4;
+}
+
+@keyframes cardEnter {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.team-card {
+		animation: none;
+		transition: none;
+		opacity: 1;
+		transform: none;
+	}
+
+	.team-details .team-extra,
+	.team-details .team-extra.is-visible {
+		transition: none;
+	}
+
+	.team-card:hover {
+		transform: none;
+	}
+}
+
+@media (max-width: 850px) {
+	.content {
+		padding: 24px 18px 40px;
+	}
+
+	.team-grid {
+		gap: 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.info {
+		padding: 0 18px;
+	}
+
+	.content h2,
+	.cards-content {
+		padding-right: 16px;
+		padding-left: 16px;
+	}
+
+	.team-grid {
+		grid-template-columns: 1fr;
+		padding: 25px 0 0;
+	}
+
+	.team-card {
+		align-items: flex-start;
+		gap: 18px;
+		padding: 20px;
+	}
+
+	.team-actions {
+		align-self: stretch;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
