@@ -1,9 +1,60 @@
-<div class="equipos-page">
+<div class="teams-page">
     <div class="info">
-        <h2> Información General</h2>
+        <h1>Información General</h1>
     </div>
+
     <div class="content">
-        <h3> Equipo(s) </h3>
-        <p> Aquí encontrarás información de torneos en los cuales participes. </p>
+        <h2>Equipo(s)</h2>
+
+        <div class="cards-content">
+            <p class="description">Aquí encontrarás información de los equipos en los cuales participes.</p>
+
+            <div class="team-grid">
+                @if (equipos.length > 0) {
+                    @for (equipo of equipos; track equipo.nombre) {
+                        <article class="team-card" [class.expanded]="expandedTeam === equipo.nombre">
+                            <div class="team-details">
+                                <h3>{{ equipo.nombre }}</h3>
+                                <p>Tipo de equipo: <strong>{{ equipo.tipo }}.</strong></p>
+                                <p>Líder de equipo: <strong>{{ equipo.lider }}</strong></p>
+                                <p>Director Técnico: <strong>{{ equipo.directorTecnico }}</strong></p>
+                                <p>Lugar y fecha de creación: <strong>{{ equipo.fechaCreacion }}</strong></p>
+                                <p
+                                    class="team-extra"
+                                    [class.is-visible]="expandedTeam === equipo.nombre"
+                                    [attr.aria-hidden]="expandedTeam !== equipo.nombre">
+                                    No hay más información sobre este equipo.
+                                </p>
+                            </div>
+
+                            <div class="team-actions">
+                                @if (equipo.imagen) {
+                                    <img
+                                        [src]="equipo.imagen"
+                                        [alt]="'Escudo de ' + equipo.nombre"
+                                        title="Escudo del equipo" />
+                                } @else {
+                                    <div class="no-logo" role="img" aria-label="Este equipo no contiene logo">
+                                        No hay logo
+                                    </div>
+                                }
+                                <button
+                                    type="button"
+                                    [attr.aria-expanded]="expandedTeam === equipo.nombre"
+                                    (click)="toggleTeamInfo(equipo.nombre)">
+                                    {{ expandedTeam === equipo.nombre ? 'Ocultar información' : 'Más información' }}
+                                </button>
+                            </div>
+                        </article>
+                    }
+                } @else {
+                    <article class="team-card info-card">
+                        <div class="team-icon" aria-hidden="true">+</div>
+                        <h3>Aún no tienes equipos registrados</h3>
+                        <p>Cuando formes parte de un equipo, su información aparecerá aquí.</p>
+                    </article>
+                }
+            </div>
+        </div>
     </div>
 </div>

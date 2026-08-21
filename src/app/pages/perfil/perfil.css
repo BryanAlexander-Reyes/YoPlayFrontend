@@ -2,6 +2,7 @@
 * {
     box-sizing: border-box;
 }
+
 .card-general {
     width: 100%;
     margin: 0;
@@ -9,89 +10,78 @@
     font-family: Arial, sans-serif;
     background:rgba(209, 206, 206, 0.62);
     color: #220101;
+    animation: pageFadeIn 0.45s ease both;
 }
 .header {
     width:auto;
-    height: 100px;
-
-    padding: 0 18px;
-
+    height: 145px;
+    padding: 0 60px;
     display: flex;
     align-items: center;
-
     background: #000;
-
     border-bottom: 2px solid #686767;
+    animation: headerSlideIn 0.5s ease both;
 }
 
 .header h1 {
     margin: 0;
-
     color: white;
-
     font-size: 30px;
     font-weight: bold;
 }
 
-
 .sub-header {
     width: 100%;
-    height: 80px;
-
-    padding: 0 27px;
-
+    height: 120px;
+    padding: 0 60px;
     display: flex;
     align-items: center;
-
     background:#686767;
+    animation: sectionReveal 0.5s 0.08s ease both;
 }
 
 .sub-header h2 {
     margin: 0;
-
     font-size: 25px;
     font-weight: 600;
-
     color: #111;
 }
 
-
-
 .contenido {
     width: 100%;
-    height:1000px;
-    max-width: 100%;
+    height: 550px;
     margin: 0 auto;
     justify-content: center;
     display: grid;
-    padding: 22px 0 40px;
+    padding: 40px 60px;
     background:rgba(2, 2, 2, 0.1);
 }
 
-
-
-
 .descripcion {
-    margin: 0 0 15px;
-
+    margin: 20px 0;
     font-size: 20px;
-
     color: #222;
-
-
 }
 
 
 .informacion-card {
-    width: center;
-    height: 500px;
-    padding: 10px 50px;
+    width: 100%;
+    height: auto;
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgb(255, 254, 254 , 0.8);
     border-radius: 11px;
     box-shadow:0 2px 6px rgba(0, 0, 0, 0.08);
+    animation: cardReveal 0.55s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.informacion-card:hover,
+.perfil-publico:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .datos-perfil {
@@ -103,7 +93,7 @@
 .datos-perfil h2 {
     margin: 0 0 15px;
 
-    font-size: 30px;
+    font-size: 25px;
 
     color: #111;
 }
@@ -111,7 +101,7 @@
 .datos-perfil p {
     margin: 3px 0;
 
-    font-size: 20px;
+    font-size: 18px;
 
     line-height: 1.2;
 
@@ -126,18 +116,12 @@
 .foto-perfil {
     width: 200px;
     height: 200px;
-
     flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
-
     background: #ddd;
-
     border-radius: 10px;
 }
 
@@ -147,7 +131,6 @@
 .foto-perfil img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
@@ -157,26 +140,20 @@
 ===================================================== */
 
 .perfil-publico {
-    width: auto;
-
-    min-height: 50px;
-
-    margin-top: 17px;
-
-    padding: 10px 100px;
-
+    width: 100%;
+    min-height: 130px;
+    margin-top: 20px;
+    padding: 20px 50px;
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     background: white;
-
     border-radius: 11px;
 
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.08);
+    animation: cardReveal 0.55s 0.27s cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 
@@ -186,25 +163,19 @@
 
 .texto-publico {
     flex: 1;
-
     padding-right: 30px;
 }
 
 .texto-publico h2 {
     margin: 0 0 6px;
-
-    font-size: 30px;
-
+    font-size: 25px;
     color: #111;
 }
 
 .texto-publico p {
     margin: 0;
-
-    font-size: 20px;
-
+    font-size: 18px;
     line-height: 1.4;
-
     color: #111;
 }
 
@@ -215,12 +186,9 @@
 
 .switch {
     position: relative;
-
     width: 31px;
     height: 17px;
-
     flex-shrink:0;
-
     cursor: pointer;
 }
 
@@ -229,7 +197,6 @@
 
 .switch input {
     opacity: 0;
-
     width: 0;
     height: 0;
 }
@@ -239,18 +206,13 @@
 
 .slider {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 31px;
     height: 17px;
-
     background: #ccc;
-
     border-radius: 20px;
-
-    transition: 0.2s;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 
@@ -258,21 +220,14 @@
 
 .slider::before {
     content: "";
-
     position: absolute;
-
     width: 13px;
     height: 13px;
-
     left: 2px;
     top: 2px;
-
     background: white;
-
     border-radius: 50%;
-
-    transition: 0.2s;
-
+    transition: transform 0.25s ease, background-color 0.25s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -291,6 +246,42 @@
 }
 
 
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes headerSlideIn {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sectionReveal {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-general,
+    .header,
+    .sub-header,
+    .informacion-card,
+    .perfil-publico {
+        animation: none;
+        transition: none;
+    }
+
+    .informacion-card:hover,
+    .perfil-publico:hover {
+        transform: none;
+    }
+}
+
 /* =====================================================
    RESPONSIVE
 ===================================================== */
@@ -304,18 +295,14 @@
 
     .informacion-card {
         padding: 22px;
-
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 20px;
     }
 
 
     .datos-perfil {
         width: 100%;
-
         padding-right: 0;
     }
 

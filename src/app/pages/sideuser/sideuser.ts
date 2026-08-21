@@ -20,6 +20,10 @@ export class Sideuser {
     this.currentMenu = menu;
   }
 
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
+
   openLogoutModal(): void {
     this.showLogoutModal = true;
   }
