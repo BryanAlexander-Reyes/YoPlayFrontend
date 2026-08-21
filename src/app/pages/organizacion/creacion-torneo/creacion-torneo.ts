@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+interface deporte {
+  deporte:string,
+}
+interface divicion {
+  etapa:string,
+}
 interface Torneo {
   Lugar:string;
   tipo_deporte:string;
@@ -17,6 +23,7 @@ interface premiacion{
   styleUrl: './creacion-torneo.css',
 })
 export class CreacionTorneo {
+  
 
     contador:number=0
   
@@ -30,7 +37,6 @@ export class CreacionTorneo {
       console.log(this.contador)
       }
     }
-
     premiaciones:premiacion[]=[
       {
         premiacion:'',
@@ -49,4 +55,30 @@ export class CreacionTorneo {
         this.premiaciones.splice(index, 1);
     }
     }
+    opcionesDeportes: string[] = [
+    'Fútbol',
+    'Baloncesto',
+    'Voleibol',
+    'Tenis',
+    'Béisbol'
+  ];
+
+  deportes: deporte[] = [
+    {
+      deporte: ''
+    }
+  ];
+  opciondivision:string[]=[
+    'grupos',
+    'todo contra todo',
+    'directa'
+  ]
+  diviciones:divicion[]=[
+    {
+      etapa:''
+    }
+  ]
+  cantidadegrupos:number = 2;
+  
+  
 }

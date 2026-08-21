@@ -1,0 +1,854 @@
+/* =========================================
+   FIXTURE - CONTENEDOR GENERAL
+   ========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+.fixture-pagina {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(25px, 4vw, 50px)
+           clamp(12px, 5vw, 80px);
+
+  background: #080b12;
+  color: #fff;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER DEL FIXTURE
+   ========================================= */
+
+.fixture-header {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid #202a3b;
+}
+
+.fixture-header > div {
+  min-width: 0;
+}
+
+.fixture-header .header {
+  margin: 0 0 7px;
+
+  color: #1683ff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  text-shadow:
+    0 0 8px rgba(22, 131, 255, 0.45);
+}
+
+.fixture-header h1 {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.fixture-header .informacion {
+  margin: 10px 0 0;
+
+  color: #8e99aa;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   BOTON FINALIZAR
+   ========================================= */
+
+.finalizar {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 11px 17px;
+
+  border: 1px solid rgba(22, 131, 255, 0.45);
+  border-radius: 10px;
+
+  background: #0d131e;
+  color: #d5dbe4;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.finalizar span {
+  color: #1683ff;
+  font-size: 18px;
+
+  transition: transform 0.3s ease;
+}
+
+.finalizar:hover {
+  transform: translateY(-2px);
+
+  background: #111a29;
+
+  border-color: #1683ff;
+
+  color: #fff;
+
+  box-shadow:
+    0 0 10px rgba(22, 131, 255, 0.15),
+    0 0 25px rgba(22, 131, 255, 0.08);
+}
+
+.finalizar:hover span {
+  transform: rotate(-180deg);
+}
+
+
+/* =========================================
+   CONTENEDOR DEL FIXTURE
+   (relative: aloja el <svg> absoluto de los
+   conectores, que se dibuja por JS)
+   ========================================= */
+
+.fixture-Torneo {
+  position: relative;
+
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: stretch;
+
+  gap: 0;
+
+  padding: 25px 0 35px;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  scrollbar-width: thin;
+  scrollbar-color: #1683ff #0d131e;
+}
+
+
+/* Scrollbar Chrome */
+
+.fixture-Torneo::-webkit-scrollbar {
+  height: 7px;
+}
+
+.fixture-Torneo::-webkit-scrollbar-track {
+  background: #0d131e;
+  border-radius: 10px;
+}
+
+.fixture-Torneo::-webkit-scrollbar-thumb {
+  background: #1683ff;
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 8px rgba(22, 131, 255, 0.6);
+}
+
+
+/* =========================================
+   SVG DE CONECTORES
+   El <svg> se inyecta como primer hijo de
+   .fixture-Torneo y se dibuja/actualiza desde
+   el componente (ver drawConnectors() en el TS)
+   ========================================= */
+
+.bracket-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+  overflow: visible;
+}
+
+.bracket-svg path {
+  fill: none;
+
+  stroke: #1683ff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+
+  filter: drop-shadow(0 0 3px rgba(22, 131, 255, 0.9));
+
+  opacity: 0.9;
+}
+
+
+/* =========================================
+   RONDA
+   ========================================= */
+
+.ronda {
+  position: relative;
+
+  z-index: 1; /* por encima del .bracket-svg */
+
+  flex: 0 0 225px;
+
+  min-width: 225px;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-right: 55px;
+}
+
+
+/* =========================================
+   TITULO DE RONDA
+   ========================================= */
+
+.ronda-titulo {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+
+  padding: 0 10px;
+
+  border-left: 2px solid #1683ff;
+
+  background: linear-gradient(
+    90deg,
+    rgba(22, 131, 255, 0.08),
+    transparent
+  );
+}
+
+.ronda-titulo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  border-radius: 7px;
+
+  background: rgba(22, 131, 255, 0.12);
+
+  border: 1px solid rgba(22, 131, 255, 0.35);
+
+  color: #1683ff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  box-shadow:
+    0 0 8px rgba(22, 131, 255, 0.12);
+}
+
+.ronda-titulo h2 {
+  margin: 0;
+
+  color: #d5dbe4;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+
+/* =========================================
+   ENCUENTROS
+   ========================================= */
+
+.encuentros {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   TARJETA DEL PARTIDO
+   ========================================= */
+
+.encuentro {
+  position: relative;
+
+  width: 100%;
+
+  padding: 10px;
+
+  background: #111722;
+
+  border: 1px solid #202a3b;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.28);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.encuentro:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(22, 131, 255, 0.6);
+
+  background: #121b29;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    0 0 12px rgba(22, 131, 255, 0.08);
+}
+
+
+/* =========================================
+   PARTIDO COMPLETO
+   ========================================= */
+
+.encuentro.encuentro-complete {
+  border-color: rgba(22, 131, 255, 0.55);
+
+  box-shadow:
+    0 0 8px rgba(22, 131, 255, 0.08),
+    0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   META DEL PARTIDO
+   ========================================= */
+
+.encuentro-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-bottom: 8px;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid #202a3b;
+}
+
+.encuentro-meta span {
+  color: #6f7b8e;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.encuentro-meta p {
+  color: #1683ff;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   OPCIONES
+   ========================================= */
+
+.opciones {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+/* =========================================
+   BOTONES DE EQUIPOS
+   ========================================= */
+
+.opciones button {
+  min-width: 0;
+  flex: 1;
+
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 5px;
+
+  padding: 0 8px;
+
+  border: 1px solid #202a3b;
+  border-radius: 6px;
+
+  background: #0d131e;
+
+  color: #aeb8c8;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.opciones button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  border-color: rgba(22, 131, 255, 0.55);
+
+  color: #fff;
+
+  background: #121c2b;
+
+  box-shadow:
+    0 0 8px rgba(22, 131, 255, 0.1);
+}
+
+
+/* =========================================
+   EQUIPO SELECCIONADO
+   ========================================= */
+
+.opciones button.selected {
+  border-color: #1683ff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(22, 131, 255, 0.18),
+      rgba(22, 131, 255, 0.06)
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 0 7px rgba(22, 131, 255, 0.3),
+    inset 0 0 10px rgba(22, 131, 255, 0.05);
+}
+
+.opciones button.selected .equipo-marca {
+  color: #1683ff;
+
+  text-shadow:
+    0 0 6px #1683ff,
+    0 0 12px rgba(22, 131, 255, 0.8);
+}
+
+
+/* =========================================
+   NOMBRE DEL EQUIPO
+   ========================================= */
+
+.nombre-equipo {
+  min-width: 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.equipo-marca {
+  flex-shrink: 0;
+
+  width: 12px;
+
+  color: transparent;
+
+  font-size: 11px;
+  font-weight: 900;
+}
+
+
+/* =========================================
+   VS
+   ========================================= */
+
+.versus {
+  flex-shrink: 0;
+
+  width: 18px;
+
+  text-align: center;
+
+  color: #4d596b;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   ULTIMA RONDA
+   ========================================= */
+
+.ronda.final-round {
+  margin-right: 0;
+}
+
+.ronda.final-round .encuentro {
+  border-color: rgba(22, 131, 255, 0.45);
+
+  background:
+    linear-gradient(
+      145deg,
+      #121b2a,
+      #0e141f
+    );
+
+  box-shadow:
+    0 0 12px rgba(22, 131, 255, 0.08);
+}
+
+
+/* =========================================
+   NOTA INFERIOR
+   ========================================= */
+
+.nota {
+  max-width: 1450px;
+
+  margin: 10px auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  color: #6f7b8e;
+
+  font-size: 11px;
+}
+
+.nota .estado {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px rgba(22, 131, 255, 0.8);
+
+  animation: estadoLed 1.5s ease-in-out infinite;
+}
+
+@keyframes estadoLed {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  .fixture-pagina {
+    padding-inline: 25px;
+  }
+
+  .fixture-header {
+    margin-bottom: 25px;
+  }
+
+  .fixture-Torneo {
+    padding-top: 15px;
+  }
+
+  .ronda {
+    flex-basis: 205px;
+    min-width: 205px;
+
+    margin-right: 45px;
+  }
+}
+
+
+/* =========================================
+   TABLET PEQUEÑA
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .fixture-pagina {
+    padding: 25px 15px;
+  }
+
+  .fixture-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .finalizar {
+    width: 100%;
+  }
+
+  .fixture-Torneo {
+    margin-inline: -5px;
+
+    padding-inline: 5px;
+
+    align-items: stretch;
+  }
+
+  .ronda {
+    flex-basis: 190px;
+    min-width: 190px;
+
+    margin-right: 35px;
+  }
+
+  .encuentro {
+    padding: 8px;
+  }
+
+  .opciones button {
+    height: 30px;
+    padding-inline: 6px;
+
+    font-size: 9px;
+  }
+
+  .ronda-titulo {
+    margin-bottom: 14px;
+  }
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 500px) {
+
+  .fixture-pagina {
+    padding: 22px 10px;
+  }
+
+  .fixture-header {
+    padding-bottom: 20px;
+  }
+
+  .fixture-header .header {
+    font-size: 11px;
+  }
+
+  .fixture-header h1 {
+    font-size: 25px;
+  }
+
+  .fixture-header .informacion {
+    font-size: 12px;
+  }
+
+  .fixture-Torneo {
+    width: calc(100% + 10px);
+
+    margin-left: -5px;
+
+    padding: 10px 5px 25px;
+  }
+
+  .ronda {
+    flex-basis: 175px;
+    min-width: 175px;
+
+    margin-right: 30px;
+  }
+
+  .ronda-titulo {
+    height: 35px;
+
+    gap: 7px;
+
+    margin-bottom: 10px;
+
+    padding-left: 7px;
+  }
+
+  .ronda-titulo span {
+    width: 23px;
+    height: 23px;
+
+    font-size: 9px;
+  }
+
+  .ronda-titulo h2 {
+    font-size: 10px;
+  }
+
+  .encuentros {
+    gap: 10px;
+  }
+
+  .encuentro {
+    padding: 7px;
+
+    border-radius: 8px;
+  }
+
+  .encuentro-meta {
+    margin-bottom: 6px;
+    padding-bottom: 5px;
+  }
+
+  .encuentro-meta span,
+  .encuentro-meta p {
+    font-size: 8px;
+  }
+
+  .opciones {
+    gap: 3px;
+  }
+
+  .opciones button {
+    height: 27px;
+
+    padding: 0 5px;
+
+    font-size: 8px;
+
+    border-radius: 5px;
+  }
+
+  .versus {
+    width: 14px;
+
+    font-size: 7px;
+  }
+
+  .equipo-marca {
+    font-size: 9px;
+  }
+
+  .nota {
+    font-size: 9px;
+  }
+
+  .bracket-svg path {
+    stroke-width: 2;
+  }
+}
+
+
+/* =========================================
+   CELULAR MUY PEQUEÑO
+   ========================================= */
+
+@media (max-width: 360px) {
+
+  .fixture-pagina {
+    padding-inline: 7px;
+  }
+
+  .ronda {
+    flex-basis: 160px;
+    min-width: 160px;
+
+    margin-right: 25px;
+  }
+
+  .encuentro {
+    padding: 6px;
+  }
+
+  .opciones button {
+    height: 25px;
+
+    font-size: 7px;
+  }
+}

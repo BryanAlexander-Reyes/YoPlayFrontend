@@ -1,0 +1,37 @@
+<div class="faq-page">
+	<header class="page-header">
+		<h1>Ayuda</h1>
+	</header>
+
+	<section class="page-content" aria-labelledby="faq-title">
+		<h2 id="faq-title">Preguntas Frecuentes</h2>
+
+		<div class="faq-content">
+			<p class="intro">Encuentra respuestas a las preguntas más comunes sobre el uso de la plataforma YoPlay.</p>
+
+			<div class="faq-list">
+				@for (item of preguntas; track item.pregunta; let index = $index) {
+					<article class="faq-item" [class.is-open]="expandedQuestion === index">
+						<button
+							type="button"
+							class="faq-question"
+							[attr.aria-expanded]="expandedQuestion === index"
+							[attr.aria-controls]="'faq-answer-' + index"
+							(click)="toggleQuestion(index)">
+							<span>{{ item.pregunta }}</span>
+							<span class="faq-icon" aria-hidden="true">{{ expandedQuestion === index ? '−' : '+' }}</span>
+						</button>
+
+						<div
+							class="faq-answer"
+							[class.is-visible]="expandedQuestion === index"
+							[id]="'faq-answer-' + index"
+							[attr.aria-hidden]="expandedQuestion !== index">
+							<p>{{ item.respuesta }}</p>
+						</div>
+					</article>
+				}
+			</div>
+		</div>
+	</section>
+</div>

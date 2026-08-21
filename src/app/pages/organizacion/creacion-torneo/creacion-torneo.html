@@ -49,23 +49,40 @@
     <div class="form-group deporte">
       <label>Tipo de Deporte</label>
       <span></span>
+ @for (deporte of deportes; track $index) {
+    <select [(ngModel)]="deporte.deporte">
+        <option value="">Seleccione un deporte</option>
 
-      <select>
-        <option>Fútbol</option>
-        <option>Basquetbol</option>
-        <option>Voley</option>
-      </select>
+        @for (opcion of opcionesDeportes; track opcion) {
+            <option [value]="opcion">
+                {{ opcion }}
+            </option>
+        }
+    </select>
+}
     </div>
 
 <div class="form-group divisiones">
     <label>Divisiones</label>
     <span></span>
+     @for (divicion of diviciones; track $index) {
+    <select [(ngModel)]="divicion.etapa">
+        <option value="">Seleccione un division</option>
 
-    <select>
-        <option>Todos contra todos</option>
-        <option>Grupos</option>
-        <option>Directa</option>
+        @for (opcion of opciondivision; track opcion) {
+            <option [value]="opcion">
+                {{ opcion }}
+            </option>
+        }
     </select>
+    @if(divicion.etapa==='grupos'){
+  <div class="cantidad_grupos">
+    <label>cantidad de grupos</label>
+      <input type="number" min="2" max="8"  step="2" placeholder="ingrese la cantidad de equipo min 2 max 8 pares">
+  </div>
+}
+}
+
 </div>
 
 <div class="form-group-flayer">

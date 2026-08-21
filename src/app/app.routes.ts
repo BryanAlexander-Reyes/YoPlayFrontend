@@ -25,10 +25,14 @@ import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
 import { Notificacion } from './pages/notificacion/notificacion';
 import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
+import { Tutorial } from './pages/tutorial/tutorial';
 import { TI } from './pages/t-i/t-i';
 import { TP } from './pages/t-p/t-p';
 import { Stats } from './pages/stats/stats';
 import { Teams } from './pages/teams/teams';
+import { Privacy } from './pages/privacy/privacy';
+import { FAQ } from './pages/faq/faq';
+
 
 export const routes: Routes = [
   {
@@ -66,12 +70,16 @@ export const routes: Routes = [
         component: Perfil,
       },
       {
-        path: 'notic',
+        path: 'notificacion',
         component:Notificacion
       },
       {
         path: 'fondo',
         component:ConfiguracionFondo
+      },
+      {
+        path:'tutorial',
+        component:Tutorial
       },
       {
         path: 'torneos_inscritos',
@@ -88,6 +96,14 @@ export const routes: Routes = [
       {
         path: 'teams',
         component: Teams
+      },
+      {
+        path: 'privacidad',
+        component: Privacy
+      },
+      {
+        path: 'faq',
+        component: FAQ
       }
     ],
   },
@@ -152,7 +168,7 @@ export const routes: Routes = [
     component: Fixture
   },
   {
-    path:'inf-torneos',
+    path:'inf-torneos/:id',
     component: InfTorneosComponent
   }
 ];
