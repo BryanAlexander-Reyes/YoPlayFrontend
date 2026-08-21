@@ -12,6 +12,8 @@ import { ValidadorComponente } from './pages/validador-componente/validador-comp
 import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent';
 import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
 import { EquiposComponent } from './pages/torneos/equipos/equipos';
+import { Fixture } from './pages/torneos/fixture/fixture';
+import { InfTorneosComponent } from './pages/torneos/inf-torneos-component/inf-torneos-component';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -70,6 +72,8 @@ export const routes: Routes = [
       {
         path: 'fondo',
         component:ConfiguracionFondo
+      },
+      {
         path: 'torneos_inscritos',
         component: TI
       },
@@ -142,6 +146,13 @@ export const routes: Routes = [
   {
     path:'equipos',
     component: EquiposComponent
-
+  },
+  {
+    path:'fixture',
+    component: Fixture
+  },
+  {
+    path:'inf-torneos',
+    component: InfTorneosComponent
   }
 ];
