@@ -1,0 +1,113 @@
+.general-card {
+    width: 100%;
+    max-width: 1000px;
+    height: 520px;
+    margin: 50px auto;
+    box-sizing: border-box;
+    background: rgba(220,220,220,.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+.encabezado {
+    width: 100%;
+    height: 65px;
+    padding: 0 25px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    background: #0b3157;
+}
+.encabezado button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+.tarjeta-completas {
+    width: 100%;
+    height: calc(100% - 65px);
+    padding: 25px 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.tutorial {
+    position: relative;
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 15px 65px 15px 20px;
+    box-sizing: border-box;
+    background: #aaa;
+    border-radius: 8px;
+}
+.tutorial h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 24px;
+}
+.tutorial h3::before {
+    content: "•";
+    margin-right: 10px;
+}
+.boton-tutorial {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: #777;
+    color: #222;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-tutorial:hover {
+    background: #666;
+}
+.video-tutorial {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,.2);
+    box-sizing: border-box;
+}
+.video-tutorial video {
+    width: 100%;
+    max-width: 850px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #000;
+}
+@media (max-width: 700px) {
+    .general-card {
+        width: 94%;
+        height: 550px;
+        margin: 25px auto;
+    }
+    .tarjeta-completas {
+        padding: 20px 15px;
+    }
+    .tutorial {
+        padding-left: 15px;
+        padding-right: 55px;
+    }
+    .tutorial h3 {
+        font-size: 14px;
+    }
+    .video-tutorial video {
+        height: 230px;
+    }
+}

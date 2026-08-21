@@ -25,6 +25,7 @@ import { Sideuser } from './pages/sideuser/sideuser';
 import { AuthAnimationComponent } from './pages/auth-animation-component/auth-animation-component';
 import { Notificacion } from './pages/notificacion/notificacion';
 import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
+import { Tutorial } from './pages/tutorial/tutorial';
 import { TI } from './pages/t-i/t-i';
 import { TP } from './pages/t-p/t-p';
 import { Stats } from './pages/stats/stats';
@@ -69,12 +70,16 @@ export const routes: Routes = [
         component: Perfil,
       },
       {
-        path: 'notic',
+        path: 'notificacion',
         component:Notificacion
       },
       {
         path: 'fondo',
         component:ConfiguracionFondo
+      },
+      {
+        path:'tutorial',
+        component:Tutorial
       },
       {
         path: 'torneos_inscritos',
@@ -163,7 +168,7 @@ export const routes: Routes = [
     component: Fixture
   },
   {
-    path:'inf-torneos',
+    path:'inf-torneos/:id',
     component: InfTorneosComponent
   }
 ];

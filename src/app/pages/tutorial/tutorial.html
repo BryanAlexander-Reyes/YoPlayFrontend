@@ -1,0 +1,28 @@
+<section class="general-card">
+    <div class="encabezado">
+        <button type="button" (click)="volver()">←</button>
+    </div>
+    <div class="tarjeta-completas">
+        @for (tutorial of tutoriales; track $index) {
+            <div class="tutorial">
+                <h3>{{ tutorial.titulo }}</h3>
+                <button
+                    class="boton-tutorial"
+                    type="button"
+                    (click)="mostrarTutorial($index)">
+                    {{ tutorialAbierto === $index ? '▲' : '▼' }}
+                </button>
+                @if (tutorialAbierto === $index) {
+                    <div class="video-tutorial">
+                        <video controls>
+                            <source
+                                [src]="tutorial.video"
+                                type="video/mp4">
+                            Tu navegador no soporta la reproducción de videos.
+                        </video>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

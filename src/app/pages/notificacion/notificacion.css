@@ -1,0 +1,193 @@
+.general-card {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: rgba(105,104,104,0.86);
+    color: #111;
+    font-family: Arial, sans-serif;
+}
+.header {
+    width: 100%;
+    height: 120px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    background: #050505;
+    color: white;
+}
+.header h1 {
+    margin: 0;
+    font-size: 35px;
+    font-weight: bold;
+}
+.card-secundaria {
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 25px;
+}
+.sub-header {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,.35);
+}
+.sub-header h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #111;
+}
+.card-secundaria > p {
+    margin: 0;
+    padding: 12px 18px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #111;
+}
+.card-central {
+    position: relative;
+    width: calc(100% - 25px);
+    min-height: 550px;
+    margin: 10px auto 20px;
+    padding: 22px 30px 30px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    background: rgba(235,235,235,.94);
+    box-shadow: 0 3px 8px rgba(0,0,0,.12);
+}
+.card-central > h3 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #111;
+}
+.notificaciones-torneo,
+.notificaciones-personalizadas,
+.notificaciones-productos {
+    position: relative;
+    width: 100%;
+    height:150px;
+    box-sizing: border-box;
+    margin-bottom: 9px;
+    padding: 10px 60px 10px 16px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.notificaciones-productos {
+    margin-bottom: 0;
+}
+.notificaciones-torneo h4,
+.notificaciones-personalizadas h4,
+.notificaciones-productos h4 {
+    margin: 0 0 3px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #111;
+}
+.notificaciones-torneo p,
+.notificaciones-personalizadas p,
+.notificaciones-productos p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #111;
+}
+.card-central > .switch {
+    top: 18px;
+    right: 30px;
+}
+.notificaciones-torneo > .switch,
+.notificaciones-personalizadas > .switch,
+.notificaciones-productos > .switch {
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+.switch {
+    position: absolute;
+    width: 35px;
+    height: 18px;
+    display: block;
+}
+.switch input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #707070;
+    transition: .25s;
+}
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    background: white;
+    transition: .25s;
+}
+.switch input:checked + .slider {
+    background: #30c765;
+}
+.switch input:checked + .slider::before {
+    transform: translateX(17px);
+}
+@media (max-width: 700px) {
+    .header {
+        height: 60px;
+        padding: 0 15px;
+    }
+    .header h1 {
+        font-size: 20px;
+    }
+    .sub-header {
+        height: 80px;
+        padding: 0 15px;
+    }
+    .sub-header h2 {
+        font-size: 15px;
+    }
+    .card-secundaria > p {
+        padding: 10px 15px;
+        font-size: 10px;
+    }
+    .card-central {
+        width: calc(100% - 15px);
+        min-height: 250px;
+        padding: 18px 15px 20px;
+        border-radius: 15px;
+    }
+    .card-central > h3 {
+        font-size: 13px;
+    }
+    .notificaciones-torneo,
+    .notificaciones-personalizadas,
+    .notificaciones-productos {
+        padding: 10px 50px 10px 12px;
+    }
+    .notificaciones-torneo h4,
+    .notificaciones-personalizadas h4,
+    .notificaciones-productos h4 {
+        font-size: 9px;
+    }
+    .notificaciones-torneo p,
+    .notificaciones-personalizadas p,
+    .notificaciones-productos p {
+        font-size: 8px;
+    }
+    .card-central > .switch {
+        right: 20px;
+    }
+}
