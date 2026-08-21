@@ -40,7 +40,7 @@
 }
 
 .privacy-card {
-	width: min(82%, 940px);
+	width: 80%;
 	box-sizing: border-box;
 	margin: 54px auto;
 	padding: 27px 37px 24px;
