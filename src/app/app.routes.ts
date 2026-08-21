@@ -152,7 +152,7 @@ export const routes: Routes = [
     component: Fixture
   },
   {
-    path:'inf-torneos',
+    path:'inf-torneos/:id',
     component: InfTorneosComponent
   }
 ];
