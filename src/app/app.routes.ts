@@ -11,6 +11,9 @@ import { RegisterComponent } from './pages/usuario/register/register';
 import { ValidadorComponente } from './pages/validador-componente/validador-componente';
 import { TorneosComponent } from './pages/torneos/torneos-comoponent/torneos-comoponent';
 import { RestablecerComponent } from './pages/usuario/restablecer-component/restablecer-component';
+import { EquiposComponent } from './pages/torneos/equipos/equipos';
+import { Fixture } from './pages/torneos/fixture/fixture';
+import { InfTorneosComponent } from './pages/torneos/inf-torneos-component/inf-torneos-component';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -23,6 +26,10 @@ import { AuthAnimationComponent } from './pages/auth-animation-component/auth-an
 import { Notificacion } from './pages/notificacion/notificacion';
 import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fondo';
 import { Tutorial } from './pages/tutorial/tutorial';
+import { TI } from './pages/t-i/t-i';
+import { TP } from './pages/t-p/t-p';
+import { Stats } from './pages/stats/stats';
+import { Teams } from './pages/teams/teams';
 
 export const routes: Routes = [
   {
@@ -70,6 +77,22 @@ export const routes: Routes = [
       {
         path:'tutorial',
         component:Tutorial
+      },
+      {
+        path: 'torneos_inscritos',
+        component: TI
+      },
+      {
+        path: 'historial',
+        component: TP
+      },
+      {
+        path: 'stats',
+        component: Stats
+      },
+      {
+        path: 'teams',
+        component: Teams
       }
     ],
   },
@@ -125,4 +148,16 @@ export const routes: Routes = [
     path: 'restablecer',
     component: RestablecerComponent,
   },
+  {
+    path:'equipos',
+    component: EquiposComponent
+  },
+  {
+    path:'fixture',
+    component: Fixture
+  },
+  {
+    path:'inf-torneos/:id',
+    component: InfTorneosComponent
+  }
 ];

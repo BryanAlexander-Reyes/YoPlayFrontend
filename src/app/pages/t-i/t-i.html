@@ -1,0 +1,28 @@
+<div class="TorneosInscritos">
+    <div class="info">
+        <h1>Información General</h1>
+    </div>
+    <div class="content">
+        <h2>Torneos Inscritos</h2>
+        <div class="cards-content">
+            <p class="description">Aquí encontrarás información de torneos en los cuales estés registrado.</p>
+
+            <div class="tournament-grid">
+                @for (torneo of torneos; track torneo.nombre) {
+                    <article class="tournament-card">
+                        <img [src]="torneo.imagen" alt="Afiche de {{ torneo.nombre }}" title="Afiche de {{ torneo.nombre }}" />
+                        <h3>{{ torneo.nombre }}</h3>
+                        <p>Lugar: {{ torneo.ubicacion }}</p>
+                        <p>Inscripción: {{ torneo.inscripcion }}</p>
+                        <p>Premiación: {{ torneo.premiacion }}</p>
+                        <button type="button">Fixture</button>
+                    </article>
+                }
+
+                <article class="tournament-card info-card">
+                    <h3>Aquí encontrarás todos los torneos en los que estés inscrito.</h3>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,595 @@
+/* =========================================
+   CONTENEDOR GENERAL
+   ========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+.card-contenerdor {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(28px, 4vw, 50px)
+           clamp(16px, 7vw, 112px);
+
+  background: #080b12;
+  color: white;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER PRINCIPAL
+   ========================================= */
+
+.header {
+  width: 100%;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 800;
+
+  color: white;
+}
+
+
+/* =========================================
+   LINEAS LED DEL TITULO
+   ========================================= */
+
+.header h1::before,
+.header h1::after {
+  content: "";
+
+  height: 2px;
+  flex: 1;
+
+  min-width: 30px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 14px rgba(22, 131, 255, 0.9);
+
+  animation: ledBlink 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CARD INFORMACION DEL TORNEO
+   ========================================= */
+
+.cardInformacion {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 300px)
+    minmax(0, 1fr);
+
+  grid-template-areas:
+    "imagen descripcion"
+    "imagen datos";
+
+  gap: 25px;
+
+  background: #111722;
+
+  border: 1px solid #202a3b;
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cardInformacion:hover {
+  border-color: #1683ff;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 15px rgba(22, 131, 255, 0.12);
+}
+
+
+/* =========================================
+   IMAGEN / FLYER
+   ========================================= */
+
+.flayer {
+  grid-area: imagen;
+
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #0d131e;
+
+  border: 1px solid #202a3b;
+}
+
+.flayer img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 280px;
+  max-height: 360px;
+
+  object-fit: cover;
+
+  border-radius: 15px;
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+}
+
+.flayer:hover img {
+  transform: scale(1.03);
+}
+
+
+/* =========================================
+   DESCRIPCION
+   ========================================= */
+
+.descripcionheader {
+  grid-area: descripcion;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 10px 5px;
+}
+
+.descripcionheader h1 {
+  margin: 0 0 12px;
+
+  color: white;
+
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+}
+
+.descripcionheader p {
+  margin: 0;
+
+  color: #8e99aa;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   DATOS DEL TORNEO
+   ========================================= */
+
+.datos-torneo {
+  grid-area: datos;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(180px, 1fr));
+
+  gap: 15px;
+
+  align-self: end;
+}
+
+
+/* =========================================
+   DATO INDIVIDUAL
+   ========================================= */
+
+.dato {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 16px;
+
+  background: #0d131e;
+
+  border: 1px solid #202a3b;
+  border-radius: 14px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.dato:hover {
+  transform: translateY(-3px);
+
+  background: #151d2c;
+
+  border-color: #1683ff;
+}
+
+
+/* =========================================
+   ICONOS
+   ========================================= */
+
+.dato > span {
+  min-width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(22, 131, 255, 0.1);
+
+  color: #1683ff;
+
+  font-size: 17px;
+
+  box-shadow:
+    0 0 10px rgba(22, 131, 255, 0.08);
+}
+
+.dato strong {
+  min-width: 0;
+
+  color: #d5dbe4;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   PREMIO
+   ========================================= */
+
+.dato.premio {
+  border-color: rgba(22, 131, 255, 0.3);
+}
+
+.dato.premio > span {
+  color: #1683ff;
+
+  background: rgba(22, 131, 255, 0.15);
+
+  box-shadow:
+    0 0 12px rgba(22, 131, 255, 0.12);
+}
+
+
+/* =========================================
+   EQUIPOS INSCRITOS
+   ========================================= */
+
+.eqipos-inscritos {
+  width: 100%;
+
+  margin-top: 40px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   ANIMACION LED
+   ========================================= */
+
+@keyframes ledBlink {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    box-shadow:
+      0 0 3px #1683ff;
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 6px #1683ff,
+      0 0 18px rgba(22, 131, 255, 0.95);
+  }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .card-contenerdor {
+    padding-inline: 5%;
+  }
+
+  .cardInformacion {
+    grid-template-columns:
+      minmax(190px, 250px)
+      minmax(0, 1fr);
+
+    padding: 25px;
+
+    gap: 20px;
+  }
+
+  .datos-torneo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dato {
+    padding: 13px;
+  }
+}
+
+
+/* =========================================
+   TABLET PEQUEÑA
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .cardInformacion {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "imagen"
+      "descripcion"
+      "datos";
+
+    max-width: 600px;
+
+    padding: 22px;
+  }
+
+  .flayer {
+    max-width: 400px;
+
+    margin: 0 auto;
+  }
+
+  .flayer img {
+    min-height: 300px;
+    max-height: 450px;
+  }
+
+  .descripcionheader {
+    text-align: center;
+  }
+
+  .descripcionheader h1 {
+    font-size: 27px;
+  }
+
+  .datos-torneo {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .card-contenerdor {
+    padding: 30px 15px;
+  }
+
+
+  /* HEADER */
+
+  .header {
+    margin-bottom: 25px;
+  }
+
+  .header h1 {
+    gap: 10px;
+
+    font-size: 26px;
+  }
+
+  .header h1::before,
+  .header h1::after {
+    min-width: 10px;
+  }
+
+
+  /* CARD */
+
+  .cardInformacion {
+    width: 100%;
+
+    padding: 18px;
+
+    gap: 20px;
+
+    border-radius: 16px;
+  }
+
+
+  /* IMAGEN */
+
+  .flayer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .flayer img {
+    width: 100%;
+
+    min-height: 250px;
+    max-height: 400px;
+
+    object-fit: cover;
+  }
+
+
+  /* DESCRIPCION */
+
+  .descripcionheader {
+    padding: 5px 0;
+
+    text-align: center;
+  }
+
+  .descripcionheader h1 {
+    margin-bottom: 10px;
+
+    font-size: 23px;
+  }
+
+  .descripcionheader p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+
+  /* DATOS */
+
+  .datos-torneo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .dato {
+    width: 100%;
+
+    padding: 13px;
+
+    gap: 12px;
+
+    border-radius: 12px;
+  }
+
+  .dato > span {
+    min-width: 35px;
+    height: 35px;
+
+    font-size: 15px;
+  }
+
+  .dato strong {
+    font-size: 12px;
+  }
+
+
+  /* EQUIPOS */
+
+  .eqipos-inscritos {
+    margin-top: 30px;
+  }
+}
+
+
+/* CELULAR PEQUEÑO*/
+
+@media (max-width: 420px) {
+
+  .card-contenerdor {
+    padding: 25px 10px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    gap: 8px;
+  }
+
+  .cardInformacion {
+    padding: 15px;
+
+    border-radius: 14px;
+  }
+
+  .flayer img {
+    min-height: 220px;
+    max-height: 320px;
+  }
+
+  .descripcionheader h1 {
+    font-size: 21px;
+  }
+
+  .descripcionheader p {
+    font-size: 12px;
+  }
+
+  .dato {
+    padding: 11px;
+  }
+
+  .dato > span {
+    min-width: 32px;
+    height: 32px;
+
+    font-size: 14px;
+  }
+
+  .dato strong {
+    font-size: 11px;
+  }
+}
