@@ -1,2 +1,76 @@
-<p>fixture works!</p>
+<main class="fixture-pagina">
+  <header class="fixture-header">
+    <div>
+      <p class="header">Torneo apertura {{ torneo?.titulo }}</p>
+      <h1>Fixture {{ torneo?.titulo }}</h1>
+      <p class="informacion">Selecciona un equipo por partido para construir la siguiente ronda.</p>
+    </div>
+    <button
+      *ngIf="visualizacion"
+      class="finalizar"
+      type="button"
+      (click)="restaurarFixture()"
+      aria-label="Reiniciar fixture"
+    >
+      <span aria-hidden="true">↺</span>
+      Finalizar torneo
+    </button>
+  </header>
 
+  <section class="fixture-Torneo" aria-label="Llaves del torneo">
+    @for (ronda of rondas; track ronda.titulo; let roundIndex = $index) {
+      <section class="ronda" [class.final-round]="roundIndex === rondas.length - 1">
+        <div class="ronda-titulo">
+          <span>{{ roundIndex + 1 | number: '2.0-0' }}</span>
+          <h2>{{ ronda.titulo }}</h2>
+        </div>
+
+        <div class="encuentros">
+          @for (encuentro of ronda.encuentros; track encuentro.id; let matchIndex = $index) {
+            <article class="encuentro" [class.encuentro-complete]="encuentro.ganador">
+              <div class="encuentro-meta">
+                <span>Partido {{ matchIndex + 1 | number: '2.0-0' }}</span>
+                <p>{{ encuentro.fecha }}</p>
+				<p>Hora: {{encuentro.hora}}</p>
+              </div>
+              <div class="opciones">
+                <button
+                  type="button"
+                  [class.selected]="encuentro.ganador === encuentro.equipoA"
+                  [disabled]="!visualizacion || !encuentro.equipoA"
+                  (click)="seleccionarGanador(roundIndex, matchIndex, encuentro.equipoA)"
+                >
+                  <span class="nombre-equipo">{{
+                    encuentro.equipoA || 'Ganador partido ' + (matchIndex * 2 + 1)
+                  }}</span>
+                  <span class="equipo-marca" aria-hidden="true">{{
+                    encuentro.ganador === encuentro.equipoA ? '✓' : ''
+                  }}</span>
+                </button>
+                <div class="versus">vs</div>
+                <button
+                  type="button"
+                  [class.selected]="encuentro.ganador === encuentro.equipoB"
+                  [disabled]="!visualizacion || !encuentro.equipoB"
+                  (click)="seleccionarGanador(roundIndex, matchIndex, encuentro.equipoB)"
+                >
+                  <span class="nombre-equipo">{{
+                    encuentro.equipoB || 'Ganador partido ' + (matchIndex * 2 + 2)
+                  }}</span>
+                  <span class="equipo-marca" aria-hidden="true">{{
+                    encuentro.ganador === encuentro.equipoB ? '✓' : ''
+                  }}</span>
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+  </section>
+
+  <footer class="nota" *ngIf="visualizacion">
+    <span class="estado"></span>
+    <span>Los partidos avanzan celda por celda</span>
+  </footer>
+</main>
