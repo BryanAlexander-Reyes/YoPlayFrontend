@@ -8,6 +8,7 @@
                 <h3>{{ tutorial.titulo }}</h3>
                 <button
                     class="boton-tutorial"
+                    [class.abierto]="tutorialAbierto === $index"
                     type="button"
                     (click)="mostrarTutorial($index)">
                     {{ tutorialAbierto === $index ? '▲' : '▼' }}

@@ -32,6 +32,7 @@ import { Stats } from './pages/stats/stats';
 import { Teams } from './pages/teams/teams';
 import { Privacy } from './pages/privacy/privacy';
 import { FAQ } from './pages/faq/faq';
+import { Navigator } from './layout/navigator/navigator';
 
 
 export const routes: Routes = [
@@ -54,6 +55,10 @@ export const routes: Routes = [
         component: Home,
       },
       {
+        path: 'torneos',
+        component: TorneosComponent,
+      },
+      {
         path: 'torneo',
         component: CreacionTorneo,
       },
@@ -70,16 +75,16 @@ export const routes: Routes = [
         component: Perfil,
       },
       {
-        path: 'notificacion',
-        component:Notificacion
+        path: 'notificaciones',
+        component: Notificacion
       },
       {
         path: 'fondo',
-        component:ConfiguracionFondo
+        component: ConfiguracionFondo
       },
       {
-        path:'tutorial',
-        component:Tutorial
+        path:'tutoriales',
+        component: Tutorial
       },
       {
         path: 'torneos_inscritos',
@@ -152,10 +157,6 @@ export const routes: Routes = [
     component: AuthAnimationComponent,
   },
   {
-    path: 'torneos',
-    component: TorneosComponent,
-  },
-  {
     path: 'restablecer',
     component: RestablecerComponent,
   },
@@ -170,5 +171,9 @@ export const routes: Routes = [
   {
     path:'inf-torneos/:id',
     component: InfTorneosComponent
+  },
+  {
+    path: 'navigator',
+    component: Navigator
   }
 ];
