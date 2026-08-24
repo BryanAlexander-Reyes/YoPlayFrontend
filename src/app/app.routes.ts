@@ -55,6 +55,10 @@ export const routes: Routes = [
         component: Home,
       },
       {
+        path: 'torneos',
+        component: TorneosComponent,
+      },
+      {
         path: 'torneo',
         component: CreacionTorneo,
       },
@@ -151,10 +155,6 @@ export const routes: Routes = [
   {
     path: 'animation',
     component: AuthAnimationComponent,
-  },
-  {
-    path: 'torneos',
-    component: TorneosComponent,
   },
   {
     path: 'restablecer',

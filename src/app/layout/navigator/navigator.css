@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "SF Pro Display", "SF Pro", Arial, sans-serif;
+}
+
+:host {
+    min-height: 100vh;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-section {
+    width: 96px;
+    height: 96px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #102a43;
+    border-radius: 26px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.logo-section img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    display: block;
+}
+
+.side-menu {
+    width: 96px;
+    height: 480px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #102a43;
+    border-radius: 26px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.menu-item input {
+    display: none;
+}
+
+.menu-icon {
+    width: 36px;
+    height: 36px;
+
+    fill: #000000;
+
+    transition:
+        transform 0.25s ease,
+        fill 0.25s ease;
+}
+
+.menu-item:hover .menu-icon {
+    fill: #000000;
+    transform: scale(1.12);
+}
+
+.menu-item:has(input:checked) .menu-icon {
+    fill: #000000;
+    transform: scale(1.08);
+}
+
+.menu-item:has(input:checked):hover .menu-icon {
+    fill: #000000;
+    transform: scale(1.12);
+}
+
+.menu-item:nth-child(4) {
+    visibility: hidden;
+    pointer-events: none;
+    height: 80px;
+    flex-basis: 80px;
+}
+
+.menu-item:nth-child(1) {
+    order: 1;
+}
+
+.menu-item:nth-child(5) {
+    order: 5;
+}
+
+.menu-item:nth-child(2) {
+    order: 2;
+}
+
+.menu-item:nth-child(3) {
+    order: 3;
+}
+
+.menu-item:nth-child(4) {
+    order: 4;
+}
+
+.menu-item:nth-child(3) .menu-icon path:first-child {
+    opacity: 0.5;
+}
+
+.menu-item:nth-child(3) .menu-icon path:last-child {
+    opacity: 1;
+}
