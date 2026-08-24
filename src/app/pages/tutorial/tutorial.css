@@ -10,6 +10,7 @@
     box-shadow: 0 5px 15px rgba(0,0,0,.3);
     font-family: Arial, sans-serif;
     color: #111;
+    animation: aparecer-tarjeta 550ms ease-out both;
 }
 .encabezado {
     width: 100%;
@@ -28,6 +29,11 @@
     color: white;
     font-size: 30px;
     cursor: pointer;
+    transition: transform 180ms ease, color 180ms ease;
+}
+.encabezado button:hover {
+    color: #9ed8ff;
+    transform: translateX(-4px);
 }
 .tarjeta-completas {
     width: 100%;
@@ -44,7 +50,22 @@
     box-sizing: border-box;
     background: #aaa;
     border-radius: 8px;
+    transform-origin: top center;
+    animation: aparecer-tutorial 450ms ease-out both;
+    transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
 }
+.tutorial:hover {
+    background: #b8b8b8;
+    box-shadow: 0 6px 14px rgba(0,0,0,.16);
+    transform: translateY(-2px);
+}
+
+.tutorial:nth-child(2) { animation-delay: 60ms; }
+.tutorial:nth-child(3) { animation-delay: 120ms; }
+.tutorial:nth-child(4) { animation-delay: 180ms; }
+.tutorial:nth-child(5) { animation-delay: 240ms; }
+.tutorial:nth-child(6) { animation-delay: 300ms; }
+
 .tutorial h3 {
     margin: 0;
     font-size: 17px;
@@ -71,9 +92,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 180ms ease, color 180ms ease, transform 220ms ease;
 }
 .boton-tutorial:hover {
     background: #666;
+    color: white;
+    transform: scale(1.08);
+}
+.boton-tutorial.abierto {
+    background: #0b3157;
+    color: white;
+    transform: rotate(180deg);
 }
 .video-tutorial {
     width: 100%;
@@ -81,6 +110,8 @@
     padding-top: 15px;
     border-top: 1px solid rgba(0,0,0,.2);
     box-sizing: border-box;
+    transform-origin: top;
+    animation: desplegar-video 350ms cubic-bezier(.2,.75,.3,1) both;
 }
 .video-tutorial video {
     width: 100%;
@@ -90,6 +121,32 @@
     margin: 0 auto;
     border-radius: 10px;
     background: #000;
+    animation: aparecer-video 450ms ease-out 80ms both;
+}
+@keyframes aparecer-tarjeta {
+    from { opacity: 0; transform: translateY(18px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes aparecer-tutorial {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes desplegar-video {
+    from { opacity: 0; transform: scaleY(.05); }
+    to { opacity: 1; transform: scaleY(1); }
+}
+@keyframes aparecer-video {
+    from { opacity: 0; transform: translateY(10px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+    }
 }
 @media (max-width: 700px) {
     .general-card {
