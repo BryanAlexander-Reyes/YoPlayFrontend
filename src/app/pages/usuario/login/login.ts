@@ -8,7 +8,7 @@ import {RestablecerComponent} from '../restablecer-component/restablecer-compone
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, RestablecerComponent],
+  imports: [FormsModule, ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

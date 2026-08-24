@@ -2378,3 +2378,107 @@
   }
 
 }
+/* =========================================
+   MODAL DEL VALIDADOR
+   ========================================= */
+
+.modal-validar {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  z-index: 9999;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  animation: aparecerModal 0.25s ease;
+}
+
+
+/* =========================================
+   CONTENEDOR DEL VALIDADOR
+   ========================================= */
+
+.modal-validar app-validador-componente {
+  display: block;
+
+  width: min(500px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+
+  animation: aparecerValidador 0.3s ease;
+}
+
+
+/* =========================================
+   ANIMACIÓN DEL FONDO
+   ========================================= */
+
+@keyframes aparecerModal {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================
+   ANIMACIÓN DEL CONTENIDO
+   ========================================= */
+
+@keyframes aparecerValidador {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .modal-validar {
+    padding: 15px;
+  }
+
+  .modal-validar app-validador-componente {
+    width: 100%;
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+}

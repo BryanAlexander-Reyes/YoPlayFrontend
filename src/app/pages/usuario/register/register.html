@@ -2,7 +2,11 @@
      REGISTER COMPONENT
      ========================================= -->
 
-<div class="register-form-container">
+<form
+  class="register-form-container"
+  [formGroup]="registerForm"
+  (ngSubmit)="registrar()"
+>
 
   <!-- =========================================
        FORMULARIO 1
@@ -16,7 +20,7 @@
     <div class="register-card1">
 
       <h1>
-        Regístrate
+        Crear Cuenta
       </h1>
 
       <p>
@@ -36,6 +40,7 @@
       <input
         type="email"
         id="email"
+        formControlName="email"
         placeholder="Ingrese su email"
       />
 
@@ -52,6 +57,7 @@
       <input
         type="password"
         id="password"
+        formControlName="password"
         placeholder="Ingrese su contraseña"
       />
 
@@ -68,6 +74,7 @@
       <input
         type="password"
         id="confirmPassword"
+        formControlName='confirmPassword'
         placeholder="Confirme su contraseña"
       />
 
@@ -118,10 +125,6 @@
       </h1>
 
     </div>
-
-
-    <form>
-
       <!-- NOMBRE -->
       <div class="register-form">
         <label for="nombre">
@@ -131,6 +134,7 @@
         <input
           type="text"
           id="nombre"
+          formControlName="nombre"
           placeholder="Nombre"
         />
 
@@ -145,6 +149,7 @@
         <input
           type="text"
           id="apellido"
+          formControlName="apellido"
           placeholder="Apellido"
         />
 
@@ -157,12 +162,14 @@
         <label for="tipoDocumento">
           Tipo de documento
         </label>
-        <select id="tipoDocumento">
+        <select id="tipoDocumento"
+        formControlName="tipoDocumento">
 
           <option
             value=""
             disabled
             selected
+            
           >
             Tipo de documento
           </option>
@@ -186,6 +193,7 @@
         <input
           type="text"
           id="identificacion"
+          formControlName="identificacion"
           placeholder="Número de identificación"
         />
 
@@ -201,7 +209,7 @@
         placeholder="Fecha de nacimiento"
           type="date"
           id="fechaNacimiento"
-          
+          formControlName="fechaNacimiento"
         />
 
       </div>
@@ -213,6 +221,7 @@
         <input
           type="checkbox"
           id="terminos"
+          formControlName="terminos"
         />
 
         <label for="terminos">
@@ -235,9 +244,8 @@
       >
         REGISTRARSE
       </button>
-
-    </form>
+      <button type="button"class="volver-formulario" (click)="mostrarPrimerFormulario()" ><i class="fa-solid fa-circle-arrow-left"> Volver</i></button>
 
   </div>
 
-</div>
+</form>

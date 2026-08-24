@@ -1,747 +1,214 @@
-/* =========================================
-   CONTENEDOR GENERAL
-========================================= */
-
-:host {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-:host,
-:host * {
-  box-sizing: border-box;
-}
-
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
 .card-general {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0;
-
-  color: #ffffff;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: #0b1120;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-
-/* =========================================
-   HEADER
-========================================= */
-
+/* ==========================================
+   CABECERA
+   ========================================== */
 .header {
-  width: 100%;
-  margin-bottom: 35px;
   text-align: center;
-}
-
-.header > span {
-  display: inline-block;
-
-  width: clamp(25px, 5vw, 55px);
-  height: 2px;
-
-  margin: 0 8px 10px;
-
-  background: #1683ff;
-
-  box-shadow:
-    0 0 5px #1683ff,
-    0 0 14px rgba(22, 131, 255, 0.8);
-
-  animation: ledBlink 1.8s ease-in-out infinite;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #1e293b;
 }
 
 .header h1 {
-  display: inline-block;
-
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: clamp(26px, 4vw, 40px);
-  font-weight: 800;
-
-  overflow-wrap: anywhere;
-}
-
-.header p {
-  margin: 14px auto 0;
-
-  max-width: 600px;
-
-  color: #8e99aa;
-
-  font-size: clamp(13px, 2vw, 15px);
-  line-height: 1.6;
-}
-
-
-/* =========================================
-   FORMULARIO DATOS DEL EQUIPO
-========================================= */
-
-.formulario-datosequipo {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 20px;
-
-  padding: clamp(20px, 4vw, 40px);
-
-  background: #111722;
-
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 22px;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-
-/* =========================================
-   TÍTULO DATOS DEL EQUIPO
-========================================= */
-
-.formulario-datosequipo > p:first-child {
-  grid-column: 1 / -1;
-
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: clamp(18px, 2.5vw, 21px);
-  font-weight: 800;
-}
-
-.formulario-datosequipo > span:first-of-type {
-  grid-column: 1 / -1;
-
-  width: 100%;
-  height: 2px;
-
-  margin-top: -10px;
-
-  background: #1683ff;
-
-  box-shadow:
-    0 0 5px #1683ff,
-    0 0 14px rgba(22, 131, 255, 0.7);
-}
-
-
-/* =========================================
-   CAMPOS EQUIPO
-========================================= */
-
-.equipo,
-.juego-categoria,
-.region {
-  display: flex;
-  flex-direction: column;
-
-  min-width: 0;
-
-  gap: 8px;
-}
-
-.equipo p,
-.juego-categoria p,
-.region p {
-  margin: 0;
-
-  color: #d5dbe4;
-
-  font-size: 14px;
-  font-weight: 600;
-}
-
-
-/* =========================================
-   SPAN VACÍO
-========================================= */
-
-.equipo > span,
-.juego-categoria > span,
-.region > span {
-  display: none;
-}
-
-
-/* =========================================
-   INPUTS
-========================================= */
-
-.equipo input,
-.juego-categoria input,
-.region input,
-.capitan input {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-
-  padding: 0 15px;
-
-  border: 1px solid #202a3b;
-  border-radius: 10px;
-
-  outline: none;
-
-  background: #151d2c;
-  color: #ffffff;
-
-  font-size: 14px;
-
-  transition:
-    border-color 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.equipo input::placeholder,
-.juego-categoria input::placeholder,
-.region input::placeholder,
-.capitan input::placeholder {
-  color: #667085;
-}
-
-.equipo input:focus,
-.juego-categoria input:focus,
-.region input:focus,
-.capitan input:focus {
-  border-color: #1683ff;
-
-  background: #192335;
-
-  box-shadow:
-    0 0 0 3px rgba(22, 131, 255, 0.12);
-}
-
-
-/* =========================================
-   CAPITÁN
-========================================= */
-
-.capitan {
-  grid-column: 1 / -1;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 15px;
-
-  margin-top: 15px;
-  padding-top: 30px;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.capitan > p:first-child {
-  grid-column: 1 / -1;
-
-  margin: 0 0 5px;
-
-  color: #ffffff;
-
-  font-size: clamp(18px, 2.5vw, 21px);
-  font-weight: 800;
-}
-
-.capitan > span {
-  display: none;
-}
-
-.capitan > p:not(:first-child) {
-  margin: 0;
-
-  color: #d5dbe4;
-
-  font-size: 14px;
-  font-weight: 600;
-}
-
-
-/* =========================================
-   INTEGRANTES
-========================================= */
-
-.integrantes {
-  width: 100%;
-
-  margin-top: 30px;
-
-  padding: clamp(20px, 4vw, 40px);
-
-  background: #111722;
-
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 22px;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-
-/* =========================================
-   TÍTULO INTEGRANTES
-========================================= */
-
-.integrantes > p:first-child {
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: clamp(18px, 2.5vw, 21px);
-  font-weight: 800;
-
-  text-transform: capitalize;
-}
-
-.integrantes > span:first-of-type {
-  display: block;
-
-  width: 100%;
-  height: 2px;
-
-  margin: 15px 0 25px;
-
-  background: #1683ff;
-
-  box-shadow:
-    0 0 5px #1683ff,
-    0 0 14px rgba(22, 131, 255, 0.7);
-}
-
-
-/* =========================================
-   MIEMBROS
-========================================= */
-
-.miembros {
-  display: flex;
-  flex-direction: column;
-
-  gap: 18px;
-
-  width: 100%;
-}
-
-.miembro {
-  width: 100%;
-  min-width: 0;
-
-  padding: clamp(15px, 3vw, 20px);
-
-  background: #151d2c;
-
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 15px;
-
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.miembro:hover {
-  transform: translateY(-3px);
-
-  background: #192335;
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.25);
-}
-
-
-/* =========================================
-   TÍTULOS DE INTEGRANTES
-========================================= */
-
-.titulos {
-  display: grid;
-
-  grid-template-columns:
-    2fr
-    1.5fr
-    1fr;
-
-  gap: 15px;
-
-  margin-bottom: 10px;
-}
-
-.titulos span {
-  color: #7f8b9f;
-
-  font-size: 11px;
-  font-weight: 700;
-
+  font-size: 2.2rem;
+  color: #f8fafc;
+  margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+.header p {
+  color: #38bdf8; /* Azul neón para el subtítulo */
+  font-size: 1rem;
+  margin: 0;
+}
 
-/* =========================================
-   CAMPOS DE INTEGRANTES
-========================================= */
+/* ==========================================
+   SECCIONES Y ETIQUETAS
+   ========================================== */
+.formulario-datosequipo > p,
+.integrantes > p,
+.capitan > p:first-child {
+  font-size: 1.25rem;
+  color: #60a5fa;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Acentos decorativos usando los spans vacíos de tu HTML */
+.formulario-datosequipo > span,
+.integrantes > span,
+.capitan > span:first-of-type {
+  display: block;
+  height: 2px;
+  width: 40px;
+  background-color: #3b82f6;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+}
+
+/* ==========================================
+   INPUTS Y CAMPOS DE TEXTO
+   ========================================== */
+.equipo, .juego-categoria, .region, .capitan {
+  margin-bottom: 1.5rem;
+}
+
+.equipo p, .juego-categoria p, .region p, .capitan p:not(:first-child) {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  background-color: #050811;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+input::placeholder {
+  color: #475569;
+}
+
+/* ==========================================
+   SECCIÓN DE INTEGRANTES (GRILLA)
+   ========================================== */
+.miembros {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.miembro {
+  background-color: #0f172a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid #38bdf8;
+}
+
+.titulos {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
 
 .campos {
-  display: grid;
-
-  grid-template-columns:
-    2fr
-    1.5fr
-    1fr;
-
-  gap: 15px;
-
-  width: 100%;
+  display: flex;
+  gap: 1rem;
 }
 
-.campos input {
-  width: 100%;
-  min-width: 0;
-  height: 45px;
+/* Alineación de la grilla de integrantes */
+.titulos span:nth-child(1), .campos input:nth-child(1) { flex: 2; }
+.titulos span:nth-child(2), .campos input:nth-child(2) { flex: 1; }
+.titulos span:nth-child(3), .campos input:nth-child(3) { flex: 1; }
 
-  padding: 0 14px;
+/* ==========================================
+   BOTONES
+   ========================================== */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
 
-  border: 1px solid #202a3b;
-  border-radius: 9px;
+/* Botón "Quitar miembro" */
+.miembros button {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  text-transform: uppercase;
+}
 
-  outline: none;
-
-  background: #111722;
+.miembros button:hover {
+  background-color: #ef4444;
   color: #ffffff;
-
-  font-size: 14px;
 }
 
-.campos input::placeholder {
-  color: #667085;
+/* Botón "Añadir Más" */
+.integrantes > button[type="button"] {
+  background-color: #1e293b;
+  color: #38bdf8;
+  border: 1px dashed #38bdf8;
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
 
-.campos input:focus {
-  border-color: #1683ff;
-
-  box-shadow:
-    0 0 0 3px rgba(22, 131, 255, 0.12);
+.integrantes > button[type="button"]:hover {
+  background-color: #0f172a;
+  border-style: solid;
 }
 
-
-/* =========================================
-   BOTÓN QUITAR
-========================================= */
-
-.miembro + button {
-  margin-top: 12px;
-
-  padding: 8px 15px;
-
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 8px;
-
-  background: rgba(239, 68, 68, 0.08);
-  color: #ff6b6b;
-
-  font-size: 12px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.miembro + button:hover {
-  background: rgba(239, 68, 68, 0.18);
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================
-   BOTÓN AÑADIR MÁS
-========================================= */
-
-.integrantes > button:first-of-type {
-  margin-top: 25px;
-
-  padding: 12px 22px;
-
-  border: 1px dashed #1683ff;
-  border-radius: 10px;
-
-  background: rgba(22, 131, 255, 0.08);
-  color: #1683ff;
-
-  font-size: 13px;
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-.integrantes > button:first-of-type:hover {
-  background: #1683ff;
-  color: #ffffff;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 20px rgba(22, 131, 255, 0.25);
-}
-
-
-/* =========================================
-   TÉRMINOS
-========================================= */
-
-#terminos {
-  width: 18px;
-  height: 18px;
-
-  margin: 25px 8px 0 0;
-
-  vertical-align: middle;
-
-  accent-color: #1683ff;
-
+/* Checkbox y Términos */
+.integrantes label {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 
-label[for="terminos"] {
-  display: inline;
-
-  color: #aeb7c6;
-
-  font-size: 14px;
-
-  cursor: pointer;
-}
-
-
-/* =========================================
-   BOTÓN REGISTRAR
-========================================= */
-
+/* Botón "Registrar Equipo" */
 .integrantes > button:last-child {
-  display: block;
-
-  width: 100%;
-  min-height: 52px;
-
-  margin-top: 25px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #1683ff;
+  background-color: #2563eb;
   color: #ffffff;
-
-  font-size: 15px;
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  border: none;
+  padding: 1rem 2rem;
+  width: 100%;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
 .integrantes > button:last-child:hover {
-  background: #006fe6;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 10px 25px rgba(22, 131, 255, 0.3);
-}
-
-
-/* =========================================
-   ANIMACIÓN LED
-========================================= */
-
-@keyframes ledBlink {
-
-  0%,
-  100% {
-    opacity: 0.35;
-
-    box-shadow:
-      0 0 3px #1683ff;
-  }
-
-  50% {
-    opacity: 1;
-
-    box-shadow:
-      0 0 6px #1683ff,
-      0 0 18px rgba(22, 131, 255, 0.95);
-  }
-
-}
-
-
-/* =========================================
-   TABLET
-   850px
-========================================= */
-
-@media (max-width: 850px) {
-
-  .formulario-datosequipo {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-  .capitan {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-  .region {
-    grid-column: 1 / -1;
-  }
-
-}
-
-
-/* =========================================
-   TABLET PEQUEÑA
-   700px
-========================================= */
-
-@media (max-width: 700px) {
-
-  .formulario-datosequipo {
-    grid-template-columns: 1fr;
-  }
-
-  .region {
-    grid-column: auto;
-  }
-
-  .capitan {
-    grid-template-columns: 1fr;
-  }
-
-  /*
-     Los integrantes pasan a una sola columna
-     para evitar que los inputs se compriman.
-  */
-
-  .titulos {
-    display: none;
-  }
-
-  .campos {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .campos input {
-    height: 48px;
-  }
-
-}
-
-
-/* =========================================
-   CELULAR
-   550px
-========================================= */
-
-@media (max-width: 550px) {
-
-  .header {
-    margin-bottom: 28px;
-  }
-
-  .header h1 {
-    display: block;
-    color:#006fe6;
-    font-size: 28px;
-  }
-
-  .header > span {
-    width: 35px;
-
-    margin-inline: 5px;
-  }
-
-  .formulario-datosequipo,
-  .integrantes {
-    padding: 20px 16px;
-
-    border-radius: 18px;
-  }
-
-  .miembro {
-    padding: 15px;
-  }
-
-  .miembro + button {
-    width: 100%;
-  }
-
-  .integrantes > button:first-of-type {
-    width: 100%;
-  }
-
-}
-
-
-/* =========================================
-   CELULAR PEQUEÑO
-   400px
-========================================= */
-
-@media (max-width: 400px) {
-
-  .header h1 {
-    font-size: 25px;
-  }
-
-  .header p {
-    font-size: 13px;
-  }
-
-  .formulario-datosequipo > p:first-child,
-  .capitan > p:first-child,
-  .integrantes > p:first-child {
-    font-size: 18px;
-  }
-
-  .equipo input,
-  .juego-categoria input,
-  .region input,
-  .capitan input {
-    height: 46px;
-
-    font-size: 13px;
-  }
-
-  .terminos {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  #terminos {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  label[for="terminos"] {
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
+  background-color: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
 }
