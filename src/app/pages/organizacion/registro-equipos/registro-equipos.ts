@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from "@angular/router"; 
 interface Miembro {
   nombre: string;
   posicion: string;
   numero: string;
+}
+interface datos {
+  nombreequipo:string,
+  categoria:string,
+  region:string,
+  nombreCapitan:string,
+  documentoCapitan:string,
+  correoCapitan:string,
 }
 
 @Component({
@@ -13,7 +22,28 @@ interface Miembro {
   styleUrl: './registro-equipos.css',
 })
 export class RegistroEquipos {
+
+  constructor(private router:Router){}
+
+
+  registrarEquipo(){
+    this.router.navigate(['/torneo'],{
+      state:{
+        mensaje:'!equipo registrado correctamento¡'
+      }
+    })
+  }
    
+  dato:datos[]=[
+    {
+  nombreequipo:'',
+  categoria:'',
+  region:'',
+  nombreCapitan:'',
+  documentoCapitan:'',
+  correoCapitan:'',
+    }
+  ]
   miembros: Miembro[] = [
     {
       nombre: '',
@@ -42,4 +72,5 @@ export class RegistroEquipos {
   quitarMiembros(index: number):void{
     this.miembros.splice(index,1);
   }
-}
+  
+  }

@@ -72,9 +72,10 @@
   <section class="auth-form auth-login">
 
     <app-login
-      (irARegistro)="mostrarRegistro()">
+      (irARegistro)="mostrarRegistro()"
+      (abrirRecuperarComponent)="abrirModal()">
     </app-login>
-
+    
   </section>
 
 
@@ -85,9 +86,25 @@
   <section class="auth-form auth-register">
 
     <app-register
-      (irALogin)="mostrarLogin()">
+      (irALogin)="mostrarLogin()" 
+      (irValidadorComponent)="abrirModalValidacion()">
+      
     </app-register>
 
   </section>
-
+  @if (mostrarRestablecer) {
+    <div class="modal-restablecer" (click)="cerrarRecuperar()">
+      <div class="recuperar" (click)="$event.stopImmediatePropagation()">
+        <button class="cerrar-modal" (click)="cerrarRecuperar()">
+          <i class="fa-solid fa-square-xmark"></i>
+        </button>
+        <app-restablecer-component></app-restablecer-component>
+      </div>
+    </div>
+  }
+  @if(mostrarValidador){
+    <div class="modal-validar">
+      <app-validador-componente></app-validador-componente>
+    </div>
+  }
 </div>

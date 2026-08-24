@@ -14,6 +14,7 @@ import { RestablecerComponent } from './pages/usuario/restablecer-component/rest
 import { EquiposComponent } from './pages/torneos/equipos/equipos';
 import { Fixture } from './pages/torneos/fixture/fixture';
 import { InfTorneosComponent } from './pages/torneos/inf-torneos-component/inf-torneos-component';
+import { InscripcionComponente } from './pages/torneos/inscripcion-componente/inscripcion-componente';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -32,6 +33,7 @@ import { Stats } from './pages/stats/stats';
 import { Teams } from './pages/teams/teams';
 import { Privacy } from './pages/privacy/privacy';
 import { FAQ } from './pages/faq/faq';
+import { Navigator } from './layout/navigator/navigator';
 
 
 export const routes: Routes = [
@@ -54,6 +56,10 @@ export const routes: Routes = [
         component: Home,
       },
       {
+        path: 'torneos',
+        component: TorneosComponent,
+      },
+      {
         path: 'torneo',
         component: CreacionTorneo,
       },
@@ -70,16 +76,16 @@ export const routes: Routes = [
         component: Perfil,
       },
       {
-        path: 'notificacion',
-        component:Notificacion
+        path: 'notificaciones',
+        component: Notificacion
       },
       {
         path: 'fondo',
-        component:ConfiguracionFondo
+        component: ConfiguracionFondo
       },
       {
-        path:'tutorial',
-        component:Tutorial
+        path:'tutoriales',
+        component: Tutorial
       },
       {
         path: 'torneos_inscritos',
@@ -152,10 +158,6 @@ export const routes: Routes = [
     component: AuthAnimationComponent,
   },
   {
-    path: 'torneos',
-    component: TorneosComponent,
-  },
-  {
     path: 'restablecer',
     component: RestablecerComponent,
   },
@@ -170,5 +172,21 @@ export const routes: Routes = [
   {
     path:'inf-torneos/:id',
     component: InfTorneosComponent
+  },
+  {
+    path:'inscripcion/:id',
+    component: InscripcionComponente
+  },
+  {
+    path:'torneos_encurso',
+    component:TorneosComponent,
+    data:{modo:'informacion'}
+  },
+  {
+    path:'torneos_activos',
+    component:TorneosComponent,
+    data:{modo:'inscripcion'}
+    path: 'navigator',
+    component: Navigator
   }
 ];

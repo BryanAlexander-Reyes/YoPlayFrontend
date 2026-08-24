@@ -1,18 +1,25 @@
 :host {
-  display: block;
-
+  display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 
+/* =========================================
+   LOGIN FIJO Y CENTRADO
+========================================= */
+
 .login {
   width: 100%;
-  height: 100%;
+  max-width: 460px;
+
+  min-height: 560px;
 
   box-sizing: border-box;
 
-  padding: 50px 55px;
+  margin: auto;
+
+  padding: 45px 40px;
 
   display: flex;
   flex-direction: column;
@@ -24,21 +31,19 @@
 }
 
 
-/* =========================================================
+/* =========================================
    TÍTULO
-   ========================================================= */
+========================================= */
 
 .login-section {
   text-align: center;
-
   margin-bottom: 30px;
 }
-
 
 .login-section h1 {
   margin: 0;
 
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 800;
 
   color: #00d9ff;
@@ -49,32 +54,29 @@
 }
 
 
-/* =========================================================
+/* =========================================
    CAMPOS
-   ========================================================= */
+========================================= */
 
 .form-group {
-  display: flex;
+  width: 100%;
 
+  display: flex;
   flex-direction: column;
 
   gap: 8px;
 
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
-
 .form-group label {
-  font-size: 16px;
-
+  font-size: 15px;
   color: white;
 }
 
-
 .form-group input {
   width: 100%;
-
-  height: 56px;
+  height: 55px;
 
   box-sizing: border-box;
 
@@ -91,12 +93,7 @@
   color: #111;
 
   font-size: 16px;
-
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
 }
-
 
 .form-group input:focus {
   border-color: #00d9ff;
@@ -106,69 +103,50 @@
 }
 
 
-.form-group input::placeholder {
-  color: #516070;
-}
-
-
-/* =========================================================
-   RECUPERAR CONTRASEÑA
-   ========================================================= */
+/* =========================================
+   RECUPERAR
+========================================= */
 
 .recover-password {
   display: flex;
-
   justify-content: flex-end;
 
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
-
 
 .recover-password a {
   color: #00d9ff;
 
   text-decoration: none;
 
-  font-size: 15px;
+  font-size: 14px;
 
   cursor: pointer;
 }
 
 
-.recover-password a:hover {
-  text-decoration: underline;
-}
-
-
-/* =========================================================
-   BOTÓN LOGIN
-   ========================================================= */
+/* =========================================
+   BOTÓN
+========================================= */
 
 .login-button {
   width: 100%;
-
   height: 58px;
 
   border: none;
-
   border-radius: 10px;
 
   background: #0865ff;
 
   color: white;
 
-  font-size: 18px;
-
+  font-size: 17px;
   font-weight: 700;
 
   cursor: pointer;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: 0.2s ease;
 }
-
 
 .login-button:hover {
   background: #0b72ff;
@@ -180,9 +158,9 @@
 }
 
 
-/* =========================================================
+/* =========================================
    REGISTRO
-   ========================================================= */
+========================================= */
 
 .registro {
   display: flex;
@@ -192,11 +170,12 @@
 
   gap: 5px;
 
-  margin: 28px 0;
+  margin: 25px 0;
 
-  font-size: 15px;
+  font-size: 14px;
+
+  text-align: center;
 }
-
 
 .registro a {
   color: #00d9ff;
@@ -205,27 +184,20 @@
 
   text-decoration: none;
 
-  font-weight: 500;
+  font-weight: 600;
 }
 
 
-.registro a:hover {
-  text-decoration: underline;
-}
-
-
-/* =========================================================
+/* =========================================
    GOOGLE
-   ========================================================= */
+========================================= */
 
 .boton {
   width: 100%;
 }
 
-
 .boton-rapido {
   width: 100%;
-
   height: 54px;
 
   display: flex;
@@ -246,22 +218,199 @@
   cursor: pointer;
 
   font-size: 15px;
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
 }
-
-
-.boton-rapido:hover {
-  background: #172234;
-
-  border-color: #00d9ff;
-}
-
 
 .boton-rapido i {
-  font-size: 24px;
+  font-size: 22px;
 
   color: #4285f4;
+}
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  z-index: 9999;
+
+  animation: overlayEntrada 0.3s ease;
+}
+
+
+/* =========================================================
+   COMPONENTE CENTRADO
+========================================================= */
+
+.modal-recuperacion {
+  position: relative;
+
+  width: 100%;
+  max-width: 460px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  border-radius: 18px;
+
+  background: #000;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.7);
+
+  animation: modalEntrada 0.35s ease;
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.cerrar-modal {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 10000;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: white;
+
+  font-size: 26px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.cerrar-modal:hover {
+  background: rgba(255, 255, 255, 0.2);
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes overlayEntrada {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes modalEntrada {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px)
+      scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .modal-overlay {
+    padding: 15px;
+  }
+
+  .modal-recuperacion {
+    max-width: 100%;
+
+    max-height: 92vh;
+
+    border-radius: 15px;
+  }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+  .login {
+    max-width: 430px;
+
+    min-height: 540px;
+
+    padding: 40px 30px;
+  }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 480px) {
+
+  .login {
+    width: calc(100% - 32px);
+
+    max-width: 400px;
+
+    min-height: auto;
+
+    padding: 30px 20px;
+  }
+
+  .login-section h1 {
+    font-size: 30px;
+  }
+
 }

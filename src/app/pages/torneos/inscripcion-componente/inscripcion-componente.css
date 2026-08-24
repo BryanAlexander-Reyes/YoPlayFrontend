@@ -1,0 +1,408 @@
+/* =========================================
+   CONTENEDOR GENERAL INSCRIPCIÓN
+   ========================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+.inscripcion-contenedor {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(28px, 4vw, 50px) clamp(16px, 7vw, 112px);
+  overflow-x: hidden;
+  background: #080b12;
+  color: #ffffff;
+}
+
+/* =========================================
+   HEADER DE LA PÁGINA
+   ========================================= */
+
+.header-section {
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.header-section > h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   INFORMACIÓN DEL TORNEO
+   ========================================= */
+
+.torneo-info {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================
+   CARD PRINCIPAL
+   ========================================= */
+
+.card-contenerdor {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 25px;
+  background: #111722;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================
+   HEADER DE LA CARD
+   ========================================= */
+
+.card-contenerdor > .header {
+  padding: 22px clamp(22px, 4vw, 40px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    135deg,
+    #111722,
+    #151d2c
+  );
+}
+
+.card-contenerdor > .header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   CONTENIDO DE INFORMACIÓN
+   ========================================= */
+
+.cardInformacion {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+  gap: clamp(25px, 4vw, 50px);
+  align-items: center;
+  padding: clamp(25px, 4vw, 45px);
+}
+
+/* =========================================
+   FLYER DEL TORNEO
+   ========================================= */
+
+.flayer {
+  width: 100%;
+  height: clamp(280px, 30vw, 420px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #202a3b;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.flayer img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.flayer:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
+
+.descripcionheader {
+  width: 100%;
+  min-width: 0;
+}
+
+.descripcionheader h1 {
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.descripcionheader p {
+  margin: 0;
+  color: #aeb7c6;
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   DATOS DEL TORNEO
+   ========================================= */
+
+.datos-torneo {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+
+  margin-top: 15px;
+  padding-top: 30px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+   DATO INDIVIDUAL
+   ========================================= */
+
+.dato {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 18px;
+  border-radius: 15px;
+
+  background: #151d2c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.dato:hover {
+  transform: translateY(-4px);
+  background: #192335;
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   ICONOS
+   ========================================= */
+
+.dato > span {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #202a3b;
+  color: #1683ff;
+
+  font-size: 18px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.dato:hover > span {
+  background: #1683ff;
+  color: #ffffff;
+}
+
+.dato div {
+  min-width: 0;
+}
+
+.dato strong {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   PREMIO
+   ========================================= */
+
+.dato.premio {
+  background: linear-gradient(
+    135deg,
+    #1c1b17,
+    #211f18
+  );
+
+  border-color: rgba(245, 158, 11, 0.18);
+}
+
+.dato.premio > span {
+  color: #f59e0b;
+}
+
+.dato.premio:hover > span {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+/* =========================================
+   SECCIÓN REGISTRO EQUIPOS
+   ========================================= */
+
+.registroEquipo {
+  width: 100%;
+  margin-top: 40px;
+  padding: clamp(22px, 4vw, 40px);
+
+  border-radius: 25px;
+
+  background: #111722;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45);
+
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Línea decorativa azul */
+
+.registroEquipo::before {
+  content: "";
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin-bottom: 30px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 14px rgba(22, 131, 255, 0.8);
+
+  animation: ledBlink 1.8s ease-in-out infinite;
+}
+
+.registroEquipo app-registro-equipos {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================
+   ANIMACIÓN LED
+   ========================================= */
+
+@keyframes ledBlink {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    box-shadow:
+      0 0 3px #1683ff;
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 6px #1683ff,
+      0 0 18px rgba(22, 131, 255, 0.95);
+  }
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+  .cardInformacion {
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  }
+
+  .datos-torneo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 750px) {
+
+  .inscripcion-contenedor {
+    padding: 30px 5%;
+  }
+
+  .cardInformacion {
+    grid-template-columns: 1fr;
+  }
+
+  .flayer {
+    height: clamp(280px, 75vw, 400px);
+  }
+
+  .datos-torneo {
+    grid-template-columns: 1fr;
+  }
+
+  .registroEquipo {
+    margin-top: 30px;
+  }
+
+}
+
+/* =========================================
+   CELULAR PEQUEÑO
+   ========================================= */
+
+@media (max-width: 420px) {
+
+  .inscripcion-contenedor {
+    padding-inline: 10px;
+  }
+
+  .header-section > h1 {
+    font-size: 28px;
+  }
+
+  .card-contenerdor {
+    border-radius: 18px;
+  }
+
+  .card-contenerdor > .header {
+    padding: 20px;
+  }
+
+  .cardInformacion {
+    padding: 20px;
+  }
+
+  .registroEquipo {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .dato {
+    padding: 15px;
+  }
+
+}
