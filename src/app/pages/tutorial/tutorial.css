@@ -4,14 +4,15 @@
     height: 520px;
     margin: 50px auto;
     box-sizing: border-box;
-    background: rgba(220,220,220,.95);
+    background: rgba(15, 32, 55, 0.95);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    box-shadow: 0 5px 15px rgba(0, 20, 50, 0.6);
     font-family: Arial, sans-serif;
     color: #111;
     animation: aparecer-tarjeta 550ms ease-out both;
 }
+
 .encabezado {
     width: 100%;
     height: 65px;
@@ -21,20 +22,28 @@
     align-items: center;
     background: #0b3157;
 }
+
 .encabezado button {
     width: 40px;
     height: 40px;
     border: none;
     background: transparent;
-    color: white;
+    color: #ffffff;
     font-size: 30px;
     cursor: pointer;
+    transition: 0.2s;
     transition: transform 180ms ease, color 180ms ease;
 }
 .encabezado button:hover {
     color: #9ed8ff;
     transform: translateX(-4px);
 }
+
+.encabezado button:hover {
+    color: #38b0ff;
+    transform: scale(1.08);
+}
+
 .tarjeta-completas {
     width: 100%;
     height: calc(100% - 65px);
@@ -42,14 +51,25 @@
     box-sizing: border-box;
     overflow-y: auto;
 }
+
 .tutorial {
     position: relative;
     width: 100%;
     margin-bottom: 12px;
     padding: 15px 65px 15px 20px;
     box-sizing: border-box;
-    background: #aaa;
+    background: #1b496e;
+    border: 1px solid rgba(56, 176, 255, 0.25);
     border-radius: 8px;
+    transition: 0.2s;
+}
+
+.tutorial:hover {
+    background: #215b84;
+    box-shadow: 0 3px 10px rgba(0, 20, 50, 0.4);
+}
+
+
     transform-origin: top center;
     animation: aparecer-tutorial 450ms ease-out both;
     transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
@@ -68,14 +88,18 @@
 
 .tutorial h3 {
     margin: 0;
+    color: #ffffff;
     font-size: 17px;
     font-weight: normal;
     line-height: 24px;
 }
+
 .tutorial h3::before {
     content: "•";
     margin-right: 10px;
+    color: #38b0ff;
 }
+
 .boton-tutorial {
     position: absolute;
     top: 12px;
@@ -85,16 +109,20 @@
     padding: 0;
     border: none;
     border-radius: 6px;
-    background: #777;
-    color: #222;
+    background: #2196f3;
+    color: #ffffff;
     font-size: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.2s;
     transition: background-color 180ms ease, color 180ms ease, transform 220ms ease;
 }
+
 .boton-tutorial:hover {
+    background: #38b0ff;
+    transform: scale(1.05);
     background: #666;
     color: white;
     transform: scale(1.08);
@@ -104,15 +132,17 @@
     color: white;
     transform: rotate(180deg);
 }
+
 .video-tutorial {
     width: 100%;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid rgba(0,0,0,.2);
+    border-top: 1px solid rgba(56, 176, 255, 0.35);
     box-sizing: border-box;
     transform-origin: top;
     animation: desplegar-video 350ms cubic-bezier(.2,.75,.3,1) both;
 }
+
 .video-tutorial video {
     width: 100%;
     max-width: 850px;
@@ -120,6 +150,8 @@
     display: block;
     margin: 0 auto;
     border-radius: 10px;
+    background: #061522;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     background: #000;
     animation: aparecer-video 450ms ease-out 80ms both;
 }
@@ -148,22 +180,28 @@
         transition-duration: 1ms !important;
     }
 }
+
 @media (max-width: 700px) {
+
     .general-card {
         width: 94%;
         height: 550px;
         margin: 25px auto;
     }
+
     .tarjeta-completas {
         padding: 20px 15px;
     }
+
     .tutorial {
         padding-left: 15px;
         padding-right: 55px;
     }
+
     .tutorial h3 {
         font-size: 14px;
     }
+
     .video-tutorial video {
         height: 230px;
     }

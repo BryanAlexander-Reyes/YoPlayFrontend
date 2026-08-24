@@ -2,8 +2,8 @@
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    background: rgba(105,104,104,0.86);
-    color: #111;
+    background: rgba(0,0,0,0.86);
+    color: #ffffff;
     font-family: Arial, sans-serif;
 }
 .header {
@@ -13,8 +13,8 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
-    background: #050505;
-    color: white;
+    background: #000000;
+    color: #ffffff;
 }
 .header h1 {
     margin: 0;
@@ -33,20 +33,20 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,.35);
+    background: rgba(255,255,255,.05);
 }
 .sub-header h2 {
     margin: 0;
     font-size: 30px;
     font-weight: bold;
-    color: #111;
+    color: #ffffff;
 }
 .card-secundaria > p {
     margin: 0;
     padding: 12px 18px;
     font-size: 18px;
     line-height: 1.4;
-    color: #111;
+    color: #cccccc;
 }
 .card-central {
     position: relative;
@@ -56,26 +56,28 @@
     padding: 22px 30px 30px;
     box-sizing: border-box;
     border-radius: 18px;
-    background: rgba(235,235,235,.94);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(0,217,232,.3);
     box-shadow: 0 3px 8px rgba(0,0,0,.12);
 }
 .card-central > h3 {
     margin: 0 0 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #111;
+    color: #ffffff;
 }
 .notificaciones-torneo,
 .notificaciones-personalizadas,
 .notificaciones-productos {
     position: relative;
     width: 100%;
-    height:150px;
+    height: 150px;
     box-sizing: border-box;
     margin-bottom: 9px;
     padding: 10px 60px 10px 16px;
     border-radius: 14px;
-    background: #fff;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(0,217,232,.3);
     box-shadow: 0 1px 4px rgba(0,0,0,.06);
 }
 .notificaciones-productos {
@@ -87,7 +89,7 @@
     margin: 0 0 3px;
     font-size: 17px;
     font-weight: bold;
-    color: #111;
+    color: #00d9e8;
 }
 .notificaciones-torneo p,
 .notificaciones-personalizadas p,
@@ -95,7 +97,7 @@
     margin: 0;
     font-size: 14px;
     line-height: 1.4;
-    color: #111;
+    color: #cccccc;
 }
 .card-central > .switch {
     top: 18px;
@@ -124,7 +126,7 @@
     inset: 0;
     cursor: pointer;
     border-radius: 20px;
-    background: #707070;
+    background: #555555;
     transition: .25s;
 }
 .slider::before {
@@ -135,14 +137,15 @@
     left: 2px;
     top: 2px;
     border-radius: 50%;
-    background: white;
+    background: #ffffff;
     transition: .25s;
 }
 .switch input:checked + .slider {
-    background: #30c765;
+    background: #00d9e8;
 }
 .switch input:checked + .slider::before {
     transform: translateX(17px);
+    background: #ffffff;
 }
 @media (max-width: 700px) {
     .header {

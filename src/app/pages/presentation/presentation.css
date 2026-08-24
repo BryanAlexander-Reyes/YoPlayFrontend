@@ -144,3 +144,21 @@
     margin: 0;
     background: transparent;
 }
+.mensaje-registro {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 280px;
+  padding: 14px 25px;
+  border-radius: 0 0 10px 10px;
+  background: #119bf0;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,.35);
+  animation: desplegar .4s ease;
+}
+

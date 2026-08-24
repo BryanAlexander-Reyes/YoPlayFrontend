@@ -2,11 +2,11 @@
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    background: rgba(105, 104, 104, 0.5);
+    background: rgba(0,0,0,0.86);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #111;
+    color: #ffffff;
     font-family: Arial, sans-serif;
     animation: pageFadeIn 0.45s ease both;
 }
@@ -17,8 +17,8 @@
     padding: 0 60px;
     display: flex;
     align-items: center;
-    background: #050505;
-    color: white;
+    background: #000000;
+    color: #ffffff;
     animation: headerSlideIn 0.5s ease both;
 }
 .header h1 {
@@ -33,14 +33,14 @@
     padding: 0 60px;
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,.35);
+    background: rgba(255,255,255,.05);
     animation: sectionReveal 0.5s 0.08s ease both;
 }
 .sub-header h2 {
     margin: 0;
     font-size: 23px;
     font-weight: 500;
-    color: #111;
+    color: #ffffff;
 }
 .card-secundaria {
     width: calc(100% - 80px);
@@ -52,7 +52,7 @@
     margin: 0 0 20px;
     font-size: 14px;
     line-height: 1.5;
-    color: #111;
+    color: #cccccc;
 }
 .card-modo-oscuro {
     position: relative;
@@ -61,7 +61,8 @@
     margin-bottom: 20px;
     padding: 30px 30px 35px;
     border-radius: 22px;
-    background: rgba(210,210,210,.88);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(0,217,232,.3);
     box-shadow: 0 4px 9px rgba(0,0,0,.18);
     animation: cardReveal 0.55s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -69,20 +70,20 @@
 .card-modo-oscuro:hover,
 .card-fondo-dinamico:hover {
     transform: translateY(-4px);
-    box-shadow: 0 9px 18px rgba(0,0,0,.22);
+    box-shadow: 0 9px 18px rgba(0,217,232,.18);
 }
 .card-modo-oscuro h2 {
     margin: 0 0 20px;
     font-size: 25px;
     font-weight: bold;
-    color: #111;
+    color: #00d9e8;
 }
 .card-modo-oscuro > p {
     width: 100%;
     margin: 0;
     font-size: 15px;
     line-height: 1.55;
-    color: #111;
+    color: #cccccc;
 }
 .card-modo-oscuro img {
     width: 250px;
@@ -107,7 +108,6 @@
     border-radius: 9px;
     box-shadow: 0 4px 9px rgba(0,0,0,.3);
 }
-
 .card-modo-oscuro > img:last-child {
     margin-right: 0;
 }
@@ -118,7 +118,8 @@
     max-height: 190px;
     padding: 30px;
     border-radius: 22px;
-    background: rgba(210,210,210,.88);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(0,217,232,.3);
     box-shadow: 0 4px 9px rgba(0,0,0,.18);
     animation: cardReveal 0.55s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -127,13 +128,13 @@
     margin: 0 0 20px;
     font-size: 25px;
     font-weight: bold;
-    color: #111;
+    color: #00d9e8;
 }
 .card-fondo-dinamico > p {
     margin: 0;
     font-size: 15px;
     line-height: 1.55;
-    color: #111;
+    color: #cccccc;
 }
 .switch {
     position: absolute;
@@ -153,7 +154,7 @@
     inset: 0;
     cursor: pointer;
     border-radius: 30px;
-    background: #f7f5f5;
+    background: #555555;
     transition: background-color .25s ease, box-shadow .25s ease;
 }
 .slider::before {
@@ -164,37 +165,32 @@
     left: 2px;
     top: 2px;
     border-radius: 50%;
-    background: rgb(2, 1, 1);
+    background: #ffffff;
     transition: transform .25s ease, background-color .25s ease;
 }
 .switch input:checked + .slider {
-    background: #0ceb31;
+    background: #00d9e8;
 }
 .switch input:checked + .slider::before {
     transform: translateX(27px);
-    background: rgb(231, 225, 225);
+    background: #ffffff;
 }
-
 @keyframes pageFadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 @keyframes headerSlideIn {
     from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes sectionReveal {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes cardReveal {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @media (prefers-reduced-motion: reduce) {
     .general-card,
     .header,
@@ -204,13 +200,11 @@
         animation: none;
         transition: none;
     }
-
     .card-modo-oscuro:hover,
     .card-fondo-dinamico:hover {
         transform: none;
     }
 }
-
 @media (max-width: 700px) {
     .card-secundaria {
         width: calc(100% - 30px);
