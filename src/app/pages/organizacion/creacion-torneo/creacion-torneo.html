@@ -5,123 +5,98 @@
     <span></span>
     <p>Completa los datos para crear un torneo</p>
   </div>
+  @if (mostrarMensaje) {
+    <div class="mensaje-registro">
+      <span>✓</span>
+      {{ mensaje }}
+    </div>
+  }
   <div class="formulario">
-
     <div class="form-group lugar">
       <label>Lugar de Encuentro</label>
       <span></span>
-      <input type="text" placeholder="Ingrese el lugar de Encuentro">
+      <input type="text" [(ngModel)]="lugar" placeholder="Ingrese el lugar de Encuentro">
     </div>
-<div class="premiaciones-list">
-
-  @for (premiacion of premiaciones; track $index) {
-    <div class="form-group premiacion">
-      <div class="premiacion-header">
-        <label>Premiación</label>
-        <span></span>
-      </div>
-      <div class="premiacion-input">
-        <input
-          type="text"
-          [(ngModel)]="premiacion.premiacion"
-          placeholder="Ingrese la premiación"
-        >
-        @if ($index === 0) {
-          <button
-            type="button"
-            class="btn-agregar"
-            (click)="agregarpremio()">
-            +
-          </button>
-        }
-        @if (premiaciones.length > 1) {
-          <button
-            type="button"
-            class="btn-eliminar"
-            (click)="quitarpremiacion($index)">
-            −
-          </button>
-        }
-      </div>
+    <div class="premiaciones-list">
+      @for (premiacion of premiaciones; track $index) {
+        <div class="form-group premiacion">
+          <div class="premiacion-header">
+            <label>Premiación</label>
+            <span></span>
+          </div>
+          <div class="premiacion-input">
+            <input type="text" [(ngModel)]="premiacion.premiacion" placeholder="Ingrese la premiación">
+            @if ($index === 0) {
+              <button type="button" class="btn-agregar" (click)="agregarpremio()">+</button>
+            }
+            @if (premiaciones.length > 1) {
+              <button type="button" class="btn-eliminar" (click)="quitarpremiacion($index)">−</button>
+            }
+          </div>
+        </div>
+      }
     </div>
-  }
-</div>
     <div class="form-group deporte">
       <label>Tipo de Deporte</label>
       <span></span>
- @for (deporte of deportes; track $index) {
-    <select [(ngModel)]="deporte.deporte">
-        <option value="">Seleccione un deporte</option>
-
-        @for (opcion of opcionesDeportes; track opcion) {
-            <option [value]="opcion">
-                {{ opcion }}
-            </option>
-        }
-    </select>
-}
+      @for (deporte of deportes; track $index) {
+        <select [(ngModel)]="deporte.deporte">
+          <option value="">Seleccione un deporte</option>
+          @for (opcion of opcionesDeportes; track opcion) {
+            <option [value]="opcion">{{ opcion }}</option>
+          }
+        </select>
+      }
     </div>
-
-<div class="form-group divisiones">
-    <label>Divisiones</label>
-    <span></span>
-     @for (divicion of diviciones; track $index) {
-    <select [(ngModel)]="divicion.etapa">
-        <option value="">Seleccione un division</option>
-
-        @for (opcion of opciondivision; track opcion) {
-            <option [value]="opcion">
-                {{ opcion }}
-            </option>
+    <div class="form-group divisiones">
+      <label>Divisiones</label>
+      <span></span>
+      @for (divicion of diviciones; track $index) {
+        <select [(ngModel)]="divicion.etapa">
+          <option value="">Seleccione una división</option>
+          @for (opcion of opciondivision; track opcion) {
+            <option [value]="opcion">{{ opcion }}</option>
+          }
+        </select>
+        @if (divicion.etapa === 'grupos') {
+          <div class="cantidad_grupos">
+            <label>Cantidad de grupos</label>
+            <input type="number" min="2" max="8" step="2" placeholder="Ingrese la cantidad de grupos" [(ngModel)]="divicion.cantidad_grupos">
+            @if (divicion.cantidad_grupos !== null && (divicion.cantidad_grupos < 2 || divicion.cantidad_grupos > 8 || divicion.cantidad_grupos % 2 !== 0)) {
+              <small class="error-grupo">La cantidad debe ser un número par entre 2 y 8.</small>
+            }
+          </div>
         }
-    </select>
-    @if(divicion.etapa==='grupos'){
-  <div class="cantidad_grupos">
-    <label>cantidad de grupos</label>
-      <input type="number" min="2" max="8"  step="2" placeholder="ingrese la cantidad de equipo min 2 max 8 pares">
-  </div>
-}
-}
-
-</div>
-
-<div class="form-group-flayer">
-    <label>Imagen del torneo</label>
-    <input type="file" accept="image/*">
-</div>
-
-
-<div class="form-group cantidad">
-    <label>Cantidad de Equipos</label>
-    <span></span>
-
-    <div class="contador">
+      }
+    </div>
+    <div class="form-group-flayer">
+      <label>Imagen del torneo</label>
+      <input type="file" accept="image/*" (change)="seleccionarFlayer($event)">
+    </div>
+    <div class="form-group cantidad">
+      <label>Cantidad de Equipos</label>
+      <span></span>
+      <div class="contador">
         <button type="button" (click)="restarcontador()">−</button>
-       <input type="number" value="{{ contador }}">
+        <input type="number" [(ngModel)]="contador" readonly>
         <button type="button" (click)="sumarcontador()">+</button>
+      </div>
     </div>
-</div>
-
     <div class="form-group objetivo">
       <label>Objetivo</label>
       <span></span>
-      <textarea placeholder="Escribe el objetivo"></textarea>
+      <textarea [(ngModel)]="objetivo" placeholder="Escribe el objetivo"></textarea>
     </div>
-
     <div class="form-group fechas">
-
-      <label>Fecha de Inicio y Fin</label>
-
+      <label>Fecha y Hora de Inicio y Fin</label>
+      <span></span>
       <div class="input-fechas">
-        <input type="date">
-        <input type="date">
+        <input type="datetime-local" [(ngModel)]="fechaInicio">
+        <input type="datetime-local" [(ngModel)]="fechaFin">
       </div>
-
     </div>
-  </div>
-  <div class="campo-fecha">
   </div>
   <div class="fin-formun">
-    <button> 🏆 Crear Torneo</button>
+    <button type="button" (click)="crearTorneo()">🏆 Crear Torneo</button>
   </div>
 </section>
