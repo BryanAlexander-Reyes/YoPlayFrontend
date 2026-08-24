@@ -15,7 +15,8 @@
   box-sizing: border-box;
 
   background:
-    radial-gradient(
+  transparent
+    /* radial-gradient(
       circle at 20% 20%,
       rgba(0, 229, 255, 0.08),
       transparent 30%
@@ -29,7 +30,7 @@
       135deg,
       #05070c,
       #07111f
-    );
+    ); */
 }
 
 

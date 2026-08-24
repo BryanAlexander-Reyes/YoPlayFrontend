@@ -14,6 +14,7 @@ import { RestablecerComponent } from './pages/usuario/restablecer-component/rest
 import { EquiposComponent } from './pages/torneos/equipos/equipos';
 import { Fixture } from './pages/torneos/fixture/fixture';
 import { InfTorneosComponent } from './pages/torneos/inf-torneos-component/inf-torneos-component';
+import { InscripcionComponente } from './pages/torneos/inscripcion-componente/inscripcion-componente';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -173,6 +174,18 @@ export const routes: Routes = [
     component: InfTorneosComponent
   },
   {
+    path:'inscripcion/:id',
+    component: InscripcionComponente
+  },
+  {
+    path:'torneos_encurso',
+    component:TorneosComponent,
+    data:{modo:'informacion'}
+  },
+  {
+    path:'torneos_activos',
+    component:TorneosComponent,
+    data:{modo:'inscripcion'}
     path: 'navigator',
     component: Navigator
   }

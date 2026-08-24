@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, Validators } from '@angular/forms';
 import { ValidadorComponente } from '../../validador-componente/validador-componente';
 
 @Component({
@@ -17,10 +17,31 @@ export class RestablecerComponent {
   codigoVerificado = false;
 
   restablecer(): void {
+    if(!this.correo){
+      alert('Ingrese un correo');
+      return;
+    }
     this.emailVerificado = true;
   }
 
   confirmarCodigo(): void {
     this.codigoVerificado = true;
+  }
+
+  nuevaContrasena():void{
+    if(!this.contrasena){
+      alert('ingresa Contraseña')
+      return;
+    }
+    if(this.contrasena !==this.verificacionContrasena){
+      alert('La contraseña no coincide')
+      return;
+    }
+    const datos={
+      correo: this.correo,
+      contrasena:this.contrasena
+    };
+
+    console.log(datos);
   }
 }

@@ -65,8 +65,8 @@
           </div>
         </div>
 
-        <button class="btn-participar" (click)="verInfTorneos(torneos[torneoActual].id)">
-          Ver torneo
+        <button class="btn-participar" (click)="accionTorneo(torneos[torneoActual].id)">
+          {{modo=== 'informacion'? 'Ver información':'Inscribete'}}
         </button>
       </div>
     </div>
@@ -104,8 +104,8 @@
         <div class="torneo-flyer">
           <img [src]="torneo.imagen" [alt]="torneo.titulo" />
 
-          <div class="flyer-overlay" (click)="verInfTorneos(torneo.id)">
-            <span> VER INFORMACIÓN </span>
+          <div class="flyer-overlay" (click)="accionTorneo(torneo.id)">
+            <span> {{modo==='informacion'? 'ver informacion ': ' inscribete'}} </span>
           </div>
         </div>
 

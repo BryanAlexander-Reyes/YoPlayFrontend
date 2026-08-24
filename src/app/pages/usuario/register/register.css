@@ -1,10 +1,18 @@
+/* =========================================================
+   HOST
+========================================================= */
+
 :host {
   display: block;
-
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
 
 .register-form-container {
   width: 100%;
@@ -12,43 +20,52 @@
 
   box-sizing: border-box;
 
-  padding: 45px 60px;
-
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  padding: 30px;
 
   background: #000;
-
   color: white;
 
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
 /* =========================================================
-   FORMULARIO
-   ========================================================= */
+   FORMULARIO FIJO
+========================================================= */
 
 .formulario {
-  width: 100%;
-  max-width: 430px;
+  width: 460px;
+  max-width: 460px;
+
+  flex: 0 0 460px;
+
   margin: auto;
+
+  box-sizing: border-box;
 }
 
 
+/* =========================================================
+   TÍTULO
+========================================================= */
+
 .register-card1 {
+  width: 100%;
+
   text-align: center;
 
   margin-bottom: 28px;
 }
 
-
 .register-card1 h1 {
   margin: 0 0 8px;
 
-  font-size: 38px;
-
+  font-size: 36px;
   font-weight: 800;
 
   color: #00d9ff;
@@ -58,23 +75,25 @@
     0 0 15px rgba(0, 217, 255, 0.3);
 }
 
-
 .register-card1 p {
   margin: 0;
 
   color: #b8c7db;
 
   font-size: 15px;
+
+  line-height: 1.5;
 }
 
 
 /* =========================================================
    CAMPOS
-   ========================================================= */
+========================================================= */
 
 .register-form {
-  display: flex;
+  width: 100%;
 
+  display: flex;
   flex-direction: column;
 
   gap: 8px;
@@ -83,18 +102,30 @@
 }
 
 
-.register-form label {
-  font-size: 16px;
+/* =========================================================
+   LABELS
+========================================================= */
 
-  color: white;
+.register-form label {
+  display: block;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  color: #ffffff;
 }
 
+
+/* =========================================================
+   INPUTS Y SELECT
+========================================================= */
 
 .register-form input,
 .register-form select {
   width: 100%;
 
-  height: 52px;
+  height: 54px;
 
   box-sizing: border-box;
 
@@ -112,31 +143,76 @@
 
   font-size: 16px;
 
+  font-family: inherit;
+
   transition:
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.register-form input::placeholder {
+  color: #516070;
+  opacity: 1;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
 
 .register-form input:focus,
 .register-form select:focus {
   border-color: #00d9ff;
 
   box-shadow:
-    0 0 0 2px rgba(0, 217, 255, 0.12);
+    0 0 0 2px rgba(0, 217, 255, 0.12),
+    0 0 12px rgba(0, 217, 255, 0.08);
 }
 
 
-.register-form input::placeholder {
+/* =========================================================
+   SELECT
+========================================================= */
+
+.register-form select {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FECHA
+========================================================= */
+
+.register-form input[type="date"] {
+  cursor: pointer;
+
+  color: #111;
+}
+
+
+/*
+   Cuando todavía no hay fecha seleccionada,
+   el navegador puede mostrar el formato de fecha.
+*/
+
+.register-form input[type="date"]::-webkit-datetime-edit {
   color: #516070;
 }
 
 
 /* =========================================================
-   VOLVER A LOGIN
-   ========================================================= */
+   VOLVER AL LOGIN
+========================================================= */
 
 .volver-login {
+  width: 100%;
+
   display: flex;
 
   justify-content: center;
@@ -146,9 +222,14 @@
 
   margin: 12px 0 22px;
 
-  font-size: 15px;
+  font-size: 14px;
+
+  text-align: center;
 }
 
+.volver-login span {
+  color: #d1d5db;
+}
 
 .volver-login a {
   color: #00d9ff;
@@ -157,23 +238,26 @@
 
   cursor: pointer;
 
-  font-weight: 500;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
 }
 
-
 .volver-login a:hover {
+  color: #5de7ff;
+
   text-decoration: underline;
 }
 
 
 /* =========================================================
    BOTÓN SIGUIENTE / REGISTRARSE
-   ========================================================= */
+========================================================= */
 
 .siguiente-button {
   width: 100%;
 
-  height: 56px;
+  height: 58px;
 
   border: none;
 
@@ -195,7 +279,6 @@
     background 0.2s ease;
 }
 
-
 .siguiente-button:hover {
   background: #0b72ff;
 
@@ -205,12 +288,18 @@
     0 8px 20px rgba(0, 102, 255, 0.35);
 }
 
+.siguiente-button:active {
+  transform: translateY(0);
+}
+
 
 /* =========================================================
    TÉRMINOS
-   ========================================================= */
+========================================================= */
 
 .terminos {
+  width: 100%;
+
   display: flex;
 
   align-items: center;
@@ -222,23 +311,26 @@
   font-size: 14px;
 
   color: #d2dbea;
-}
 
+  line-height: 1.4;
+}
 
 .terminos input {
   width: 16px;
   height: 16px;
+
+  flex-shrink: 0;
+
+  margin: 0;
 
   accent-color: #0865ff;
 
   cursor: pointer;
 }
 
-
 .terminos label {
   cursor: pointer;
 }
-
 
 .terminos a {
   color: #00d9ff;
@@ -246,29 +338,18 @@
   text-decoration: none;
 }
 
-
 .terminos a:hover {
   text-decoration: underline;
 }
 
 
 /* =========================================================
-   SELECT
-   ========================================================= */
-
-.register-form select {
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   SCROLL
-   ========================================================= */
+   SCROLLBAR
+========================================================= */
 
 .register-form-container::-webkit-scrollbar {
   width: 6px;
 }
-
 
 .register-form-container::-webkit-scrollbar-thumb {
   background: #00d9ff;
@@ -276,7 +357,241 @@
   border-radius: 20px;
 }
 
-
 .register-form-container::-webkit-scrollbar-track {
   background: transparent;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .register-form-container {
+    padding: 30px 20px;
+  }
+
+  .formulario {
+    width: 430px;
+
+    max-width: 430px;
+
+    flex-basis: 430px;
+  }
+
+  .register-card1 h1 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .register-form-container {
+    padding: 25px 16px;
+
+    align-items: center;
+  }
+
+
+  .formulario {
+    width: 100%;
+
+    max-width: 100%;
+
+    flex: 0 1 auto;
+  }
+
+
+  /* TÍTULO */
+
+  .register-card1 {
+    margin-bottom: 24px;
+  }
+
+  .register-card1 h1 {
+    font-size: 29px;
+  }
+
+  .register-card1 p {
+    font-size: 13px;
+  }
+
+
+  /* CAMPOS */
+
+  .register-form {
+    margin-bottom: 17px;
+  }
+
+  .register-form label {
+    font-size: 14px;
+  }
+
+  .register-form input,
+  .register-form select {
+    height: 52px;
+
+    padding: 0 14px;
+
+    font-size: 15px;
+  }
+
+
+  /* VOLVER LOGIN */
+
+  .volver-login {
+    margin: 12px 0 20px;
+
+    font-size: 13px;
+
+    flex-wrap: wrap;
+  }
+
+
+  /* TÉRMINOS */
+
+  .terminos {
+    font-size: 13px;
+
+    align-items: flex-start;
+  }
+
+
+  /* BOTÓN */
+
+  .siguiente-button {
+    height: 54px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .register-form-container {
+    padding: 20px 14px;
+  }
+
+  .register-card1 h1 {
+    font-size: 27px;
+  }
+
+  .register-form input,
+  .register-form select {
+    height: 50px;
+  }
+
+  .siguiente-button {
+    height: 52px;
+  }
+}
+/* =========================================================
+   ANIMACIÓN DE LOS FORMULARIOS
+========================================================= */
+
+.formulario {
+  animation: aparecerFormulario 0.45s ease-out;
+}
+
+@keyframes aparecerFormulario {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================================================
+   BOTÓN REGRESAR AL FORMULARIO 1
+========================================================= */
+
+.volver-formulario {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 12px;
+
+  border: 1px solid #00d9ff;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #00d9ff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.volver-formulario:hover {
+  background: rgba(0, 217, 255, 0.10);
+  color: #ffffff;
+
+  transform: translateX(-3px);
+
+  box-shadow:
+    0 0 12px rgba(0, 217, 255, 0.20);
+}
+
+.volver-formulario:active {
+  transform: translateX(0);
+}
+
+
+/* Flecha del botón */
+
+.volver-formulario .flecha {
+  font-size: 22px;
+  line-height: 1;
+
+  transition: transform 0.2s ease;
+}
+
+.volver-formulario:hover .flecha {
+  transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   ANIMACIÓN PARA EL BOTÓN EN CELULAR
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .volver-formulario {
+    height: 50px;
+    font-size: 15px;
+  }
+
+  .volver-formulario .flecha {
+    font-size: 20px;
+  }
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TorneosService, Torneo } from '../../../services/auth-services-torneosCurso';
 
 @Component({
@@ -12,16 +12,24 @@ import { TorneosService, Torneo } from '../../../services/auth-services-torneosC
 export class TorneosComponent implements OnInit {
   torneos: Torneo[] = [];
   torneoActual: number = 0;
+  modo: string = 'informacion';
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private torneosService: TorneosService,
   ) {}
   ngOnInit(): void {
     this.torneos = this.torneosService.obtenerTorneos();
+    // capturar la ruta del modo enviado
+    this.modo =this.activatedRoute.snapshot.data['modo']||'informacion';
   }
-  verInfTorneos(id: number): void {
-    this.router.navigate(['/inf-torneos', id]);
+  accionTorneo(id: number): void {
+    if (this.modo === 'informacion') {
+      this.router.navigate(['/inf-torneos',id]);
+    }else if (this.modo === 'inscripcion'){
+      this.router.navigate(['/inscripcion',id]);
+    }
   }
 
   siguiente(): void {
