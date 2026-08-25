@@ -1,11 +1,13 @@
-/* =========================================
-   FIXTURE - CONTENEDOR GENERAL
-   ========================================= */
+/* =========================================================
+   HOST
+   ========================================================= */
 
 :host {
   display: block;
   width: 100%;
-  max-width: 100%;
+  min-height: 100%;
+  background: #080b12;
+  color: #ffffff;
   overflow-x: hidden;
 }
 
@@ -14,118 +16,416 @@
   box-sizing: border-box;
 }
 
+
+/* =========================================================
+   TABS ANGULAR MATERIAL
+   ========================================================= */
+
+:host ::ng-deep .mat-mdc-tab-group {
+  width: 100%;
+  background: #080b12;
+  color: #ffffff;
+}
+
+
+/* Barra completa de tabs */
+
+:host ::ng-deep .mat-mdc-tab-header {
+  position: relative;
+  background:
+    linear-gradient(
+      135deg,
+      #0d131e,
+      #0a0f18
+    );
+
+  border-bottom: 1px solid #202a3b;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35),
+    inset 0 -1px 0 rgba(22, 131, 255, 0.08);
+}
+
+
+/* Contenedor interno */
+
+:host ::ng-deep .mat-mdc-tab-label-container {
+  border-bottom: none;
+}
+
+
+/* Cada tab */
+
+:host ::ng-deep .mat-mdc-tab {
+  position: relative;
+
+  min-width: 180px;
+  height: 54px;
+
+  color: #5f6b7d !important;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+
+/* Hover */
+
+:host ::ng-deep .mat-mdc-tab:hover {
+  color: #b9c6d8 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 131, 255, 0.04),
+      transparent
+    );
+}
+
+
+/* Tab activo */
+
+:host ::ng-deep .mat-mdc-tab.mdc-tab--active {
+  color: #ffffff !important;
+
+  text-shadow:
+    0 0 8px rgba(22, 131, 255, 0.7),
+    0 0 16px rgba(22, 131, 255, 0.3);
+}
+
+
+/* Indicador azul */
+
+:host ::ng-deep .mat-mdc-tab-indicator {
+  height: 2px !important;
+}
+
+
+/* Línea activa */
+
+:host ::ng-deep .mat-mdc-tab-indicator__content {
+  background: #1683ff !important;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px #1683ff,
+    0 0 25px rgba(22, 131, 255, 0.7);
+
+  animation: ledTab 2s ease-in-out infinite;
+}
+
+
+@keyframes ledTab {
+  0%,
+  100% {
+    opacity: 0.7;
+    box-shadow:
+      0 0 5px #1683ff,
+      0 0 12px #1683ff;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 6px #1683ff,
+      0 0 15px #1683ff,
+      0 0 28px rgba(22, 131, 255, 0.8);
+  }
+}
+
+
+/* =========================================================
+   CONTENEDOR DEL TAB
+   ========================================================= */
+
+:host ::ng-deep .mat-mdc-tab-body-wrapper {
+  background: #080b12;
+}
+
+
+:host ::ng-deep .mat-mdc-tab-body-content {
+  overflow-x: hidden !important;
+}
+
+
+/* =========================================================
+   TABLA DE POSICIONES
+   ========================================================= */
+
+.tabla-puntajes {
+  position: relative;
+
+  width: min(1450px, calc(100% - 36px));
+
+  margin: 25px auto 30px;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111722,
+      #0b111b
+    );
+
+  border: 1px solid #202a3b;
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   BORDE LED DE LA TABLA
+   ========================================================= */
+
+.tabla-puntajes::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+  right: 8%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #1683ff 20%,
+      #1683ff 80%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 6px #1683ff,
+    0 0 15px rgba(22, 131, 255, 0.7),
+    0 0 30px rgba(22, 131, 255, 0.35);
+
+  animation: ledSuperior 2.5s ease-in-out infinite;
+}
+
+
+@keyframes ledSuperior {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   COMPONENTE DE TABLA
+   ========================================================= */
+
+.tabla-puntajes app-puntaje-component {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   PAGINA DEL FIXTURE
+   ========================================================= */
+
 .fixture-pagina {
   width: 100%;
   min-height: 100vh;
-  padding: clamp(25px, 4vw, 50px)
-           clamp(12px, 5vw, 80px);
+
+  padding:
+    30px
+    clamp(18px, 4vw, 65px)
+    45px;
 
   background: #080b12;
-  color: #fff;
+
+  color: #ffffff;
 
   overflow-x: hidden;
 }
 
 
-/* =========================================
+/* =========================================================
    HEADER DEL FIXTURE
-   ========================================= */
+   ========================================================= */
 
 .fixture-header {
+  position: relative;
+
   width: 100%;
   max-width: 1450px;
-  margin: 0 auto 35px;
+
+  margin: 0 auto 28px;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   gap: 30px;
 
-  padding-bottom: 25px;
+  padding: 22px 25px;
 
-  border-bottom: 1px solid #202a3b;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 23, 34, 0.98),
+      rgba(10, 15, 24, 0.98)
+    );
+
+  border: 1px solid #202a3b;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
 }
 
-.fixture-header > div {
-  min-width: 0;
+
+/* Línea LED del header */
+
+.fixture-header::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+  right: 10%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #1683ff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px #1683ff,
+    0 0 18px rgba(22, 131, 255, 0.6);
 }
+
 
 .fixture-header .header {
-  margin: 0 0 7px;
+  margin: 0 0 6px;
 
   color: #1683ff;
 
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
 
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.7px;
 
   text-shadow:
-    0 0 8px rgba(22, 131, 255, 0.45);
+    0 0 8px rgba(22, 131, 255, 0.5);
 }
+
 
 .fixture-header h1 {
   margin: 0;
 
-  color: #fff;
+  color: #ffffff;
 
   font-size: clamp(27px, 3vw, 38px);
+
   font-weight: 800;
+
   line-height: 1.1;
 }
 
+
 .fixture-header .informacion {
-  margin: 10px 0 0;
+  margin: 9px 0 0;
 
   color: #8e99aa;
 
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+
+  line-height: 1.5;
 }
 
 
-/* =========================================
+/* =========================================================
    BOTON FINALIZAR
-   ========================================= */
+   ========================================================= */
 
 .finalizar {
+  position: relative;
+
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  gap: 8px;
+  gap: 9px;
 
-  padding: 11px 17px;
+  min-height: 42px;
 
-  border: 1px solid rgba(22, 131, 255, 0.45);
-  border-radius: 10px;
+  padding: 10px 17px;
+
+  border: 1px solid rgba(22, 131, 255, 0.4);
+
+  border-radius: 9px;
 
   background: #0d131e;
-  color: #d5dbe4;
 
-  font-size: 12px;
-  font-weight: 700;
+  color: #cbd3df;
+
+  font-size: 11px;
+
+  font-weight: 800;
 
   cursor: pointer;
 
   transition:
+    transform 0.25s ease,
     background 0.25s ease,
     border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+    box-shadow 0.25s ease;
 }
+
 
 .finalizar span {
   color: #1683ff;
-  font-size: 18px;
 
-  transition: transform 0.3s ease;
+  font-size: 19px;
+
+  transition:
+    transform 0.3s ease;
 }
+
 
 .finalizar:hover {
   transform: translateY(-2px);
@@ -134,23 +434,22 @@
 
   border-color: #1683ff;
 
-  color: #fff;
+  color: #ffffff;
 
   box-shadow:
-    0 0 10px rgba(22, 131, 255, 0.15),
-    0 0 25px rgba(22, 131, 255, 0.08);
+    0 0 8px rgba(22, 131, 255, 0.25),
+    0 0 20px rgba(22, 131, 255, 0.12);
 }
+
 
 .finalizar:hover span {
   transform: rotate(-180deg);
 }
 
 
-/* =========================================
+/* =========================================================
    CONTENEDOR DEL FIXTURE
-   (relative: aloja el <svg> absoluto de los
-   conectores, que se dibuja por JS)
-   ========================================= */
+   ========================================================= */
 
 .fixture-Torneo {
   position: relative;
@@ -165,7 +464,22 @@
 
   gap: 0;
 
-  padding: 25px 0 35px;
+  padding: 25px 25px 35px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 19, 30, 0.98),
+      rgba(8, 12, 20, 0.98)
+    );
+
+  border: 1px solid #202a3b;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
 
   overflow-x: auto;
   overflow-y: visible;
@@ -175,86 +489,93 @@
 }
 
 
+/* =========================================================
+   BORDE LED DEL FIXTURE
+   ========================================================= */
 
-/* Scrollbar Chrome */
+.fixture-Torneo::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 7%;
+  right: 7%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #1683ff,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px #1683ff,
+    0 0 20px rgba(22, 131, 255, 0.5);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 .fixture-Torneo::-webkit-scrollbar {
   height: 7px;
 }
 
+
 .fixture-Torneo::-webkit-scrollbar-track {
   background: #0d131e;
+
   border-radius: 10px;
 }
+
 
 .fixture-Torneo::-webkit-scrollbar-thumb {
   background: #1683ff;
+
   border-radius: 10px;
 
   box-shadow:
-    0 0 8px rgba(22, 131, 255, 0.6);
+    0 0 8px rgba(22, 131, 255, 0.7);
 }
 
 
-/* =========================================
-   SVG DE CONECTORES
-   El <svg> se inyecta como primer hijo de
-   .fixture-Torneo y se dibuja/actualiza desde
-   el componente (ver drawConnectors() en el TS)
-   ========================================= */
-
-.bracket-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  z-index: 0;
-
-  pointer-events: none;
-  overflow: visible;
-}
-
-.bracket-svg path {
-  fill: none;
-
-  stroke: #1683ff;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-
-  filter: drop-shadow(0 0 3px rgba(22, 131, 255, 0.9));
-
-  opacity: 0.9;
-}
-
-
-/* =========================================
+/* =========================================================
    RONDA
-   ========================================= */
+   ========================================================= */
 
 .ronda {
   position: relative;
 
-  z-index: 1; /* por encima del .bracket-svg */
+  z-index: 1;
 
   flex: 0 0 225px;
 
   min-width: 225px;
 
   display: flex;
+
   flex-direction: column;
 
   margin-right: 55px;
 }
 
 
-/* =========================================
+/* =========================================================
    TITULO DE RONDA
-   ========================================= */
+   ========================================================= */
 
 .ronda-titulo {
+  position: relative;
+
   height: 42px;
 
   display: flex;
+
   align-items: center;
 
   gap: 9px;
@@ -265,15 +586,21 @@
 
   border-left: 2px solid #1683ff;
 
-  background: linear-gradient(
-    90deg,
-    rgba(22, 131, 255, 0.08),
-    transparent
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(22, 131, 255, 0.12),
+      transparent
+    );
+
+  box-shadow:
+    -4px 0 10px rgba(22, 131, 255, 0.08);
 }
+
 
 .ronda-titulo span {
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -284,7 +611,7 @@
 
   background: rgba(22, 131, 255, 0.12);
 
-  border: 1px solid rgba(22, 131, 255, 0.35);
+  border: 1px solid rgba(22, 131, 255, 0.45);
 
   color: #1683ff;
 
@@ -292,8 +619,9 @@
   font-weight: 800;
 
   box-shadow:
-    0 0 8px rgba(22, 131, 255, 0.12);
+    0 0 7px rgba(22, 131, 255, 0.25);
 }
+
 
 .ronda-titulo h2 {
   margin: 0;
@@ -301,21 +629,24 @@
   color: #d5dbe4;
 
   font-size: 13px;
+
   font-weight: 700;
 
   text-transform: uppercase;
+
   letter-spacing: 0.7px;
 }
 
 
-/* =========================================
+/* =========================================================
    ENCUENTROS
-   ========================================= */
+   ========================================================= */
 
 .encuentros {
   flex: 1;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: space-around;
@@ -324,9 +655,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    TARJETA DEL PARTIDO
-   ========================================= */
+   ========================================================= */
 
 .encuentro {
   position: relative;
@@ -335,7 +666,12 @@
 
   padding: 10px;
 
-  background: #111722;
+  background:
+    linear-gradient(
+      145deg,
+      #111722,
+      #0d131e
+    );
 
   border: 1px solid #202a3b;
 
@@ -351,39 +687,82 @@
     background 0.25s ease;
 }
 
-.encuentro:hover {
-  transform: translateY(-2px);
 
-  border-color: rgba(22, 131, 255, 0.6);
+/* pequeño LED lateral */
+
+.encuentro::before {
+  content: "";
+
+  position: absolute;
+
+  top: 10px;
+  bottom: 10px;
+  left: -1px;
+
+  width: 2px;
+
+  background: transparent;
+
+  border-radius: 5px;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.encuentro:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(22, 131, 255, 0.55);
 
   background: #121b29;
 
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.35),
-    0 0 12px rgba(22, 131, 255, 0.08);
+    0 0 14px rgba(22, 131, 255, 0.1);
 }
 
 
-/* =========================================
-   PARTIDO COMPLETO
-   ========================================= */
+.encuentro:hover::before {
+  background: #1683ff;
+
+  box-shadow:
+    0 0 6px #1683ff,
+    0 0 14px rgba(22, 131, 255, 0.7);
+}
+
+
+/* =========================================================
+   PARTIDO COMPLETADO
+   ========================================================= */
 
 .encuentro.encuentro-complete {
   border-color: rgba(22, 131, 255, 0.55);
 
   box-shadow:
-    0 0 8px rgba(22, 131, 255, 0.08),
+    0 0 10px rgba(22, 131, 255, 0.08),
     0 8px 22px rgba(0, 0, 0, 0.3);
 }
 
 
-/* =========================================
+.encuentro.encuentro-complete::before {
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px rgba(22, 131, 255, 0.7);
+}
+
+
+/* =========================================================
    META DEL PARTIDO
-   ========================================= */
+   ========================================================= */
 
 .encuentro-meta {
   display: flex;
-  align-items: center;
+
+  align-items: flex-start;
   justify-content: space-between;
 
   gap: 8px;
@@ -395,49 +774,59 @@
   border-bottom: 1px solid #202a3b;
 }
 
-.encuentro-meta span {
+
+.encuentro-meta > span {
   color: #6f7b8e;
 
   font-size: 9px;
+
   font-weight: 700;
 
   text-transform: uppercase;
+
   letter-spacing: 0.5px;
 }
 
+
 .encuentro-meta p {
+  margin: 0;
+
   color: #1683ff;
 
   font-size: 9px;
+
   font-weight: 600;
 
   white-space: nowrap;
 }
 
 
-/* =========================================
+/* =========================================================
    OPCIONES
-   ========================================= */
+   ========================================================= */
 
 .opciones {
   display: flex;
+
   align-items: center;
 
   gap: 5px;
 }
 
 
-/* =========================================
+/* =========================================================
    BOTONES DE EQUIPOS
-   ========================================= */
+   ========================================================= */
 
 .opciones button {
   min-width: 0;
+
   flex: 1;
 
   height: 32px;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -446,6 +835,7 @@
   padding: 0 8px;
 
   border: 1px solid #202a3b;
+
   border-radius: 6px;
 
   background: #0d131e;
@@ -453,6 +843,7 @@
   color: #aeb8c8;
 
   font-size: 10px;
+
   font-weight: 600;
 
   cursor: pointer;
@@ -467,23 +858,31 @@
     transform 0.2s ease;
 }
 
+
 .opciones button:hover:not(:disabled) {
   transform: translateY(-1px);
 
-  border-color: rgba(22, 131, 255, 0.55);
+  border-color: #1683ff;
 
-  color: #fff;
+  color: #ffffff;
 
   background: #121c2b;
 
   box-shadow:
-    0 0 8px rgba(22, 131, 255, 0.1);
+    0 0 6px rgba(22, 131, 255, 0.2);
 }
 
 
-/* =========================================
+.opciones button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.45;
+}
+
+
+/* =========================================================
    EQUIPO SELECCIONADO
-   ========================================= */
+   ========================================================= */
 
 .opciones button.selected {
   border-color: #1683ff;
@@ -491,16 +890,17 @@
   background:
     linear-gradient(
       90deg,
-      rgba(22, 131, 255, 0.18),
-      rgba(22, 131, 255, 0.06)
+      rgba(22, 131, 255, 0.2),
+      rgba(22, 131, 255, 0.05)
     );
 
-  color: #fff;
+  color: #ffffff;
 
   box-shadow:
-    0 0 7px rgba(22, 131, 255, 0.3),
-    inset 0 0 10px rgba(22, 131, 255, 0.05);
+    0 0 8px rgba(22, 131, 255, 0.35),
+    inset 0 0 10px rgba(22, 131, 255, 0.06);
 }
+
 
 .opciones button.selected .equipo-marca {
   color: #1683ff;
@@ -511,11 +911,11 @@
 }
 
 
-/* =========================================
-   NOMBRE DEL EQUIPO
-   ========================================= */
+/* =========================================================
+   NOMBRE EQUIPO
+   ========================================================= */
 
-.nombre-equipo {
+.opciones .nombre-equipo {
   min-width: 0;
 
   overflow: hidden;
@@ -525,6 +925,11 @@
   text-overflow: ellipsis;
 }
 
+
+/* =========================================================
+   MARCA
+   ========================================================= */
+
 .equipo-marca {
   flex-shrink: 0;
 
@@ -533,13 +938,14 @@
   color: transparent;
 
   font-size: 11px;
+
   font-weight: 900;
 }
 
 
-/* =========================================
+/* =========================================================
    VS
-   ========================================= */
+   ========================================================= */
 
 .versus {
   flex-shrink: 0;
@@ -551,22 +957,24 @@
   color: #4d596b;
 
   font-size: 8px;
+
   font-weight: 800;
 
   text-transform: uppercase;
 }
 
 
-/* =========================================
+/* =========================================================
    ULTIMA RONDA
-   ========================================= */
+   ========================================================= */
 
 .ronda.final-round {
   margin-right: 0;
 }
 
+
 .ronda.final-round .encuentro {
-  border-color: rgba(22, 131, 255, 0.45);
+  border-color: rgba(22, 131, 255, 0.55);
 
   background:
     linear-gradient(
@@ -576,20 +984,23 @@
     );
 
   box-shadow:
-    0 0 12px rgba(22, 131, 255, 0.08);
+    0 0 12px rgba(22, 131, 255, 0.1);
 }
 
 
-/* =========================================
-   NOTA INFERIOR
-   ========================================= */
+/* =========================================================
+   NOTA
+   ========================================================= */
 
 .nota {
   max-width: 1450px;
 
-  margin: 10px auto 0;
+  margin: 15px auto 0;
+
+  padding: 10px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -599,6 +1010,7 @@
 
   font-size: 11px;
 }
+
 
 .nota .estado {
   width: 7px;
@@ -612,11 +1024,12 @@
     0 0 5px #1683ff,
     0 0 12px rgba(22, 131, 255, 0.8);
 
-  animation: estadoLed 1.5s ease-in-out infinite;
+  animation:
+    estadoLed 1.5s ease-in-out infinite;
 }
 
-@keyframes estadoLed {
 
+@keyframes estadoLed {
   0%,
   100% {
     opacity: 0.4;
@@ -630,126 +1043,177 @@
 }
 
 
-/* =========================================
+/* =========================================================
    TABLET
-   ========================================= */
+   ========================================================= */
 
 @media (max-width: 1000px) {
+
+  .tabla-puntajes {
+    width: calc(100% - 30px);
+    padding: 16px;
+  }
 
   .fixture-pagina {
     padding-inline: 25px;
   }
 
-  .fixture-header {
-    margin-bottom: 25px;
-  }
-
-  .fixture-Torneo {
-    padding-top: 15px;
-  }
-
   .ronda {
     flex-basis: 205px;
     min-width: 205px;
-
     margin-right: 45px;
   }
 }
 
 
-/* =========================================
+/* =========================================================
    TABLET PEQUEÑA
-   ========================================= */
+   ========================================================= */
 
 @media (max-width: 700px) {
 
-  .fixture-pagina {
-    padding: 25px 15px;
+  :host ::ng-deep .mat-mdc-tab {
+    min-width: 50%;
+    height: 48px;
+
+    font-size: 9px;
+    letter-spacing: 0.7px;
   }
+
+
+  .tabla-puntajes {
+    width: calc(100% - 20px);
+
+    padding: 12px;
+
+    margin-top: 18px;
+
+    border-radius: 14px;
+  }
+
+
+  .fixture-pagina {
+    padding: 20px 15px 35px;
+  }
+
 
   .fixture-header {
     align-items: flex-start;
+
     flex-direction: column;
 
     gap: 18px;
+
+    padding: 20px;
   }
+
 
   .finalizar {
     width: 100%;
   }
 
+
   .fixture-Torneo {
-    margin-inline: -5px;
+    padding: 20px 15px 30px;
 
-    padding-inline: 5px;
-
-    align-items: stretch;
+    border-radius: 14px;
   }
+
 
   .ronda {
     flex-basis: 190px;
+
     min-width: 190px;
 
     margin-right: 35px;
   }
 
+
   .encuentro {
     padding: 8px;
   }
 
+
   .opciones button {
     height: 30px;
+
     padding-inline: 6px;
 
     font-size: 9px;
   }
-
-  .ronda-titulo {
-    margin-bottom: 14px;
-  }
 }
 
 
-/* =========================================
+/* =========================================================
    CELULAR
-   ========================================= */
+   ========================================================= */
 
 @media (max-width: 500px) {
 
-  .fixture-pagina {
-    padding: 22px 10px;
+  :host ::ng-deep .mat-mdc-tab {
+    min-width: 50%;
+
+    height: 46px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.5px;
   }
+
+
+  .tabla-puntajes {
+    width: calc(100% - 14px);
+
+    padding: 9px;
+
+    margin-top: 15px;
+
+    border-radius: 12px;
+  }
+
+
+  .fixture-pagina {
+    padding: 15px 10px 30px;
+  }
+
 
   .fixture-header {
-    padding-bottom: 20px;
+    padding: 17px;
+
+    border-radius: 12px;
   }
 
+
   .fixture-header .header {
+    font-size: 10px;
+  }
+
+
+  .fixture-header h1 {
+    font-size: 24px;
+  }
+
+
+  .fixture-header .informacion {
     font-size: 11px;
   }
 
-  .fixture-header h1 {
-    font-size: 25px;
-  }
-
-  .fixture-header .informacion {
-    font-size: 12px;
-  }
 
   .fixture-Torneo {
-    width: calc(100% + 10px);
+    padding: 15px 10px 25px;
 
-    margin-left: -5px;
-
-    padding: 10px 5px 25px;
+    border-radius: 12px;
   }
+
 
   .ronda {
     flex-basis: 175px;
+
     min-width: 175px;
 
     margin-right: 30px;
   }
+
 
   .ronda-titulo {
     height: 35px;
@@ -761,6 +1225,7 @@
     padding-left: 7px;
   }
 
+
   .ronda-titulo span {
     width: 23px;
     height: 23px;
@@ -768,13 +1233,16 @@
     font-size: 9px;
   }
 
+
   .ronda-titulo h2 {
     font-size: 10px;
   }
 
+
   .encuentros {
     gap: 10px;
   }
+
 
   .encuentro {
     padding: 7px;
@@ -782,19 +1250,24 @@
     border-radius: 8px;
   }
 
+
   .encuentro-meta {
     margin-bottom: 6px;
+
     padding-bottom: 5px;
   }
 
-  .encuentro-meta span,
+
+  .encuentro-meta > span,
   .encuentro-meta p {
     font-size: 8px;
   }
 
+
   .opciones {
     gap: 3px;
   }
+
 
   .opciones button {
     height: 27px;
@@ -806,46 +1279,61 @@
     border-radius: 5px;
   }
 
+
   .versus {
     width: 14px;
 
     font-size: 7px;
   }
 
+
   .equipo-marca {
     font-size: 9px;
   }
 
+
   .nota {
     font-size: 9px;
-  }
-
-  .bracket-svg path {
-    stroke-width: 2;
   }
 }
 
 
-/* =========================================
+/* =========================================================
    CELULAR MUY PEQUEÑO
-   ========================================= */
+   ========================================================= */
 
 @media (max-width: 360px) {
+
+  :host ::ng-deep .mat-mdc-tab {
+    font-size: 7px;
+  }
+
+
+  .tabla-puntajes {
+    width: calc(100% - 8px);
+
+    padding: 7px;
+  }
+
 
   .fixture-pagina {
     padding-inline: 7px;
   }
 
+
   .ronda {
     flex-basis: 160px;
+
     min-width: 160px;
 
     margin-right: 25px;
   }
 
+
   .encuentro {
     padding: 6px;
   }
+
 
   .opciones button {
     height: 25px;

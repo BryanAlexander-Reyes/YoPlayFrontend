@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EquiposService } from '../../../services/auth-service-equipos';
 
 
 @Component({
@@ -9,33 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './equipos.css',
 })
 export class EquiposComponent {
-  tablaEquipos=[
-    {
-      equipo:'Tame',
-    },{
-      equipo:'Arauca',
-    },{
-      equipo:'Atlanta',
-    },{
-      equipo:'Casanare',
-    },{
-      equipo:'Salpicon',
-    },{
-      equipo:'Malaga',
-    },{
-      equipo:'R.A',
-    },{
-      equipo:'ComboAlphinito',
-    },{
-      equipo:'Sancocho',
-    },{
-      equipo:'Almendra',
-    },{
-      equipo:'Almendra',
-    },{
-      equipo:'Almendra',
-    },
-  ];
+  
+  tablaEquipos: any[]=[];
+  constructor(private equiposService: EquiposService){
+    this.tablaEquipos = this.equiposService.obtenerEquipos();
+  }
+
   cardEncuentro=[{
     nombre:'GrupoA',
     GRUPO:[

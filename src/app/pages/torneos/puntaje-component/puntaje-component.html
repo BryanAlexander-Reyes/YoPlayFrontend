@@ -1,0 +1,43 @@
+<div class="tabla-puntaje">
+    <h1>Tabla de Posicion</h1>
+    <section class="tabla-contenido">
+    <table class="tabla-posiciones">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>PJ</th>
+                <th>G</th>
+                <th>E</th>
+                <th>D</th>
+                <th>PTS</th>
+            </tr>
+        </thead>
+        <Tbody>
+            <tr *ngFor="let equipo of tablaPosiciones">
+                <td class="nombre-equipo">
+                    {{equipo.equipo}}
+                </td>
+                <td>
+                    {{equipo.pj}}
+                </td>
+                <td><button
+                    type="button"
+                    class="boton-Ganar"
+                    (click)="partidoGanado(equipo)"
+                    >{{equipo.g}}</button></td>
+                <td><button
+                    type="button"
+                    class="boton-Ganar"
+                    (click)="partidoEmpate(equipo)"
+                    >{{equipo.e}}</button></td>
+                <td><button
+                    type="button"
+                    class="boton-Ganar"
+                    (click)="partidoDerrota(equipo)"
+                    >{{equipo.d}}</button></td>
+                <td class="puntos">{{equipo.pts}}</td>
+            </tr>
+        </Tbody>
+    </table>
+    </section>
+</div>

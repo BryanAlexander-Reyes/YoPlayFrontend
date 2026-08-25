@@ -15,6 +15,7 @@ import { EquiposComponent } from './pages/torneos/equipos/equipos';
 import { Fixture } from './pages/torneos/fixture/fixture';
 import { InfTorneosComponent } from './pages/torneos/inf-torneos-component/inf-torneos-component';
 import { InscripcionComponente } from './pages/torneos/inscripcion-componente/inscripcion-componente';
+import { PuntajeComponent } from './pages/torneos/puntaje-component/puntaje-component';
 
 // Importación de componentes y de Layout para la página.
 import { Presentation } from './pages/presentation/presentation';
@@ -34,6 +35,7 @@ import { Teams } from './pages/teams/teams';
 import { Privacy } from './pages/privacy/privacy';
 import { FAQ } from './pages/faq/faq';
 import { Navigator } from './layout/navigator/navigator';
+
 
 
 export const routes: Routes = [
@@ -154,7 +156,7 @@ export const routes: Routes = [
     component: Sideuser,
   },
   {
-    path: 'animation',
+    path: 'login_usuario',
     component: AuthAnimationComponent,
   },
   {
@@ -190,5 +192,9 @@ export const routes: Routes = [
   {
     path: 'navigator',
     component: Navigator
+  },
+  {
+    path:'tablapuntaje',
+    component:PuntajeComponent
   }
 ];
