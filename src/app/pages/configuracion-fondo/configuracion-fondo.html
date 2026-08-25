@@ -1,20 +1,19 @@
-
-<div class="general-card">
+<div class="general-card" [class.tema-claro]="modoClaro">
     <header class="header">
-        <h1>Configuración</h1> 
+        <h1>Configuración</h1>
     </header>
     <div class="sub-header">
         <h2>Configuración de fondo</h2>
     </div>
     <section class="card-secundaria">
-        <p>Aqui encontrarás las configuraciones de fondo para nuestra pagina web. No todas las configuraciones están activas, y se encuentran en desarrollo. </p>
+        <p>Aqui encontrarás las configuraciones de fondo para nuestra pagina web. No todas las configuraciones están activas, y se encuentran en desarrollo.</p>
         <div class="card-modo-oscuro">
-            <h2>Fondo Oscuro / Modo Descanso Visual</h2>
+            <h2>Fondo claro </h2>
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox"  [(ngModel)]="modoClaro" (change)="cambiartema()">
                 <span class="slider"></span>
             </label>
-            <p> El modo oscuro es un modo en el cual la gran mayoría de colores del fondo se oscurece, con el objetivo de reducir la fatiga visual del usuario. El modo oscuro se encuentra actualmente en fase beta, quizá aún no se encuentra activa. Mantente al tanto de nuestras notificaciones, próximamente estaremos integrando el fondo oscuro en nuestra plataforma. </p>
+            <p>El modo oscuro es un modo en el cual la gran mayoría de colores del fondo se oscurece, con el objetivo de reducir la fatiga visual del usuario. El modo oscuro se encuentra actualmente en fase beta, quizá aún no se encuentra activa. Mantente al tanto de nuestras notificaciones, próximamente estaremos integrando el fondo oscuro en nuestra plataforma.</p>
             <div class="imagenes-modo-oscuro">
                 <img src="" alt="">
                 <img src="" alt="">
@@ -23,10 +22,10 @@
         <div class="card-fondo-dinamico">
             <h2>Fondo Dinámico</h2>
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" >
                 <span class="slider"></span>
             </label>
-            <p> El modo de fondo dinámico es una función en la cual el fondo se cambia de manera automática, dependiendo del torneo y del tipo de deporte en el cual te encuentres. Pueden aparecer errores visuales. </p>
+            <p>El modo de fondo dinámico es una función en la cual el fondo se cambia de manera automática, dependiendo del torneo y del tipo de deporte en el cual te encuentres. Pueden aparecer errores visuales.</p>
         </div>
     </section>
 </div>

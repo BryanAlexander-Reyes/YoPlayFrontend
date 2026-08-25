@@ -36,9 +36,13 @@ interface Torneo {
   styleUrl: './creacion-torneo.css'
 })
 export class CreacionTorneo{
-  
 
-  constructor(private router: Router){}
+
+  spancomponten!:SpanAuth;
+
+  constructor(private router: Router, private span:SpanAuthService){
+    this.spancomponten= this.span.obtenerestadosiguente2()
+  }
   
   mostrarErrores: boolean = false;
   errorLugar = '';
@@ -225,7 +229,8 @@ reglamento(): void {
 
   torneosGuardados.push(torneo);
 
-  try {
+   try {
+
     localStorage.setItem(
       'torneos',
       JSON.stringify(torneosGuardados)
@@ -234,19 +239,23 @@ reglamento(): void {
     console.log('Torneo creado:', torneo);
     console.log('Todos los torneos:', torneosGuardados);
 
-    this.router.navigate(['/reglamento'], {
-      state: {
-        mensaje: '¡Torneo creado correctamente!'
-      }
-    });
+    // Mostrar card de carga
+    this.spancomponten = this.span.obtenerestadosiguente();
+
+    // Esperar antes de navegar
+    setTimeout(() => {
+
+      this.router.navigate(['/reglamento'], {
+        state: {
+          mensaje: '¡Torneo creado correctamente!'
+        }
+      });
+
+    }, 2000);
 
   } catch (error) {
-    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
-      console.error('No hay suficiente espacio en localStorage.');
 
-      alert('No hay suficiente espacio para guardar el torneo. La imagen es demasiado grande o hay demasiados torneos guardados.');
-    } else {
-      console.error('Error al guardar el torneo:', error);
-    }
+    console.error('Error al guardar el torneo:', error);
+
   }
 }}

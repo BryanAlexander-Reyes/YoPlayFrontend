@@ -34,4 +34,25 @@ export class SpanAuthService {
       mensaje: 'El enlace expiró o no es válido',
     };
   }
+  obtenerestadosiguente():SpanAuth {
+    return{
+      icono:'fa-solid fa-basketball fa-spin',
+      titulo:'siguiente proceso',
+      mensaje:'equipo registrado'
+    }
+  }
+    obtenerestadosiguente2():SpanAuth {
+    return{
+      icono:'fa-solid fa-basketball fa-spin',
+      titulo:'siguiente proceso',
+      mensaje:'torneo terminado'
+    }
+  }
+    obtenerestadosiguente3():SpanAuth {
+    return{
+      icono:'fa-solid fa-basketball fa-spin',
+      titulo:'siguiente proceso',
+      mensaje:'reglamento completo'
+    }
+  }
 }
