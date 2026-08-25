@@ -11,73 +11,101 @@
         <div class="equipo">
             <p>Nombre del equipo</p>
             <span></span>
-            <input type="text" placeholder="ingrese el nombre del equipo">
+            <input type="text" [(ngModel)]="dato[0].nombreequipo" placeholder="Ingrese el nombre del equipo">
+            @if (mostrarErrores && !dato[0].nombreequipo.trim()) {
+            <small class="error-campo">El nombre del equipo es obligatorio.</small>
+            }
         </div>
         <div class="juego-categoria">
             <p>Juego/Categoria</p>
             <span></span>
-            <input type="text" placeholder="ingrese del juego categoria">
+            <input type="text" [(ngModel)]="dato[0].categoria" placeholder="Ingrese del juego categoria">
+            @if (mostrarErrores && !dato[0].categoria.trim()) {
+            <small class="error-campo">El juego o categoría es obligatorio.</small>
+            }
         </div>
         <div class="region">
             <p>Region</p>
             <span></span>
-            <input type="text" placeholder="lugar de donde viene">
+            <input type="text" [(ngModel)]="dato[0].region" placeholder="Lugar de donde viene">
+            @if (mostrarErrores && !dato[0].region.trim()) {
+            <small class="error-campo">La región es obligatoria.</small>
+            }
         </div>
         <div class="capitan">
             <p>Datos del Capitan</p>
             <span></span>
             <p>Nombre Completo</p>
             <span></span>
-            <input type="text" placeholder="ingrese su nombre">
+            <input type="text" [(ngModel)]="dato[0].nombreCapitan" placeholder="Ingrese su nombre">
+            @if (mostrarErrores && !dato[0].nombreCapitan.trim()) {
+            <small class="error-campo">El nombre del capitán es obligatorio.</small>
+            }
             <p>Telefono/WhatsApp</p>
             <span></span>
-            <input type="text" placeholder="ingrese numero de celular">
+            <input type="text" [(ngModel)]="dato[0].documentoCapitan" placeholder="Ingrese numero de celular">
+            @if (mostrarErrores && !dato[0].documentoCapitan.trim()) {
+            <small class="error-campo">El teléfono es obligatorio.</small>
+            }
             <p>Email</p>
             <span></span>
-            <input type="email" placeholder="ingrese su correo electronico">
+            <input type="email" [(ngModel)]="dato[0].correoCapitan" placeholder="Ingrese su correo electronico">
+            @if (mostrarErrores && !dato[0].correoCapitan.trim()) {
+            <small class="error-campo">El correo electrónico es obligatorio.</small>
+            }
         </div>
     </section>
     <section class="integrantes">
-        <p>integrantes del equipo</p>
+        <p>Integrantes del equipo</p>
         <span></span>
         <div class="miembros">
-
             @for (miembro of miembros; track $index) {
-
             <div class="miembro">
-
                 <div class="titulos">
                     <span>Nombre</span>
-                    <span>posición</span>
-                    <span>número</span>
+                    <span>Posición</span>
+                    <span>Número</span>
                 </div>
-
                 <div class="campos">
-                    <input type="text" [(ngModel)]="miembro.nombre">
-
-                    <input type="text" [(ngModel)]="miembro.posicion">
-
-                    <input type="text" [(ngModel)]="miembro.numero">
+                    <div>
+                        <input type="text" [(ngModel)]="miembro.nombre" placeholder="Nombre">
+                        @if (mostrarErrores && !miembro.nombre.trim()) {
+                        <small class="error-campo">Obligatorio.</small>
+                        }
+                    </div>
+                    <div>
+                        <input type="text" [(ngModel)]="miembro.posicion" placeholder="Posición">
+                        @if (mostrarErrores && !miembro.posicion.trim()) {
+                        <small class="error-campo">Obligatorio.</small>
+                        }
+                    </div>
+                    <div>
+                        <input type="text" [(ngModel)]="miembro.numero" placeholder="Número">
+                        @if (mostrarErrores && !miembro.numero.trim()) {
+                        <small class="error-campo">Obligatorio.</small>
+                        }
+                    </div>
                 </div>
-
             </div>
             <button type="button" (click)="quitarMiembros($index)">
-                quitar miembro
+                Quitar miembro
             </button>
-
             }
-
         </div>
-
         <button type="button" (click)="agregarMiembro()">
             AÑADIR MÁS
         </button>
-
-        <input type="checkbox" id="terminos">
-
-        <label for="terminos">
-            Acepto los terminos y condiciones del torneo
-        </label>
-        <button type="button">Registrar Equipo</button>
+        <div class="terminos-equipo">
+            <input type="checkbox" id="terminos" [(ngModel)]="aceptaTerminos">
+            <label for="terminos">
+                Acepto los términos y condiciones del torneo
+            </label>
+            @if (mostrarErrores && !aceptaTerminos) {
+            <small class="error-campo">Debe aceptar los términos y condiciones.</small>
+            }
+        </div>
+        <button type="button" (click)="registrarEquipo()">
+            Registrar Equipo
+        </button>
     </section>
 </section>

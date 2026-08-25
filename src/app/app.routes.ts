@@ -62,12 +62,6 @@ export const routes: Routes = [
       // {
       //   path: 'torneo',
       //   component: CreacionTorneo,
-      // },
-      {
-        path: 'registro',
-        component: RegistroEquipos,
-      },
-      // {
       //   path: 'reglamento',
       //   component: Reglamento,
       // },
