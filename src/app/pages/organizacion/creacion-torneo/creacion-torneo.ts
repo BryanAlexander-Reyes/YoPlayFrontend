@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SpanAuth } from '../../../models/span-auth';
+import { SpanComponent } from '../../spancomponent/spancomponent';
+import { SpanAuthService } from '../../../services/auth-span';
 
 interface Deporte {
   deporte: string;
@@ -24,7 +27,6 @@ interface Torneo {
   objetivo: string;
   fechaInicio: string;
   fechaFin: string;
-  flayer: string | null;
 }
 
 @Component({
@@ -33,12 +35,27 @@ interface Torneo {
   templateUrl: './creacion-torneo.html',
   styleUrl: './creacion-torneo.css'
 })
-export class CreacionTorneo implements OnInit {
+export class CreacionTorneo{
+  
 
-  constructor(private router: Router) {}
+  constructor(private router: Router){}
+  
+  mostrarErrores: boolean = false;
+  errorLugar = '';
+  errorPremiacion = '';
+  errorDeporte = '';
+  errorDivision = '';
+  errorGrupos = '';
+  errorFlayer = '';
+  errorEquipos = '';
+  errorObjetivo = '';
+  errorFechaInicio = '';
+  errorFechaFin = '';
+  errorFechas = '';
+
+
 
   contador: number = 0;
-
   lugar: string = '';
   objetivo: string = '';
   fechaInicio: string = '';
@@ -109,6 +126,7 @@ export class CreacionTorneo implements OnInit {
   }
 
   validargrupos(divicion: Divicion): boolean {
+
     if (divicion.etapa !== 'grupos') {
       return true;
     }
@@ -128,6 +146,7 @@ export class CreacionTorneo implements OnInit {
   }
 
   seleccionarFlayer(event: Event): void {
+
     const input = event.target as HTMLInputElement;
 
     if (!input.files || input.files.length === 0) {
@@ -145,57 +164,68 @@ export class CreacionTorneo implements OnInit {
 
     lector.readAsDataURL(archivo);
   }
+  limpiarErrores(): void {
+  this.errorLugar = '';
+  this.errorPremiacion = '';
+  this.errorDeporte = '';
+  this.errorDivision = '';
+  this.errorGrupos = '';
+  this.errorFlayer = '';
+  this.errorEquipos = '';
+  this.errorObjetivo = '';
+  this.errorFechaInicio = '';
+  this.errorFechaFin = '';
+  this.errorFechas = '';
+}
 
-  reglamento(): void {
+reglamento(): void {
+  this.mostrarErrores = true;
 
-    if (this.contador <= 0) {
-      console.log('Debe ingresar la cantidad de equipos');
-      return;
-    }
+  setTimeout(() => {
+    this.mostrarErrores = false;
+  }, 5000);
 
-    if (!this.lugar.trim()) {
-      console.log('Debe ingresar el lugar del torneo');
-      return;
-    }
+  if (!this.lugar.trim()) return;
 
-    if (!this.deportes[0].deporte) {
-      console.log('Debe seleccionar un deporte');
-      return;
-    }
+  if (this.premiaciones.some(p => !p.premiacion.trim())) return;
 
-    if (!this.diviciones[0].etapa) {
-      console.log('Debe seleccionar una división');
-      return;
-    }
+  if (!this.deportes[0].deporte) return;
 
-    if (
-      this.diviciones[0].etapa === 'grupos' &&
-      !this.validargrupos(this.diviciones[0])
-    ) {
-      console.log('La cantidad de grupos debe ser un número par entre 2 y 8');
-      return;
-    }
+  if (!this.diviciones[0].etapa) return;
 
+  if (
+    this.diviciones[0].etapa === 'grupos' &&
+    !this.validargrupos(this.diviciones[0])
+  ) return;
 
+  if (!this.flayer) return;
 
-    const torneo: Torneo = {
-      lugar: this.lugar,
-      premiaciones: this.premiaciones,
-      tipo_deporte: this.deportes[0].deporte,
-      divicion: this.diviciones,
-      cantidadEquipos: this.contador,
-      objetivo: this.objetivo,
-      fechaInicio: this.fechaInicio,
-      fechaFin: this.fechaFin,
-      flayer: this.flayer
-    };
+  if (this.contador <= 0) return;
 
-    const torneosGuardados: Torneo[] = JSON.parse(
-      localStorage.getItem('torneos') || '[]'
-    );
+  if (!this.objetivo.trim()) return;
 
-    torneosGuardados.push(torneo);
+  if (!this.fechaInicio || !this.fechaFin) return;
 
+  if (this.fechaFin <= this.fechaInicio) return;
+
+  const torneo: Torneo = {
+    lugar: this.lugar,
+    premiaciones: this.premiaciones,
+    tipo_deporte: this.deportes[0].deporte,
+    divicion: this.diviciones,
+    cantidadEquipos: this.contador,
+    objetivo: this.objetivo,
+    fechaInicio: this.fechaInicio,
+    fechaFin: this.fechaFin,
+  };
+
+  const torneosGuardados: Torneo[] = JSON.parse(
+    localStorage.getItem('torneos') || '[]'
+  );
+
+  torneosGuardados.push(torneo);
+
+  try {
     localStorage.setItem(
       'torneos',
       JSON.stringify(torneosGuardados)
@@ -209,54 +239,14 @@ export class CreacionTorneo implements OnInit {
         mensaje: '¡Torneo creado correctamente!'
       }
     });
-    this.router.navigate(['/reglamento']);
-  }
 
-  ngOnInit(): void {
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+      console.error('No hay suficiente espacio en localStorage.');
 
-    const navigation = this.router.getCurrentNavigation();
-
-    if (navigation?.extras.state?.['mensaje']) {
-
-      this.mensaje = navigation.extras.state['mensaje'];
-
-      this.mostrarMensaje = true;
-
-      setTimeout(() => {
-        this.mostrarMensaje = false;
-      }, 4000);
+      alert('No hay suficiente espacio para guardar el torneo. La imagen es demasiado grande o hay demasiados torneos guardados.');
+    } else {
+      console.error('Error al guardar el torneo:', error);
     }
   }
-  registrarTorneo(): void {
-  const torneo = {
-    lugar: this.lugar,
-    premiaciones: this.premiaciones,
-    tipo_deporte: this.deportes[0].deporte,
-    division: {
-      etapa: this.diviciones[0].etapa,
-      cantidad_grupos: this.diviciones[0].cantidad_grupos
-    },
-    cantidad_equipos: this.contador,
-    objetivo: this.objetivo,
-    fecha_inicio: this.fechaInicio,
-    fecha_fin: this.fechaFin
-  };
-
-  localStorage.setItem(
-    'torneo',
-    JSON.stringify(torneo, null, 2)
-  );
-
-  console.log('TORNEO EN JSON:');
-  console.log(JSON.stringify(torneo, null, 2));
-
-  console.log('OBJETO DEL TORNEO:');
-  console.log(torneo);
-
-  this.router.navigate(['/reglamento'], {
-    state: {
-      mensaje: '¡Torneo creado correctamente!'
-    }
-  });
-}
-}
+}}
