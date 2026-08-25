@@ -212,3 +212,581 @@ button {
   background-color: #1d4ed8;
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
 }
+
+@media(max-width: 700px) {
+  /* =========================================================
+   CONTENEDOR
+========================================================= */
+
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL
+========================================================= */
+
+.card-general {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 14px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  grid-column: 1;
+
+  width: 100%;
+  margin-bottom: 2px;
+
+  text-align: center;
+}
+
+.header > span {
+  display: inline-block;
+
+  width: 50px;
+  height: 2px;
+
+  margin: 0 8px 8px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px rgba(22, 131, 255, .8);
+}
+
+.header h1 {
+  display: inline-block;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.header p {
+  margin: 5px auto 0;
+
+  color: #8e99aa;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   DATOS DEL EQUIPO
+========================================================= */
+
+.formulario-datosequipo {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  align-content: start;
+
+  gap: 10px;
+
+  padding: 14px;
+
+  background: #111722;
+
+  border: 1px solid rgba(255, 255, 255, .06);
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================================================
+   TÍTULO EQUIPO
+========================================================= */
+
+.formulario-datosequipo > p:first-child {
+  grid-column: 1 / -1;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.formulario-datosequipo > span:first-of-type {
+  grid-column: 1 / -1;
+
+  width: 100%;
+  height: 2px;
+
+  margin-top: -5px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px rgba(22, 131, 255, .7);
+}
+
+
+/* =========================================================
+   CAMPOS EQUIPO
+========================================================= */
+
+.equipo,
+.juego-categoria,
+.region {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 0;
+
+  width: 100%;
+}
+
+.equipo p,
+.juego-categoria p,
+.region p {
+  margin: 0;
+
+  color: #d5dbe4;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.equipo > span,
+.juego-categoria > span,
+.region > span {
+  display: none;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.equipo input,
+.juego-categoria input,
+.region input,
+.capitan input {
+  width: 100%;
+  min-width: 0;
+
+  height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid #202a3b;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #151d2c;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  transition: .2s ease;
+}
+
+.equipo input::placeholder,
+.juego-categoria input::placeholder,
+.region input::placeholder,
+.capitan input::placeholder {
+  color: #667085;
+}
+
+.equipo input:focus,
+.juego-categoria input:focus,
+.region input:focus,
+.capitan input:focus {
+  border-color: #1683ff;
+
+  background: #192335;
+
+  box-shadow:
+    0 0 0 2px rgba(22, 131, 255, .12);
+}
+
+
+/* =========================================================
+   CAPITÁN
+========================================================= */
+
+.capitan {
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 8px;
+
+  margin-top: 8px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+
+.capitan > p:first-child {
+  grid-column: 1 / -1;
+
+  margin: 0 0 2px;
+
+  color: #fff;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.capitan > span {
+  display: none;
+}
+
+.capitan > p:not(:first-child) {
+  margin: 0;
+
+  align-self: center;
+
+  color: #d5dbe4;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   INTEGRANTES
+========================================================= */
+
+.integrantes {
+  width: 100%;
+
+  margin: 0;
+
+  padding: 14px;
+
+  background: #111722;
+
+  border: 1px solid rgba(255, 255, 255, .06);
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================================================
+   TÍTULO INTEGRANTES
+========================================================= */
+
+.integrantes > p:first-child {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.integrantes > span:first-of-type {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin: 10px 0 12px;
+
+  background: #1683ff;
+
+  box-shadow:
+    0 0 5px #1683ff,
+    0 0 12px rgba(22, 131, 255, .7);
+}
+
+
+/* =========================================================
+   MIEMBROS
+========================================================= */
+
+.miembros {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  width: 100%;
+}
+
+.miembro {
+  width: 100%;
+
+  padding: 9px;
+
+  background: #151d2c;
+
+  border: 1px solid rgba(255, 255, 255, .06);
+
+  border-radius: 9px;
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.titulos {
+  display: none;
+}
+
+.titulos span {
+  color: #7f8b9f;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: .6px;
+}
+
+
+/* =========================================================
+   CAMPOS INTEGRANTES
+========================================================= */
+
+.campos {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 7px;
+
+  width: 100%;
+}
+
+.campos input {
+  width: 100%;
+  min-width: 0;
+
+  height: 34px;
+
+  padding: 0 9px;
+
+  border: 1px solid #202a3b;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #111722;
+
+  color: #fff;
+
+  font-size: 11px;
+}
+
+.campos input::placeholder {
+  color: #667085;
+}
+
+.campos input:focus {
+  border-color: #1683ff;
+
+  box-shadow:
+    0 0 0 2px rgba(22, 131, 255, .12);
+}
+
+
+/* =========================================================
+   BOTÓN QUITAR
+========================================================= */
+
+.miembro + button {
+  width: 100%;
+
+  margin-top: 4px;
+
+  padding: 4px 9px;
+
+  border: 1px solid rgba(239, 68, 68, .3);
+
+  border-radius: 5px;
+
+  background: rgba(239, 68, 68, .08);
+
+  color: #ff6b6b;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.miembro + button:hover {
+  background: rgba(239, 68, 68, .18);
+}
+
+
+/* =========================================================
+   BOTÓN AÑADIR
+========================================================= */
+
+.integrantes > button:first-of-type {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 8px;
+
+  border: 1px dashed #1683ff;
+
+  border-radius: 7px;
+
+  background: rgba(22, 131, 255, .08);
+
+  color: #1683ff;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.integrantes > button:first-of-type:hover {
+  background: #1683ff;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   TÉRMINOS
+========================================================= */
+
+#terminos {
+  width: 14px;
+  height: 14px;
+
+  margin: 10px 5px 0 0;
+
+  vertical-align: middle;
+
+  accent-color: #1683ff;
+
+  cursor: pointer;
+}
+
+label[for="terminos"] {
+  color: #aeb7c6;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BOTÓN REGISTRAR
+========================================================= */
+
+.integrantes > button:last-child {
+  display: block;
+
+  width: 100%;
+
+  min-height: 38px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #1683ff;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.integrantes > button:last-child:hover {
+  background: #006fe6;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(22, 131, 255, .25);
+}
+
+
+/* =========================================================
+   ANIMACIÓN
+========================================================= */
+
+@keyframes ledBlink {
+
+  0%,
+  100% {
+    opacity: .35;
+
+    box-shadow:
+      0 0 3px #1683ff;
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 6px #1683ff,
+      0 0 15px rgba(22, 131, 255, .9);
+  }
+}
+  
+}
