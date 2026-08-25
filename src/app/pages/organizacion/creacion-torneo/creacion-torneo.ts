@@ -146,7 +146,7 @@ export class CreacionTorneo implements OnInit {
     lector.readAsDataURL(archivo);
   }
 
-  crearTorneo(): void {
+  reglamento(): void {
 
     if (this.contador <= 0) {
       console.log('Debe ingresar la cantidad de equipos');
@@ -175,6 +175,8 @@ export class CreacionTorneo implements OnInit {
       console.log('La cantidad de grupos debe ser un número par entre 2 y 8');
       return;
     }
+
+
 
     const torneo: Torneo = {
       lugar: this.lugar,
@@ -207,6 +209,7 @@ export class CreacionTorneo implements OnInit {
         mensaje: '¡Torneo creado correctamente!'
       }
     });
+    this.router.navigate(['/reglamento']);
   }
 
   ngOnInit(): void {

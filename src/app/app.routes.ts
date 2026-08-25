@@ -59,18 +59,18 @@ export const routes: Routes = [
         path: 'torneos',
         component: TorneosComponent,
       },
-      {
-        path: 'torneo',
-        component: CreacionTorneo,
-      },
+      // {
+      //   path: 'torneo',
+      //   component: CreacionTorneo,
+      // },
       {
         path: 'registro',
         component: RegistroEquipos,
       },
-      {
-        path: 'reglamento',
-        component: Reglamento,
-      },
+      // {
+      //   path: 'reglamento',
+      //   component: Reglamento,
+      // },
       {
         path: 'perfil',
         component: Perfil,
@@ -186,6 +186,8 @@ export const routes: Routes = [
     path:'torneos_activos',
     component:TorneosComponent,
     data:{modo:'inscripcion'}
+  },
+  {
     path: 'navigator',
     component: Navigator
   }

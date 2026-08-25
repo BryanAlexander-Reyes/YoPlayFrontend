@@ -70,10 +70,10 @@
 }
 
 
-    transform-origin: top center;
+    /* transform-origin: top center;
     animation: aparecer-tutorial 450ms ease-out both;
     transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
-}
+} */
 .tutorial:hover {
     background: #b8b8b8;
     box-shadow: 0 6px 14px rgba(0,0,0,.16);
