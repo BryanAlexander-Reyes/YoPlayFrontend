@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { EquiposService } from '../../../services/auth-service-equipos';
 import { CommonModule} from '@angular/common';
 
@@ -19,6 +19,8 @@ interface EquipoPosicion{
   styleUrl: './puntaje-component.css',
 })
 export class PuntajeComponent {
+  @Input() visionPuntajes:boolean=false;
+
   tablaPosiciones:EquipoPosicion[]=[];
   tablaEquipo:EquiposService[]=[];
 
@@ -36,15 +38,18 @@ export class PuntajeComponent {
   }
 
   partidoGanado(equipo:EquipoPosicion):void{
+    if(this.visionPuntajes) return;
     equipo.pj++;
     equipo.g++;
     equipo.pts+=3;
   }
   partidoDerrota(equipo:EquipoPosicion):void{
+    if(this.visionPuntajes) return;
     equipo.d++;
     equipo.pj++;
   }
   partidoEmpate(equipo:EquipoPosicion):void{
+    if(this.visionPuntajes) return;
     equipo.pj++;
     equipo.e++;
     equipo.pts++;

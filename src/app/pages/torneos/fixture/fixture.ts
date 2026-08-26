@@ -31,7 +31,8 @@ export class Fixture implements OnInit{
     private route:ActivatedRoute
   ){}
 
-  @Input() visualizacion:boolean=true
+  @Input() visualizacion:boolean=true;
+  
 
   ngOnInit(): void {
     const id =Number(
