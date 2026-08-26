@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
+import { HostListener } from '@angular/core';
+import { Fixture } from '../torneos/fixture/fixture';
 
 interface perfil{
   nombre:string,
@@ -12,11 +16,39 @@ interface perfil{
 
 @Component({
   selector: 'app-perfil',
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule, Fixture],
   templateUrl: './perfil.html',
   styleUrl: './perfil.css',
 })
 export class Perfil {
+
+  fotoPerfil: string | null = null;
+  torneoFixtureId: number | null = null;
+
+  readonly torneosPerfil: Torneo[];
+
+  constructor(private readonly torneosService: TorneosService) {
+    this.torneosPerfil = this.torneosService.obtenerTorneos().slice(0, 3);
+  }
+
+  tieneFotoPerfil(): boolean {
+    return Boolean(this.fotoPerfil);
+  }
+
+  abrirFixture(id: number): void {
+    this.torneoFixtureId = id;
+  }
+
+  cerrarFixture(): void {
+    this.torneoFixtureId = null;
+  }
+
+  @HostListener('document:keydown.escape')
+  cerrarFixtureConEscape(): void {
+    if (this.torneoFixtureId !== null) {
+      this.cerrarFixture();
+    }
+  }
 
 
   perfiles:perfil=
