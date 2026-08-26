@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SpanAuth } from '../../models/span-auth';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ValidadorComponente {
   @Output() codigoConfirmado = new EventEmitter<void>();
-
+  
+  @Input() estado!:SpanAuth;
+                                                                      
   codigo1 = '';
   codigo2 = '';
   codigo3 = '';

@@ -4,7 +4,7 @@ import  {Router} from '@angular/router'
 import { AuthService } from '../../../services/auth';
 import { EventEmitter, Output } from '@angular/core';
 import {RestablecerComponent} from '../restablecer-component/restablecer-component'
-
+;
 
 @Component({
   selector: 'app-login',
@@ -25,24 +25,32 @@ export class LoginComponent {
       };
   email:string='';
   password:string='';
+  @Output() mostrarSpan = new EventEmitter<void>();
 
   // contraseña y usuario para prueba
-  login (): void{
+ login(): void {
 
-    const autenticado=this.authService.iniciarSesion(this.email, this.password);
-    if(!autenticado){
-      alert ('Correo o contraseña incorrecta')
-      return;
-    }
-    const usuario=this.authService.obtenerUsuario();
-    alert (`Bienvenido al sistema ${usuario?.nombre}\nrol: ${usuario?.rol}`)
+  const autenticado = this.authService.iniciarSesion(
+    this.email,
+    this.password
+  );
 
-
-    this.router.navigate(['/home'])
+  if (!autenticado) {
+    alert('Correo o contraseña incorrecta');
+    return;
   }
 
-  goToRegister():void{
-  this.irARegistro.emit();
-  }
+  const usuario = this.authService.obtenerUsuario();
 
-}
+  alert(
+    `Bienvenido al sistema ${usuario?.nombre}\nrol: ${usuario?.rol}`
+  );
+
+  // Mostrar tarjeta de carga
+  this.mostrarSpan.emit();
+
+  // Esperar antes de cambiar de página
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 2000);
+}}

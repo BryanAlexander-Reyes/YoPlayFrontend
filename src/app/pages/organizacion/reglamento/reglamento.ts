@@ -6,6 +6,7 @@ interface reglamento {
   regla: string;
 }
 
+
 @Component({
   selector: 'app-reglamento',
   imports: [FormsModule],
@@ -14,11 +15,17 @@ interface reglamento {
 })
 export class Reglamento {
 
+  mostrarErrores:boolean=false;
+  aceptar:boolean=false;
   reglamentos: reglamento[] = [
     {
       regla: ''
     }
   ];
+  
+ 
+
+  mostrarvalidar=false;
 
   idioma: string = 'Español';
 
@@ -26,7 +33,7 @@ export class Reglamento {
 
   generarPdf: boolean = false;
 
-  aceptaTerminos: boolean = false;
+ 
 
   constructor(private router: Router) {}
 
@@ -44,21 +51,35 @@ export class Reglamento {
 
   crearReglamento(): void {
 
+    this.mostrarErrores=true;
+
+    if(!this.aceptar){
+    this.ocultarerrores();
+    return;
+    }
     const reglamentoGuardado = {
       reglas: this.reglamentos,
       idioma: this.idioma,
       reglamentoEstandar: this.reglamentoEstandar,
       generarPdf: this.generarPdf,
-      aceptaTerminos: this.aceptaTerminos
     };
-
+ 
     localStorage.setItem(
       'reglamento',
       JSON.stringify(reglamentoGuardado)
     );
     console.log(JSON.stringify(reglamentoGuardado, null, 2));
-  
+    this.mostrarvalidar=true
+    setTimeout(() => {
 
-    this.router.navigate(['/torneos_activos']);
+      this.router.navigate(['/torneos_activos'], {
+      });
+
+    }, 2000);
+  }
+  ocultarerrores():void{
+    setTimeout(()=>{
+      this.mostrarErrores=false;
+    },5000);
   }
 }

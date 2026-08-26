@@ -47,11 +47,21 @@
             @if (mostrarErrores && !dato[0].documentoCapitan.trim()) {
             <small class="error-campo">El teléfono es obligatorio.</small>
             }
+            @if (mostrarErrores && dato[0].documentoCapitan.trim() && !/^\d+$/.test(dato[0].documentoCapitan.trim())) {
+            <small class="error-campo">Debe contener únicamente números.</small>
+            }
             <p>Email</p>
             <span></span>
             <input type="email" [(ngModel)]="dato[0].correoCapitan" placeholder="Ingrese su correo electronico">
             @if (mostrarErrores && !dato[0].correoCapitan.trim()) {
             <small class="error-campo">El correo electrónico es obligatorio.</small>
+            }
+            @if (mostrarErrores && dato[0].correoCapitan.trim() &&
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dato[0].correoCapitan.trim())
+            ) {
+            <small class="error-campo">
+                Debe ingresar un correo electrónico válido.
+            </small>
             }
         </div>
     </section>
@@ -80,9 +90,12 @@
                         }
                     </div>
                     <div>
-                        <input type="text" [(ngModel)]="miembro.numero" placeholder="Número">
+                        <input type="text" [(ngModel)]="miembro.numero" placeholder="Número" inputmode="numeric">
                         @if (mostrarErrores && !miembro.numero.trim()) {
                         <small class="error-campo">Obligatorio.</small>
+                        }
+                        @if (mostrarErrores && miembro.numero.trim() && !/^\d+$/.test(miembro.numero.trim())) {
+                        <small class="error-campo">Debe contener únicamente números.</small>
                         }
                     </div>
                 </div>
@@ -108,4 +121,22 @@
             Registrar Equipo
         </button>
     </section>
+    @if (mostrarvalidar) {
+    <div class="span-overlay">
+        <div class="tarjeta-carga">
+            <div class="icono-carga">
+                <i class="fa-solid fa-basketball fa-spin"></i>
+            </div>
+
+            <h2>Creando torneo</h2>
+
+            <p>Estamos guardando la información del torneo...</p>
+
+            <div class="barra-carga">
+                <div class="progreso"></div>
+            </div>
+        </div>
+    </div>
+    }
+
 </section>

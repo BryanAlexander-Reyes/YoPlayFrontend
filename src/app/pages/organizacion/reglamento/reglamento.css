@@ -29,6 +29,97 @@
         sans-serif;
 }
 
+.span-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+}
+
+.tarjeta-carga {
+    width: 380px;
+    min-height: 250px;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    background: #111111;
+    border: 1px solid rgba(0, 217, 232, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+.icono-carga {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(0, 217, 232, 0.1);
+}
+
+.icono-carga i {
+    font-size: 32px;
+    color: #00d9e8;
+}
+
+.tarjeta-carga h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #00d9e8;
+}
+
+.tarjeta-carga p {
+    margin: 0 0 25px;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.barra-carga {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #333333;
+}
+
+.error-campo {
+    display: block;
+    margin-top: 3px;
+    color: #ff6b6b;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+.progreso {
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    background: #00d9e8;
+    animation: cargarTorneo 2s linear forwards;
+}
+
+@keyframes cargarTorneo {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
 
 /* =========================================================
    CABECERA
