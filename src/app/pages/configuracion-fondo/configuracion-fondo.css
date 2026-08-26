@@ -19,7 +19,7 @@
     padding: 0 60px;
     display: flex;
     align-items: center;
-    background: #000000;
+    background: #080b12;
     color: #ffffff;
     animation: headerSlideIn 0.5s ease both;
     transition: background .3s ease, color .3s ease;

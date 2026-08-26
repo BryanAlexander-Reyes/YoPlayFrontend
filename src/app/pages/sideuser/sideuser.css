@@ -1,7 +1,7 @@
 .user-menu {
     width: 308px;
     min-height: 421px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid #102a43;
     border-radius: 26px;
     box-sizing: border-box;
