@@ -16,6 +16,9 @@
       <label>Lugar de Encuentro</label>
       <span></span>
       <input type="text" [(ngModel)]="lugar" placeholder="Ingrese el lugar de Encuentro">
+      @if (mostrarErrores && !lugar.trim()) {
+        <small class="error-campo">El lugar de encuentro es obligatorio.</small>
+      }
     </div>
     <div class="premiaciones-list">
       @for (premiacion of premiaciones; track $index) {
@@ -33,6 +36,9 @@
               <button type="button" class="btn-eliminar" (click)="quitarpremiacion($index)">−</button>
             }
           </div>
+          @if (mostrarErrores && !premiacion.premiacion.trim()) {
+            <small class="error-campo">La premiación es obligatoria.</small>
+          }
         </div>
       }
     </div>
@@ -46,6 +52,9 @@
             <option [value]="opcion">{{ opcion }}</option>
           }
         </select>
+        @if (mostrarErrores && !deporte.deporte) {
+          <small class="error-campo">Debe seleccionar un deporte.</small>
+        }
       }
     </div>
     <div class="form-group divisiones">
@@ -58,12 +67,15 @@
             <option [value]="opcion">{{ opcion }}</option>
           }
         </select>
+        @if (mostrarErrores && !divicion.etapa) {
+          <small class="error-campo">Debe seleccionar una división.</small>
+        }
         @if (divicion.etapa === 'grupos') {
           <div class="cantidad_grupos">
             <label>Cantidad de grupos</label>
             <input type="number" min="2" max="8" step="2" placeholder="Ingrese la cantidad de grupos" [(ngModel)]="divicion.cantidad_grupos">
-            @if (divicion.cantidad_grupos !== null && (divicion.cantidad_grupos < 2 || divicion.cantidad_grupos > 8 || divicion.cantidad_grupos % 2 !== 0)) {
-              <small class="error-grupo">La cantidad debe ser un número par entre 2 y 8.</small>
+            @if (mostrarErrores && (divicion.cantidad_grupos === null || divicion.cantidad_grupos < 2 || divicion.cantidad_grupos > 8 || divicion.cantidad_grupos % 2 !== 0)) {
+              <small class="error-campo">La cantidad debe ser un número par entre 2 y 8.</small>
             }
           </div>
         }
@@ -72,6 +84,9 @@
     <div class="form-group-flayer">
       <label>Imagen del torneo</label>
       <input type="file" accept="image/*" (change)="seleccionarFlayer($event)">
+      @if (mostrarErrores && !flayer) {
+        <small class="error-campo">Debe seleccionar una imagen para el torneo.</small>
+      }
     </div>
     <div class="form-group cantidad">
       <label>Cantidad de Equipos</label>
@@ -81,11 +96,17 @@
         <input type="number" [(ngModel)]="contador" readonly>
         <button type="button" (click)="sumarcontador()">+</button>
       </div>
+      @if (mostrarErrores && contador <= 0) {
+        <small class="error-campo">Debe ingresar la cantidad de equipos.</small>
+      }
     </div>
     <div class="form-group objetivo">
       <label>Objetivo</label>
       <span></span>
       <textarea [(ngModel)]="objetivo" placeholder="Escribe el objetivo"></textarea>
+      @if (mostrarErrores && !objetivo.trim()) {
+        <small class="error-campo">El objetivo es obligatorio.</small>
+      }
     </div>
     <div class="form-group fechas">
       <label>Fecha y Hora de Inicio y Fin</label>
@@ -94,9 +115,21 @@
         <input type="datetime-local" [(ngModel)]="fechaInicio">
         <input type="datetime-local" [(ngModel)]="fechaFin">
       </div>
+      @if (mostrarErrores && !fechaInicio) {
+        <small class="error-campo">La fecha y hora de inicio son obligatorias.</small>
+      }
+      @if (mostrarErrores && !fechaFin) {
+        <small class="error-campo">La fecha y hora de fin son obligatorias.</small>
+      }
+      @if (mostrarErrores && fechaInicio && fechaFin && fechaFin <= fechaInicio) {
+        <small class="error-campo">La fecha y hora de fin debe ser posterior a la fecha de inicio.</small>
+      }
     </div>
   </div>
   <div class="fin-formun">
-    <button type="button" (click)="reglamento()"><i class="fa-solid fa-book"></i>  Añade Reglamento</button>
+    <button type="button" (click)="reglamento()">
+      <i class="fa-solid fa-book"></i>
+      Añade Reglamento
+    </button>
   </div>
 </section>

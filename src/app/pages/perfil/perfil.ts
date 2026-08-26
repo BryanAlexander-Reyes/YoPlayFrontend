@@ -25,7 +25,7 @@ export class Perfil {
       tipo_documneto:'Cédula de ciudadanía',
       numero_documneto:1123038372,
       equipo:'No definido',
-      Rol:'usuario',
+      Rol:'Usuario',
       Estado:'Activo'
     }
 }

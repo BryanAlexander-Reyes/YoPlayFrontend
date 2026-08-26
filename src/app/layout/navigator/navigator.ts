@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -7,4 +7,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navigator.html',
   styleUrl: './navigator.css',
 })
-export class Navigator {}
+export class Navigator {
+  @Output() userMenuToggle = new EventEmitter<void>();
+
+  toggleUserMenu(): void {
+    this.userMenuToggle.emit();
+  }
+}
