@@ -41,15 +41,19 @@
         </section>
         <section class="perfil-publico">
             <div class="texto-publico">
-                <h2>Perfil: Público</h2>
+                <h2>Perfil público</h2>
                 <p>
                     Permite que los datos más privados, o tu información de
                     torneos, entre otros, puedan ser visualizados o no,
-                    por otros usuarios.
+                    por otros usuarios. Tu perfil es
+                    <strong>{{ estadoPerfil }}</strong>.
                 </p>
             </div>
             <label class="switch">
-                <input type="checkbox" aria-label="Hacer público mi perfil">
+                <input
+                    type="checkbox"
+                    [(ngModel)]="perfilPublico"
+                    aria-label="Hacer público mi perfil">
                 <span class="slider"></span>
             </label>
         </section>
@@ -57,7 +61,7 @@
         <section class="tus-torneos">
             <div class="tus-torneos-header">
                 <h2>Tus torneos</h2>
-                <p>Consulta la información de los torneos en los que participas.</p>
+                <p>Consulta la información de los torneos de tu autoría.</p>
             </div>
 
             <div class="tus-torneos-grid">

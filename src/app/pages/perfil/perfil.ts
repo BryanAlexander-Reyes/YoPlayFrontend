@@ -24,6 +24,7 @@ export class Perfil {
 
   fotoPerfil: string | null = null;
   torneoFixtureId: number | null = null;
+  perfilPublico = false;
 
   readonly torneosPerfil: Torneo[];
 
@@ -33,6 +34,10 @@ export class Perfil {
 
   tieneFotoPerfil(): boolean {
     return Boolean(this.fotoPerfil);
+  }
+
+  get estadoPerfil(): string {
+    return this.perfilPublico ? 'público' : 'privado';
   }
 
   abrirFixture(id: number): void {
