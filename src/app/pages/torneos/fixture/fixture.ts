@@ -2,6 +2,8 @@ import { DecimalPipe, NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Torneo, TorneosService } from '../../../services/auth-services-torneosCurso';
 import { ActivatedRoute } from '@angular/router';
+import { PuntajeComponent } from '../puntaje-component/puntaje-component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 interface Fixtureencuentros {
   id: string;
@@ -19,7 +21,7 @@ interface FixtureRondas {
 
 @Component({
   selector: 'app-fixture',
-  imports: [DecimalPipe, NgIf],
+  imports: [DecimalPipe, NgIf, PuntajeComponent, MatTabsModule],
   templateUrl: './fixture.html',
   styleUrl: './fixture.css',
 })

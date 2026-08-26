@@ -1,0 +1,554 @@
+/* =========================================================
+   HOST DEL COMPONENTE
+   ========================================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.tabla-puntaje {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   TITULO
+   ========================================================= */
+
+.tabla-titulo {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #202a3b;
+}
+
+.subtitulo {
+  display: block;
+  margin-bottom: 4px;
+
+  color: #1683ff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  text-shadow:
+    0 0 8px rgba(22, 131, 255, 0.5);
+}
+
+.tabla-puntaje h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+
+/* =========================================================
+   CONTENEDOR DE LA TABLA
+   ========================================================= */
+
+.tabla-contenido {
+  width: 100%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111722,
+      #0d131e
+    );
+
+  border: 1px solid #202a3b;
+  border-radius: 10px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #1683ff #0d131e;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.tabla-contenido::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tabla-contenido::-webkit-scrollbar-track {
+  background: #0d131e;
+}
+
+.tabla-contenido::-webkit-scrollbar-thumb {
+  background: #1683ff;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+
+.tabla-posiciones {
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+
+.tabla-posiciones thead {
+  background: #0d131e;
+}
+
+.tabla-posiciones th {
+  height: 38px;
+
+  padding: 0 10px;
+
+  border-bottom: 1px solid #202a3b;
+
+  color: #6f7b8e;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  text-align: center;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+
+/* =========================================================
+   PRIMERA COLUMNA
+   ========================================================= */
+
+.tabla-posiciones th:first-child {
+  width: 50%;
+
+  padding-left: 18px;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   FILAS
+   ========================================================= */
+
+.tabla-posiciones tbody tr {
+  height: 46px;
+
+  background: #111722;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tabla-posiciones tbody tr:hover {
+  background: #121c2b;
+}
+
+
+/* =========================================================
+   CELDAS
+   ========================================================= */
+
+.tabla-posiciones td {
+  height: 46px;
+
+  padding: 4px 10px;
+
+  border-bottom: 1px solid #202a3b;
+
+  color: #aeb8c8;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.tabla-posiciones tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   NOMBRE DEL EQUIPO
+   ========================================================= */
+
+.tabla-posiciones .nombre-equipo {
+  padding-left: 18px;
+
+  color: #ffffff !important;
+
+  text-align: left !important;
+
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  letter-spacing: 0.2px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   BOTONES DE RESULTADOS
+   ========================================================= */
+
+.tabla-posiciones td button {
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 1px solid #334155;
+  border-radius: 5px;
+
+  background: #182131;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER BOTONES
+   ========================================================= */
+
+.tabla-posiciones td button:hover {
+  background: #1683ff;
+
+  border-color: #1683ff;
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(22, 131, 255, 0.25);
+}
+
+
+/* =========================================================
+   CLICK BOTONES
+   ========================================================= */
+
+.tabla-posiciones td button:active {
+  transform: scale(0.94);
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   VICTORIAS
+   ========================================================= */
+
+.tabla-posiciones .boton-ganar {
+  background: rgba(34, 197, 94, 0.08);
+
+  border-color: rgba(34, 197, 94, 0.35);
+
+  color: #4ade80;
+}
+
+.tabla-posiciones .boton-ganar:hover {
+  background: #22c55e;
+
+  border-color: #22c55e;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+
+/* =========================================================
+   EMPATES
+   ========================================================= */
+
+.tabla-posiciones .boton-empate {
+  background: rgba(234, 179, 8, 0.08);
+
+  border-color: rgba(234, 179, 8, 0.35);
+
+  color: #facc15;
+}
+
+.tabla-posiciones .boton-empate:hover {
+  background: #eab308;
+
+  border-color: #eab308;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(234, 179, 8, 0.25);
+}
+
+
+/* =========================================================
+   DERROTAS
+   ========================================================= */
+
+.tabla-posiciones .boton-derrota {
+  background: rgba(239, 68, 68, 0.08);
+
+  border-color: rgba(239, 68, 68, 0.35);
+
+  color: #f87171;
+}
+
+.tabla-posiciones .boton-derrota:hover {
+  background: #ef4444;
+
+  border-color: #ef4444;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================================================
+   PUNTOS
+   ========================================================= */
+
+.tabla-posiciones .puntos {
+  color: #1683ff !important;
+
+  font-size: 12px !important;
+  font-weight: 900 !important;
+
+  text-shadow:
+    0 0 6px rgba(22, 131, 255, 0.45);
+}
+
+
+/* =========================================================
+   PRIMER EQUIPO
+   ========================================================= */
+
+.tabla-posiciones tbody tr:first-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(22, 131, 255, 0.08),
+      #111722 60%
+    );
+}
+
+.tabla-posiciones tbody tr:first-child td:first-child {
+  border-left: 3px solid #1683ff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .tabla-titulo {
+    margin-bottom: 12px;
+  }
+
+  .tabla-puntaje h1 {
+    font-size: 21px;
+  }
+
+  .tabla-posiciones th {
+    height: 35px;
+
+    padding: 0 7px;
+
+    font-size: 8px;
+  }
+
+  .tabla-posiciones td {
+    height: 42px;
+
+    padding: 3px 7px;
+
+    font-size: 10px;
+  }
+
+  .tabla-posiciones .nombre-equipo {
+    padding-left: 12px;
+
+    font-size: 11px !important;
+  }
+
+  .tabla-posiciones .puntos {
+    font-size: 11px !important;
+  }
+
+  .tabla-posiciones td button {
+    width: 26px;
+    height: 26px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .tabla-titulo {
+    margin-bottom: 10px;
+
+    padding-bottom: 10px;
+  }
+
+  .subtitulo {
+    font-size: 8px;
+  }
+
+  .tabla-puntaje h1 {
+    font-size: 19px;
+  }
+
+  .tabla-contenido {
+    border-radius: 8px;
+  }
+
+  /*
+     Se mantiene un ancho mínimo para que
+     las columnas no se aplasten.
+  */
+
+  .tabla-posiciones {
+    min-width: 500px;
+  }
+
+  .tabla-posiciones th {
+    height: 32px;
+
+    padding: 0 6px;
+
+    font-size: 7px;
+  }
+
+  .tabla-posiciones td {
+    height: 40px;
+
+    padding: 3px 6px;
+
+    font-size: 9px;
+  }
+
+  .tabla-posiciones .nombre-equipo {
+    padding-left: 10px;
+
+    font-size: 10px !important;
+  }
+
+  .tabla-posiciones .puntos {
+    font-size: 10px !important;
+  }
+
+  .tabla-posiciones td button {
+    width: 25px;
+    height: 25px;
+
+    border-radius: 4px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   CELULAR MUY PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .tabla-posiciones {
+    min-width: 460px;
+  }
+
+  .tabla-posiciones th {
+    font-size: 7px;
+  }
+
+  .tabla-posiciones td {
+    font-size: 9px;
+  }
+
+  .tabla-posiciones .nombre-equipo {
+    font-size: 10px !important;
+  }
+
+  .tabla-posiciones td button {
+    width: 24px;
+    height: 24px;
+
+    font-size: 9px;
+  }
+}
