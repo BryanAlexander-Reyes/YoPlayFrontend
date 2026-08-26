@@ -112,8 +112,8 @@
       <label>Fecha y Hora de Inicio y Fin</label>
       <span></span>
       <div class="input-fechas">
-        <input type="datetime-local" [(ngModel)]="fechaInicio">
-        <input type="datetime-local" [(ngModel)]="fechaFin">
+        <input type="datetime-local" [(ngModel)]="fechaInicio" [min]="fechaminima">
+        <input type="datetime-local" [(ngModel)]="fechaFin" [min]="fechaminima">
       </div>
       @if (mostrarErrores && !fechaInicio) {
         <small class="error-campo">La fecha y hora de inicio son obligatorias.</small>
@@ -124,12 +124,36 @@
       @if (mostrarErrores && fechaInicio && fechaFin && fechaFin <= fechaInicio) {
         <small class="error-campo">La fecha y hora de fin debe ser posterior a la fecha de inicio.</small>
       }
+      @if (mostrarErrores && fechaInicio && fechaInicio < fechaminima){
+        <small class="error-campo">
+          la fecha y hora de inicio no puede ser anterior a la fecha actual
+        </small>
+      }
+
     </div>
   </div>
-  <div class="fin-formun">
-    <button type="button" (click)="reglamento()">
-      <i class="fa-solid fa-book"></i>
-      Añade Reglamento
-    </button>
+  <div class="añadir"> 
+  <button type="button" (click)="reglamento()"> 
+    <i class="fa-solid fa-book"></i> 
+    Añade Reglamento 
+  </button> 
+</div>
+
+@if (mostrarvalidador) { 
+  <div class="span-overlay">
+    <div class="tarjeta-carga">
+      <div class="icono-carga">
+        <i class="fa-solid fa-basketball fa-spin"></i>
+      </div>
+
+      <h2>Creando torneo</h2>
+
+      <p>Estamos guardando la información del torneo...</p>
+
+      <div class="barra-carga">
+        <div class="progreso"></div>
+      </div>
+    </div>
   </div>
+}
 </section>

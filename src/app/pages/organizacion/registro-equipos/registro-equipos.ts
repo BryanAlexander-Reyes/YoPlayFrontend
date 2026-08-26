@@ -27,6 +27,7 @@ export class RegistroEquipos {
 
 constructor(private router:Router){}
 
+mostrarvalidar=false;
 mostrarErrores:boolean=false;
 aceptaTerminos:boolean=false;
 
@@ -122,13 +123,14 @@ JSON.stringify(equipo)
 
 console.log('EQUIPO REGISTRADO:');
 console.log(JSON.stringify(equipo,null,2));
+this.mostrarvalidar=true;
+    setTimeout(() => {
 
-this.router.navigate(['/torneos_activos  '],{
-state:{
-mensaje:'¡Equipo registrado correctamente!'
-}
-});
-}
+      this.router.navigate(['/torneos_activos'], {
+      });
+
+    }, 2000);
+  }
 
 ocultarErrores():void{
 setTimeout(()=>{

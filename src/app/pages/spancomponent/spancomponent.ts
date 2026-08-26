@@ -14,6 +14,7 @@ import { SpanAuth } from '../../models/span-auth';
 export class SpanComponent  implements OnInit{
    
   estado!: SpanAuth;
+  
   constructor (private span:SpanAuthService){}
 
   ngOnInit():void{
