@@ -13,9 +13,9 @@
 	align-items: center;
 	min-height: 145px;
 	box-sizing: border-box;
-	padding: 0 30px;
+	padding: 0 60px;
 	color: #fff;
-	background: #050505;
+	background: #080b12;
 }
 
 .page-header h1 {
@@ -34,7 +34,7 @@
 	min-height: 120px;
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0 30px;
+	padding: 0 60px;
 	background: rgba(80, 80, 80, 0.45);
 	font-size: 1.15rem;
 }

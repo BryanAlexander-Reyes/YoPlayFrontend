@@ -23,7 +23,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #102a43;
     border-radius: 26px;
     overflow: hidden;
@@ -40,7 +40,7 @@ body {
 .side-menu {
     width: 96px;
     height: 480px;
-    background: radial-gradient(ellipse at center, #d9f5f7 0%, #f1fbfc 42%, #ffffff 100%);
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #102a43;
     border-radius: 26px;
     display: flex;
@@ -58,6 +58,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
     transition:
         background 0.25s ease,

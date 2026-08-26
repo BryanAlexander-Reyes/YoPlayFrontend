@@ -18,6 +18,8 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1003;
 }
 
 .logo img {
@@ -33,6 +35,8 @@
     align-items: center;
     justify-content: center;
     gap: 120px;
+    position: relative;
+    z-index: 1003;
 }
 
 .content-nav a {
@@ -57,7 +61,7 @@
     flex-shrink: 0;
     padding-right: 80px;
     position: relative;
-    z-index: 20;
+    z-index: 1003;
 }
 
 .user svg {
@@ -79,13 +83,13 @@
 
 .user-menu-backdrop {
     position: fixed;
-    top: 120px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     z-index: 1000;
     animation: backdropIn 0.24s ease-out forwards;
 }

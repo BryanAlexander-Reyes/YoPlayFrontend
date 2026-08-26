@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Footer } from '../footer/footer';
 import { RouterOutlet } from '@angular/router';
-import { Sidebar } from '../sidebar/sidebar';
+import { Navigator } from '../navigator/navigator';
 import { Sideuser } from '../../pages/sideuser/sideuser';
 
 @Component({
   selector: 'app-layout',
-  imports: [CommonModule, Sidebar, Footer, RouterOutlet, Sideuser],
+  imports: [CommonModule, Navigator, Footer, RouterOutlet, Sideuser],
   templateUrl: './layout.html',
   styleUrl: './layout.css',
 })
