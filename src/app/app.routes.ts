@@ -162,7 +162,7 @@ export const routes: Routes = [
     component: EquiposComponent
   },
   {
-    path:'fixture',
+    path:'fixture/:id',
     component: Fixture
   },
   {

@@ -18,6 +18,8 @@ interface Menu {
 export class Sidebar {
   @Output() userMenuToggle = new EventEmitter<void>();
 
+  logoUrl = '/images/logo.png';
+
   menu: Menu[] = [
     {
       icono: 'home',

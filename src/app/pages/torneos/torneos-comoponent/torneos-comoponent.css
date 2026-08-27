@@ -729,3 +729,86 @@
     width: 100%;
   }
 }
+
+/* Animaciones de entrada y estados interactivos */
+.carrusel-container {
+  animation: tournamentSlideIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.carrusel-info > * {
+  animation: contentRise 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.carrusel-info > *:nth-child(1) { animation-delay: 120ms; }
+.carrusel-info > *:nth-child(2) { animation-delay: 190ms; }
+.carrusel-info > *:nth-child(3) { animation-delay: 260ms; }
+.carrusel-info > *:nth-child(4) { animation-delay: 330ms; }
+.carrusel-info > *:nth-child(5) { animation-delay: 400ms; }
+
+.torneos-section {
+  animation: sectionReveal 800ms 250ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.torneo-card {
+  animation: cardReveal 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 350ms ease;
+}
+
+.torneo-card:nth-child(1) { animation-delay: 350ms; }
+.torneo-card:nth-child(2) { animation-delay: 450ms; }
+.torneo-card:nth-child(3) { animation-delay: 550ms; }
+
+.torneo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.48);
+}
+
+.indicador:hover {
+  transform: scale(1.35);
+  background: #7dd3fc;
+}
+
+.carrusel-btn:focus-visible,
+.indicador:focus-visible,
+.btn-participar:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 4px;
+}
+
+@keyframes tournamentSlideIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes contentRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carrusel-container,
+  .carrusel-info > *,
+  .torneos-section,
+  .torneo-card {
+    animation: none;
+  }
+
+  .torneo-card,
+  .indicador,
+  .carrusel-btn,
+  .btn-participar {
+    transition: none;
+  }
+}
