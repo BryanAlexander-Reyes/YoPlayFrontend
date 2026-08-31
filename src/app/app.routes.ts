@@ -109,6 +109,7 @@ export const routes: Routes = [
       {
         path: 'torneo',
         component: CreacionTorneo,
+        canActivate: [authGuard],
       },
       {
         path: 'reglamento',

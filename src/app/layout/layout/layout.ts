@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { Footer } from '../footer/footer';
-import { RouterOutlet } from '@angular/router';
 import { Navigator } from '../navigator/navigator';
 import { Sideuser } from '../../pages/sideuser/sideuser';
 
@@ -14,6 +14,9 @@ import { Sideuser } from '../../pages/sideuser/sideuser';
 export class Layout {
   isUserMenuOpen = false;
   isClosingUserMenu = false;
+  showLoginRequiredModal = false;
+
+  constructor(private readonly router: Router) {}
 
   toggleUserMenu(): void {
     if (this.isUserMenuOpen) {
@@ -36,5 +39,18 @@ export class Layout {
       this.isUserMenuOpen = false;
       this.isClosingUserMenu = false;
     }, 260);
+  }
+
+  openLoginRequired(): void {
+    this.showLoginRequiredModal = true;
+  }
+
+  closeLoginRequired(): void {
+    this.showLoginRequiredModal = false;
+  }
+
+  goToLogin(): void {
+    this.closeLoginRequired();
+    this.router.navigate(['/login_usuario']);
   }
 }

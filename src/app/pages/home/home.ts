@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
 
@@ -14,7 +14,7 @@ interface TorneoHome extends Torneo {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
+export class Home implements OnInit, AfterViewInit, OnDestroy {
   nombre = 'Usuario';
   torneos: TorneoHome[] = [];
   usuarioAutenticado = false;
@@ -22,39 +22,102 @@ export class Home implements OnInit {
   videoTerminado = false;
   videoFadingOut = false;
   mostrarOverlay = false;
+  videoUrl = 'assets/videos/PRESENTACION.mp4?reload=' + Date.now();
+  private keyboardUnsubscribe?: () => void;
   @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
 
   constructor(
     private readonly router: Router,
     private readonly torneosService: TorneosService,
+    private readonly ngZone: NgZone,
   ) {}
 
   ngOnInit(): void {
     const usuario = localStorage.getItem('usuarioSesion');
+    this.usuarioAutenticado = !!usuario;
+
     if (usuario) {
       const parsed = JSON.parse(usuario);
       this.nombre = parsed?.nombre || this.nombre;
-      this.usuarioAutenticado = true;
-    } else {
-      // Si no hay usuario autenticado, mostrar el video
-      this.mostrarVideo = true;
-      // Asegurar que el video se reproduce cuando sea posible
-      setTimeout(() => {
-        if (this.videoElement?.nativeElement) {
-          const video = this.videoElement.nativeElement;
-          video.play().catch((error: any) => {
-            // Si no se puede reproducir automáticamente, permitir que el usuario use Skip
-            console.log('Autoplay bloqueado:', error);
-          });
-        }
-      }, 100);
     }
+
+    // Forzar el estado del video en cada carga para que el video se muestre
+    // cuando el usuario no está autenticado y se reinicie como una presentación nueva.
+    this.mostrarVideo = !this.usuarioAutenticado;
+    this.videoTerminado = false;
+    this.mostrarOverlay = false;
 
     this.torneos = this.torneosService.obtenerTorneos().map((torneo) => ({
       ...torneo,
       categoria: this.obtenerCategoria(torneo.titulo),
       estado: this.obtenerEstado(torneo.id),
     }));
+  }
+
+  ngAfterViewInit(): void {
+    // Cuando la vista está lista, intentar reproducir el video
+    if (this.mostrarVideo && this.videoElement?.nativeElement) {
+      this.ngZone.runOutsideAngular(() => {
+        const video = this.videoElement.nativeElement;
+
+        // Edge suele bloquear el primer intento si el elemento no se vuelve a preparar desde cero.
+        video.src = this.videoUrl;
+        video.muted = true;
+        video.playsInline = true;
+        video.pause();
+        video.currentTime = 0;
+        video.load();
+
+        // Prevenir clic derecho en el video
+        video.oncontextmenu = (e: any) => {
+          e.preventDefault();
+          return false;
+        };
+
+        // Prevenir teclado durante el video
+        const handleKeydown = (e: KeyboardEvent): void => {
+          if (this.mostrarVideo && !this.videoTerminado) {
+            // Prevenir espacios, 'p' y otras teclas de control
+            if (e.code === 'Space' || e.key === 'p' || e.key === 'P' ||
+                e.key === 'm' || e.key === 'M' || e.key === 'f' || e.key === 'F') {
+              e.preventDefault();
+            }
+          }
+        };
+
+        document.addEventListener('keydown', handleKeydown, true);
+        this.keyboardUnsubscribe = () => {
+          document.removeEventListener('keydown', handleKeydown, true);
+        };
+
+        const intentarReproducir = (): void => {
+          if (video.readyState >= 2) {
+            void video.play().catch((error) => {
+              console.log('Error en autoplay, intentando nuevamente:', error);
+              setTimeout(() => {
+                video.currentTime = 0;
+                void video.play().catch((e) => console.log('Fallo al reintentar play:', e));
+              }, 600);
+            });
+          } else {
+            setTimeout(() => {
+              intentarReproducir();
+            }, 250);
+          }
+        };
+
+        requestAnimationFrame(() => {
+          intentarReproducir();
+        });
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Limpiar event listeners al destruir componente
+    if (this.keyboardUnsubscribe) {
+      this.keyboardUnsubscribe();
+    }
   }
 
   get torneosDisponibles(): TorneoHome[] {

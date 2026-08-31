@@ -6,10 +6,11 @@
     autoplay
     muted
     playsinline
+    preload="auto"
+    [src]="videoUrl"
     (ended)="onVideoEnded()"
+    (contextmenu)="$event.preventDefault()"
   >
-    <source src="assets/videos/PRESENTACION.mp4" type="video/mp4">
-    Tu navegador no soporta videos HTML5.
   </video>
   <button class="skip-button" (click)="skipVideo()" type="button">
     Saltar

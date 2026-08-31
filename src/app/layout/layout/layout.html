@@ -1,10 +1,20 @@
 <div class="layout-container">
     <aside class="layout-header">
-        <app-navigator (userMenuToggle)="toggleUserMenu()"></app-navigator>
+        <app-navigator (userMenuToggle)="toggleUserMenu()" (accessDenied)="openLoginRequired()"></app-navigator>
     </aside>
 
     <main class="layout-main">
-        <router-outlet></router-outlet>
+        <section *ngIf="showLoginRequiredModal" class="login-required-page">
+            <div class="login-required-card">
+                <p class="login-required-title">Lo sentimos.</p>
+                <p class="login-required-message">Inicia sesión para acceder a esta funcionalidad.</p>
+                <button type="button" class="login-required-button" (click)="goToLogin()">
+                    Iniciar sesión
+                </button>
+            </div>
+        </section>
+
+        <router-outlet *ngIf="!showLoginRequiredModal"></router-outlet>
     </main>
 
     <footer class="layout-footer">
