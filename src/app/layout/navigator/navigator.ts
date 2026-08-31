@@ -9,6 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class Navigator {
   @Output() userMenuToggle = new EventEmitter<void>();
+  @Output() tournamentMenuToggle = new EventEmitter<void>();
   @Output() accessDenied = new EventEmitter<void>();
 
   constructor(private readonly router: Router) {}
@@ -17,11 +18,15 @@ export class Navigator {
     this.userMenuToggle.emit();
   }
 
+  toggleTournamentMenu(): void {
+    this.tournamentMenuToggle.emit();
+  }
+
   handleTorneoAccess(): void {
     const usuario = localStorage.getItem('usuarioSesion');
 
     if (usuario) {
-      void this.router.navigate(['/torneo']);
+      void this.router.navigate(['/crear_torneo']);
       return;
     }
 
