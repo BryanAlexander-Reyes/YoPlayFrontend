@@ -18,6 +18,10 @@ export class Sideuser {
   currentMenu: 'main' | 'general' | 'config' | 'help' = 'main';
   showLogoutModal = false;
 
+  isAuthenticated(): boolean {
+    return this.authService.estaAutenticado();
+  }
+
   openMenu(menu: 'main' | 'general' | 'config' | 'help'): void {
     this.currentMenu = menu;
   }

@@ -152,6 +152,59 @@
     background-color: #d5d5d5;
 }
 
+/* =========================================
+   ESTADO NO AUTENTICADO
+   ========================================= */
+
+.menu-content.not-authenticated {
+    background: linear-gradient(135deg, #f5e6e8 0%, #e8dfe6 100%);
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.not-auth-icon {
+    font-size: 48px;
+    color: #a94442;
+    animation: contentIn 0.3s ease-out 0.05s both;
+}
+
+.menu-content.not-authenticated .menu-title {
+    animation: contentIn 0.3s ease-out 0.1s both;
+    color: #a94442;
+    font-weight: 600;
+    margin: 0;
+}
+
+.not-auth-message {
+    animation: contentIn 0.3s ease-out 0.15s both;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 20px;
+    line-height: 1.5;
+}
+
+.login-redirect-button {
+    animation: contentIn 0.3s ease-out 0.2s both;
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #1683ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.login-redirect-button:hover {
+    background-color: #0b72ff;
+    transform: translateY(-2px);
+}
+
 @keyframes userMenuIn {
     from {
         opacity: 0;
