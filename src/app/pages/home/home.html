@@ -1,4 +1,26 @@
-<section class="home-page">
+<!-- Reproductor de video de presentación -->
+<div *ngIf="mostrarVideo && !videoTerminado" class="video-container">
+  <video 
+    #videoElement
+    class="presentation-video"
+    autoplay
+    muted
+    playsinline
+    (ended)="onVideoEnded()"
+  >
+    <source src="assets/videos/PRESENTACION.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+  <button class="skip-button" (click)="skipVideo()" type="button">
+    Saltar
+  </button>
+</div>
+
+<!-- Overlay de transición después del video -->
+<div *ngIf="mostrarOverlay" class="video-fade-overlay" [class.fade-out]="videoTerminado"></div>
+
+<!-- Contenido del Home - Siempre en el DOM, visible después del video o si está autenticado -->
+<section class="home-page" [class.hidden]="mostrarVideo && !usuarioAutenticado" [class.fade-in]="videoTerminado && !usuarioAutenticado">
   <header class="hero-card">
     <div class="hero-copy">
       <p class="eyebrow">YoPlay</p>
