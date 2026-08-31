@@ -18,7 +18,6 @@ import { InscripcionComponente } from './pages/torneos/inscripcion-componente/in
 import { PuntajeComponent } from './pages/torneos/puntaje-component/puntaje-component';
 
 // Importación de componentes y de Layout para la página.
-import { Presentation } from './pages/presentation/presentation';
 import { Home } from './pages/home/home';
 import { Tyc } from './pages/tyc/tyc';
 import { Layout } from './layout/layout/layout';
@@ -46,12 +45,8 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'main',
+        redirectTo: 'home',
         pathMatch: 'full',
-      },
-      {
-        path: 'main',
-        component: Presentation,
       },
       {
         path: 'home',

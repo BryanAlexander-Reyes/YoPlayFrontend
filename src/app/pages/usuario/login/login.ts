@@ -13,16 +13,18 @@ import {RestablecerComponent} from '../restablecer-component/restablecer-compone
   styleUrl: './login.css',
 })
 export class LoginComponent {
-  
- 
-  
 
     constructor(private router:Router, private authService:AuthService){}
     @Output() irARegistro = new EventEmitter<void>();
     @Output() abrirRecuperarComponent = new EventEmitter<void>();
-    abrirRecuperar(){
+
+    goToRegister(): void {
+      this.irARegistro.emit();
+    }
+
+    abrirRecuperar(): void {
         this.abrirRecuperarComponent.emit();
-      };
+      }
   email:string='';
   password:string='';
   @Output() mostrarSpan = new EventEmitter<void>();

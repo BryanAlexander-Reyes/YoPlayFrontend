@@ -33,7 +33,7 @@ interface Torneo {
 
 @Component({
   selector: 'app-creacion-torneo',
-  imports: [FormsModule,ValidadorComponente,SpanComponent],
+  imports: [FormsModule],
   templateUrl: './creacion-torneo.html',
   styleUrl: './creacion-torneo.css'
 })
