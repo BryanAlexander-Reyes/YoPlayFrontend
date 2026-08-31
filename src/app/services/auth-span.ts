@@ -13,7 +13,7 @@ export class SpanAuthService {
     return {
       icono: 'fa-solid fa-basketball fa-spin',
       titulo: 'Entrando',
-      mensaje: 'bienvenido',
+      mensaje: 'Bienvenido',
     };
   }
 
@@ -21,7 +21,7 @@ export class SpanAuthService {
   obtenerEstadoSuccess(): SpanAuth {
     return {
       icono: 'fa-solid fa-circle-check',
-      titulo: 'Correo confirmado',
+      titulo: 'Correo Confirmado',
       mensaje: 'Su cuenta fue verificada correctamente',
     };
   }
@@ -37,29 +37,29 @@ export class SpanAuthService {
   obtenerestadosiguente():SpanAuth {
     return{
       icono:'fa-solid fa-basketball fa-spin',
-      titulo:'siguiente proceso',
-      mensaje:'equipo registrado'
+      titulo:'Siguiente Proceso',
+      mensaje:'Equipo Registrado'
     }
   }
     obtenerestadoCreaciontorneo():SpanAuth {
     return{
       icono:'fa-solid fa-trophy',
-      titulo:'creando torneo....',
+      titulo:'Creando Torneo....',
       mensaje:'Estamos preparando tu torneo'
     }
   }
     obtenerestadoreglamento():SpanAuth {
     return{
       icono:'fa-brands fa-cmplid',
-      titulo:'reglamento creado',
-      mensaje:'torneo completado'
+      titulo:'Reglamento Creado',
+      mensaje:'Torneo Completado'
     }
   }
   usuariocompleto():SpanAuth{
     return{
       icono:'fa-brands fa-cmplid',
-      titulo:'iniciando sesion',
-      mensaje:'entrando '
+      titulo:'Iniciando Sesión',
+      mensaje:'Entrando'
     }
   }
 }
