@@ -43,7 +43,7 @@
 }
 
 .hero-text {
-  margin: 10px 0 0;
+  margin: 20px 0 0;
   max-width: 640px;
   color: rgba(226, 232, 240, 0.9);
 }
@@ -71,6 +71,7 @@
   margin: 0;
   font-size: clamp(1.5rem, 2vw, 2.1rem);
   color: #f8fafc;
+  padding-block-end: 20px;
 }
 
 .cards-grid {

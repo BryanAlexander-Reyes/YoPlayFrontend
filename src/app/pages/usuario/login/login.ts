@@ -49,5 +49,9 @@ export class LoginComponent {
   );
 
   this.mostrarSpan.emit();
-  this.router.navigate(['/home']);
+  
+  // Esperar 1.5 segundos para que se vea la animación de carga antes de navegar
+  setTimeout(() => {
+    this.router.navigate(['/home']);
+  }, 1500);
 }}

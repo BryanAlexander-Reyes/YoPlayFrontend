@@ -109,6 +109,10 @@ export const routes: Routes = [
       {
         path: 'torneo',
         component: CreacionTorneo,
+      },
+      {
+        path: 'reglamento',
+        component: Reglamento
       }
     ],
   },
@@ -125,10 +129,6 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'span',
-    component: SpanComponent,
-  },
-  {
     path: 'validador',
     component: ValidadorComponente,
   },
@@ -141,54 +141,11 @@ export const routes: Routes = [
     component: RegistroEquipos,
   },
   {
-    path: 'reglamento',
-    component: Reglamento,
-  },
-  {
-    path: 'perfil',
-    component: Perfil,
-  },
-  {
-    path: 'user',
-    component: Sideuser,
-  },
-  {
     path: 'login_usuario',
     component: AuthAnimationComponent,
   },
   {
-    path: 'restablecer',
-    component: RestablecerComponent,
-  },
-  {
-    path:'equipos',
-    component: EquiposComponent
-  },
-  {
-    path:'fixture/:id',
-    component: Fixture
-  },
-
-  {
     path:'inscripcion/:id',
     component: InscripcionComponente
   },
-  {
-    path:'torneos_encurso',
-    component:TorneosComponent,
-    data:{modo:'informacion'}
-  },
-  {
-    path:'torneos_activos',
-    component:TorneosComponent,
-    data:{modo:'inscripcion'}
-  },
-  {
-    path: 'navigator',
-    component: Navigator
-  },
-  {
-    path:'tablapuntaje',
-    component:PuntajeComponent
-  }
 ];
