@@ -1,0 +1,11 @@
+<div class="tournament-bar">
+  <div class="menu-content">
+    <div class="menu-title">Torneos</div>
+
+    @for (item of menuItems; track item.route) {
+      <button class="menu-item" type="button" (click)="navigateTo(item.route)">
+        {{ item.label }}
+      </button>
+    }
+  </div>
+</div>

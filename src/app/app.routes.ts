@@ -34,6 +34,7 @@ import { Teams } from './pages/teams/teams';
 import { Privacy } from './pages/privacy/privacy';
 import { FAQ } from './pages/faq/faq';
 import { Navigator } from './layout/navigator/navigator';
+import { TournamentBar } from './pages/tournament-bar/tournament-bar';
 
 
 
@@ -107,7 +108,7 @@ export const routes: Routes = [
         component: InfTorneosComponent
       },
       {
-        path: 'torneo',
+        path: 'crear_torneo',
         component: CreacionTorneo,
         canActivate: [authGuard],
       },
@@ -118,6 +119,16 @@ export const routes: Routes = [
       {
         path:'inscripcion/:id',
         component: InscripcionComponente
+      },
+      {
+        path: 'torneos_encurso',
+        component: TorneosComponent,
+        data:{modo:'informacion'}
+      },
+      {
+        path: 'torneos_activos',
+        component: TorneosComponent,
+        data:{modo:'inscripcion'}
       }
     ],
   },
@@ -132,5 +143,5 @@ export const routes: Routes = [
   {
     path: 'login_usuario',
     component: AuthAnimationComponent,
-  },
+  }
 ];
