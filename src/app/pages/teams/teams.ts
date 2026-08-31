@@ -25,7 +25,7 @@ export class Teams {
       lider: 'No aplica',
       directorTecnico: 'No aplica',
       fechaCreacion: 'Yopal, 25 de Febrero de 2026.',
-      imagen: '/images/image2.png',
+      imagen: '/assets/images/image2.png',
     },
     {
       nombre: 'Panteras F.C.',
@@ -33,7 +33,7 @@ export class Teams {
       lider: 'No aplica',
       directorTecnico: 'Victor Hugo Barón Rosales.',
       fechaCreacion: 'Yopal, 21 de Junio de 2025.',
-      imagen: '/images/panteras.png',
+      imagen: '/assets/images/panteras.png',
     },
     {
       nombre: 'Spartans Yopal',
