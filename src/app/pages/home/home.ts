@@ -1,18 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
 
-interface TorneoHome {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  lugar: string;
-  fecha: string;
-  hora: string;
-  premios: string;
+interface TorneoHome extends Torneo {
   categoria: string;
   estado: 'disponible' | 'inscripcion' | 'mio';
-  imagen: string;
 }
 
 @Component({
@@ -24,24 +17,26 @@ interface TorneoHome {
 export class Home implements OnInit {
   nombre = 'Usuario';
   torneos: TorneoHome[] = [];
+  usuarioAutenticado = false;
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly torneosService: TorneosService,
+  ) {}
 
   ngOnInit(): void {
     const usuario = localStorage.getItem('usuarioSesion');
     if (usuario) {
       const parsed = JSON.parse(usuario);
       this.nombre = parsed?.nombre || this.nombre;
+      this.usuarioAutenticado = true;
     }
 
-    fetch('/torneos-flayers.json')
-      .then((response) => response.json())
-      .then((data) => {
-        this.torneos = Array.isArray(data?.torneos) ? data.torneos : [];
-      })
-      .catch(() => {
-        this.torneos = [];
-      });
+    this.torneos = this.torneosService.obtenerTorneos().map((torneo) => ({
+      ...torneo,
+      categoria: this.obtenerCategoria(torneo.titulo),
+      estado: this.obtenerEstado(torneo.id),
+    }));
   }
 
   get torneosDisponibles(): TorneoHome[] {
@@ -69,8 +64,26 @@ export class Home implements OnInit {
     return copy.slice(0, 3);
   }
 
+  private obtenerCategoria(titulo: string): string {
+    const texto = titulo.toLowerCase();
+    if (texto.includes('fútbol') || texto.includes('futbol')) return 'Fútbol';
+    if (texto.includes('tenis')) return 'Tenis';
+    if (texto.includes('voleibol')) return 'Voleibol';
+    return 'General';
+  }
+
+  private obtenerEstado(id: number): 'disponible' | 'inscripcion' | 'mio' {
+    if (id === 6) return 'mio';
+    if (id === 4 || id === 5) return 'inscripcion';
+    return 'disponible';
+  }
+
   irAIniciarSesion(): void {
     this.router.navigate(['/login_usuario']);
+  }
+
+  verMasInformacion(id: number): void {
+    this.router.navigate(['/inf-torneos', id]);
   }
 
   irACrearTorneo(): void {

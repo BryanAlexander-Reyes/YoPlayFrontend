@@ -85,6 +85,32 @@
   background: #111827;
   box-shadow: 0 14px 30px rgba(2, 6, 23, 0.38);
   border: 1px solid rgba(148, 163, 184, 0.18);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  animation: cardReveal 0.5s ease forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tournament-card:nth-child(2) { animation-delay: 0.08s; }
+.tournament-card:nth-child(3) { animation-delay: 0.16s; }
+
+.tournament-card:hover,
+.tournament-card:focus-visible {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 36px rgba(15, 118, 110, 0.28);
+  border-color: rgba(94, 234, 212, 0.45);
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .tournament-card img {
@@ -127,6 +153,23 @@
   padding-left: 18px;
   color: #e2e8f0;
   line-height: 1.8;
+}
+
+.more-info-button {
+  margin-top: 14px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(251, 191, 36, 0.18);
+  color: #facc15;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.more-info-button:hover {
+  background: rgba(251, 191, 36, 0.28);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {

@@ -101,6 +101,14 @@ export const routes: Routes = [
       {
         path: 'faq',
         component: FAQ
+      },
+      {
+        path: 'inf-torneos/:id',
+        component: InfTorneosComponent
+      },
+      {
+        path: 'torneo',
+        component: CreacionTorneo,
       }
     ],
   },
@@ -160,10 +168,7 @@ export const routes: Routes = [
     path:'fixture/:id',
     component: Fixture
   },
-  {
-    path:'inf-torneos/:id',
-    component: InfTorneosComponent
-  },
+
   {
     path:'inscripcion/:id',
     component: InscripcionComponente

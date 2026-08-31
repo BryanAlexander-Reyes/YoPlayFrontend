@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
@@ -12,6 +12,8 @@ import { AuthService } from '../../services/auth';
 export class Sideuser {
   private router = inject(Router);
   private authService = inject(AuthService);
+
+  @Output() logoutConfirmed = new EventEmitter<void>();
 
   currentMenu: 'main' | 'general' | 'config' | 'help' = 'main';
   showLogoutModal = false;
@@ -35,6 +37,9 @@ export class Sideuser {
   confirmLogout(): void {
     this.authService.cerrarSesion();
     this.showLogoutModal = false;
-    this.router.navigate(['/main']);
+    this.logoutConfirmed.emit();
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
+    });
   }
 }

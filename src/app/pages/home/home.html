@@ -5,7 +5,9 @@
       <h1>Bienvenido, {{ nombre }}</h1>
       <p class="hero-text">Consulta tus torneos, revisa los próximos eventos y crea tu propia competencia.</p>
     </div>
-    <button type="button" class="btn-primary" (click)="irAIniciarSesion()">Iniciar sesión</button>
+    <button *ngIf="!usuarioAutenticado" type="button" class="btn-primary" (click)="irAIniciarSesion()">
+      Iniciar sesión
+    </button>
   </header>
 
   <section class="tournament-section">
@@ -13,7 +15,7 @@
       <h2>Torneos Disponibles</h2>
     </div>
     <div class="cards-grid">
-      <article *ngFor="let torneo of torneosDisponibles; trackBy: trackTorneo" class="tournament-card">
+      <article *ngFor="let torneo of torneosDisponibles; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
         <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
         <div class="card-body">
           <span class="tag">{{ torneo.categoria }}</span>
@@ -24,17 +26,18 @@
             <li>{{ torneo.fecha }}</li>
             <li>{{ torneo.hora }}</li>
           </ul>
+          <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="tournament-section">
+  <section *ngIf="usuarioAutenticado" class="tournament-section">
     <div class="section-header">
       <h2>Torneos en inscripción</h2>
     </div>
     <div class="cards-grid">
-      <article *ngFor="let torneo of torneosEnInscripcion; trackBy: trackTorneo" class="tournament-card">
+      <article *ngFor="let torneo of torneosEnInscripcion; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
         <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
         <div class="card-body">
           <span class="tag">{{ torneo.categoria }}</span>
@@ -45,17 +48,18 @@
             <li>{{ torneo.fecha }}</li>
             <li>{{ torneo.hora }}</li>
           </ul>
+          <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="tournament-section">
+  <section *ngIf="usuarioAutenticado" class="tournament-section">
     <div class="section-header">
       <h2>Tus torneos</h2>
     </div>
     <div class="cards-grid">
-      <article *ngFor="let torneo of tusTorneos; trackBy: trackTorneo" class="tournament-card">
+      <article *ngFor="let torneo of tusTorneos; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
         <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
         <div class="card-body">
           <span class="tag">{{ torneo.categoria }}</span>
@@ -66,6 +70,7 @@
             <li>{{ torneo.fecha }}</li>
             <li>{{ torneo.hora }}</li>
           </ul>
+          <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
     </div>

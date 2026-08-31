@@ -48,11 +48,6 @@ export class LoginComponent {
     `Bienvenido al sistema ${usuario?.nombre}\nrol: ${usuario?.rol}`
   );
 
-  // Mostrar tarjeta de carga
   this.mostrarSpan.emit();
-
-  // Esperar antes de cambiar de página
-  setTimeout(() => {
-    this.router.navigate(['/home']);
-  }, 2000);
+  this.router.navigate(['/home']);
 }}

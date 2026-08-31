@@ -73,10 +73,11 @@
 
     <app-login
       (irARegistro)="mostrarRegistro()"
-      (abrirRecuperarComponent)="abrirModal()">
+      (abrirRecuperarComponent)="abrirModal()"
+      (mostrarSpan)="activarCarga()">
     </app-login>
 
-    <app-span-content></app-span-content>
+    <app-span-content *ngIf="mostrarCarga"></app-span-content>
     
   </section>
 
