@@ -18,7 +18,7 @@ export class TorneosService {
   torneos: Torneo[] = [
     {
       id: 1,
-      imagen: 'assets/falyer1.jpg',
+      imagen: '/assets/falyer1.jpg',
       titulo: 'Liga La Ribera Fútbol 8',
       descripcion: 'Torneo de fútbol 8 para equipos aficionados.',
       lugar: 'Camping de Confiteros',
@@ -28,7 +28,7 @@ export class TorneosService {
     },
     {
       id: 2,
-      imagen: 'assets/falyer2.jpg',
+      imagen: '/assets/falyer2.jpg',
       titulo: 'Torneo Fútbol Juvenil Amateur',
       descripcion: 'Competencia de fútbol juvenil para equipos amateurs.',
       lugar: 'Calle Cualquiera #123',
@@ -38,7 +38,7 @@ export class TorneosService {
     },
     {
       id: 3,
-      imagen: 'assets/falyer3.jpg',
+      imagen: '/assets/falyer3.jpg',
       titulo: 'Copa Fedecoltenis',
       descripcion: 'Circuito nacional abierto de tenis, clase A.',
       lugar: 'Centro de Alto Rendimiento',
@@ -48,7 +48,7 @@ export class TorneosService {
     },
     {
       id: 4,
-      imagen: 'assets/falyer 4.jpg',
+      imagen: '/assets/falyer%204.jpg',
       titulo: 'Torneo Interbarrios Fútbol de Salón',
       descripcion: 'Torneo femenino de fútbol de salón entre barrios.',
       lugar: 'Coliseo Polিসur',
@@ -58,7 +58,7 @@ export class TorneosService {
     },
     {
       id: 5,
-      imagen: 'assets/falyer5.jpg',
+      imagen: '/assets/falyer5.jpg',
       titulo: 'Copa Internacional de Voleibol',
       descripcion: 'Competencia internacional de voleibol por categorías.',
       lugar: 'Santiago de Cali',
@@ -68,7 +68,7 @@ export class TorneosService {
     },
     {
       id: 6,
-      imagen: 'assets/falyer6.jpg',
+      imagen: '/assets/falyer6.jpg',
       titulo: 'Torneo Mixto de Voleibol 4x4',
       descripcion: 'Torneo mixto de voleibol 4x4 para equipos aficionados.',
       lugar: 'Cancha de voleibol de la sede',

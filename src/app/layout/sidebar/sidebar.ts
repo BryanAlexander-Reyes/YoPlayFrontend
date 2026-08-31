@@ -18,24 +18,24 @@ interface Menu {
 export class Sidebar {
   @Output() userMenuToggle = new EventEmitter<void>();
 
-  logoUrl = '/images/logo.png';
+  logoUrl = '/assets/images/logo.png';
 
   menu: Menu[] = [
     {
       icono: 'home',
-      imagen: '/images/1.svg',
+      imagen: '/assets/images/1.svg',
       ruta: '/home',
       label: 'Home',
     },
     {
       icono: 'cup',
-      imagen: '/images/cup-1-svgrepo-com%20(1).svg',
+      imagen: '/assets/images/cup-1-svgrepo-com%20(1).svg',
       ruta: '/torneos',
       label: 'Torneos',
     },
     {
       icono: 'ball',
-      imagen: '/images/football-svgrepo-com%20(1).svg',
+      imagen: '/assets/images/football-svgrepo-com%20(1).svg',
       ruta: '/deportes',
       label: 'Deportes',
     },
