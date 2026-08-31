@@ -18,7 +18,6 @@ import { InscripcionComponente } from './pages/torneos/inscripcion-componente/in
 import { PuntajeComponent } from './pages/torneos/puntaje-component/puntaje-component';
 
 // Importación de componentes y de Layout para la página.
-import { Presentation } from './pages/presentation/presentation';
 import { Home } from './pages/home/home';
 import { Tyc } from './pages/tyc/tyc';
 import { Layout } from './layout/layout/layout';
@@ -46,12 +45,8 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'main',
+        redirectTo: 'home',
         pathMatch: 'full',
-      },
-      {
-        path: 'main',
-        component: Presentation,
       },
       {
         path: 'home',
@@ -106,6 +101,23 @@ export const routes: Routes = [
       {
         path: 'faq',
         component: FAQ
+      },
+      {
+        path: 'inf-torneos/:id',
+        component: InfTorneosComponent
+      },
+      {
+        path: 'torneo',
+        component: CreacionTorneo,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'reglamento',
+        component: Reglamento
+      },
+      {
+        path:'inscripcion/:id',
+        component: InscripcionComponente
       }
     ],
   },
@@ -114,81 +126,11 @@ export const routes: Routes = [
     component: Tyc,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'span',
-    component: SpanComponent,
-  },
-  {
-    path: 'validador',
-    component: ValidadorComponente,
-  },
-  {
-    path: 'torneo',
-    component: CreacionTorneo,
-  },
-  {
     path: 'registro',
     component: RegistroEquipos,
-  },
-  {
-    path: 'reglamento',
-    component: Reglamento,
-  },
-  {
-    path: 'perfil',
-    component: Perfil,
-  },
-  {
-    path: 'user',
-    component: Sideuser,
   },
   {
     path: 'login_usuario',
     component: AuthAnimationComponent,
   },
-  {
-    path: 'restablecer',
-    component: RestablecerComponent,
-  },
-  {
-    path:'equipos',
-    component: EquiposComponent
-  },
-  {
-    path:'fixture/:id',
-    component: Fixture
-  },
-  {
-    path:'inf-torneos/:id',
-    component: InfTorneosComponent
-  },
-  {
-    path:'inscripcion/:id',
-    component: InscripcionComponente
-  },
-  {
-    path:'torneos_encurso',
-    component:TorneosComponent,
-    data:{modo:'informacion'}
-  },
-  {
-    path:'torneos_activos',
-    component:TorneosComponent,
-    data:{modo:'inscripcion'}
-  },
-  {
-    path: 'navigator',
-    component: Navigator
-  },
-  {
-    path:'tablapuntaje',
-    component:PuntajeComponent
-  }
 ];

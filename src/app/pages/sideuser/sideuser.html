@@ -1,131 +1,162 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+
 <div class="user-menu">
 
+  <!-- MENSAJE DE NO AUTENTICADO -->
+  @if (!isAuthenticated()) {
+    <div class="menu-content not-authenticated">
+      <div class="not-auth-icon">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <div class="menu-title">Acceso Restringido</div>
+      <p class="not-auth-message">
+        Debes iniciar sesión para acceder al menú de usuario.
+      </p>
+      <a href="#/login_usuario" class="login-redirect-button">
+        Iniciar Sesión
+      </a>
+    </div>
+  }
+
   <!-- MENÚ PRINCIPAL -->
-  <div *ngIf="currentMenu === 'main'" class="menu-content">
+  @if (isAuthenticated() && currentMenu === 'main') {
+    <div class="menu-content">
 
-    <div class="menu-title">Usuario</div>
+      <div class="menu-title">Usuario</div>
 
-    <button class="menu-item" (click)="openMenu('general')">
-      Información General
-    </button>
+      <button class="menu-item" (click)="openMenu('general')">
+        Información General
+      </button>
 
-    <button class="menu-item" (click)="openMenu('config')">
-      Configuración
-    </button>
+      <button class="menu-item" (click)="openMenu('config')">
+        Configuración
+      </button>
 
-    <button class="menu-item" (click)="openMenu('help')">
-      Ayuda
-    </button>
+      <button class="menu-item" (click)="openMenu('help')">
+        Ayuda
+      </button>
 
-    <button class="menu-item" (click)="openLogoutModal()">
-      Cerrar Sesión
-    </button>
+      <button class="menu-item" (click)="openLogoutModal()">
+        Cerrar Sesión
+      </button>
 
-  </div>
+    </div>
+  }
 
 
   <!-- INFORMACIÓN GENERAL -->
-  <div *ngIf="currentMenu === 'general'" class="menu-content">
+  @if (isAuthenticated() && currentMenu === 'general') {
+    <div class="menu-content">
 
-    <button class="back-button" (click)="openMenu('main')">
-      ← Usuario
-    </button>
+      <button class="back-button" (click)="openMenu('main')">
+        ← Usuario
+      </button>
 
-    <div class="menu-title">Información General</div>
+      <div class="menu-title">Información General</div>
 
-    <button class="menu-item" (click)="navigateTo('/torneos_inscritos')">
-      Torneos Inscritos
-    </button>
+      <button class="menu-item" (click)="navigateTo('/torneos_inscritos')">
+        Torneos Inscritos
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/historial')">
-      Torneos Participantes
-    </button>
+      <button class="menu-item" (click)="navigateTo('/historial')">
+        Torneos Participantes
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/stats')">
-      Estadísticas
-    </button>
+      <button class="menu-item" (click)="navigateTo('/stats')">
+        Estadísticas
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/teams')">
-      Equipo(s)
-    </button>
+      <button class="menu-item" (click)="navigateTo('/teams')">
+        Equipo(s)
+      </button>
 
-  </div>
+    </div>
+  }
 
 
   <!-- CONFIGURACIÓN -->
-  <div *ngIf="currentMenu === 'config'" class="menu-content">
+  @if (isAuthenticated() && currentMenu === 'config') {
+    <div class="menu-content">
 
-    <button class="back-button" (click)="openMenu('main')">
-      ← Usuario
-    </button>
+      <button class="back-button" (click)="openMenu('main')">
+        ← Usuario
+      </button>
 
-    <div class="menu-title">Configuración</div>
+      <div class="menu-title">Configuración</div>
 
-    <button class="menu-item" (click)="navigateTo('/fondo')">
-      Configuración de fondo
-    </button>
+      <button class="menu-item" (click)="navigateTo('/fondo')">
+        Configuración de fondo
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/notificaciones')">
-      Notificaciones
-    </button>
+      <button class="menu-item" (click)="navigateTo('/notificaciones')">
+        Notificaciones
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/privacidad')">
-      Privacidad
-    </button>
+      <button class="menu-item" (click)="navigateTo('/privacidad')">
+        Privacidad
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/perfil')">
-      Perfil
-    </button>
+      <button class="menu-item" (click)="navigateTo('/perfil')">
+        Perfil
+      </button>
 
-  </div>
+    </div>
+  }
 
 
   <!-- AYUDA -->
-  <div *ngIf="currentMenu === 'help'" class="menu-content">
+  @if (isAuthenticated() && currentMenu === 'help') {
+    <div class="menu-content">
 
-    <button class="back-button" (click)="openMenu('main')">
-      ← Usuario
-    </button>
+      <button class="back-button" (click)="openMenu('main')">
+        ← Usuario
+      </button>
 
-    <div class="menu-title">Ayuda</div>
+      <div class="menu-title">Ayuda</div>
 
-    <button class="menu-item" (click)="navigateTo('/tyc')">
-      Términos y Condiciones
-    </button>
+      <button class="menu-item" (click)="navigateTo('/tyc')">
+        Términos y Condiciones
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/privacidad')">
-      Privacidad
-    </button>
+      <button class="menu-item" (click)="navigateTo('/privacidad')">
+        Privacidad
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/faq')">
-      Preguntas Frecuentes
-    </button>
+      <button class="menu-item" (click)="navigateTo('/faq')">
+        Preguntas Frecuentes
+      </button>
 
-    <button class="menu-item" (click)="navigateTo('/tutoriales')">
-      Tutoriales - Modo de uso
-    </button>
+      <button class="menu-item" (click)="navigateTo('/tutoriales')">
+        Tutoriales - Modo de uso
+      </button>
 
-  </div>
+    </div>
+  }
 
 </div>
 
 
 <!-- MODAL CERRAR SESIÓN -->
 
-<div *ngIf="showLogoutModal" class="logout-overlay">
-  <div class="logout-modal">
-    <p>¿Está seguro de Cerrar Sesión?</p>
-    <div class="logout-buttons">
-      <button
-        class="logout-yes"
-        (click)="confirmLogout()">
-        Sí
-      </button>
-      <button
-        class="logout-no"
-        (click)="closeLogoutModal()">
-        No
-      </button>
+@if (showLogoutModal) {
+  <div class="logout-overlay">
+    <div class="logout-modal">
+      <p>¿Está seguro de Cerrar Sesión?</p>
+      <div class="logout-buttons">
+        <button
+          class="logout-yes"
+          (click)="confirmLogout()">
+          Sí
+        </button>
+        <button
+          class="logout-no"
+          (click)="closeLogoutModal()">
+          No
+        </button>
+      </div>
     </div>
   </div>
-</div>
+}

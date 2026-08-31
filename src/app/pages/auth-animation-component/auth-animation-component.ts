@@ -20,10 +20,14 @@ export class AuthAnimationComponent {
   constructor(private span: SpanAuthService) {
   this.spancomponten = this.span.usuariocompleto();
 }
-spancomponten!: SpanAuth;
-mostrarCarga = false;
+  spancomponten!: SpanAuth;
+  mostrarCarga = false;
   mostrarRestablecer=false;
   mostrarValidador=false;
+
+  activarCarga(): void {
+    this.mostrarCarga = true;
+  }
 
 
   abrirModal(){

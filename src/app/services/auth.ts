@@ -14,12 +14,17 @@ export class AuthService {
 
   private usuarioSistemas: UsuarioSistemas[] = [
     {
-      nombre: 'brayan reyes',
+      nombre: 'Brayan Reyes',
       correo: 'bryanreyes47k@gmail.com',
       password: '123456',
-      rol: 'usuario',
+      rol: 'Usuario',
     },
-    
+    {
+      nombre: 'Kevin Alexander Hernández Sierra',
+      correo: 'admink@gmail.com',
+      password: '123456',
+      rol: 'Usuario',
+    }
   ];
 
   constructor() {}

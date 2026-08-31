@@ -1,32 +1,11 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
 
-interface Tournament {
-  id: number;
-  name: string;
-  sport: string;
-  participants: number;
-  maxParticipants: number;
-  entryFee: number;
-  prize: number;
-  status: 'Abierto' | 'Próximo' | 'Activo';
-}
-
-interface Activity {
-  id: number;
-  title: string;
-  description: string;
-  type: 'victory' | 'defeat' | 'tournament' | 'achievement';
-  icon: string;
-  result: string;
-  resultType: 'win' | 'loss' | 'neutral';
-  time: string;
-}
-
-interface UserStats {
-  points: number;
-  ranking: number;
-  wins: number;
+interface TorneoHome extends Torneo {
+  categoria: string;
+  estado: 'disponible' | 'inscripcion' | 'mio';
 }
 
 @Component({
@@ -35,104 +14,183 @@ interface UserStats {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
-  userName: string = 'Jugador';
-  userStats: UserStats = {
-    points: 2450,
-    ranking: 47,
-    wins: 23,
-  };
+export class Home implements OnInit, AfterViewInit, OnDestroy {
+  nombre = 'Usuario';
+  torneos: TorneoHome[] = [];
+  usuarioAutenticado = false;
+  mostrarVideo = false;
+  videoTerminado = false;
+  videoFadingOut = false;
+  mostrarOverlay = false;
+  videoUrl = 'assets/videos/PRESENTACION.mp4?reload=' + Date.now();
+  private keyboardUnsubscribe?: () => void;
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
 
-  tournaments: Tournament[] = [
-    {
-      id: 1,
-      name: 'Torneo de Fútbol 5v5',
-      sport: 'Fútbol',
-      participants: 12,
-      maxParticipants: 16,
-      entryFee: 100,
-      prize: 500,
-      status: 'Próximo',
-    },
-    {
-      id: 2,
-      name: 'Copa de Básquetbol',
-      sport: 'Básquetbol',
-      participants: 8,
-      maxParticipants: 8,
-      entryFee: 150,
-      prize: 750,
-      status: 'Activo',
-    },
-    {
-      id: 3,
-      name: 'Desafío de Tenis',
-      sport: 'Tenis',
-      participants: 5,
-      maxParticipants: 20,
-      entryFee: 75,
-      prize: 350,
-      status: 'Abierto',
-    },
-    {
-      id: 4,
-      name: 'Campeonato de Voleibol',
-      sport: 'Voleibol',
-      participants: 15,
-      maxParticipants: 16,
-      entryFee: 120,
-      prize: 600,
-      status: 'Próximo',
-    },
-  ];
+  constructor(
+    private readonly router: Router,
+    private readonly torneosService: TorneosService,
+    private readonly ngZone: NgZone,
+  ) {}
 
-  recentActivity: Activity[] = [
-    {
-      id: 1,
-      title: 'Victoria en Fútbol',
-      description: 'Ganaste el partido contra Carlos Mendez',
-      type: 'victory',
-      icon: '⚽',
-      result: '+120 puntos',
-      resultType: 'win',
-      time: 'Hace 2 horas',
-    },
-    {
-      id: 2,
-      title: 'Derrota en Básquetbol',
-      description: 'Perdiste contra el equipo de Juan García',
-      type: 'defeat',
-      icon: '🏀',
-      result: '-50 puntos',
-      resultType: 'loss',
-      time: 'Hace 5 horas',
-    },
-    {
-      id: 3,
-      title: 'Nuevo Logro',
-      description: 'Alcanzaste el nivel Oro en Fútbol',
-      type: 'achievement',
-      icon: '🏅',
-      result: '+200 puntos',
-      resultType: 'win',
-      time: 'Ayer',
-    },
-    {
-      id: 4,
-      title: 'Torneo Completado',
-      description: 'Finalizaste el Torneo de Tenis',
-      type: 'tournament',
-      icon: '🎯',
-      result: '+300 puntos',
-      resultType: 'win',
-      time: 'Hace 3 días',
-    },
-  ];
+  ngOnInit(): void {
+    const usuario = localStorage.getItem('usuarioSesion');
+    this.usuarioAutenticado = !!usuario;
 
-  ngOnInit() {
-    // Aquí puedes conectar con servicios para obtener datos reales
-    // this.userService.getUserStats().subscribe(...)
-    // this.tournamentService.getAvailableTournaments().subscribe(...)
-    // this.activityService.getRecentActivity().subscribe(...)
+    if (usuario) {
+      const parsed = JSON.parse(usuario);
+      this.nombre = parsed?.nombre || this.nombre;
+    }
+
+    // Forzar el estado del video en cada carga para que el video se muestre
+    // cuando el usuario no está autenticado y se reinicie como una presentación nueva.
+    this.mostrarVideo = !this.usuarioAutenticado;
+    this.videoTerminado = false;
+    this.mostrarOverlay = false;
+
+    this.torneos = this.torneosService.obtenerTorneos().map((torneo) => ({
+      ...torneo,
+      categoria: this.obtenerCategoria(torneo.titulo),
+      estado: this.obtenerEstado(torneo.id),
+    }));
+  }
+
+  ngAfterViewInit(): void {
+    // Cuando la vista está lista, intentar reproducir el video
+    if (this.mostrarVideo && this.videoElement?.nativeElement) {
+      this.ngZone.runOutsideAngular(() => {
+        const video = this.videoElement.nativeElement;
+
+        // Edge suele bloquear el primer intento si el elemento no se vuelve a preparar desde cero.
+        video.src = this.videoUrl;
+        video.muted = true;
+        video.playsInline = true;
+        video.pause();
+        video.currentTime = 0;
+        video.load();
+
+        // Prevenir clic derecho en el video
+        video.oncontextmenu = (e: any) => {
+          e.preventDefault();
+          return false;
+        };
+
+        // Prevenir teclado durante el video
+        const handleKeydown = (e: KeyboardEvent): void => {
+          if (this.mostrarVideo && !this.videoTerminado) {
+            // Prevenir espacios, 'p' y otras teclas de control
+            if (e.code === 'Space' || e.key === 'p' || e.key === 'P' ||
+                e.key === 'm' || e.key === 'M' || e.key === 'f' || e.key === 'F') {
+              e.preventDefault();
+            }
+          }
+        };
+
+        document.addEventListener('keydown', handleKeydown, true);
+        this.keyboardUnsubscribe = () => {
+          document.removeEventListener('keydown', handleKeydown, true);
+        };
+
+        const intentarReproducir = (): void => {
+          if (video.readyState >= 2) {
+            void video.play().catch((error) => {
+              console.log('Error en autoplay, intentando nuevamente:', error);
+              setTimeout(() => {
+                video.currentTime = 0;
+                void video.play().catch((e) => console.log('Fallo al reintentar play:', e));
+              }, 600);
+            });
+          } else {
+            setTimeout(() => {
+              intentarReproducir();
+            }, 250);
+          }
+        };
+
+        requestAnimationFrame(() => {
+          intentarReproducir();
+        });
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    // Limpiar event listeners al destruir componente
+    if (this.keyboardUnsubscribe) {
+      this.keyboardUnsubscribe();
+    }
+  }
+
+  get torneosDisponibles(): TorneoHome[] {
+    return this.getRandomGroup(this.torneos.filter((torneo) => torneo.estado === 'disponible'));
+  }
+
+  get torneosEnInscripcion(): TorneoHome[] {
+    return this.getRandomGroup(this.torneos.filter((torneo) => torneo.estado === 'inscripcion'));
+  }
+
+  get tusTorneos(): TorneoHome[] {
+    return this.getRandomGroup(this.torneos.filter((torneo) => torneo.estado === 'mio'));
+  }
+
+  trackTorneo(index: number, torneo: TorneoHome): number {
+    return torneo.id;
+  }
+
+  private getRandomGroup(items: TorneoHome[]): TorneoHome[] {
+    if (items.length <= 3) {
+      return items;
+    }
+
+    const copy = [...items].sort(() => Math.random() - 0.5);
+    return copy.slice(0, 3);
+  }
+
+  private obtenerCategoria(titulo: string): string {
+    const texto = titulo.toLowerCase();
+    if (texto.includes('fútbol') || texto.includes('futbol')) return 'Fútbol';
+    if (texto.includes('tenis')) return 'Tenis';
+    if (texto.includes('voleibol')) return 'Voleibol';
+    return 'General';
+  }
+
+  private obtenerEstado(id: number): 'disponible' | 'inscripcion' | 'mio' {
+    if (id === 6) return 'mio';
+    if (id === 4 || id === 5) return 'inscripcion';
+    return 'disponible';
+  }
+
+  irAIniciarSesion(): void {
+    this.router.navigate(['/login_usuario']);
+  }
+
+  verMasInformacion(id: number): void {
+    this.router.navigate(['/inf-torneos', id]);
+  }
+
+  irACrearTorneo(): void {
+    this.router.navigate(['/torneo']);
+  }
+
+  onVideoEnded(): void {
+    // Desaparecer el video inmediatamente y mostrar el home con transición
+    this.mostrarVideo = false;
+    this.mostrarOverlay = true;
+    this.videoTerminado = true;
+    // Remover el overlay después de que la animación de fade out termine
+    setTimeout(() => {
+      this.mostrarOverlay = false;
+    }, 500);
+  }
+
+  skipVideo(): void {
+    // Mismo comportamiento que cuando termina el video
+    this.mostrarVideo = false;
+    this.mostrarOverlay = true;
+    this.videoTerminado = true;
+    // Remover el overlay después de que la animación de fade out termine
+    setTimeout(() => {
+      this.mostrarOverlay = false;
+    }, 500);
   }
 }
+

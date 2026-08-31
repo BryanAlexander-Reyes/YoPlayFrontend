@@ -114,7 +114,9 @@
                 <p> Cualquier controversia legal será resuelta ante los jueces competentes del territorio
                     Colombiano. </p>
                 <div class="btn-aceptar">
-                    <button type="submit"> Acepto <!-- {{ === true?'Acepto':'Has aceptado los TyC'}} --> </button>
+                    <button type="button" [disabled]="tycAceptados" (click)="aceptarTerminos()">
+                        {{ tycAceptados ? 'TyC aceptados.' : 'Acepto' }}
+                    </button>
                     <div class="btn-behind"></div>
                 </div>
             </section>

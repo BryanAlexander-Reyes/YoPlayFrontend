@@ -1,61 +1,101 @@
-<div class="home-container">
-    <!-- Header Welcome -->
-    <div class="welcome-section">
-        <h1>Bienvenido, {{ userName }}</h1>
-        <div class="user-stats">
-            <div class="stat-card">
-                <span class="stat-label">Puntos</span>
-                <span class="stat-value">{{ userStats.points }}</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">Ranking</span>
-                <span class="stat-value">#{{ userStats.ranking }}</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">Victorias</span>
-                <span class="stat-value">{{ userStats.wins }}</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Torneos Disponibles -->
-    <section class="tournaments-section">
-        <h2>Torneos Disponibles</h2>
-        <div class="tournaments-grid">
-            <div *ngFor="let tournament of tournaments" class="tournament-card">
-                <div class="tournament-header">
-                    <h3>{{ tournament.name }}</h3>
-                    <span class="tournament-status" [ngClass]="tournament.status">{{ tournament.status }}</span>
-                </div>
-                <div class="tournament-info">
-                    <p><strong>Deporte:</strong> {{ tournament.sport }}</p>
-                    <p><strong>Participantes:</strong> {{ tournament.participants }} / {{ tournament.maxParticipants }}</p>
-                    <p><strong>Entrada:</strong> {{ tournament.entryFee }} puntos</p>
-                    <p><strong>Premio:</strong> {{ tournament.prize }} puntos</p>
-                </div>
-                <button class="btn-participate">Participar</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Actividad Reciente -->
-    <section class="activity-section">
-        <h2>Actividad Reciente</h2>
-        <div class="activity-list">
-            <div *ngFor="let activity of recentActivity" class="activity-item">
-                <div class="activity-icon" [ngClass]="activity.type">
-                    <span>{{ activity.icon }}</span>
-                </div>
-                <div class="activity-details">
-                    <h4>{{ activity.title }}</h4>
-                    <p>{{ activity.description }}</p>
-                    <span class="activity-time">{{ activity.time }}</span>
-                </div>
-                <div class="activity-result" [ngClass]="activity.resultType">
-                    {{ activity.result }}
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Reproductor de video de presentación -->
+<div *ngIf="mostrarVideo && !videoTerminado" class="video-container">
+  <video 
+    #videoElement
+    class="presentation-video"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    [src]="videoUrl"
+    (ended)="onVideoEnded()"
+    (contextmenu)="$event.preventDefault()"
+  >
+  </video>
+  <button class="skip-button" (click)="skipVideo()" type="button">
+    Saltar
+  </button>
 </div>
-<!-- Contenido Añadido -->
+
+<!-- Overlay de transición después del video -->
+<div *ngIf="mostrarOverlay" class="video-fade-overlay" [class.fade-out]="videoTerminado"></div>
+
+<!-- Contenido del Home - Siempre en el DOM, visible después del video o si está autenticado -->
+<section class="home-page" [class.hidden]="mostrarVideo && !usuarioAutenticado" [class.fade-in]="videoTerminado && !usuarioAutenticado">
+  <header class="hero-card">
+    <div class="hero-copy">
+      <p class="eyebrow">YoPlay</p>
+      <h1>Bienvenido, {{ nombre }}</h1>
+      <p class="hero-text">Consulta tus torneos, revisa los próximos eventos y crea tu propia competencia.</p>
+    </div>
+    <button *ngIf="!usuarioAutenticado" type="button" class="btn-primary" (click)="irAIniciarSesion()">
+      Iniciar sesión
+    </button>
+  </header>
+
+  <section class="tournament-section">
+    <div class="section-header">
+      <h2>Torneos Disponibles</h2>
+    </div>
+    <div class="cards-grid">
+      <article *ngFor="let torneo of torneosDisponibles; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
+        <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
+        <div class="card-body">
+          <span class="tag">{{ torneo.categoria }}</span>
+          <h3>{{ torneo.titulo }}</h3>
+          <p>{{ torneo.descripcion }}</p>
+          <ul>
+            <li>{{ torneo.lugar }}</li>
+            <li>{{ torneo.fecha }}</li>
+            <li>{{ torneo.hora }}</li>
+          </ul>
+          <button type="button" class="more-info-button">Más información</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section *ngIf="usuarioAutenticado" class="tournament-section">
+    <div class="section-header">
+      <h2>Torneos en inscripción</h2>
+    </div>
+    <div class="cards-grid">
+      <article *ngFor="let torneo of torneosEnInscripcion; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
+        <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
+        <div class="card-body">
+          <span class="tag">{{ torneo.categoria }}</span>
+          <h3>{{ torneo.titulo }}</h3>
+          <p>{{ torneo.descripcion }}</p>
+          <ul>
+            <li>{{ torneo.lugar }}</li>
+            <li>{{ torneo.fecha }}</li>
+            <li>{{ torneo.hora }}</li>
+          </ul>
+          <button type="button" class="more-info-button">Más información</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section *ngIf="usuarioAutenticado" class="tournament-section">
+    <div class="section-header">
+      <h2>Tus torneos</h2>
+    </div>
+    <div class="cards-grid">
+      <article *ngFor="let torneo of tusTorneos; trackBy: trackTorneo" class="tournament-card" (click)="verMasInformacion(torneo.id)" tabindex="0" (keydown.enter)="verMasInformacion(torneo.id)" (keydown.space)="verMasInformacion(torneo.id)">
+        <img [src]="torneo.imagen" [attr.alt]="torneo.titulo" [attr.title]="torneo.titulo" />
+        <div class="card-body">
+          <span class="tag">{{ torneo.categoria }}</span>
+          <h3>{{ torneo.titulo }}</h3>
+          <p>{{ torneo.descripcion }}</p>
+          <ul>
+            <li>{{ torneo.lugar }}</li>
+            <li>{{ torneo.fecha }}</li>
+            <li>{{ torneo.hora }}</li>
+          </ul>
+          <button type="button" class="more-info-button">Más información</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

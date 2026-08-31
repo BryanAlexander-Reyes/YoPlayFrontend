@@ -28,6 +28,8 @@
   background: #000;
 
   color: white;
+  
+  animation: loginFormEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 
@@ -38,6 +40,7 @@
 .login-section {
   text-align: center;
   margin-bottom: 30px;
+  animation: titleEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
 }
 
 .login-section h1 {
@@ -67,6 +70,20 @@
   gap: 8px;
 
   margin-bottom: 22px;
+  
+  animation: fieldEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.form-group:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.form-group:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.form-group:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
 .form-group label {
@@ -112,6 +129,8 @@
   justify-content: flex-end;
 
   margin-bottom: 24px;
+  
+  animation: fieldEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
 }
 
 .recover-password a {
@@ -146,6 +165,8 @@
   cursor: pointer;
 
   transition: 0.2s ease;
+  
+  animation: buttonEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
 }
 
 .login-button:hover {
@@ -175,6 +196,8 @@
   font-size: 14px;
 
   text-align: center;
+  
+  animation: fieldEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
 }
 
 .registro a {
@@ -194,6 +217,8 @@
 
 .boton {
   width: 100%;
+  
+  animation: fieldEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
 }
 
 .boton-rapido {
@@ -218,6 +243,15 @@
   cursor: pointer;
 
   font-size: 15px;
+  
+  transition: all 0.25s ease;
+}
+
+.boton-rapido:hover {
+  background: #16213e;
+  border-color: #4285f4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
 }
 
 .boton-rapido i {
@@ -353,6 +387,54 @@
       scale(1);
   }
 
+}
+
+/* =========================================================
+   ANIMACIONES DE ENTRADA DEL FORMULARIO
+========================================================= */
+
+@keyframes loginFormEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes titleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fieldEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonEnter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
