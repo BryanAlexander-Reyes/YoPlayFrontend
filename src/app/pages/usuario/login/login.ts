@@ -13,16 +13,18 @@ import {RestablecerComponent} from '../restablecer-component/restablecer-compone
   styleUrl: './login.css',
 })
 export class LoginComponent {
-  
- 
-  
 
     constructor(private router:Router, private authService:AuthService){}
     @Output() irARegistro = new EventEmitter<void>();
     @Output() abrirRecuperarComponent = new EventEmitter<void>();
-    abrirRecuperar(){
+
+    goToRegister(): void {
+      this.irARegistro.emit();
+    }
+
+    abrirRecuperar(): void {
         this.abrirRecuperarComponent.emit();
-      };
+      }
   email:string='';
   password:string='';
   @Output() mostrarSpan = new EventEmitter<void>();
@@ -46,11 +48,10 @@ export class LoginComponent {
     `Bienvenido al sistema ${usuario?.nombre}\nrol: ${usuario?.rol}`
   );
 
-  // Mostrar tarjeta de carga
   this.mostrarSpan.emit();
-
-  // Esperar antes de cambiar de página
+  
+  // Esperar 1.5 segundos para que se vea la animación de carga antes de navegar
   setTimeout(() => {
     this.router.navigate(['/home']);
-  }, 2000);
+  }, 1500);
 }}

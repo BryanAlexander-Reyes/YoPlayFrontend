@@ -1,0 +1,79 @@
+{
+  "usuario": {
+    "nombre": "brayan reyes"
+  },
+  "torneos": [
+    {
+      "id": 1,
+      "titulo": "Liga La Ribera Fútbol 8",
+      "descripcion": "Torneo de fútbol 8 para equipos aficionados.",
+      "lugar": "Camping de Confiteros",
+      "fecha": "29 de julio de 2026",
+      "hora": "Por confirmar",
+      "premios": "Por confirmar",
+      "categoria": "Fútbol",
+      "estado": "disponible",
+      "imagen": "/assets/falyer1.jpg"
+    },
+    {
+      "id": 2,
+      "titulo": "Torneo Fútbol Juvenil Amateur",
+      "descripcion": "Competencia de fútbol juvenil para equipos amateurs.",
+      "lugar": "Calle Cualquiera #123",
+      "fecha": "16 de junio de 2026",
+      "hora": "Por confirmar",
+      "premios": "Campeón y subcampeón",
+      "categoria": "Fútbol",
+      "estado": "disponible",
+      "imagen": "/assets/falyer2.jpg"
+    },
+    {
+      "id": 3,
+      "titulo": "Copa Fedecoltenis",
+      "descripcion": "Circuito nacional abierto de tenis, clase A.",
+      "lugar": "Centro de Alto Rendimiento",
+      "fecha": "22 de julio de 2026",
+      "hora": "Por confirmar",
+      "premios": "Por confirmar",
+      "categoria": "Tenis",
+      "estado": "disponible",
+      "imagen": "/assets/falyer3.jpg"
+    },
+    {
+      "id": 4,
+      "titulo": "Torneo Interbarrios Fútbol de Salón",
+      "descripcion": "Torneo femenino de fútbol de salón entre barrios.",
+      "lugar": "Coliseo Polísur",
+      "fecha": "25 de noviembre de 2026",
+      "hora": "5:00 PM",
+      "premios": "Por confirmar",
+      "categoria": "Fútbol",
+      "estado": "inscripcion",
+      "imagen": "/assets/falyer%204.jpg"
+    },
+    {
+      "id": 5,
+      "titulo": "Copa Internacional de Voleibol",
+      "descripcion": "Competencia internacional de voleibol por categorías.",
+      "lugar": "Santiago de Cali",
+      "fecha": "16 al 21 de julio de 2026",
+      "hora": "Por confirmar",
+      "premios": "Por confirmar",
+      "categoria": "Voleibol",
+      "estado": "inscripcion",
+      "imagen": "/assets/falyer5.jpg"
+    },
+    {
+      "id": 6,
+      "titulo": "Torneo Mixto de Voleibol 4x4",
+      "descripcion": "Torneo mixto de voleibol 4x4 para equipos aficionados.",
+      "lugar": "Cancha de voleibol de la sede",
+      "fecha": "22 de mayo de 2026",
+      "hora": "8:00 AM",
+      "premios": "Por confirmar",
+      "categoria": "Voleibol",
+      "estado": "mio",
+      "imagen": "/assets/falyer6.jpg"
+    }
+  ]
+}
