@@ -39,8 +39,8 @@
     position: fixed;
     inset: 0 0 0 200px;
     background: rgba(0, 0, 0, 0.38);
-    backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     z-index: 1000;
     animation: backdropIn 0.28s ease forwards;
 }
@@ -106,6 +106,42 @@
 }
 
 .sideuser-panel app-sideuser {
+    display: block;
+    max-width: 100%;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
+}
+
+.tournament-menu-backdrop {
+    position: fixed;
+    inset: 0 0 0 200px;
+    background: rgba(0, 0, 0, 0.38);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 990;
+    animation: backdropIn 0.28s ease forwards;
+}
+
+.tournament-menu-backdrop.is-closing {
+    animation: backdropOut 0.24s ease forwards;
+}
+
+.tournament-panel {
+    position: fixed;
+    left: 200px;
+    top: 34.5%;
+    transform: translateY(-50%);
+    z-index: 991;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: sideuserIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tournament-panel.is-closing {
+    animation: sideuserOut 0.26s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.tournament-panel app-tournament-bar {
     display: block;
     max-width: 100%;
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28);

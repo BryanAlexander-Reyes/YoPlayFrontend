@@ -1,6 +1,10 @@
 <div class="layout-container">
     <aside class="layout-header">
-        <app-navigator (userMenuToggle)="toggleUserMenu()" (accessDenied)="openLoginRequired()"></app-navigator>
+        <app-navigator
+            (userMenuToggle)="toggleUserMenu()"
+            (tournamentMenuToggle)="toggleTournamentMenu()"
+            (accessDenied)="openLoginRequired()">
+        </app-navigator>
     </aside>
 
     <main class="layout-main">
@@ -25,5 +29,11 @@
 
     <div *ngIf="isUserMenuOpen" class="sideuser-panel" [class.is-closing]="isClosingUserMenu">
         <app-sideuser (logoutConfirmed)="closeUserMenu()"></app-sideuser>
+    </div>
+
+    <div *ngIf="isTournamentMenuOpen" class="tournament-menu-backdrop" [class.is-closing]="isClosingTournamentMenu" (click)="closeTournamentMenu()"></div>
+
+    <div *ngIf="isTournamentMenuOpen" class="tournament-panel" [class.is-closing]="isClosingTournamentMenu">
+        <app-tournament-bar></app-tournament-bar>
     </div>
 </div>

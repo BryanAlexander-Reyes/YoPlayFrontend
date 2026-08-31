@@ -1,0 +1,85 @@
+.tournament-bar {
+  width: 308px;
+  min-height: 200px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid #102a43;
+  border-radius: 26px;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: "SF Pro Display", "SF Pro", Arial, sans-serif;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  animation: tournamentBarIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.menu-content {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 20px;
+  box-sizing: border-box;
+  animation: sectionIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #000000;
+}
+
+.menu-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #000000;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  word-spacing: 0.12em;
+  text-align: left;
+  padding: 14px 12px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  border-radius: 10px;
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #000000;
+  letter-spacing: 0.06em;
+  word-spacing: 0.12em;
+}
+
+.menu-item:hover {
+  background-color: #e8e8e8;
+  transform: translateX(4px);
+}
+
+@keyframes tournamentBarIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sectionIn {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
