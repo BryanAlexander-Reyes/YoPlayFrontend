@@ -21,7 +21,7 @@ export class TP {
   readonly torneos: TorneoParticipante[] = [
     {
       nombre: 'Torneo Futsal Casanare',
-      imagen: 'YoPlayFrontend/images/Rectangle14.png',
+      imagen: 'images/Rectangle14.png',
       ubicacion: 'Yopal, Casanare.',
       inscripcion: '$50.000 (Equipo)',
       premiacion: '$1.500.000',
@@ -29,7 +29,7 @@ export class TP {
     },
     {
       nombre: 'Torneo Voleibol',
-      imagen: 'YoPlayFrontend/images/Rectangle15.png',
+      imagen: 'images/Rectangle15.png',
       ubicacion: 'Yopal, Casanare.',
       inscripcion: '$30.000 (Personal)',
       premiacion: '$2.000.000',
@@ -37,7 +37,7 @@ export class TP {
     },
     {
       nombre: 'Torneo Pardos (Voley)',
-      imagen: 'YoPlayFrontend/images/Rectangle16.png',
+      imagen: 'images/Rectangle16.png',
       ubicacion: 'Yopal, Casanare.',
       inscripcion: '$50.000 (Equipo)',
       premiacion: '$1.500.000',
