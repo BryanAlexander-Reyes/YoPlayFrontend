@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SpanAuth } from '../../../models/span-auth';
 import { SpanComponent } from '../../spancomponent/spancomponent';
 import { SpanAuthService } from '../../../services/auth-span';
+import { ValidadorComponente } from '../../validador-componente/validador-componente';
 
 interface Deporte {
   deporte: string;
@@ -27,21 +28,21 @@ interface Torneo {
   objetivo: string;
   fechaInicio: string;
   fechaFin: string;
+
 }
 
 @Component({
   selector: 'app-creacion-torneo',
-  imports: [FormsModule],
+  imports: [FormsModule,ValidadorComponente,SpanComponent],
   templateUrl: './creacion-torneo.html',
   styleUrl: './creacion-torneo.css'
 })
 export class CreacionTorneo{
-
-
+  mostrarvalidador=false;
   spancomponten!:SpanAuth;
 
   constructor(private router: Router, private span:SpanAuthService){
-    this.spancomponten= this.span.obtenerestadosiguente2()
+    this.spancomponten= this.span.obtenerestadoCreaciontorneo()
   }
   
   mostrarErrores: boolean = false;
@@ -56,7 +57,7 @@ export class CreacionTorneo{
   errorFechaInicio = '';
   errorFechaFin = '';
   errorFechas = '';
-
+  fechaminima=';'
 
 
   contador: number = 0;
@@ -180,6 +181,7 @@ export class CreacionTorneo{
   this.errorFechaInicio = '';
   this.errorFechaFin = '';
   this.errorFechas = '';
+  this.fechaminima='';
 }
 
 reglamento(): void {
@@ -239,20 +241,16 @@ reglamento(): void {
     console.log('Torneo creado:', torneo);
     console.log('Todos los torneos:', torneosGuardados);
 
-    // Mostrar card de carga
-    this.spancomponten = this.span.obtenerestadosiguente();
-
-    // Esperar antes de navegar
+   
+    this.spancomponten = this.span.obtenerestadoCreaciontorneo();
+    this.mostrarvalidador=true;
     setTimeout(() => {
 
       this.router.navigate(['/reglamento'], {
-        state: {
-          mensaje: '¡Torneo creado correctamente!'
-        }
       });
 
     }, 2000);
-
+0
   } catch (error) {
 
     console.error('Error al guardar el torneo:', error);

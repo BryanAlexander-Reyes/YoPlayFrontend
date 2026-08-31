@@ -1,7 +1,7 @@
 <mat-tab-group>
   <mat-tab label="Tabla de posiciones" class="titulo">
     <section class="tabla-puntajes">
-      <app-puntaje-component></app-puntaje-component>
+      <app-puntaje-component [visionPuntajes]="!visualizacion"></app-puntaje-component>
     </section>
   </mat-tab>
   <mat-tab label="Fixture" class="titulo">

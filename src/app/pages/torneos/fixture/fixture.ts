@@ -27,17 +27,21 @@ interface FixtureRondas {
 })
 export class Fixture implements OnInit{
   torneo: Torneo  | undefined;
+  @Input() torneoId: number | null = null;
+
   constructor(private torneosService:TorneosService,
     private route:ActivatedRoute
   ){}
 
-  @Input() visualizacion:boolean=true
+  @Input() visualizacion:boolean=true;
+  
 
   ngOnInit(): void {
-    const id =Number(
-      this.route.snapshot.paramMap.get('id')
-    );
-    this.torneo=this.torneosService.obtenerTorneoPorId(id);
+    this.route.paramMap.subscribe((params) => {
+      const routeId = Number(params.get('id'));
+      const id = this.torneoId ?? routeId;
+      this.torneo = this.torneosService.obtenerTorneoPorId(id);
+    });
     
   };
 

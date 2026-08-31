@@ -32,23 +32,79 @@
                 </p>
             </div>
             <div class="foto-perfil">
-                <img src="" alt="Foto de perfil">
+                @if (tieneFotoPerfil()) {
+                    <img [src]="fotoPerfil" alt="Foto de perfil">
+                } @else {
+                    <p>No hay foto de perfil</p>
+                }
             </div>
         </section>
         <section class="perfil-publico">
             <div class="texto-publico">
-                <h2>Perfil: Público</h2>
+                <h2>Perfil público</h2>
                 <p>
                     Permite que los datos más privados, o tu información de
                     torneos, entre otros, puedan ser visualizados o no,
-                    por otros usuarios.
+                    por otros usuarios. Tu perfil es
+                    <strong>{{ estadoPerfil }}</strong>.
                 </p>
             </div>
             <label class="switch">
-                <input type="checkbox">
+                <input
+                    type="checkbox"
+                    [(ngModel)]="perfilPublico"
+                    aria-label="Hacer público mi perfil">
                 <span class="slider"></span>
             </label>
         </section>
+
+        <section class="tus-torneos">
+            <div class="tus-torneos-header">
+                <h2>Tus torneos</h2>
+                <p>Consulta la información de los torneos de tu autoría.</p>
+            </div>
+
+            <div class="tus-torneos-grid">
+                @for (torneo of torneosPerfil; track torneo.id) {
+                    <article class="tus-torneos-card">
+                        <img
+                            [src]="torneo.imagen"
+                            alt="Afiche del torneo"
+                            title="Afiche del torneo">
+                        <h3>{{ torneo.titulo }}</h3>
+                        <p>Lugar: {{ torneo.lugar }}</p>
+                        <p>Fecha: {{ torneo.fecha }}</p>
+                        <p>Hora: {{ torneo.hora }}</p>
+                        <p>Premiación: {{ torneo.premios }}</p>
+                        <button class="fixture-button" type="button" (click)="abrirFixture(torneo.id)">Fixture</button>
+                    </article>
+                }
+            </div>
+        </section>
     </main>
-    More content for add here.
+
+    @if (torneoFixtureId !== null) {
+        <div class="fixture-modal-backdrop" (click)="cerrarFixture()">
+            <section
+                class="fixture-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="fixture-modal-title"
+                (click)="$event.stopPropagation()">
+                <header class="fixture-modal-header">
+                    <h2 id="fixture-modal-title">Fixture del torneo</h2>
+                    <button
+                        class="fixture-modal-close"
+                        type="button"
+                        aria-label="Cerrar fixture"
+                        (click)="cerrarFixture()">
+                        <span aria-hidden="true">&#10005;</span>
+                    </button>
+                </header>
+                <div class="fixture-modal-content">
+                    <app-fixture [visualizacion]="false" [torneoId]="torneoFixtureId"></app-fixture>
+                </div>
+            </section>
+        </div>
+    }
 </section>

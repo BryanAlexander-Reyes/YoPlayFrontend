@@ -1,5 +1,18 @@
 <section class="presentation-page">
-    <div class="hero-section">
+    <div
+        class="hero-section">
+        @if (previousImage) {
+            <img
+                class="hero-carousel-image hero-carousel-image-exiting"
+                [src]="previousImage"
+                alt="">
+        }
+        <img
+            class="hero-carousel-image"
+            [class.image-entering]="imageEntering"
+            [src]="presentationImage"
+            alt="">
+
         <div class="content">
             <h1>Bienvenido a YoPLAY</h1>
             <h3 class="welcome-tagline">Bienvenido al lugar donde el deporte se vive, se compite y se celebra.</h3>
@@ -18,6 +31,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <h1> Juega contra los mejores. </h1>

@@ -25,7 +25,7 @@ export class Teams {
       lider: 'No aplica',
       directorTecnico: 'No aplica',
       fechaCreacion: 'Yopal, 25 de Febrero de 2026.',
-      imagen: '/images/image%202.png',
+      imagen: '/images/image2.png',
     },
     {
       nombre: 'Panteras F.C.',
