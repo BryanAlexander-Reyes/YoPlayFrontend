@@ -1,15 +1,14 @@
 /* =========================================
-   CONTENEDOR GENERAL INSCRIPCIÓN
+   CONTENEDOR GENERAL
    ========================================= */
 
 :host {
   display: block;
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-:host,
 :host * {
   box-sizing: border-box;
 }
@@ -17,135 +16,212 @@
 .inscripcion-contenedor {
   width: 100%;
   min-height: 100vh;
-  padding: clamp(28px, 4vw, 50px) clamp(16px, 7vw, 112px);
-  overflow-x: hidden;
+  padding: 40px;
   background: #080b12;
   color: #ffffff;
+  animation: pageFadeIn 0.45s ease both;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* =========================================
-   HEADER DE LA PÁGINA
+   HEADER
    ========================================= */
 
-.header-section {
+.inscripcion-header {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #686767;
+  animation: headerSlideIn 0.5s ease both;
   width: 100%;
-  margin-bottom: 35px;
+  box-sizing: border-box;
 }
 
-.header-section > h1 {
+.inscripcion-header h1 {
   margin: 0;
-  color: #ffffff;
-  font-size: clamp(30px, 3.5vw, 42px);
+  color: white;
+  font-size: 32px;
   font-weight: 800;
-  overflow-wrap: anywhere;
 }
 
-/* =========================================
-   INFORMACIÓN DEL TORNEO
-   ========================================= */
-
-.torneo-info {
-  width: 100%;
-  min-width: 0;
-}
-
-/* =========================================
-   CARD PRINCIPAL
-   ========================================= */
-
-.card-contenerdor {
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  border-radius: 25px;
-  background: #111722;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45);
-}
-
-/* =========================================
-   HEADER DE LA CARD
-   ========================================= */
-
-.card-contenerdor > .header {
-  padding: 22px clamp(22px, 4vw, 40px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(
-    135deg,
-    #111722,
-    #151d2c
-  );
-}
-
-.card-contenerdor > .header h1 {
-  margin: 0;
-  color: #ffffff;
-  font-size: clamp(20px, 2.5vw, 26px);
-  font-weight: 800;
-  overflow-wrap: anywhere;
-}
-
-/* =========================================
-   CONTENIDO DE INFORMACIÓN
-   ========================================= */
-
-.cardInformacion {
-  display: grid;
-  grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
-  gap: clamp(25px, 4vw, 50px);
-  align-items: center;
-  padding: clamp(25px, 4vw, 45px);
-}
-
-/* =========================================
-   FLYER DEL TORNEO
-   ========================================= */
-
-.flayer {
-  width: 100%;
-  height: clamp(280px, 30vw, 420px);
-  overflow: hidden;
-  border-radius: 18px;
-  background: #202a3b;
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-.flayer img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.flayer:hover img {
-  transform: scale(1.06);
-}
-
-/* =========================================
-   DESCRIPCIÓN
-   ========================================= */
-
-.descripcionheader {
-  width: 100%;
-  min-width: 0;
-}
-
-.descripcionheader h1 {
-  margin: 0 0 18px;
-  color: #ffffff;
-  font-size: clamp(28px, 3vw, 38px);
-  font-weight: 800;
-  overflow-wrap: anywhere;
-}
-
-.descripcionheader p {
-  margin: 0;
+.inscripcion-subtitle {
+  margin: 12px 0 0;
   color: #aeb7c6;
+  font-size: 16px;
+}
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.inscripcion-content {
+  display: grid;
+  gap: 40px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TARJETA DE INFO DEL TORNEO
+   ========================================= */
+
+.torneo-info-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: cardReveal 0.55s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.torneo-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.torneo-info-header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.torneo-poster {
+  width: 280px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.torneo-info-text {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.torneo-info-text h2 {
+  margin: 0 0 15px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.torneo-info-text p {
+  margin: 0 0 25px;
   font-size: 15px;
-  line-height: 1.8;
-  overflow-wrap: anywhere;
+  color: #aeb7c6;
+  line-height: 1.6;
+}
+
+.torneo-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #e0e0e0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.detail-item i {
+  color: #00d9ff;
+  width: 20px;
+  text-align: center;
+}
+
+/* =========================================
+   SECCIÓN DE REGISTRO
+   ========================================= */
+
+.registro-section {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+  padding: 35px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: cardReveal 0.55s 0.27s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.registro-section h2 {
+  margin: 0 0 25px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes headerSlideIn {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .inscripcion-contenedor {
+    padding: 25px;
+  }
+
+  .inscripcion-header h1 {
+    font-size: 24px;
+  }
+
+  .torneo-info-header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .torneo-poster {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+  }
+
+  .torneo-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .detail-item {
+    flex: none;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .registro-section {
+    padding: 25px;
+  }
 }
 
 /* =========================================

@@ -113,6 +113,10 @@ export const routes: Routes = [
       {
         path: 'reglamento',
         component: Reglamento
+      },
+      {
+        path:'inscripcion/:id',
+        component: InscripcionComponente
       }
     ],
   },
@@ -121,31 +125,11 @@ export const routes: Routes = [
     component: Tyc,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'validador',
-    component: ValidadorComponente,
-  },
-  {
-    path: 'torneo',
-    component: CreacionTorneo,
-  },
-  {
     path: 'registro',
     component: RegistroEquipos,
   },
   {
     path: 'login_usuario',
     component: AuthAnimationComponent,
-  },
-  {
-    path:'inscripcion/:id',
-    component: InscripcionComponente
   },
 ];
