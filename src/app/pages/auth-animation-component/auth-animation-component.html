@@ -3,12 +3,6 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 />
 
-@if (mostrarCarga) {
-  <div class="span-overlay">
-    <app-span-content></app-span-content>
-  </div>
-}
-
 <div
   class="auth-container"
   [class.registro-activo]="registroActivo"
@@ -79,8 +73,7 @@
 
     <app-login
       (irARegistro)="mostrarRegistro()"
-      (abrirRecuperarComponent)="abrirModal()"
-      (mostrarSpan)="activarCarga()">
+      (abrirRecuperarComponent)="abrirModal()">
     </app-login>
     
   </section>
