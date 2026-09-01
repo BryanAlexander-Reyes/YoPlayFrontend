@@ -102,38 +102,7 @@
                     </button>
                 </header>
                 <div class="fixture-modal-content">
-                    @if (obtenerTorneoPorId(torneoFixtureId!); as torneo) {
-                        <div class="tournament-info-wrapper">
-                            <div class="tournament-header-info">
-                                <img [src]="torneo.imagen" [alt]="torneo.titulo" class="tournament-poster">
-                                <div class="tournament-header-text">
-                                    <h3>{{ torneo.titulo }}</h3>
-                                    <p class="tournament-description">{{ torneo.descripcion }}</p>
-                                    <div class="tournament-details">
-                                        <div class="detail-item">
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            <span>{{ torneo.lugar }}</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <i class="fa-regular fa-calendar-days"></i>
-                                            <span>{{ torneo.fecha }}</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <i class="fa-solid fa-clock"></i>
-                                            <span>{{ torneo.hora }}</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <i class="fa-solid fa-trophy"></i>
-                                            <span>{{ torneo.premios }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tournament-fixture-section">
-                                <app-fixture [visualizacion]="false" [torneoId]="torneoFixtureId"></app-fixture>
-                            </div>
-                        </div>
-                    }
+                    <app-fixture [visualizacion]="true" [torneoId]="torneoFixtureId"></app-fixture>
                 </div>
             </section>
         </div>

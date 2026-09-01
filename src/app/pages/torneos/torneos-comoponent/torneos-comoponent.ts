@@ -13,23 +13,48 @@ export class TorneosComponent implements OnInit {
   torneos: Torneo[] = [];
   torneoActual: number = 0;
   modo: string = 'informacion';
+  showAccessDenied = false;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private torneosService: TorneosService,
   ) {}
+
   ngOnInit(): void {
     this.torneos = this.torneosService.obtenerTorneos();
-    // capturar la ruta del modo enviado
-    this.modo =this.activatedRoute.snapshot.data['modo']||'informacion';
+    this.modo = this.activatedRoute.snapshot.data['modo'] || 'informacion';
+    this.showAccessDenied = false;
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('usuarioSesion');
+  }
+
   accionTorneo(id: number): void {
     if (this.modo === 'informacion') {
-      this.router.navigate(['/inf-torneos',id]);
-    }else if (this.modo === 'inscripcion'){
-      this.router.navigate(['/inscripcion',id]);
+      this.router.navigate(['/inf-torneos', id]);
+      return;
     }
+
+    if (this.modo === 'inscripcion') {
+      if (!this.isLoggedIn()) {
+        this.showAccessDenied = true;
+        return;
+      }
+
+      this.showAccessDenied = false;
+      this.router.navigate(['/inscripcion', id]);
+    }
+  }
+
+  goToLogin(): void {
+    this.showAccessDenied = false;
+    this.router.navigate(['/login_usuario']);
+  }
+
+  closeAccessDenied(): void {
+    this.showAccessDenied = false;
   }
 
   siguiente(): void {
