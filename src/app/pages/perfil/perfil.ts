@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
 import { HostListener } from '@angular/core';
 import { Fixture } from '../torneos/fixture/fixture';
-import { EquiposComponent } from '../torneos/equipos/equipos';
 
 interface perfil{
   nombre:string,

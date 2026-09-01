@@ -149,7 +149,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     const texto = titulo.toLowerCase();
     if (texto.includes('fútbol') || texto.includes('futbol')) return 'Fútbol';
     if (texto.includes('tenis')) return 'Tenis';
-    if (texto.includes('voleibol')) return 'Voleibol';
+    if (texto.includes('voleibol')) return 'Vóleibol';
     return 'General';
   }
 
