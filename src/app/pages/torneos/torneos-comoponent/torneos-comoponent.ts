@@ -49,7 +49,12 @@ export class TorneosComponent implements OnInit {
   }
 
   goToLogin(): void {
+    this.showAccessDenied = false;
     this.router.navigate(['/login_usuario']);
+  }
+
+  closeAccessDenied(): void {
+    this.showAccessDenied = false;
   }
 
   siguiente(): void {
