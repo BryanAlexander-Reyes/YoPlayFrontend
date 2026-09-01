@@ -1,4 +1,14 @@
 <div class="torneo-container">
+  <section *ngIf="modo === 'inscripcion' && showAccessDenied" class="login-required-panel">
+    <div class="login-required-card">
+      <p class="login-required-title">No puedes realizar esta función.</p>
+      <p class="login-required-message">Debes iniciar sesión para inscribirte a un torneo activo.</p>
+      <button type="button" class="login-required-button" (click)="goToLogin()">
+        Iniciar sesión
+      </button>
+    </div>
+  </section>
+
   <!-- =========================
        CARRUSEL PRINCIPAL
        ========================= -->
