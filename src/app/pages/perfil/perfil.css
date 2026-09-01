@@ -365,7 +365,7 @@
     flex-direction: column;
     padding: 9px 18px 23px;
     border-radius: 16px;
-    background: rgba(225, 225, 225, 0.88);
+    background: rgba(221, 216, 216, 0.904);
     animation: cardReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -428,11 +428,12 @@
 }
 
 .fixture-modal-backdrop {
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: 1100;
     display: flex;
     align-items: center;
+    margin: auto;
     justify-content: center;
     padding: 24px;
     background: rgba(0, 0, 0, 0.72);

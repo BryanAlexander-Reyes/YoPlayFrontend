@@ -129,6 +129,10 @@ export const routes: Routes = [
         path: 'torneos_activos',
         component: TorneosComponent,
         data:{modo:'inscripcion'}
+      },
+      {
+        path: 'fixture',
+        component: Fixture
       }
     ],
   },
