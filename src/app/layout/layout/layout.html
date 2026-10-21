@@ -3,7 +3,8 @@
         <app-navigator
             (userMenuToggle)="toggleUserMenu()"
             (tournamentMenuToggle)="toggleTournamentMenu()"
-            (accessDenied)="openLoginRequired()">
+            (accessDenied)="openLoginRequired()"
+            (navigationRequested)="closeLoginRequired()">
         </app-navigator>
     </aside>
 

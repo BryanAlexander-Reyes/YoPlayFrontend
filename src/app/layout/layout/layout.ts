@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Footer } from '../footer/footer';
 import { Navigator } from '../navigator/navigator';
 import { Sideuser } from '../../pages/sideuser/sideuser';
@@ -12,14 +13,25 @@ import { TournamentBar } from '../../pages/tournament-bar/tournament-bar';
   templateUrl: './layout.html',
   styleUrl: './layout.css',
 })
-export class Layout {
+export class Layout implements OnDestroy {
   isUserMenuOpen = false;
   isClosingUserMenu = false;
   isTournamentMenuOpen = false;
   isClosingTournamentMenu = false;
   showLoginRequiredModal = false;
+  private readonly navigationSubscription: Subscription;
 
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router) {
+    this.navigationSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.closeLoginRequired();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.navigationSubscription.unsubscribe();
+  }
 
   toggleUserMenu(): void {
     if (this.isUserMenuOpen) {

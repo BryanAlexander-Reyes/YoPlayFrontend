@@ -11,6 +11,7 @@ export class Navigator {
   @Output() userMenuToggle = new EventEmitter<void>();
   @Output() tournamentMenuToggle = new EventEmitter<void>();
   @Output() accessDenied = new EventEmitter<void>();
+  @Output() navigationRequested = new EventEmitter<void>();
 
   constructor(private readonly router: Router) {}
 
@@ -20,6 +21,10 @@ export class Navigator {
 
   toggleTournamentMenu(): void {
     this.tournamentMenuToggle.emit();
+  }
+
+  closeAccessWarning(): void {
+    this.navigationRequested.emit();
   }
 
   handleTorneoAccess(): void {
