@@ -12,7 +12,7 @@
        FORMULARIO 1
        ========================================= -->
   <div
-    *ngIf="!mostrarSegundoFormulario"
+    *ngIf="!codigoVerificado"
     class="formulario"
   >
 
@@ -114,7 +114,7 @@
        ========================================= -->
 
   <div
-    *ngIf="mostrarSegundoFormulario"
+    *ngIf="codigoVerificado"
     class="formulario"
   >
 
@@ -173,11 +173,10 @@
           >
             Tipo de documento
           </option>
-          @for (tipo of tipoDocumento; track tipo.valor){
+          @for (tipo of tipoDocumento; track tipo.Id){
             <option
-              value="{{ tipo.valor }}"
-            >
-              {{ tipo.nombre }}
+            [ngValue]="tipo.Id">
+              {{tipo.TipoDocumento}}
             </option>
           }
         </select>
@@ -244,8 +243,6 @@
       >
         REGISTRARSE
       </button>
-      <button type="button"class="volver-formulario" (click)="mostrarPrimerFormulario()" ><i class="fa-solid fa-circle-arrow-left"> Volver</i></button>
-
   </div>
 
 </form>

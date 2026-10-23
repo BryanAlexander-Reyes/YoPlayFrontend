@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{
@@ -9,18 +9,41 @@ import{
   ValidationErrors
 } from '@angular/forms'
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+HttpClient
+import { Environment } from '../../../../../environments/environments';
 
+interface TipoDocumento{
+  Id: number;
+  TipoDocumento:string;
+}
 @Component({
   selector: 'app-register',
   imports: [NgIf, FormsModule, ReactiveFormsModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
-export class RegisterComponent {
-
+export class RegisterComponent implements OnInit {
+  private readonly Document_URL = `${Environment.base}/v1/documento`;
+  ngOnInit(): void {
+    this.http.get<TipoDocumento[]>(
+      this.Document_URL).subscribe({
+        next: (respuesta)=>{
+          this.tipoDocumento = (respuesta as any).Data;
+          console.log('tipos de documentos:', this.tipoDocumento);
+        },
+        error: (error)=>{
+          console.error('Error al consultar los tipos de documentos: ', error);
+        }
+      }
+    );
+  }
+  
   registerForm: FormGroup;
 
-  constructor (private fb:FormBuilder){
+  constructor (private fb:FormBuilder,
+    private http:HttpClient
+  ){
     this.registerForm=this.fb.group({
       // formulario1
       email:['', Validators.required],
@@ -37,11 +60,7 @@ export class RegisterComponent {
     });
   }
 
-  tipoDocumento=[
-    {valor: 'CC', nombre:'cedula de ciudadania'},
-    {valor: 'TI', nombre:'tarjeta de identidad'},
-    {valor: 'CE', nombre:'cedula de extranjeria'},
-  ];
+  tipoDocumento: TipoDocumento[]=[];
 
   @Output() irALogin = new EventEmitter<void>();
   @Output() irValidadorComponent =new EventEmitter<void>();
@@ -49,9 +68,40 @@ export class RegisterComponent {
 
 
   mostrarSegundoFormulario = false;
+  @Input() codigoVerificado=false;
 
   siguiente() {
-    this.mostrarSegundoFormulario = true;
+    const  controles = this.registerForm.controls;
+    
+    const camposPrimerPaso=[
+      'email',
+      'password',
+      'confirmPassword'
+    ]
+
+    camposPrimerPaso.forEach(campo =>{
+      const control = controles[campo];
+      if (control){
+        control.markAsTouched();
+      }else{
+        console.error(`No existe el control: ${campo}`);
+      }
+    });
+
+    if (controles['email'].invalid ||
+      controles['password'].invalid ||
+      controles['confirmPassword'].invalid
+    ){
+      return
+    }
+    if (
+      controles['password'].value !==controles['confirmPassword'].value
+    ){
+      controles['confirmPassword'].setErrors({
+        noCoincide:true
+      });
+    }
+    this.irValidadorComponent.emit();
   }
   mostrarPrimerFormulario(){
     this.mostrarSegundoFormulario=false;

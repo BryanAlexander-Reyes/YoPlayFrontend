@@ -1,9 +1,16 @@
 import { fromReadableStreamLike } from 'rxjs/internal/observable/innerFrom';
 import { UsuarioAuth } from '../models/usuario-auth';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Environment} from '../../../environments/environments'
+import { HttpClient } from '@angular/common/http';
 
 interface UsuarioSistemas extends UsuarioAuth {
   password: string;
+}
+
+interface LoginResponse {
+  mensaje:string,
+  id_usuario:number;
 }
 
 @Injectable({
@@ -11,42 +18,39 @@ interface UsuarioSistemas extends UsuarioAuth {
 })
 export class AuthService {
   private readonly STORAGE_KEY = 'usuarioSesion';
+  private readonly LOGIN_URL = `${Environment.apiUrl}/api/login`;
 
   private usuarioSistemas: UsuarioSistemas[] = [
     {
       nombre: 'Brayan Reyes',
       correo: 'bryanreyes47k@gmail.com',
       password: '123456',
-      rol: 'Usuario',
     },
     {
       nombre: 'Kevin Alexander Hernández Sierra',
       correo: 'admink@gmail.com',
       password: '123456',
-      rol: 'Usuario',
+      
     }
   ];
 
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
   // Metodo para guardar la informacion del usuario
 
-  iniciarSesion(correo:string, password:string):boolean {
-    const usuario = this.usuarioSistemas.find((u) => u.correo === correo);
-        if (!usuario) {
-        return false;
-        }
-        if (usuario.password !== password) {
-        return false;
-        }
-        const usuarioAuth={
-            nombre:usuario.nombre,
-            correo:usuario.correo,
-            rol:usuario.rol
-        }
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(usuarioAuth));
+  iniciarSesion(correo:string, password:string){
+    return this.http.post<LoginResponse>(
+      this.LOGIN_URL,
+      {
+        correo: correo,
+        contrasena: password
+      }
+    );
+
     
-    return true;
+  }
+  guardarUsuario(idUsuario:number ):void{
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify({id_usuario:idUsuario}));
   }
 
   cerrarSesion(): void {
@@ -59,7 +63,7 @@ export class AuthService {
   }
 
   // metodo que obtiene el usuario autenticas
-  obtenerUsuario(): UsuarioAuth | null {
+  obtenerUsuario(): {id_usuario: number} | null {
     const usuario = localStorage.getItem(this.STORAGE_KEY);
     if (!usuario) {
       return null;
@@ -69,13 +73,10 @@ export class AuthService {
 
   // Metodo para obtener el rol
 
-  obtnerRol(): string {
-    return this.obtenerUsuario()?.rol ?? '';
-  }
 
   // metodo para obtener nombre
-  obtenerNombre(): string {
-    return this.obtenerUsuario()?.nombre ?? '';
-  }
+  // obtenerNombre(): string {
+  //   return this.obtenerUsuario()?.nombre ?? '';
+  // }
 }
 

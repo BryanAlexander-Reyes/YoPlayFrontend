@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from '../usuario/login/login';
@@ -17,6 +17,7 @@ export class AuthAnimationComponent {
   mostrarRestablecer=false;
   mostrarValidador=false;
   mostrarCarga = false;
+  codigoVerificado =false;
 
   activarCarga(): void {
     this.mostrarCarga = true;
@@ -28,6 +29,11 @@ export class AuthAnimationComponent {
   };
   abrirModalValidacion(){
     this.mostrarValidador=true;
+  }
+
+  continuarRegistro():void{
+    this.mostrarValidador=false;
+    this.codigoVerificado=true;
   }
   cerrarRecuperar(){
       this.mostrarRestablecer=false;
@@ -42,4 +48,6 @@ export class AuthAnimationComponent {
   mostrarLogin(): void {
     this.registroActivo = false;
   }
+  @ViewChild(RegisterComponent)
+  registerComponent!: RegisterComponent
 }
