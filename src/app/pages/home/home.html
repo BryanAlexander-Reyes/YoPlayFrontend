@@ -53,6 +53,9 @@
         </div>
       </article>
     </div>
+    <p *ngIf="cargandoTorneos">Cargando torneos...</p>
+    <p *ngIf="!cargandoTorneos && errorTorneos">No fue posible cargar los torneos del MID.</p>
+    <p *ngIf="!cargandoTorneos && !errorTorneos && torneosDisponibles.length === 0">No hay torneos disponibles.</p>
   </section>
 
   <section *ngIf="usuarioAutenticado" class="tournament-section">
@@ -75,6 +78,7 @@
         </div>
       </article>
     </div>
+    <p *ngIf="!cargandoTorneos && torneosEnInscripcion.length === 0">No hay torneos en inscripción.</p>
   </section>
 
   <section *ngIf="usuarioAutenticado" class="tournament-section">
@@ -97,5 +101,6 @@
         </div>
       </article>
     </div>
+    <p *ngIf="!cargandoTorneos && tusTorneos.length === 0">No tienes torneos propios.</p>
   </section>
 </section>

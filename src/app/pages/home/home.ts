@@ -1,11 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, ElementRef, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Torneo, TorneosService } from '../../services/auth-services-torneosCurso';
+import { MidTorneoResumen, MidTorneosService } from '../../services/mid-torneos.service';
+import { catchError, finalize, of } from 'rxjs';
 
-interface TorneoHome extends Torneo {
+interface TorneoHome {
+  id: number;
+  imagen: string;
+  titulo: string;
+  descripcion: string;
+  lugar: string;
+  fecha: string;
+  hora: string;
+  premios: string;
   categoria: string;
-  estado: 'disponible' | 'inscripcion' | 'mio';
+  estado: 'disponible' | 'inscripcion' | 'mio' | 'oculto';
 }
 
 @Component({
@@ -17,6 +26,8 @@ interface TorneoHome extends Torneo {
 export class Home implements OnInit, AfterViewInit, OnDestroy {
   nombre = 'Usuario';
   torneos: TorneoHome[] = [];
+  cargandoTorneos = true;
+  errorTorneos = false;
   usuarioAutenticado = false;
   mostrarVideo = false;
   videoTerminado = false;
@@ -28,8 +39,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private readonly router: Router,
-    private readonly torneosService: TorneosService,
+    private readonly midTorneosService: MidTorneosService,
     private readonly ngZone: NgZone,
+    private readonly changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -47,11 +59,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     this.videoTerminado = false;
     this.mostrarOverlay = false;
 
-    this.torneos = this.torneosService.obtenerTorneos().map((torneo) => ({
-      ...torneo,
-      categoria: this.obtenerCategoria(torneo.titulo),
-      estado: this.obtenerEstado(torneo.id),
-    }));
+    this.cargarTorneos();
   }
 
   ngAfterViewInit(): void {
@@ -132,6 +140,44 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     return this.getRandomGroup(this.torneos.filter((torneo) => torneo.estado === 'mio'));
   }
 
+  private cargarTorneos(): void {
+    this.cargandoTorneos = true;
+    this.errorTorneos = false;
+
+    this.midTorneosService.obtenerTorneos().pipe(
+      catchError(() => {
+        this.errorTorneos = true;
+        return of([] as MidTorneoResumen[]);
+      }),
+      finalize(() => {
+        this.cargandoTorneos = false;
+        this.changeDetector.detectChanges();
+      }),
+    ).subscribe((torneos) => {
+      // Fuerza la actualización de la vista una vez que XHR/fetch entrega la respuesta.
+      // Evita que el estado de carga se quede renderizado si la respuesta llega fuera de Zone.js.
+      this.ngZone.run(() => {
+        this.torneos = torneos.map((torneo) => this.mapearTorneo(torneo));
+        this.changeDetector.detectChanges();
+      });
+    });
+  }
+
+  private mapearTorneo(torneo: MidTorneoResumen): TorneoHome {
+    return {
+      id: torneo.Id,
+      imagen: torneo.Imagen || 'assets/falyer1.jpg',
+      titulo: torneo.NombreTorneo,
+      descripcion: torneo.DescripcionTorneo || 'Sin descripción disponible.',
+      lugar: torneo.Ubicacion || 'Por confirmar',
+      fecha: torneo.FechaInicio || 'Por confirmar',
+      hora: 'Por confirmar',
+      premios: 'Por confirmar',
+      categoria: torneo.NombreDeporte || 'General',
+      estado: this.obtenerEstado(torneo),
+    };
+  }
+
   trackTorneo(index: number, torneo: TorneoHome): number {
     return torneo.id;
   }
@@ -145,18 +191,36 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     return copy.slice(0, 3);
   }
 
-  private obtenerCategoria(titulo: string): string {
-    const texto = titulo.toLowerCase();
-    if (texto.includes('fútbol') || texto.includes('futbol')) return 'Fútbol';
-    if (texto.includes('tenis')) return 'Tenis';
-    if (texto.includes('voleibol')) return 'Vóleibol';
-    return 'General';
+  private obtenerEstado(torneo: MidTorneoResumen): 'disponible' | 'inscripcion' | 'mio' | 'oculto' {
+    if (this.esTorneoPropio(torneo)) return 'mio';
+
+    // El MID denomina "Por Confirmar" a los torneos futuros: son los que están
+    // disponibles para inscripción. Los que ya comenzaron permanecen disponibles
+    // para consulta en la primera sección.
+    const estado = torneo.Estado?.toLowerCase();
+    if (estado === 'por confirmar') return 'inscripcion';
+    if (estado === 'finalizado') return 'oculto';
+    return 'disponible';
   }
 
-  private obtenerEstado(id: number): 'disponible' | 'inscripcion' | 'mio' {
-    if (id === 6) return 'mio';
-    if (id === 4 || id === 5) return 'inscripcion';
-    return 'disponible';
+  private esTorneoPropio(torneo: MidTorneoResumen): boolean {
+    const usuario = this.obtenerUsuarioSesion();
+    if (!usuario) return false;
+
+    const idUsuario = usuario['id'] ?? usuario['Id'] ?? usuario['idUsuario'];
+    return idUsuario !== undefined &&
+      (torneo.IdUsuario === idUsuario || torneo.idUsuario === idUsuario || torneo.UsuarioCreador === idUsuario);
+  }
+
+  private obtenerUsuarioSesion(): Record<string, unknown> | null {
+    const usuario = localStorage.getItem('usuarioSesion');
+    if (!usuario) return null;
+
+    try {
+      return JSON.parse(usuario) as Record<string, unknown>;
+    } catch {
+      return null;
+    }
   }
 
   irAIniciarSesion(): void {

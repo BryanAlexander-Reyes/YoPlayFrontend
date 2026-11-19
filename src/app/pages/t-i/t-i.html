@@ -8,7 +8,7 @@
             <p class="description">Aquí encontrarás información de torneos en los cuales estés registrado.</p>
 
             <div class="tournament-grid">
-                @for (torneo of torneos; track torneo.nombre) {
+                @for (torneo of torneos; track torneo.id) {
                     <article class="tournament-card">
                         <img [src]="torneo.imagen" alt="Afiche de {{ torneo.nombre }}" title="Afiche de {{ torneo.nombre }}" />
                         <h3>{{ torneo.nombre }}</h3>
@@ -19,9 +19,11 @@
                     </article>
                 }
 
-                <article class="tournament-card info-card">
-                    <h3>Aquí encontrarás todos los torneos en los que estés inscrito.</h3>
-                </article>
+                @if (!cargando && torneos.length === 0) {
+                    <article class="tournament-card info-card">
+                        <h3>No tienes torneos inscritos, ¡Únete a uno!</h3>
+                    </article>
+                }
             </div>
         </div>
     </div>

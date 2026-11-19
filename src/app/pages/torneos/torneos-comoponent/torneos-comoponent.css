@@ -14,6 +14,37 @@
   box-sizing: border-box;
 }
 
+.empty-active-card {
+  width: min(100% - 32px, 460px);
+  margin: 48px auto;
+  padding: 28px;
+  border: 1px solid rgba(22, 131, 255, 0.35);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #111722, #151d2c);
+  color: #f8fafc;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.45);
+  animation: tournamentSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.empty-active-card-icon {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 2.4rem;
+}
+
+.empty-active-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  color: #f8fafc;
+}
+
+.empty-active-card p {
+  margin: 0;
+  color: #aeb7c6;
+  line-height: 1.5;
+}
+
 .torneo-container {
   width: 100%;
   min-height: 100vh;

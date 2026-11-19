@@ -10,25 +10,30 @@
             Aquí puedes encontrar la información de tu perfil y las configuraciones del perfil.
         </p>
         <section class="informacion-card">
+            @if (cargandoPerfil) {
+                <p>Cargando información del perfil...</p>
+            } @else if (errorPerfil) {
+                <p>No fue posible cargar la información del perfil.</p>
+            }
             <div class="datos-perfil">
                 <h2>Información de tu perfil</h2>
                 <p>
                     Nombre: {{ perfiles.nombre }}
                 </p>
                 <p>
-                    Tipo de documento: {{ perfiles.tipo_documneto }}
+                    Tipo de documento: {{ perfiles.tipoDocumento }}
                 </p>
                 <p>
-                    Número de documento: {{ perfiles.numero_documneto }}
+                    Número de documento: {{ perfiles.numeroDocumento }}
                 </p>
                 <p>
                     Equipo: {{ perfiles.equipo }}
                 </p>
                 <p>
-                    Rol: {{ perfiles.Rol }}
+                    Rol: {{ perfiles.rol }}
                 </p>
                 <p>
-                    Estado: {{ perfiles.Estado }}
+                    Estado: {{ perfiles.estado }}
                 </p>
             </div>
             <div class="foto-perfil">
@@ -77,6 +82,11 @@
                         <p>Hora: {{ torneo.hora }}</p>
                         <p>Premiación: {{ torneo.premios }}</p>
                         <button class="fixture-button" type="button" (click)="abrirFixture(torneo.id)">Fixture</button>
+                    </article>
+                }
+                @if (torneosPerfil.length === 0) {
+                    <article class="tus-torneos-card empty-tournaments-card">
+                        <h3>No tienes torneos creados.</h3>
                     </article>
                 }
             </div>

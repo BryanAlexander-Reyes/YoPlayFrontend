@@ -12,7 +12,7 @@
   <!-- =========================
        CARRUSEL PRINCIPAL
        ========================= -->
-  <section class="carrusel-container">
+  <section *ngIf="torneos.length > 0" class="carrusel-container">
     <button class="carrusel-btn izquierda" (click)="anterior()">◀</button>
 
     <div class="carrusel">
@@ -107,6 +107,18 @@
 
       <p>Participa, compite y demuestra tu talento.</p>
     </div>
+
+    <article *ngIf="!cargando && torneos.length === 0 && modo === 'inscripcion'" class="empty-active-card">
+      <span class="empty-active-card-icon" aria-hidden="true"></span>
+      <h2>No hay torneos activos</h2>
+      <p>Cuando haya un torneo disponible para inscripción, aparecerá aquí.</p>
+    </article>
+
+    <article *ngIf="!cargando && torneos.length === 0 && modo !== 'inscripcion'" class="empty-active-card">
+      <span class="empty-active-card-icon" aria-hidden="true"></span>
+      <h2>No hay torneos en curso</h2>
+      <p>Cuando un torneo esté en curso, aparecerá aquí.</p>
+    </article>
 
     <div class="torneos-grid">
       <article class="torneo-card" *ngFor="let torneo of torneos">

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TorneosService, Torneo } from '../../../services/auth-services-torneosCurso';
+import { Torneo } from '../../../services/auth-services-torneosCurso';
+import { catchError, finalize, map, of } from 'rxjs';
+import { MidTorneosService } from '../../../services/mid-torneos.service';
 
 @Component({
   selector: 'app-torneos-comoponent',
@@ -14,17 +16,44 @@ export class TorneosComponent implements OnInit {
   torneoActual: number = 0;
   modo: string = 'informacion';
   showAccessDenied = false;
+  cargando = true;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private torneosService: TorneosService,
+    private readonly midTorneosService: MidTorneosService,
+    private readonly ngZone: NgZone,
+    private readonly changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
-    this.torneos = this.torneosService.obtenerTorneos();
     this.modo = this.activatedRoute.snapshot.data['modo'] || 'informacion';
     this.showAccessDenied = false;
+
+    const estadoBuscado = this.modo === 'inscripcion' ? 'por confirmar' : 'en curso';
+    this.midTorneosService.obtenerTorneos().pipe(
+      map((torneos) => torneos.filter((torneo) => torneo.Estado.toLowerCase() === estadoBuscado)),
+      catchError(() => of([])),
+      finalize(() => {
+        this.cargando = false;
+        this.changeDetector.detectChanges();
+      }),
+    ).subscribe((torneos) => {
+      this.ngZone.run(() => {
+        this.torneos = torneos.map((torneo) => ({
+          id: torneo.Id,
+          imagen: torneo.Imagen || 'assets/falyer1.jpg',
+          titulo: torneo.NombreTorneo,
+          descripcion: torneo.DescripcionTorneo || '',
+          lugar: torneo.Ubicacion || 'Por confirmar',
+          fecha: torneo.FechaInicio || 'Por confirmar',
+          hora: 'Por confirmar',
+          premios: 'Por confirmar',
+        }));
+        this.torneoActual = 0;
+        this.changeDetector.detectChanges();
+      });
+    });
   }
 
   isLoggedIn(): boolean {

@@ -29,7 +29,6 @@ import { ConfiguracionFondo } from './pages/configuracion-fondo/configuracion-fo
 import { Tutorial } from './pages/tutorial/tutorial';
 import { TI } from './pages/t-i/t-i';
 import { TP } from './pages/t-p/t-p';
-import { Stats } from './pages/stats/stats';
 import { Teams } from './pages/teams/teams';
 import { Privacy } from './pages/privacy/privacy';
 import { FAQ } from './pages/faq/faq';
@@ -86,10 +85,6 @@ export const routes: Routes = [
       {
         path: 'historial',
         component: TP
-      },
-      {
-        path: 'stats',
-        component: Stats
       },
       {
         path: 'teams',
