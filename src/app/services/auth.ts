@@ -1,7 +1,7 @@
 import { fromReadableStreamLike } from 'rxjs/internal/observable/innerFrom';
 import { UsuarioAuth } from '../models/usuario-auth';
 import { Injectable } from '@angular/core';
-import { Environment} from '../../../environments/environments'
+import { Environment} from '../../environments/environments'
 import { HttpClient } from '@angular/common/http';
 
 interface UsuarioSistemas extends UsuarioAuth {
