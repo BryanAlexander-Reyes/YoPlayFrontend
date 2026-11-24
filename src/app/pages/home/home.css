@@ -204,6 +204,26 @@
   border-color: rgba(124, 201, 255, 0.5);
 }
 
+.empty-tournament-card {
+  display: flex;
+  min-height: 430px;
+  padding: 28px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: default;
+}
+
+.empty-tournament-card:hover {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.38);
+  border-color: rgba(22, 131, 255, 0.22);
+}
+
+.empty-tournament-card h3 {
+  margin: 0;
+}
+
 @keyframes cardReveal {
   from {
     opacity: 0;

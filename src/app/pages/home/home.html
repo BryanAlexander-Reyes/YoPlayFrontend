@@ -52,10 +52,12 @@
           <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
+      <article *ngIf="!cargandoTorneos && !errorTorneos && torneosDisponibles.length === 0" class="tournament-card empty-tournament-card">
+        <h3>No hay torneos disponibles</h3>
+      </article>
     </div>
     <p *ngIf="cargandoTorneos">Cargando torneos...</p>
     <p *ngIf="!cargandoTorneos && errorTorneos">No fue posible cargar los torneos del MID.</p>
-    <p *ngIf="!cargandoTorneos && !errorTorneos && torneosDisponibles.length === 0">No hay torneos disponibles.</p>
   </section>
 
   <section *ngIf="usuarioAutenticado" class="tournament-section">
@@ -77,8 +79,10 @@
           <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
+      <article *ngIf="!cargandoTorneos && torneosEnInscripcion.length === 0" class="tournament-card empty-tournament-card">
+        <h3>No hay torneos en inscripción</h3>
+      </article>
     </div>
-    <p *ngIf="!cargandoTorneos && torneosEnInscripcion.length === 0">No hay torneos en inscripción.</p>
   </section>
 
   <section *ngIf="usuarioAutenticado" class="tournament-section">
@@ -100,7 +104,9 @@
           <button type="button" class="more-info-button">Más información</button>
         </div>
       </article>
+      <article *ngIf="!cargandoTorneos && tusTorneos.length === 0" class="tournament-card empty-tournament-card">
+        <h3>No hay torneos propios</h3>
+      </article>
     </div>
-    <p *ngIf="!cargandoTorneos && tusTorneos.length === 0">No tienes torneos propios.</p>
   </section>
 </section>
