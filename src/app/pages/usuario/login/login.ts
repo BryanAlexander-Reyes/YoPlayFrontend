@@ -1,7 +1,8 @@
 import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth';
+import {UsuarioService} from '../../../ApisMidUsuario/usuario.service';}
+import { SesionService } from '../../../services/sesion.service';
 import { EventEmitter, Output } from '@angular/core';
 
 
@@ -14,7 +15,8 @@ import { EventEmitter, Output } from '@angular/core';
 export class LoginComponent {
   constructor(
     private router: Router,
-    private authService: AuthService,
+    private authService: UsuarioService,
+    private sesionService: SesionService, 
   ) {}
   @Output() irARegistro = new EventEmitter<void>();
   @Output() abrirRecuperarComponent = new EventEmitter<void>();
@@ -32,9 +34,9 @@ export class LoginComponent {
 
   // contraseña y usuario para prueba
   login(): void {
-    this.authService.iniciarSesion(this.email, this.password).subscribe({
+    this.usuarioService.iniciarSesion(this.email, this.password).subscribe({
       next: (respuesta) => {
-        this.authService.guardarUsuario(respuesta.id_usuario);
+        this.sesionService.guardarUsuario(respuesta.id_usuario);
 
         this.mostrarSpan.emit();
 

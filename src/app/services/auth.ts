@@ -20,19 +20,6 @@ export class AuthService {
   private readonly STORAGE_KEY = 'usuarioSesion';
   private readonly LOGIN_URL = `${Environment.apiUrl}/api/login`;
 
-  private usuarioSistemas: UsuarioSistemas[] = [
-    {
-      nombre: 'Brayan Reyes',
-      correo: 'bryanreyes47k@gmail.com',
-      password: '123456',
-    },
-    {
-      nombre: 'Kevin Alexander Hernández Sierra',
-      correo: 'admink@gmail.com',
-      password: '123456',
-      
-    }
-  ];
 
   constructor(private http:HttpClient) {}
 

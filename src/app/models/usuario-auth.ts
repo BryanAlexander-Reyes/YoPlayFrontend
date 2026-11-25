@@ -1,4 +1,9 @@
 export  interface UsuarioAuth{
-    nombre:string,
-    correo:string,
+    constrasena: string,
+    correo: string,
+}
+
+export interface UsuarioSesion{
+    mensaje: string,
+    id_usuario: number,
 }
