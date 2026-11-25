@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 HttpClient
 import { Environment } from '../../../../environments/environments';
-import {ApiServiceUsuario} from '../../../services/apismid_usuario'
+
 
 interface TipoDocumento{
   Id: number;

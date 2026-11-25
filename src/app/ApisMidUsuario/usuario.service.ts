@@ -11,6 +11,6 @@ export class UsuarioService {
 
 
     public iniciarSesion(usuario: UsuarioAuth): Observable<UsuarioSesion> {
-        return this.requestManager.post<UsuarioSesion>('/api/login', usuario);
+        return this.requestManager.post<UsuarioSesion>('api/login', usuario);
     }
 }
