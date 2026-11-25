@@ -1,5 +1,5 @@
 export  interface UsuarioAuth{
-    constrasena: string,
+    contrasena: string,
     correo: string,
 }
 

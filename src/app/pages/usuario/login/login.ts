@@ -1,9 +1,10 @@
-import { Component, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {UsuarioService} from '../../../ApisMidUsuario/usuario.service';}
+import {UsuarioService} from '../../../ApisMidUsuario/usuario.service';
 import { SesionService } from '../../../services/sesion.service';
 import { EventEmitter, Output } from '@angular/core';
+import { UsuarioAuth } from '../../../models/usuario-auth';
 
 
 @Component({
@@ -34,7 +35,11 @@ export class LoginComponent {
 
   // contraseña y usuario para prueba
   login(): void {
-    this.usuarioService.iniciarSesion(this.email, this.password).subscribe({
+    const usuario:UsuarioAuth = {
+      correo: this.email,
+      contrasena: this.password
+    };
+    this.authService.iniciarSesion(usuario).subscribe({
       next: (respuesta) => {
         this.sesionService.guardarUsuario(respuesta.id_usuario);
 
@@ -44,8 +49,8 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         }, 1500);
       },
-      error:()=>{
-        alert('CORREO O CONTRASEÑA SON INCORRECTS');
+      error:(error)=>{
+        alert(error.mensaje);
       }
     });
 }
