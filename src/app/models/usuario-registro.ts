@@ -13,3 +13,28 @@ export interface UsuarioRegistro{
     telefono:string,
     terminos:boolean,
 }
+
+export interface UsuarioRegistroResponse{
+    mensaje:string,
+    id_usuario:number,
+    id_contrasena:number,
+}
+
+export interface CorreoRegistro{
+    correo:string,       
+}
+
+export interface CorreoRegistroResponse{
+    Mensaje:string,
+}
+
+export interface CodigoVerificacion{
+    codigo:string,
+    correo:string,
+    proposito:string,
+}
+
+export interface CodigoVerificacionResponse{
+    Mensaje:string,
+}
+
