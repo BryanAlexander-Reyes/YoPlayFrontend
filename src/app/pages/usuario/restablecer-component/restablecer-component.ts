@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, Validators } from '@angular/forms';
 import { ValidadorComponente } from '../../validador-componente/validador-componente';
+import { UsuarioService } from '../../../ApisMidUsuario/usuario.service';
+import { CorreoRegistro, CodigoVerificacion } from '../../../models/usuario-registro';
 
 @Component({
   selector: 'app-restablecer-component',
@@ -16,7 +18,13 @@ export class RestablecerComponent {
   emailVerificado = false;
   codigoVerificado = false;
 
+  constructor(private usuarioService: UsuarioService){
+  }
+
   restablecer(): void {
+    const solicitud: CorreoRegistro={
+      correo: this.correo
+    }
     if(!this.correo){
       alert('Ingrese un correo');
       return;

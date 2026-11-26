@@ -95,7 +95,7 @@
     <app-register
       (irALogin)="mostrarLogin()" 
       [codigoVerificado]="codigoVerificado"
-      (irValidadorComponent)="abrirModalValidacion()">
+      (irValidadorComponent)="abrirModalValidacion($event)">
       
     </app-register>
 
@@ -114,6 +114,7 @@
     <div class="modal-validar">
       <app-validador-componente
       (codigoConfirmado)="continuarRegistro()"
+      [correo]="correoRegistro"
       >
       </app-validador-componente>
     </div>

@@ -18,6 +18,7 @@ export class AuthAnimationComponent {
   mostrarValidador=false;
   mostrarCarga = false;
   codigoVerificado =false;
+  correoRegistro:string='';
 
   activarCarga(): void {
     this.mostrarCarga = true;
@@ -27,7 +28,8 @@ export class AuthAnimationComponent {
     this.mostrarRestablecer=true;
     
   };
-  abrirModalValidacion(){
+  abrirModalValidacion(correo:string):void{
+    this.correoRegistro = correo;
     this.mostrarValidador=true;
   }
 

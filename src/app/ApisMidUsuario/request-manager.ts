@@ -12,6 +12,7 @@ import { HttpErrorManager } from './hettp-error-manager';
 export class RequestManagerUsuario {
 
     private readonly path = Environment.apiUrl;
+    private readonly base = Environment.base;
 
     constructor(
         private http: HttpClient,
@@ -45,6 +46,12 @@ export class RequestManagerUsuario {
         return this.http.delete<T>(`${this.path}${endpoint}/${id}`).pipe(
             catchError(error =>this.errorManager.handleError(error))
         );
+    }
+
+
+    // traer los datos de documentos
+    public getDocumentos<T>(endpoint: string): Observable<T> {
+        return this.http.get<T>(`${this.base}${endpoint}`).pipe(catchError(error =>this.errorManager.handleError(error)));
     }
 
 }

@@ -5,13 +5,13 @@ import{
   FormBuilder,
   FormGroup,
   Validators,
-  AbstractControl,
-  ValidationErrors
 } from '@angular/forms'
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 HttpClient
 import { Environment } from '../../../../environments/environments';
+import { UsuarioService, } from '../../../ApisMidUsuario/usuario.service'
+import { CorreoRegistro, UsuarioRegistro } from '../../../models/usuario-registro';
+
 
 
 interface TipoDocumento{
@@ -43,7 +43,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor (private fb:FormBuilder,
-    private http:HttpClient
+    private http:HttpClient,
+    private usuarioService:UsuarioService,
   ){
     this.registerForm=this.fb.group({
       // formulario1
@@ -56,6 +57,7 @@ export class RegisterComponent implements OnInit {
       apellido:['',Validators.required],
       tipoDocumento:['',Validators.required],
       identificacion:['',Validators.required],
+      telefono:['',Validators.required],
       fechaNacimiento:['',Validators.required],
       terminos:[false,Validators.required],
     });
@@ -64,7 +66,7 @@ export class RegisterComponent implements OnInit {
   tipoDocumento: TipoDocumento[]=[];
 
   @Output() irALogin = new EventEmitter<void>();
-  @Output() irValidadorComponent =new EventEmitter<void>();
+  @Output() irValidadorComponent =new EventEmitter<string>();
 
 
 
@@ -101,23 +103,60 @@ export class RegisterComponent implements OnInit {
       controles['confirmPassword'].setErrors({
         noCoincide:true
       });
+      return;
     }
-    this.irValidadorComponent.emit();
+
+    const solicitud: CorreoRegistro = {
+      correo: controles['email'].value,
+    };
+
+    this.usuarioService.verificarCorreo(solicitud).subscribe({
+      next: respuesta=>{
+        console.log(respuesta.Mensaje);
+        this.irValidadorComponent.emit(solicitud.correo);
+      },
+      error: error=>{
+        console.error(error);
+      }
+    });
   }
   mostrarPrimerFormulario(){
     this.mostrarSegundoFormulario=false;
   }
   registrar(){
+
+    const solicitud: UsuarioRegistro ={
+          Nombre: this.registerForm.value.nombre,
+          apellido: this.registerForm.value.apellido,
+          email: this.registerForm.value.email,
+          contrasena: this.registerForm.value.password,
+          tipo_documento: { id: Number(this.registerForm.value.tipoDocumento) },
+          numero_documento: this.registerForm.value.identificacion,
+          fecha_nacimiento: this.registerForm.value.fechaNacimiento,
+          telefono: this.registerForm.value.telefono,
+          terminos: this.registerForm.value.terminos,
+      };
+
     if(this.registerForm.invalid){
       console.log('El formulario tiene errores');
       this.registerForm.markAllAsTouched();
       return;
     }
-    const datos = this.registerForm.value;
+    if(!this.codigoVerificado){
+      console.log('El código no ha sido verificado, no se puede registrar el usuario');
+    }else{
+      this.usuarioService.registrarUsuario(solicitud).subscribe({
+        next: respuesta =>{
+        console.log('Usuario Registrado:', respuesta)},
+        error: error=>{
+           const datos = this.registerForm.value;
     console.log('Todos los datos del registro:');
     console.log(datos)
-
-    this.irValidadorComponent.emit();
+          console.error(error);
+        }
+      });
+    }
+    console.log(solicitud.tipo_documento);
   }
   volverALogin(){
     this.irALogin.emit();

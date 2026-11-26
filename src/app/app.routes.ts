@@ -147,5 +147,6 @@ export const routes: Routes = [
   {
     path: 'login_usuario',
     component: AuthAnimationComponent,
-  }
+  },
+  {path: 'crear_torneo', component: CreacionTorneo},
 ];
