@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, input, output, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SpanAuth } from '../../models/span-auth';
 import { UsuarioService } from '../../ApisMidUsuario/usuario.service';
@@ -17,6 +17,8 @@ export class ValidadorComponente {
   
   @Input() estado!:SpanAuth;
   @Input() correo:string = '';
+  @Input() proposito: 'registro' | 'recuperacion' = 'registro';
+  @Output() tokenVerificado = new EventEmitter<string>();
                                                                       
   codigo1 = '';
   codigo2 = '';
@@ -52,12 +54,19 @@ export class ValidadorComponente {
       this.codigo4+
       this.codigo5+
       this.codigo6,
-      proposito: 'registro'
+      proposito: this.proposito
     };
-    this.usuarioService.verificarCorreo(solicitud).subscribe({
+    this.usuarioService.enviarCodigoVerificacion(solicitud).subscribe({
       next: respuesta=>{
         console.log(respuesta.Mensaje);
-        this.codigoConfirmado.emit();
+        if (this.proposito === 'recuperacion') {
+          if (!respuesta.token){
+            console.error('No se recibio el token de recuperacion');
+            return;
+          }
+          this.tokenVerificado.emit(respuesta.token);
+        }else{
+        this.codigoConfirmado.emit();}
       },
       error: error=>{
         console.error(error);

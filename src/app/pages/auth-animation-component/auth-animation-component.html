@@ -106,7 +106,10 @@
         <button class="cerrar-modal" (click)="cerrarRecuperar()">
           <i class="fa-solid fa-square-xmark"></i>
         </button>
-        <app-restablecer-component></app-restablecer-component>
+        <app-restablecer-component
+        (irALogin)="cerrarRecuperar()"
+        >
+        </app-restablecer-component>
       </div>
     </div>
   }

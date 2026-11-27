@@ -36,5 +36,6 @@ export interface CodigoVerificacion{
 
 export interface CodigoVerificacionResponse{
     Mensaje:string,
+    token?:string,
 }
 

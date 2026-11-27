@@ -5,6 +5,9 @@ import { UsuarioAuth, UsuarioSesion } from '../models/usuario-auth';
 import { UsuarioRegistro, UsuarioRegistroResponse } from '../models/usuario-registro';
 import { CorreoRegistro, CorreoRegistroResponse } from '../models/usuario-registro';
 import { CodigoVerificacion, CodigoVerificacionResponse } from '../models/usuario-registro';
+import { cambiarContrasenaResponse, recuperarContrasena } from '../models/usuario-CambioContrasena';
+import { cambiarContrasena } from '../models/usuario-CambioContrasena';
+
 
 @Injectable({
     providedIn: 'root',
@@ -31,12 +34,12 @@ export class UsuarioService {
         return this.requestManager.post<CodigoVerificacionResponse>('api/verificarcodigocorreo', usuario);
     }
 
-    public recueperarContrasena(usuario: UsuarioAuth):Observable<UsuarioSesion>{
-        return this.requestManager.post<UsuarioSesion>('api/recuperarcontrsena', usuario);
+    public recuperarContrasena(usuario: CorreoRegistro):Observable<recuperarContrasena>{
+        return this.requestManager.post<recuperarContrasena>('api/recuperarcontrasena', usuario);
     }
 
-    public cambiarContrasena(usuario: UsuarioAuth): Observable<UsuarioSesion>{
-        return this.requestManager.put<UsuarioSesion>('api/cambiarcontrasena', usuario);
+    public cambiarContrasena(usuario: cambiarContrasena): Observable<cambiarContrasenaResponse> {
+        return this.requestManager.put<cambiarContrasenaResponse>('api/cambiarcontrasena', usuario);
     }
 
     // traer los datos de documentos

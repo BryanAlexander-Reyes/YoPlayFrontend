@@ -10,7 +10,10 @@
 
 <app-validador-componente
     *ngIf="emailVerificado && !codigoVerificado"
-    (codigoConfirmado)="confirmarCodigo()">
+    [correo]="correo"
+    proposito="recuperacion"
+    (tokenVerificado)="confirmarCodigo($event)"
+    >
 </app-validador-componente>
 
 <div class="password-contenedor" *ngIf="codigoVerificado">
